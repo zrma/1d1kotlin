@@ -2,76 +2,137 @@ import org.hyperskill.hstest.stage.StageTest;
 import org.hyperskill.hstest.testcase.CheckResult;
 import org.hyperskill.hstest.testcase.TestCase;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 class TestClue {
-    boolean correctness;
-    int position;
+    int referencesCount, requestsCount;
+    String input;
 
-    TestClue(boolean correct, int pos) {
-        correctness = correct;
-        position = pos;
+    TestClue(int referencesCount, int requestsCount, String input) {
+        this.referencesCount = referencesCount;
+        this.requestsCount = requestsCount;
+        this.input = input;
     }
 }
 
 public class SimpleSearchEngineTest extends StageTest<TestClue> {
 
+    private static String testCaseInput1 = "1\n" +
+        "John\n" +
+        "1\n" +
+        "this text will definitely be no match";
+
+    private static String testCaseInput2 = "3\n"
+        + "john smith smith@gmail.com\n"
+        + "John lock john_lock@somecompany.com\n"
+        + "help me iamaprogrammer@gmail.com\n"
+        + "4\n"
+        + "john\n"
+        + "Somecompany\n"
+        + "@\n"
+        + "this text will definitely be no match";
 
     @Override
     public List<TestCase<TestClue>> generate() {
         return Arrays.asList(
             new TestCase<TestClue>()
-                .setAttach(new TestClue(true, 2))
-                .setInput("hello my name is alex\nmy"),
+                .setAttach(new TestClue(1, 1,
+                testCaseInput1)).setInput(testCaseInput1),
 
             new TestCase<TestClue>()
-                .setAttach(new TestClue(true, 5))
-                .setInput("hello my name is alex\nalex"),
+                .setAttach(new TestClue(3, 4,
+                testCaseInput2)).setInput(testCaseInput2)
 
-            new TestCase<TestClue>()
-                .setAttach(new TestClue(true, 1))
-                .setInput("what a beautiful place\nwhat"),
-
-            new TestCase<TestClue>()
-                .setAttach(new TestClue(true, 1))
-                .setInput("hi\nhi"),
-
-            new TestCase<TestClue>()
-                .setAttach(new TestClue(false, 0))
-                .setInput("hi\nhello"),
-
-            new TestCase<TestClue>()
-                .setAttach(new TestClue(false, 0))
-                .setInput("twenty one pilots white stripes queen system of a down\nhello"),
-
-            new TestCase<TestClue>()
-                .setAttach(new TestClue(true, 9))
-                .setInput("twenty one pilots white stripes queen system of a down\na"),
-
-            new TestCase<TestClue>()
-                .setAttach(new TestClue(false, 0))
-                .setInput("one two three\nfour")
         );
     }
 
     @Override
     public CheckResult check(String reply, TestClue clue) {
-        String[] lines = reply.split("\n");
-        String lastLine = lines[lines.length - 1].trim().toLowerCase();
+        String cR = "\n";
+        List<String> outputLines = new LinkedList<String>(Arrays.asList(reply.split(cR)));
+        String[] inputLines = clue.input.split(cR);
+        String[] reference;
+        String[] searchResult;
 
-        if (lines.length == 1) {
-            boolean correct = clue.correctness;
-            int index = clue.position;
-            if (correct) {
-                return new CheckResult(lastLine.contains(Integer.toString(index)));
-            } else {
-                return new CheckResult(lastLine.contains("not found"));
+        int referenceCount, requestsCount;
+
+        //check count of iteration to fill search reference
+        try {
+            referenceCount = Integer.parseInt(inputLines[0]);
+        } catch (NumberFormatException e) {
+            return new CheckResult(false, "The number of lines to search must be a number!");
+        }
+
+        reference = new String[referenceCount];
+
+        for (int i = 0; i < referenceCount; i++) {
+            reference[i] = inputLines[i + 1];
+        }
+
+        //check count of iteration to search some string;
+        try {
+            requestsCount = Integer.parseInt(inputLines[referenceCount + 1]);
+        } catch (NumberFormatException e) {
+            return new CheckResult(false,
+                "The number of requests to search must be a number or " +
+                "count of reference lines doesn't match input data!");
+        }
+
+        //clear the list of unnecessary lines, if any
+        List<String> cleanedOutput = new ArrayList<String>();
+        for (int i = 0; i < outputLines.size(); i++) {
+            if (ContainsItemFromList(outputLines.get(i), reference)) {
+                cleanedOutput.add(outputLines.get(i));
             }
-        } else {
-            return new CheckResult(false, "You should have responsesFromClient only one line instead of " +
-                lines.length);
+        }
+
+        //check found matches accuracy
+        int actualTotalMatches = cleanedOutput.size();
+        int requiredTotalMatches = 0;
+        for (int j = 0; j < requestsCount; j++) {
+            String toSearch = inputLines[referenceCount + 2 + j];
+            searchResult = Arrays.stream(reference).filter(line -> line.toLowerCase()
+                .contains(toSearch.toLowerCase().trim()))
+                .toArray(String[]::new);
+
+            requiredTotalMatches += searchResult.length;
+            List<String> searchedFromOutput;
+
+            try {
+                searchedFromOutput = cleanedOutput
+                    .subList(0, searchResult.length);
+            } catch (IndexOutOfBoundsException ex) {
+                return new CheckResult(false, "Can't parse your output. " +
+                    "Please, make sure your output format matches with one in the example.");
+            }
+
+
+            if (!Arrays.equals(searchedFromOutput.toArray(), searchResult)) {
+                return new CheckResult(false,
+                    "Search result is not equal to the expected in search iteration " + j);
+            }
+
+            cleanedOutput.subList(0, searchResult.length).clear();
+        }
+        if (actualTotalMatches != requiredTotalMatches) {
+            return new CheckResult(false, "wrong number of found matches!");
+        }
+
+        if(referenceCount != clue.referencesCount){
+            return new CheckResult(false, "Reference count is incorrect");
+        }
+        else if(requestsCount != clue.requestsCount){
+            return new CheckResult(false, "Search requests count is incorrect");
+        }
+        else {
+            return CheckResult.correct();
         }
     }
-}
 
+    public static boolean ContainsItemFromList(String inputStr, String[] items) {
+        return Arrays.stream(items).parallel().anyMatch(inputStr::contains);
+    }
+}
