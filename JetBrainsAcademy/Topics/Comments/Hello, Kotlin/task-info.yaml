@@ -1,0 +1,18 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun main() {
+        print("Hello, ")
+        print("world")
+        print(" and ")
+        print("Kotlin")
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/4413#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sat, 12 Jun 2021 15:47:06 UTC
+record: -1
