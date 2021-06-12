@@ -153,5 +153,20 @@ files:
     }
   learner_created: false
 feedback_link: https://hyperskill.org/projects/89/stages/495/implement#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: |-
+    Wrong answer in test #2
+
+    Can&#39;t parse your output. Please, make sure your output format matches with one in the example.
+
+    Please find below the output of your program during this failed test.
+    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
+
+    ---
+
+    &gt; 3
+    &gt; john smith smith@gmail.com
+    Not found
+  time: Sat, 12 Jun 2021 05:10:35 UTC
 record: -1
