@@ -1,0 +1,19 @@
+<h2>Knights, merchants, and robbers</h2>
+<html>
+ <head></head>
+ <body>
+  <p>Sir Backsword met two men on the road. They asked to be his companions. They said that both of them have the same profession. He decided to find out who they are: knights, merchants, or robbers.</p> 
+  <p>Write a program that will help him decide if he can trust the strangers. To answer this question, you need to read three booleans: <code class="java">firstAnswer</code>, <code class="java">secondAnswer</code>, and <code class="java">confession</code> (each on a separate line):</p> 
+  <ul> 
+   <li><code class="java">firstAnswer</code> and <code class="java">secondAnswer</code> are the answers of the strangers themselves about their profession. We assume that no one will ever say that robbery is a profession, so <code class="java">true</code> means knight and <code class="java">false</code> means merchant.</li> 
+   <li><code class="java">confession</code> will be <code class="java">true</code> only if they confessed in good faith that they are robbers. </li> 
+  </ul> 
+  <p>The strangers can't be trusted if their answers don't match or if they confessed that they are robbers. In this case, print <code class="java">false</code>, otherwise, print <code class="java">true</code>.</p> 
+  <p><button class="btn-sm btn-outline-secondary" onclick="getElementById('hint-1083').style.display='inline'"> Hint </button> </p>
+  <div id="hint-1083" style="display:none;">
+    You can use XOR to check that the answers are different. 
+  </div>
+  <p></p>
+ </body>
+</html><br><b>Sample Input:</b><br><pre><code class="language-no-highlight">true<br>true<br>false</code></pre><br><b>Sample Output:</b><br><pre><code class="language-no-highlight">true</code></pre><br><br><b>Sample Input:</b><br><pre><code class="language-no-highlight">true<br>false<br>false</code></pre><br><b>Sample Output:</b><br><pre><code class="language-no-highlight">false</code></pre><br><br><b>Sample Input:</b><br><pre><code class="language-no-highlight">false<br>false<br>true</code></pre><br><b>Sample Output:</b><br><pre><code class="language-no-highlight">false</code></pre><br><br><br><font color="gray">Memory limit: 256 MB</font><br><font color="gray">Time limit: 8 seconds</font><br><br>
+<a href="https://hyperskill.org/learn/step/4515">Show topic summary</a>
