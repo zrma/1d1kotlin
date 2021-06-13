@@ -1,0 +1,54 @@
+<h2>Standard output</h2>
+<html>
+ <head></head>
+ <body>
+  <p><strong>Standard output</strong> is a place that a program can send some information to. It is supported by all common operating systems, but note that not all programs generate such output. By default, the standard output displays data on the screen, but it is possible to redirect it to a file.</p> 
+  <p>During this course, you will often write programs that send some data (for example, strings and numbers) to the <strong>standard output</strong>.</p> 
+  <h2 style="text-align: center;">Printing text</h2> 
+  <p>Kotlin has two functions to send data to the standard output: <code class="language-kotlin">println</code> and <code class="language-kotlin">print</code>.</p> 
+  <p>The function <code class="language-kotlin">println</code> (print line) displays the passed string followed by a new line on the screen. For example, the code fragment below prints four lines:</p> 
+  <pre><code class="language-kotlin">println("I")
+println("know")
+println("Kotlin")
+println("well.")</code></pre> 
+  <p><strong>Output:</strong></p> 
+  <pre><code class="language-java">I
+know
+Kotlin
+well.</code></pre> 
+  <p>As you can see, all the strings were printed as they are, without double-quotes.</p> 
+  <p>You can also print an empty line when there is no string to print:</p> 
+  <pre><code class="language-kotlin">println("Kotlin is a modern programming language.")
+println() // prints an empty line
+println("It is used all over the world!")</code></pre> 
+  <p><strong>Output:</strong></p> 
+  <pre><code class="language-java">Kotlin is a modern programming language.
+
+It is used all over the world!</code></pre> 
+  <p>The function <code class="language-kotlin">print</code> displays the passed value and places the cursor (the place where to print) after it. Let's look at the example below. This piece of code outputs all strings in a single line.</p> 
+  <pre><code class="language-kotlin">print("I ")
+print("know ")
+print("Kotlin ")
+print("well.")</code></pre> 
+  <p><strong>Output:</strong></p> 
+  <pre><code class="language-java">I know Kotlin well.</code></pre> 
+  <p>Now, you can write <code class="language-kotlin">"Happy New Year"</code> to your friends, using Kotlin!</p> 
+  <h2 style="text-align: center;">Printing numbers and characters</h2> 
+  <p>The functions <code class="language-kotlin">println</code> and <code class="language-kotlin">print</code> allow a program to print not only strings but also numbers and characters.</p> 
+  <p>Let's print two secret codes.</p> 
+  <pre><code class="language-kotlin">print(108)   // prints a number
+print('c')   // prints a character
+print("Q")   // prints a string
+println('3') // prints a character that represents a digit 
+
+print(22)
+print('E')
+print(8)
+println('1')</code></pre> 
+  <p><strong>Output:</strong></p> 
+  <pre><code class="language-java">108cQ3
+22E81</code></pre> 
+  <p>Just like with the strings, there are no quotes.</p>
+ </body>
+</html>
+<a href="https://hyperskill.org/learn/step/4425">Show topic summary</a>
