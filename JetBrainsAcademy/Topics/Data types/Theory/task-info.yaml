@@ -1,17 +1,17 @@
 type: theory
 files:
-  - name: src/Main.kt
-    visible: true
-    text: |
-      // You can experiment here, it won’t be checked
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
 
-      fun main(args: Array<String>) {
-        // put your code here
-      }
-    learner_created: false
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
 feedback_link: https://hyperskill.org/learn/step/4388#comment
 status: Solved
 feedback:
-  time: Sat, 12 Jun 2021 08:29:03 UTC
+  time: Sun, 13 Jun 2021 11:33:41 UTC
 record: -1
 post_submission_on_open: true
