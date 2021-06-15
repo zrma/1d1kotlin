@@ -1,7 +1,4 @@
 fun main() {
-    val x = readLine().equals("true")
-    val y = readLine().equals("true")
-    val z = readLine().equals("true")
-
+    val (x, y, z) = List(3) { readLine()!!.toBoolean() }
     print(!(x && y) || z)
 }

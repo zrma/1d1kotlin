@@ -1,6 +1,4 @@
 fun main() {
-    val hasInvitation = readLine().equals("true")
-    val hasGift = readLine().equals("true")
-
-    println(hasInvitation && hasGift)
+    val (isInvited, hasGift) = List(2) { readLine()!!.toBoolean() }
+    println(isInvited && hasGift)
 }

@@ -1,7 +1,4 @@
 fun main() {
-    val firstAnswer = readLine().equals("true")
-    val secondAnswer = readLine().equals("true")
-    val confessor = readLine().equals("true")
-
+    val (firstAnswer, secondAnswer, confessor) = List(3) { readLine()!!.toBoolean() }
     println(firstAnswer == secondAnswer && !confessor)
 }
