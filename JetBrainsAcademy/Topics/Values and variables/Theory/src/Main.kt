@@ -1,5 +1,3 @@
-// You can experiment here, it won’t be checked
-
 fun main() {
     val language = "Kotlin"
     println(language) // prints "Kotlin" without quotes

@@ -1,5 +1,3 @@
-// You can experiment here, it won’t be checked
-
 fun main() {
     val text = "Hello, I am studying Kotlin now."
     val n = 1
