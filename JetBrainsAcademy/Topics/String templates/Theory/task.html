@@ -1,0 +1,52 @@
+<h2>String templates</h2>
+<html>
+ <head></head>
+ <body>
+  <p>Sometimes you need to put the values of variables in a text. Lucky you, Kotlin allows you to do that. Meet <strong>string templates</strong>. In this lesson, we will find out what they are and why they are the best.</p> 
+  <h2 style="text-align: center;">Templates for variables</h2> 
+  <p>Suppose we need to display a message about today's temperature (in Celsius) in some city.</p> 
+  <pre><code class="language-no-highlight">Now, the temperature in ... is ... degrees Celsius.</code></pre> 
+  <p>Instead of <code class="language-kotlin">...</code> we need to write certain values.</p> 
+  <p>If we have two variables <code class="language-kotlin">city</code> and <code class="language-kotlin">temp</code>, we can build the result string using a sequence of concatenations:</p> 
+  <pre><code class="language-kotlin">val city = "Paris"
+val temp = "24"
+
+println("Now, the temperature in " + city + " is " + temp + " degrees Celsius.")</code></pre> 
+  <p>Of course, this code is simple enough and works correctly. Is it perfect? Nope, for it is not very concise.</p> 
+  <p>Kotlin provides a more convenient way to do the same thing using <strong>string templates</strong>. How does it work? To add the value of a variable to a string, write the dollar sign <code class="language-kotlin">$</code> before the variable's name.</p> 
+  <pre><code class="language-kotlin">val city = "Paris"
+val temp = "24"
+
+println("Now, the temperature in $city is $temp degrees Celsius.")</code></pre> 
+  <p>This code is more readable than the one with concatenations.</p> 
+  <p>"Trust no one, homie", a rapper once said. Check for yourself that both code snippets print the same message:</p> 
+  <pre><code class="language-no-highlight">Now, the temperature in Paris is 24 degrees Celsius.</code></pre> 
+  <p>If we do not want to print a string, we can create a variable and use it:</p> 
+  <pre><code class="language-kotlin">val value = "55"
+val currency = "dollars"
+val price = "$value $currency" // "55 dollars"</code></pre> 
+  <p><strong>String templates</strong> are a recommended way to build strings based on the values of variables. Try using it instead of string concatenation.</p> 
+  <h2 style="text-align: center;">Templates for expressions</h2> 
+  <p>You can use string templates to put the result of an arbitrary expression in a string. To do that, include the entire expression in curly braces <code class="language-kotlin">{...}</code> after the dollar sign <code class="language-kotlin">$</code>. For example:</p> 
+  <pre><code class="language-kotlin">val language = "Kotlin"
+println("$language has ${language.length} letters in the name")</code></pre> 
+  <p>It prints:</p> 
+  <pre><code class="language-no-highlight">Kotlin has 6 letters in the name</code></pre> 
+  <p>Here <code class="language-kotlin">{language.length}</code> is an expression to evaluate. If you skip the braces, it will output something different:</p> 
+  <pre><code class="language-no-highlight">Kotlin has Kotlin.length letters in the name</code></pre> 
+  <p>So, always use curly braces for expressions in string templates to avoid such mistakes. But do not add them if you want to output only the value of a variable even though it does work.</p> 
+  <h2 style="text-align: center;">Idiom</h2> 
+  <p>In this course, you will learn some of Kotlin's idioms. Idioms are templates for clear and readable code. It's important for other people to be able to understand your code, so you should utilize these patterns. All idioms are endorsed by the community, so using them will bring you closer to Kotlin-style code. You can find a list of the most common idioms at <a target="_blank" href="https://kotlinlang.org/docs/idioms.html" rel="noopener noreferrer nofollow">kotlinlang.org</a>. </p> 
+  <p>The first idiom we'll look at is the use of <a target="_blank" href="https://kotlinlang.org/docs/idioms.html#string-interpolation" rel="noopener noreferrer nofollow">string templates</a> to compose strings.</p> 
+  <pre><code class="language-kotlin">val language = "Kotlin"
+println("Have a nice $language!")        // nice code
+println("Have a nice " + language + "!") // bad practice</code></pre> 
+  <h2 style="text-align: center;">Conclusion</h2> 
+  <p>What do you need to remember from this lesson? There are two main points:</p> 
+  <ol> 
+   <li>Use string templates to insert values of variables into a string: <code class="language-kotlin">"this string has $value"</code>.</li> 
+   <li>If you would like to get an arbitrary expression, use curly braces: <code class="language-kotlin">"The length is ${str.length}"</code>.</li> 
+  </ol>
+ </body>
+</html>
+<a href="https://hyperskill.org/learn/step/4547">Show topic summary</a>
