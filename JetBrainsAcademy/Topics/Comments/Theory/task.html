@@ -1,32 +1,27 @@
 <h2>Comments</h2>
 <html>
-<head></head>
-<body>
-<p>Here comes a comet... Oh, sorry, a comment – brief but enlightening. So, what exactly are those comments and what do
-    we need them for? Well, essentially, that's what we call a special text that will be ignored by the compiler.
-    Comments allow you to clarify a piece of code or exclude it from the compilation process (that is, disable it).
-    Throughout this course, we will use comments to explain how and why our code works.</p>
-<p>There are three kinds of comments in Kotlin. Let's take a look at them.</p>
-<h2 style="text-align: center;">End-of-line comments</h2>
-<p>The compiler ignores any text from the <code class="language-kotlin">//</code> sign to the end of the line.</p>
-<pre><code class="language-kotlin">fun main() {
+ <head></head>
+ <body>
+  <p>Here comes a comet... Oh, sorry, a comment – brief but enlightening. So, what exactly are those comments and what do we need them for? Well, essentially, that's what we call a special text that will be ignored by the compiler. Comments allow you to clarify a piece of code or exclude it from the compilation process (that is, disable it). Throughout this course, we will use comments to explain how and why our code works.</p> 
+  <p>There are three kinds of comments in Kotlin. Let's take a look at them.</p> 
+  <h2 style="text-align: center;">End-of-line comments</h2> 
+  <p>The compiler ignores any text from the <code class="language-kotlin">//</code> sign to the end of the line.</p> 
+  <pre><code class="language-kotlin">fun main() {
     // The line below will be ignored
     // println("Hello, World")
 
     // This prints the string "Hello, Kotlin"
     println("Hello, Kotlin")  // Here can be any comment
-}</code></pre>
-<p></p>
-<div class="alert alert-primary">
-    <strong>Did you know?</strong> In most code editors, a line can be commented by placing the caret on the line and
-    pressing
-    <code class="language-kotlin">Ctrl /</code>.
-</div>
-<p></p>
-<h2 style="text-align: center;">Multi-line comments</h2>
-<p>The compiler ignores any text between the <code class="language-kotlin">/*</code> and <code class="language-kotlin">*/</code>
-    symbols. You can use them for writing both single-line and multiple-line comments:</p>
-<pre><code class="language-kotlin">fun main() {
+}</code></pre> 
+  <p></p>
+  <div class="alert alert-primary">
+   <strong>Did you know?</strong> In most code editors, a line can be commented by placing the caret on the line and pressing 
+   <code class="language-kotlin">Ctrl /</code>.
+  </div>
+  <p></p> 
+  <h2 style="text-align: center;">Multi-line comments</h2> 
+  <p>The compiler ignores any text between the <code class="language-kotlin">/*</code> and <code class="language-kotlin">*/</code> symbols. You can use them for writing both single-line and multiple-line comments:</p> 
+  <pre><code class="language-kotlin">fun main() {
     /* This is a single-line comment */
     /*  This is an example of
         a multi-line comment */
@@ -35,40 +30,29 @@
         println("Hello")
         println("World")
     */
-}</code></pre>
-<p>You can also put comments inside other comments. When writing nested multi-line comments, make sure the opening <code
-        class="language-kotlin">/*</code> and the closing <code class="language-kotlin">*/</code> signs make pairs.</p>
-<pre><code class="language-kotlin">fun main() {
+}</code></pre> 
+  <p>You can also put comments inside other comments. When writing nested multi-line comments, make sure the opening <code class="language-kotlin">/*</code> and the closing <code class="language-kotlin">*/</code> signs make pairs.</p> 
+  <pre><code class="language-kotlin">fun main() {
     /*
     System.out.println("Hello")  // print "Hello"
     System.out.println("Kotlin") /* print "Kotlin" */
     */
-}</code></pre>
-<h2 style="text-align: center;">Documentation comments (doc comments)</h2>
-<p>The compiler ignores any text between the <code class="language-kotlin">/**</code> and <code class="language-kotlin">*/</code>
-    signs just like it ignores all text in multi-line comments. This kind of comments is called <strong>documentation
-        comments </strong>(<strong>doc comments</strong>). Documentation is a text that helps others understand what
-    your code does. You can use this kind of comments to automatically generate documentation about your source code
-    using a special tool.</p>
-<p>Usually, these comments are placed above the declarations of respective program elements. Also, in this case, some
-    special labels, such as <code class="language-kotlin">@param</code>, <code class="language-kotlin">@return</code>,
-    and others are used for controlling the tool.</p>
-<p>Let's take a look at the example below.</p>
-<pre><code class="language-kotlin">/**
+}</code></pre> 
+  <h2 style="text-align: center;">Documentation comments (doc comments)</h2> 
+  <p>The compiler ignores any text between the <code class="language-kotlin">/**</code> and <code class="language-kotlin">*/</code> signs just like it ignores all text in multi-line comments. This kind of comments is called <strong>documentation comments </strong>(<strong>doc comments</strong>). Documentation is a text that helps others understand what your code does. You can use this kind of comments to automatically generate documentation about your source code using a special tool.</p> 
+  <p>Usually, these comments are placed above the declarations of respective program elements. Also, in this case, some special labels, such as <code class="language-kotlin">@param</code>, <code class="language-kotlin">@return</code>, and others are used for controlling the tool.</p> 
+  <p>Let's take a look at the example below.</p> 
+  <pre><code class="language-kotlin">/**
  * The `main` function accepts string arguments from outside.
  *
  * @param args arguments from the command line.
  */
 fun main(args: Array&lt;String&gt;) {
     // do nothing
-}</code></pre>
-<p>Do not be afraid if you don’t completely understand <strong>documentation comments</strong> yet. Later, we will take
-    a closer look at them.</p>
-<h2>Conclusion</h2>
-<p>We've briefly discussed several kinds of comments you can insert in your code. Use them wisely and remember that
-    numerous comments do not always make your program absolutely clear. The code may change, and the comments will
-    become outdated. To reduce the number of comments, you should write self-documenting code, which might not be that
-    simple for padawans. We will learn how to do it during the course.</p>
-</body>
+}</code></pre> 
+  <p>Do not be afraid if you don’t completely understand <strong>documentation comments</strong> yet. Later, we will take a closer look at them.</p> 
+  <h2>Conclusion</h2> 
+  <p>We've briefly discussed several kinds of comments you can insert in your code. Use them wisely and remember that numerous comments do not always make your program absolutely clear. The code may change, and the comments will become outdated. To reduce the number of comments, you should write self-documenting code, which might not be that simple for padawans. We will learn how to do it during the course.</p>
+ </body>
 </html>
 <a href="https://hyperskill.org/learn/step/4406">Show topic summary</a>
