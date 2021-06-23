@@ -1,0 +1,54 @@
+<h2>Integers in action</h2>
+<html>
+ <head></head>
+ <body>
+  <h2 style="text-align: center;">Int and long integer types</h2> 
+  <p>Programmers often use integer numbers with their programs. As you may recall, Kotlin has several integer types. The most popular are <code class="language-kotlin">Int</code> (32 bits) and <code class="language-kotlin">Long</code> (64 bits). You can perform all types of arithmetic operations (<code class="language-kotlin">+</code>, <code class="language-kotlin">-</code>, <code class="language-kotlin">*</code>, <code class="language-kotlin">/</code>, <code class="language-kotlin">%</code>) with variables of these types. Let's take a look at several examples.</p> 
+  <pre><code class="language-kotlin">val two = 2  // Int
+val ten = 10 // Int
+
+val twelve = two + ten // 12
+val eight = ten - two  // 8
+val twenty = two * ten // 20
+val five = ten / two   // 5
+val zero = ten % two   // 0, no remainder</code></pre> 
+  <p>You know what these operations do. <code class="language-kotlin">Long</code> type integers support all these operations as well. To declare a variable of the <code class="language-kotlin">Long</code> type, you may choose one of these ways:</p> 
+  <pre><code class="language-kotlin">val longNumber1 = 1_000_000_000_000_000
+val longNumber2: Long = 1_000_000
+val longNumber3 = 1000L
+
+val result = longNumber1 + longNumber2 - longNumber3
+println(result) // 1000000000999000</code></pre> 
+  <p>The <code class="language-kotlin">longNumber1</code> value is of the <code class="language-kotlin">Long</code> type because it is greater than the possible value of the <code class="language-kotlin">Int</code> type. The <code class="language-kotlin">longNumber2</code> value is also <code class="language-kotlin">Long</code> because we have specified the type. The <code class="language-kotlin">longNumber3</code> value is <code class="language-kotlin">Long</code> because we have tagged the value with the suffix <code class="language-kotlin">L</code> (<code class="language-kotlin">Long</code>). The <code class="language-kotlin">result</code> is <code class="language-kotlin">Long</code>, as it is the sum of three <code class="language-kotlin">Long</code> integers.</p> 
+  <p><button class="btn-sm btn-outline-secondary" onclick="getElementById('hint-1645').style.display='inline'"> Hint </button> </p>
+  <div id="hint-1645" style="display:none;">
+   Use 
+   <code class="language-kotlin">Long</code> integers only when it is absolutely necessary (for example, to process large values).
+  </div>
+  <p></p> 
+  <p></p>
+  <div class="alert alert-primary">
+   See the underscores 
+   <code class="language-kotlin">_</code> in the example above? In Kotlin, you can use underscores to simplify the readability of a number. We can group digits with them. Underscores can't be placed before or after a digit, but they can be placed inside it, even in a row.
+  </div>
+  <p></p> 
+  <h2 style="text-align: center;">Reading numbers from the standard input</h2> 
+  <p>To solve a problem, you generally need to read data from the input, process it, and output the result. For example, this program reads two numbers from the standard input, performs addition, and outputs the sum.</p> 
+  <pre><code class="language-kotlin">fun main() {
+    val a = readLine()!!.toInt()
+    val b = readLine()!!.toInt()
+
+    val sum = a + b
+
+    println(sum)
+}</code></pre> 
+  <p>The <span style="color: #000000;"><code class="language-kotlin">readLine()</code> part is responsible </span>for reading data. It works for positive, negative, and zero numbers because the <code class="language-kotlin">Int</code> type supports all of them.</p> 
+  <p>If we know that input numbers can be large, we can read <code class="language-kotlin">Longs</code> instead of <code class="language-kotlin">Ints</code>:</p> 
+  <pre><code class="language-kotlin">val a = readLine()!!.toLong()
+val b = readLine()!!.toLong()</code></pre> 
+  <p>After that, we don't need to change anything.</p> 
+  <h2 style="text-align: center;">Conclusions</h2> 
+  <p>In this topic, we have covered two basic Kotlin integer types — <code class="language-kotlin">Long</code> and <code class="language-kotlin">Int</code>, and how to read data from the input. Now you have enough skills to write programs that process data. You may use the template above to solve the code problems in this topic. Try to give meaningful names to your variables, as it really helps.</p>
+ </body>
+</html>
+<a href="https://hyperskill.org/learn/step/4488">Show topic summary</a>
