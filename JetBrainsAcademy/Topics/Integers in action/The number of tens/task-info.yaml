@@ -1,5 +1,4 @@
 type: code
-custom_name: Are the numbers different?
 files:
 - name: src/Main.kt
   visible: true
@@ -8,9 +7,9 @@ files:
         // put your code here
     }
   learner_created: false
-feedback_link: https://hyperskill.org/learn/step/4535#comment
+feedback_link: https://hyperskill.org/learn/step/4494#comment
 status: Solved
 feedback:
   message: <html>Correct solution</html>
-  time: Mon, 28 Jun 2021 12:58:37 UTC
+  time: Tue, 29 Jun 2021 14:23:16 UTC
 record: -1
