@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/271583/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Tue, 29 Jun 2021 11:55:11 UTC
+update_date: Thu, 01 Jul 2021 13:38:26 UTC
 stages:
 - id: 494
   step: 7817
@@ -113,7 +113,7 @@ topics:
   - title: Computer algorithms
     theory_id: 4953
   - title: The big O notation
-    theory_id: 4991
+    theory_id: 13991
   - title: Linear search
     theory_id: 4970
   - title: IntelliJ IDEA
