@@ -1,0 +1,101 @@
+<h2>Working with strings</h2>
+<html>
+ <head></head>
+ <body>
+  <p>A string is just a sequence of characters enclosed in double-quotes. In Kotlin, strings are represented by the <code class="language-kotlin">String</code> type. It is one of the most widely used data types in practice. In this topic, we will learn some operations with strings.</p> 
+  <h2 style="text-align: center;">Accessing characters</h2> 
+  <p>The elements of a string are individual characters that can be accessed by their index. The first element of a string has an index of <span class="math-tex">\(0\)</span>.</p> 
+  <pre><code class="language-kotlin">val greeting = "Hello"
+
+val first = greeting[0]  // 'H'
+val second = greeting[1] // 'e'
+val five = greeting[4]   // 'o'</code></pre> 
+  <p>The last element has the index that equals the length of the string minus 1. For the string <code class="language-kotlin">"Hello"</code>, the last element is <code class="language-kotlin">'o'</code>. Its index is 4 because the string's length is 5.</p> 
+  <pre><code class="language-kotlin">val last = greeting[greeting.length - 1] // 'o'
+val prelast = greeting[greeting.length - 2] // 'l'</code></pre> 
+  <p>Kotlin provides several convenient ways to access the first and the last character of a string:</p> 
+  <pre><code class="language-kotlin">println(greeting.first())   // 'H'
+println(greeting.last())    // 'o'
+println(greeting.lastIndex) // 4</code></pre> 
+  <p>You can use this feature to write more readable code.</p> 
+  <h2 style="text-align: center;">Empty string</h2> 
+  <p>Sometimes you need a fast way to check if the <code class="language-kotlin">String</code> is empty. For example, you need the first element of the string and want to check for its existence. Of course, you can use the length and check if it's greater than 0. But a much more elegant way is using the function <code class="language-kotlin">isEmpty()</code>:</p> 
+  <pre><code class="language-kotlin">val emptyString = ""
+println(emptyString.length == 0) //true
+println(emptyString.isEmpty()) //true</code></pre> 
+  <h2 style="text-align: center;">Immutability</h2> 
+  <p>Strings are <strong>immutable</strong>,<strong> </strong>meaning that once created, the string stays the same. You cannot modify an element of a string. So, the example below would not work:</p> 
+  <pre><code class="language-kotlin">val valString = "string"
+valString[3] = 'o' // an error here!
+var varString = "string"
+varString[3] = 'o' // an error here too!</code></pre> 
+  <p>If you need to change the string, you can reassign it:</p> 
+  <pre><code class="language-kotlin">var varString = "string"
+varString = "strong" // legal
+val valString = "string"
+valString = "strong" // error, you cannot reassign val</code></pre> 
+  <p>Actually, we do not modify the stored value in the <code class="language-kotlin">varString</code> variable. Instead, we assign a new value to it. So, it is absolutely legal. This is one of the ways to work with strings. If you need to modify a string, just create a new one.</p> 
+  <h2 style="text-align: center;"> Comparing strings</h2> 
+  <p>To compare two strings, use <code class="language-kotlin">==</code> (equals) and <code class="language-kotlin">!=</code> (not equals) operators. Both operators take two strings as their operands and return a value of the <code class="language-kotlin">Boolean</code> type (<code class="language-kotlin">true</code> or <code class="language-kotlin">false</code>).</p> 
+  <pre><code class="language-kotlin">val first = "first"
+val second = "second"
+var str = "first"
+
+println(first == str)    // true
+println(first == second) // false
+println(first != second) // true</code></pre> 
+  <h2 style="text-align: center;">Raw string</h2> 
+  <p>Sometimes you need some special symbols like tabs or quote marks in your string. You can do it with the help of <strong>escape sequences</strong>. For example:</p> 
+  <pre><code class="language-kotlin">// prints 'H' is the first letter of "Hello world!" string.
+println("\'H\' is the first letter of \"Hello world!\" string.")</code></pre> 
+  <p>This looks a little heavy. If you need to write a fairly large text with newlines and special characters, it can be difficult to read. </p> 
+  <p>For these cases, you can use a <strong>raw string</strong>. A raw string can contain newlines and any other characters. You just need to wrap the text in triple quotes (<code class="language-kotlin">"""</code>):</p> 
+  <pre><code class="language-kotlin">val largeString = """
+    This is the house that Jack built.
+      
+    This is the malt that lay in the house that Jack built.
+       
+    This is the rat that ate the malt
+    That lay in the house that Jack built.
+       
+    This is the cat
+    That killed the rat that ate the malt
+    That lay in the house that Jack built.
+""".trimIndent() // removes the first and the last lines and trim indents
+print(largeString)</code></pre> 
+  <p>This text prints:</p> 
+  <pre><code class="language-no-highlight">This is the house that Jack built.
+
+This is the malt that lay in the house that Jack built.
+
+This is the rat that ate the malt
+That lay in the house that Jack built.
+
+This is the cat
+That killed the rat that ate the malt
+That lay in the house that Jack built.</code></pre> 
+  <p>As you see, we also used the function <code class="language-kotlin">.trimIndent()</code>. It cut off all the lines of the common minimum indent and removed the first and last lines if they are empty. For example:</p> 
+  <pre><code class="language-kotlin">val unevenString = """
+        123
+         456
+          789""".trimIndent()
+print(unevenString)
+println()
+
+val rawString = """123
+         456
+          789
+""".trimIndent()
+print(rawString )</code></pre> 
+  <p>This code prints:</p> 
+  <pre><code class="language-no-highlight">123
+ 456
+  789
+
+123
+         456
+          789</code></pre> 
+  <h2 style="text-align: center;">Conclusion</h2> 
+  <p>In this topic, you learned how to get a single character from a string and how to compare strings. Also, you learned how to create a string with special characters. Remember that strings are immutable, and in order to change a string, you need to reassign it. Good luck with your tasks, and have a nice Kotlin!</p>
+ </body>
+</html>
