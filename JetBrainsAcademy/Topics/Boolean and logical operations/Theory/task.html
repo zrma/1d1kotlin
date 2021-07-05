@@ -27,7 +27,7 @@ println(f) // false</code></pre>
   <h2 style="text-align: center;">Reading Boolean values</h2> 
   <p>Since Kotlin 1.4, you can read a Boolean value like this:</p> 
   <pre><code class="language-kotlin">val b: Boolean = readLine().toBoolean()</code></pre> 
-  <p><code class="language-kotlin">ToBoolean()</code> returns <code class="language-kotlin">true</code> if the input is <code class="language-kotlin">true</code>, case insensitive. If otherwise, it will return <code class="language-kotlin">false</code>.</p> 
+  <p><code class="language-kotlin">toBoolean()</code> returns <code class="language-kotlin">true</code> if the input is <code class="language-kotlin">true</code>, case insensitive. If otherwise, it will return <code class="language-kotlin">false</code>.</p> 
   <p>So, suppose you have this input:</p> 
   <pre><code class="language-kotlin">true
 True
@@ -90,8 +90,7 @@ val summer = false // suppose now is autumn
 
 val hiking = dry &amp;&amp; (!cold || summer) // true, let's go hiking!</code></pre> 
   <p>Do not get carried away by the expression above. A good programmer should understand not only arithmetic rules but also logical operations. Otherwise, you can end up hiking in bad weather.</p> 
-  <h2 style="text-align: center;">Conclusions</h2> 
+  <h2 style="text-align: center;">Conclusion</h2> 
   <p>In this topic, we have discussed four main Kotlin logical operators — <code class="language-kotlin">!</code> (NOT), <code class="language-kotlin">xor</code>, <code class="language-kotlin">&amp;&amp;</code> (AND), and <code class="language-kotlin">||</code> (OR). You will have to know them by heart to master Kotlin. They also comply with a special order of their execution, called precedence. It may seem confusing at first, but practice makes perfect. By the way, let's solve some tasks!</p>
  </body>
 </html>
-<a href="https://hyperskill.org/learn/step/4515">Show topic summary</a>
