@@ -44,58 +44,7 @@ var str = "first"
 println(first == str)    // true
 println(first == second) // false
 println(first != second) // true</code></pre> 
-  <h2 style="text-align: center;">Raw string</h2> 
-  <p>Sometimes you need some special symbols like tabs or quote marks in your string. You can do it with the help of <strong>escape sequences</strong>. For example:</p> 
-  <pre><code class="language-kotlin">// prints 'H' is the first letter of "Hello world!" string.
-println("\'H\' is the first letter of \"Hello world!\" string.")</code></pre> 
-  <p>This looks a little heavy. If you need to write a fairly large text with newlines and special characters, it can be difficult to read. </p> 
-  <p>For these cases, you can use a <strong>raw string</strong>. A raw string can contain newlines and any other characters. You just need to wrap the text in triple quotes (<code class="language-kotlin">"""</code>):</p> 
-  <pre><code class="language-kotlin">val largeString = """
-    This is the house that Jack built.
-      
-    This is the malt that lay in the house that Jack built.
-       
-    This is the rat that ate the malt
-    That lay in the house that Jack built.
-       
-    This is the cat
-    That killed the rat that ate the malt
-    That lay in the house that Jack built.
-""".trimIndent() // removes the first and the last lines and trim indents
-print(largeString)</code></pre> 
-  <p>This text prints:</p> 
-  <pre><code class="language-no-highlight">This is the house that Jack built.
-
-This is the malt that lay in the house that Jack built.
-
-This is the rat that ate the malt
-That lay in the house that Jack built.
-
-This is the cat
-That killed the rat that ate the malt
-That lay in the house that Jack built.</code></pre> 
-  <p>As you see, we also used the function <code class="language-kotlin">.trimIndent()</code>. It cut off all the lines of the common minimum indent and removed the first and last lines if they are empty. For example:</p> 
-  <pre><code class="language-kotlin">val unevenString = """
-        123
-         456
-          789""".trimIndent()
-print(unevenString)
-println()
-
-val rawString = """123
-         456
-          789
-""".trimIndent()
-print(rawString )</code></pre> 
-  <p>This code prints:</p> 
-  <pre><code class="language-no-highlight">123
- 456
-  789
-
-123
-         456
-          789</code></pre> 
   <h2 style="text-align: center;">Conclusion</h2> 
-  <p>In this topic, you learned how to get a single character from a string and how to compare strings. Also, you learned how to create a string with special characters. Remember that strings are immutable, and in order to change a string, you need to reassign it. Good luck with your tasks, and have a nice Kotlin!</p>
+  <p>In this topic, you learned how to get a single character from a string and how to compare strings. Remember that strings are immutable, and in order to change a string, you need to reassign it. Good luck with your tasks, and have a nice Kotlin!</p>
  </body>
 </html>
