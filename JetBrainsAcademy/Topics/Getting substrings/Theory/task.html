@@ -57,12 +57,13 @@ println(example)</code></pre>
   <pre><code class="language-kotlin">val example = "one one two three"
 println(example.replaceFirst("one", "two")) // "two one two three"</code></pre> 
   <h2 style="text-align: center;">Changing the case</h2> 
-  <p>What if you need to replace all capital letters in a word with <strong>lowercase</strong> letters? Try to think about how you would do it with the <code class="language-kotlin">replace</code> function. Now that's too much code, right? Fortunately, in Kotlin you can use a <code class="language-kotlin">toLowerCase</code> function:</p> 
+  <p>What if you need to replace all capital letters in a word with <strong>lowercase</strong> letters? Try to think about how you would do it with the <code class="language-kotlin">replace</code> function. Now that's too much code, right? Fortunately, in Kotlin you can use a <code class="language-kotlin">lowercase</code>function:</p> 
   <pre><code class="language-kotlin">val example = "UPPERCASE String"
-println(example.toLowerCase()) // uppercase string</code></pre> 
-  <p>If you need to do the opposite, then use the <code class="language-kotlin">toUpperCase</code> function:</p> 
+println(example.lowercase()) // uppercase string</code></pre> 
+  <p>If you need to do the opposite, then use the <code class="language-kotlin">uppercase</code> function:</p> 
   <pre><code class="language-kotlin">val example = "Lowercase String"
-println(example.toUpperCase()) // LOWERCASE STRING</code></pre> 
+println(example.uppercase()) // LOWERCASE STRING</code></pre> 
+  <p>If you work with the old version (before 1.5) of Kotin language you may use functions <code class="language-kotlin">toLowerCase()</code> and <code class="language-kotlin">toUpperCase()</code>. But since Kotlin 1.5 you should use the <code class="language-kotlin">lowercase()</code> and <code class="language-kotlin">uppercase()</code> functions. </p> 
   <h2 style="text-align: center;">Conclusion </h2> 
   <p>In this topic, we considered a few <strong>functions</strong> that produce a new string from the original string:</p> 
   <ul> 

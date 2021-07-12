@@ -101,8 +101,12 @@ println('A' &lt; 'a')  // true, because capital Latin letters are placed before 
    <li><code class="language-kotlin">isWhitespace()</code> returns <code class="language-kotlin">true</code> if the given character represents a whitespace (<code class="language-kotlin">' '</code> or <code class="language-kotlin">'\t'</code> or <code class="language-kotlin">'\n'</code>); otherwise, <code class="language-kotlin">false</code>;</li> 
    <li><code class="language-kotlin">isUpperCase()</code> returns <code class="language-kotlin">true</code> if the given character is an uppercase character; otherwise, <code class="language-kotlin">false</code>;</li> 
    <li><code class="language-kotlin">isLowerCase()</code> returns <code class="language-kotlin">true</code> if the given character is a lowercase character; otherwise, <code class="language-kotlin">false</code>;</li> 
-   <li><code class="language-kotlin">toUpperCase()</code> returns the uppercase form of the given character;</li> 
-   <li><code class="language-kotlin">toLowerCase()</code> returns the lowercase form of the given character.</li> 
+   <li><code class="language-kotlin">toUpperCase()</code> returns the uppercase form of the given character (before Kotlin 1.5, you shouldn't use it nowadays);</li> 
+   <li><code class="language-kotlin">uppercaseChar()</code> returns the uppercase form of the given character (since Kotlin 1.5);</li> 
+   <li><code class="language-kotlin">uppercase()</code> returns the <code class="language-kotlin">String</code> with the uppercase form of the given character (since Kotlin 1.5);</li> 
+   <li><code class="language-kotlin">toLowerCase()</code> returns the lowercase form of the given character (before Kotlin 1.5, you shouldn't use it nowadays);</li> 
+   <li><code class="language-kotlin">lowercaseChar()</code> returns the lowercase form of the given character (since Kotlin 1.5);</li> 
+   <li><code class="language-kotlin">lowercase()</code> returns the <code class="language-kotlin">String</code> with the lowercase form of the given character (since Kotlin 1.5).</li> 
   </ul> 
   <p>Let's take a look at some examples of the functions listed above:</p> 
   <pre><code class="language-kotlin">val one = '1'
@@ -118,7 +122,8 @@ val isLetterOrDigit = capital.isLetterOrDigit() // true
 val isUpperCase = capital.isUpperCase() // true
 val isLowerCase = capital.isLowerCase() // false
 
-val capitalE = small.toUpperCase() // 'E'</code></pre> 
+val capitalEString = small.uppercase() // "E"
+val capitalE = small.uppercaseChar()   // 'E'</code></pre> 
   <p>There are a lot more useful functions: we will keep learning about them in the upcoming topics..</p> 
   <h2>Conclusion</h2> 
   <p>In this topic, we learned about characters: in particular, we looked at the Char type, various operators, escape sequences, and functions, and learned what Unicode is. Now let's practice!</p>

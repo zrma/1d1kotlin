@@ -43,6 +43,15 @@ println(readLine().toBoolean()) // false</code></pre>
   <p>If your Kotlin is 1.3 or below, use <code class="language-kotlin">readLine()!!</code>:</p> 
   <pre><code class="language-kotlin">val b: Boolean = readLine()!!.toBoolean()</code></pre> 
   <p>You can use <code class="language-kotlin">readLine()!!.toBoolean()</code> with any compiler version. Although, you can omit it in Kotlin 1.4 or higher.</p> 
+  <p>Since Kotlin 1.5 you may use other functions to convert <code class="language-kotlin">String</code> to <code class="language-kotlin">Boolean</code>. The function <code class="language-kotlin">toBooleanStrict()</code> returns <code class="language-kotlin">true</code> if the string is <code class="language-kotlin">true</code>, case sensitive, <code class="language-kotlin">false</code> if the string is <code class="language-kotlin">false</code> otherwise, your program will fall with <code class="language-kotlin">java.lang.IllegalArgumentException</code>. The function <code class="language-kotlin">toBooleanStrictOrNull()</code> returns <code class="language-kotlin">true</code> if the string is <code class="language-kotlin">true</code>, case sensitive, <code class="language-kotlin">false</code> if the string is <code class="language-kotlin">false</code> otherwise, return a special value <code class="language-kotlin">null</code>. We will discuss it later.</p> 
+  <pre><code class="language-kotlin">println("true".toBooleanStrict())     // true
+// println("True".toBooleanStrict())  // program crashes
+println("false".toBooleanStrict())    // false
+// println("faLse".toBooleanStrict()) // program crashes
+
+println("true".toBooleanStrictOrNull())  // true
+println("false".toBooleanStrictOrNull()) // false
+println("faLse".toBooleanStrictOrNull()) // null</code></pre> 
   <h2 style="text-align: center;">Logical operators</h2> 
   <p>Boolean-type variables construct logical statements with the help of logical operators. Kotlin has four logical operators: <strong>NOT</strong>, <strong>AND</strong>, <strong>OR</strong>, and <strong>XOR:</strong></p> 
   <ul> 
