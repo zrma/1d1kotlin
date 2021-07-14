@@ -1,6 +1,10 @@
 <h2 style="text-align: center;">Description</h2>
 
-<p>Improve your search engine to support complex queries containing a sequence of words and a strategy that determines how to match data.</p>
+<p>Now let's Improve your search engine to make it support complex queries containing word sequences and use several strategies that determine how to match data.</p>
+
+<h2 style="text-align: center;">Objectives</h2>
+
+<p>In this stage, your program should be able to use such searching strategies as <code class="java">ALL</code>,  <code class="java">ANY</code>, and <code class="java">NONE</code>.</p>
 
 <p>Take, for example, these six sample lines:</p>
 
@@ -11,10 +15,8 @@ Erick Harrington harrington@gmail.com
 Myrtle Medina
 Erick Burgess</code></pre>
 
-<p>Let's consider the searching strategies: <code class="java">ALL</code>, <code class="java">ANY</code> and <code class="java">NONE</code>.</p>
-
 <ul>
-	<li>If the strategy is <code class="java">ALL</code>, the program should print lines containing all the words from the query.</li>
+	<li>If the strategy is <code class="java">ALL</code>, the program should print the lines containing all the words from the query.</li>
 </ul>
 
 <p>Query:</p>
@@ -24,8 +26,6 @@ Erick Burgess</code></pre>
 <p>Result:</p>
 
 <pre><code class="language-no-highlight">Erick Harrington harrington@gmail.com</code></pre>
-
-<p> </p>
 
 <ul>
 	<li>If the strategy is <code class="java">ANY</code>, the program should print the lines containing at least one word from the query.</li>
@@ -43,10 +43,8 @@ Erick Burgess
 Dwight Joseph djo@gmail.com
 Rene Webb webb@gmail.com</code></pre>
 
-<p> </p>
-
 <ul>
-	<li>If the strategy is <code class="java">NONE</code>, the program should print lines that do not contain words from the query at all:</li>
+	<li>If the strategy is <code class="java">NONE</code>, the program should print the lines that do not contain any words from the query at all.</li>
 </ul>
 
 <p>Query:</p>
@@ -60,7 +58,7 @@ Rene Webb webb@gmail.com</code></pre>
 Myrtle Medina
 Rene Webb webb@gmail.com</code></pre>
 
-<p>All the listed operations should be implemented in the inverted index, and the results should not contain duplicates.</p>
+<p>All the listed operations should be implemented with an inverted index, and the results should not contain any duplicates.</p>
 
 <p>Do not forget to use methods to decompose your program.</p>
 

@@ -1,10 +1,12 @@
 <h2 style="text-align: center;">Description</h2>
 
-<p>Now your program can successfully search for all matching lines, ignoring cases and extra spaces. There is one problem though: you need to check whether each line contains a query string or not.</p>
+<p>Now your program can successfully search for all matching lines, and the search is case- and space-insensitive. There is one problem though: you need to check each line to find out whether it contains the query string.</p>
 
-<p>To optimize your program, you can use a data structure called <strong>Inverted Index</strong>. It maps each word to all positions/lines/documents in which the word occurs. As a result, when we receive a query, we can immediately find the answer without any comparisons.</p>
+<p>To optimize your program, you can use a data structure called an <strong>Inverted Index</strong>. It maps each word to all positions/lines/documents in which the word occurs. As a result, when we receive a query, we can immediately find the answer without any comparisons.</p>
 
-<p>At this stage, build an inverted index when the program starts, and then use the index for searching operations. You can implement it using a <code class="java">Map</code> class. It connects an item with a list (or set) of indexes belonging to the lines that contain the item.</p>
+<h2 style="text-align: center;">Objectives</h2>
+
+<p>In this stage, build an inverted index at the start of the program and then use the index for searching operations. You can implement it using the <code class="java">Map</code> class. It connects an item with a list (or set) of indexes belonging to the lines that contain the item.</p>
 
 <p>Suppose you have the following array or list of lines:</p>
 
