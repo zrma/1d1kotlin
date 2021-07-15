@@ -1,0 +1,17 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    // write your code here
+
+    /* Do not change code below */
+    fun main() {
+        val a = readLine()!!.toLong()
+        val b = readLine()!!.toLong()
+        println(divide(a, b))
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/4588#comment
+status: Unchecked
+record: -1
