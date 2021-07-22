@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/271583/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Sun, 18 Jul 2021 04:17:30 UTC
+update_date: Thu, 22 Jul 2021 11:52:15 UTC
 stages:
 - id: 494
   step: 7817
@@ -65,48 +65,6 @@ topics:
     theory_id: 11233
   - title: String basics
     theory_id: 12553
-  - title: String templates
-    theory_id: 4547
-  - title: Arithmetic operations
-    theory_id: 4472
-  - title: Increment and decrement
-    theory_id: 10776
-  - title: Type of the numeric expression
-    theory_id: 9506
-  - title: Integers in action
-    theory_id: 4488
-  - title: Relational operators
-    theory_id: 4525
-  - title: Declaring functions
-    theory_id: 4580
-  - title: Characters
-    theory_id: 4680
-  - title: Working with strings
-    theory_id: 12561
-  - title: Getting substrings
-    theory_id: 8535
-  - title: Ranges
-    theory_id: 4633
-  - title: Equality
-    theory_id: 11236
-  - title: Arrays
-    theory_id: 4564
-  - title: String arrays
-    theory_id: 11477
-  - title: If expression
-    theory_id: 4625
-  - title: Repeating blocks
-    theory_id: 4643
-  - title: For loop and ranges
-    theory_id: 4652
-  - title: For loop and arrays
-    theory_id: 4657
-  - title: Introduction to collections
-    theory_id: 10390
-  - title: List
-    theory_id: 10730
-  - title: Processing strings
-    theory_id: 9027
   1:
   - title: IDE
     theory_id: 10996

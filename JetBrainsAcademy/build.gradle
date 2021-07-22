@@ -3,14 +3,14 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21"
     }
 }
 
 subprojects {
     apply plugin: 'application'
     apply plugin: 'java'
-    apply plugin: "kotlin"
+    apply plugin: 'kotlin'
 
     sourceCompatibility = 1.8
 
@@ -20,8 +20,6 @@ subprojects {
     }
 
     dependencies {
-        compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-        implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.61"
         testImplementation 'com.github.hyperskill:hs-test:release-SNAPSHOT'
     }
 
@@ -37,16 +35,6 @@ subprojects {
     test {
         systemProperty "file.encoding", "utf-8"
         outputs.upToDateWhen { false }
-        afterTest { TestDescriptor test, TestResult result ->
-            if (result.resultType == TestResult.ResultType.FAILURE) {
-                def message = result.exception?.message ?: "Wrong answer"
-                def lines = message.readLines()
-                println "#educational_plugin FAILED + " + lines[0]
-                lines[1..-1].forEach { line ->
-                    println "#educational_plugin" + line
-                }
-            }
-        }
     }
 
     compileJava.options.encoding = 'utf-8'
@@ -56,5 +44,5 @@ subprojects {
 }
 
 wrapper {
-    gradleVersion = '6.6.1'
+    gradleVersion = '7.1.1'
 }
