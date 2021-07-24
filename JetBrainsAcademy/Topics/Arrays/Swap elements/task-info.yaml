@@ -1,0 +1,15 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: "fun main() {    \n    val numbers = readLine()!!.split(' ').map { it.toInt()\
+    \ }.toIntArray()\n    // Do not touch lines above\n    // Write only exchange\
+    \ actions here.\n\n    // Do not touch lines below\n    println(numbers.joinToString(separator\
+    \ = \" \"))\n}"
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/7865#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sat, 24 Jul 2021 15:08:42 UTC
+record: -1
