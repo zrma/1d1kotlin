@@ -1,0 +1,15 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: "fun main() {  \n    val beyondTheWall = readLine()!!.split(',').map { it\
+    \ }.toTypedArray()\n    val backFromTheWall = readLine()!!.split(',').map { it\
+    \ }.toTypedArray()    \n    // do not touch the lines above\n    // write your\
+    \ code here\n\n\n}"
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/11487#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Mon, 26 Jul 2021 11:55:05 UTC
+record: -1
