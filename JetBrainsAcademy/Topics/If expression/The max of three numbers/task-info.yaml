@@ -1,0 +1,24 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun main() {
+
+        val a = readLine()!!.toInt()
+        val b = readLine()!!.toInt()
+        val c = readLine()!!.toInt()
+
+        println(if (a > c) {
+            // put your code here
+        } else {
+            // and here
+        })
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/4627#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Mon, 26 Jul 2021 12:15:32 UTC
+record: -1
