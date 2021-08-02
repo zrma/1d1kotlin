@@ -11,7 +11,7 @@ val number: Char = '1'
 val space: Char = ' '
 val dollar: Char = '$'</code></pre> 
   <p>This type can represent any symbol including hieroglyphs, as well as some special symbols.</p> 
-  <p>A character can also be created by using its hexadecimal code in the <a target="_blank" href="https://unicode-table.com/en/" rel="nofollow noopener noreferrer" title="Link: https://unicode-table.com/en/">Unicode table</a>. The code starts with <code class="language-kotlin">\u</code>:</p> 
+  <p>A character can also be represented by its hexadecimal code in the <a target="_blank" href="https://unicode-table.com/en/" rel="nofollow noopener noreferrer" title="Link: https://unicode-table.com/en/">Unicode table</a>. The code starts with <code class="language-kotlin">\u</code>:</p> 
   <pre><code class="language-kotlin">val ch = '\u0040' // it represents '@'
 println(ch) // @</code></pre> 
   <p>Although we use a sequence of characters to represent such code, the code itself represents exactly one character.</p> 
@@ -24,7 +24,7 @@ println(num.toChar()) // a</code></pre>
   <h2 style="text-align: center;">How to read characters</h2> 
   <p>Kotlin does not provide a convenient function to read a <code class="language-kotlin">Char</code>. However, you can do it another way: if you need to read one <code class="language-kotlin">Char</code> in a whole line, use this construction:</p> 
   <pre><code class="language-kotlin">val ch: Char = readLine()!!.first()</code></pre> 
-  <p>You just read a <code class="language-kotlin">String</code> and get its first element which will be a <code class="language-kotlin">Char</code>. Strings are composed of characters, but we will discuss this in more detail a little later.</p> 
+  <p>You just read a <code class="language-kotlin">String</code> and get its first element, which will be a <code class="language-kotlin">Char</code>. Strings are composed of characters, but we will discuss this in more detail a little later.</p> 
   <h2 style="text-align: center;">Retrieving subsequent characters</h2> 
   <p>There are two operators for adding (<code class="language-kotlin">+</code>) and subtracting (<code class="language-kotlin">-</code>) integer numbers in order to get the next and previous characters according to the Unicode order:</p> 
   <pre><code class="language-kotlin">val ch1 = 'b'
@@ -33,9 +33,9 @@ val ch3 = ch2 - 2 // 'a'</code></pre>
   <p>Remember that you cannot add a symbol to a number as it will cause an error.</p> 
   <pre><code class="language-kotlin">val ch = 'a'
 val ch1 = 1 + ch // Error</code></pre> 
-  <p>You also cannot sum up the two characters:</p> 
+  <p>You also cannot sum up two characters:</p> 
   <pre><code class="language-kotlin">val charsSum = 'a' + 'b' // Error</code></pre> 
-  <p>It is possible to use increment (<code class="language-kotlin">++</code>) and decrement (<code class="language-kotlin">--</code>) operators in their prefix and postfix forms. The assignment operator combined with <code class="language-kotlin">+</code> or <code class="language-kotlin">-</code> also works, as well as <code class="language-kotlin">+=</code>, <code class="language-kotlin">-=</code> for characters.</p> 
+  <p>It is possible to use the increment (<code class="language-kotlin">++</code>) and decrement (<code class="language-kotlin">--</code>) operators in their prefix and postfix forms. The assignment operator combined with <code class="language-kotlin">+</code> or <code class="language-kotlin">-</code> also works for characters, as well as <code class="language-kotlin">+=</code> and <code class="language-kotlin">-=</code>.</p> 
   <pre><code class="language-kotlin">var ch = 'A'
 
 ch += 10
@@ -45,7 +45,7 @@ println(++ch) // 'M'
 println(--ch) // 'L'</code></pre> 
   <p><span style="background-color: transparent; color: #000000; font-size: 11pt; font-variant: normal;"></span></p>
   <div class="alert alert-warning">
-   You cannot multiply and divide characters by numbers.
+   You cannot multiply or divide characters by numbers.
    <span style="background-color: transparent; color: #000000; font-size: 11pt; font-variant: normal;"></span>
   </div>
   <p></p> 
@@ -64,7 +64,7 @@ println(--ch) // 'L'</code></pre>
 print('a')  // prints 'a'
 print('\n') // goes to a new line
 print('c')  // prints 'c'</code></pre> 
-  <p>This code prints:</p> 
+  <p>The above code will print:</p> 
   <pre><code class="language-java">a
 c</code></pre> 
   <p><span style="background-color: transparent; color: #000000; font-size: 11pt; font-variant: normal;"></span></p>
@@ -75,15 +75,15 @@ c</code></pre>
   </div>
   <p></p> 
   <h2 style="text-align: center;">Relational operations with characters</h2> 
-  <p>You can compare characters using relational operations (<code class="language-kotlin">==</code>, <code class="language-kotlin">&lt;</code>, <code class="language-kotlin">&gt;</code>, <code class="language-kotlin">&lt;=</code>, <code class="language-kotlin">&gt;=</code>, <code class="language-kotlin">!=</code>) according to their position in the Unicode table.</p> 
+  <p>You can compare characters using relational operations (<code class="language-kotlin">==</code>, <code class="language-kotlin">&lt;</code>, <code class="language-kotlin">&gt;</code>, <code class="language-kotlin">&lt;=</code>, <code class="language-kotlin">&gt;=</code>, and <code class="language-kotlin">!=</code>) according to their position in the Unicode table.</p> 
   <pre><code class="language-kotlin">println('a' &lt; 'c')  // true
 println('x' &gt;= 'z') // false
 
 println('D' == 'D') // true
-println('Q' != 'q') // true, because capital and small letters are not the same
+println('Q' != 'q') // true because capital and small letters are not the same
 
-println('A' &lt; 'a')  // true, because capital Latin letters are placed before small ones</code></pre> 
-  <p>Using relational operations and codes we can check whether a char is a digit. All ten digits have codes from <code class="language-kotlin">'\u0030'</code> to <code class="language-kotlin">'\u0039'</code>.</p> 
+println('A' &lt; 'a')  // true because capital Latin letters are placed before small ones</code></pre> 
+  <p>Using relational operations and codes, we can check whether a <code class="language-kotlin">Char</code> is a digit: all ten digits have codes from <code class="language-kotlin">'\u0030'</code> to <code class="language-kotlin">'\u0039'</code>.</p> 
   <p>Here is a program that does it:</p> 
   <pre><code class="language-kotlin">fun main() {
     val ch = readLine()!!.first()
@@ -93,20 +93,20 @@ println('A' &lt; 'a')  // true, because capital Latin letters are placed before 
 }</code></pre> 
   <p>If the input is a digit <code class="language-kotlin">'0'</code>, <code class="language-kotlin">'1'</code>, <code class="language-kotlin">'2'</code>, ..., <code class="language-kotlin">'9'</code> (without quotes), the program prints <code class="language-kotlin">true</code>. Otherwise, it prints <code class="language-kotlin">false</code>. </p> 
   <h2 style="text-align: center;">Processing characters</h2> 
-  <p>Each character has a set of useful functions. You can use these functions instead of working with codes.</p> 
+  <p>There's a variety of useful functions to work with characters. You can use these functions instead of dealing with character codes.</p> 
   <ul> 
    <li><code class="language-kotlin">isDigit()</code> returns <code class="language-kotlin">true</code> if the given character represents a digit (<code class="language-kotlin">'1'</code>, <code class="language-kotlin">'2'</code>, etc); otherwise, <code class="language-kotlin">false</code>;</li> 
    <li><code class="language-kotlin">isLetter()</code> returns <code class="language-kotlin">true</code> if the given character represents a letter (<code class="language-kotlin">'a'</code>, <code class="language-kotlin">'B'</code>, <code class="language-kotlin">'m'</code>, etc); otherwise, <code class="language-kotlin">false</code>;</li> 
    <li><code class="language-kotlin">isLetterOrDigit()</code> returns <code class="language-kotlin">true</code> if the given character represents a letter or a digit; otherwise, <code class="language-kotlin">false</code>;</li> 
-   <li><code class="language-kotlin">isWhitespace()</code> returns <code class="language-kotlin">true</code> if the given character represents a whitespace (<code class="language-kotlin">' '</code> or <code class="language-kotlin">'\t'</code> or <code class="language-kotlin">'\n'</code>); otherwise, <code class="language-kotlin">false</code>;</li> 
+   <li><code class="language-kotlin">isWhitespace()</code> returns <code class="language-kotlin">true</code> if the given character represents a whitespace (<code class="language-kotlin">' '</code>, or <code class="language-kotlin">'\t'</code>, or <code class="language-kotlin">'\n'</code>); otherwise, <code class="language-kotlin">false</code>;</li> 
    <li><code class="language-kotlin">isUpperCase()</code> returns <code class="language-kotlin">true</code> if the given character is an uppercase character; otherwise, <code class="language-kotlin">false</code>;</li> 
    <li><code class="language-kotlin">isLowerCase()</code> returns <code class="language-kotlin">true</code> if the given character is a lowercase character; otherwise, <code class="language-kotlin">false</code>;</li> 
-   <li><code class="language-kotlin">toUpperCase()</code> returns the uppercase form of the given character (before Kotlin 1.5, you shouldn't use it nowadays);</li> 
+   <li><code class="language-kotlin">toUpperCase()</code> returns the uppercase form of the given character (before Kotlin 1.5; you shouldn't use it nowadays);</li> 
    <li><code class="language-kotlin">uppercaseChar()</code> returns the uppercase form of the given character (since Kotlin 1.5);</li> 
-   <li><code class="language-kotlin">uppercase()</code> returns the <code class="language-kotlin">String</code> with the uppercase form of the given character (since Kotlin 1.5);</li> 
-   <li><code class="language-kotlin">toLowerCase()</code> returns the lowercase form of the given character (before Kotlin 1.5, you shouldn't use it nowadays);</li> 
+   <li><code class="language-kotlin">uppercase()</code> returns a <code class="language-kotlin">String</code> with the uppercase form of the given character (since Kotlin 1.5);</li> 
+   <li><code class="language-kotlin">toLowerCase()</code> returns the lowercase form of the given character (before Kotlin 1.5; you shouldn't use it nowadays);</li> 
    <li><code class="language-kotlin">lowercaseChar()</code> returns the lowercase form of the given character (since Kotlin 1.5);</li> 
-   <li><code class="language-kotlin">lowercase()</code> returns the <code class="language-kotlin">String</code> with the lowercase form of the given character (since Kotlin 1.5).</li> 
+   <li><code class="language-kotlin">lowercase()</code> returns a <code class="language-kotlin">String</code> with the lowercase form of the given character (since Kotlin 1.5).</li> 
   </ul> 
   <p>Let's take a look at some examples of the functions listed above:</p> 
   <pre><code class="language-kotlin">val one = '1'
@@ -124,8 +124,8 @@ val isLowerCase = capital.isLowerCase() // false
 
 val capitalEString = small.uppercase() // "E"
 val capitalE = small.uppercaseChar()   // 'E'</code></pre> 
-  <p>There are a lot more useful functions: we will keep learning about them in the upcoming topics..</p> 
+  <p>There are a lot more useful functions: we will discuss them in the upcoming topics..</p> 
   <h2>Conclusion</h2> 
-  <p>In this topic, we learned about characters: in particular, we looked at the Char type, various operators, escape sequences, and functions, and learned what Unicode is. Now let's practice!</p>
+  <p>In this topic, we've learned a few things about characters. In particular, we looked at the <code class="language-kotlin">Char</code> type, various operators, escape sequences, and functions, and also learned what Unicode is. Now let's practice!</p>
  </body>
 </html>

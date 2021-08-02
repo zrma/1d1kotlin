@@ -2,16 +2,16 @@
 <html>
  <head></head>
  <body>
-  <p><strong>Standard input</strong> is a stream of data that is fed to a program. By default, the standard input gets data from the keyboard, but it is also possible to get it from a file.</p> 
-  <p>Not every program requires the standard input. But we will refer to it quite often. Before we start writing programs that do something useful, you need to understand how to read data from the standard input.</p> 
+  <p><strong>Standard input</strong> is a stream of data that is fed to a program. By default, standard input gets data from the keyboard, but it is also possible to get it from a file.</p> 
+  <p>Not every program requires standard input. But we will refer to it quite often. Before we start writing programs that do something useful, you need to understand how to read data from the standard input.</p> 
   <h2 style="text-align: center;">ReadLine function</h2> 
   <p>Kotlin has a useful function to read data from the standard input. It is <code class="language-kotlin">readLine</code>. It reads the whole line <strong>as a string</strong>:</p> 
   <pre><code class="language-kotlin">val line = readLine()!!</code></pre> 
   <p>The line variable is of the String type because the <code class="language-kotlin">readLine()!!</code> expression returns a value of this type.</p> 
   <p></p>
   <div class="alert alert-primary">
-   Why exclamation marks? We will discuss this later. For now, just memorize it as a special type of construction. You may read about it in the 
-   <a target="_blank" href="https://hyperskill.org/learn/step/7619" rel="noopener noreferrer nofollow">Null Safety</a> topic on Hyperskill.
+   Why exclamation marks? We will discuss this later. For now, just memorize it as a special type of construction. You may read about it in JetBrains Academy's 
+   <a target="_blank" href="https://hyperskill.org/learn/step/7619" rel="noopener noreferrer nofollow">Null Safety</a> topic.
   </div>
   <p></p> 
   <p>Here is a program that reads a line from the standard input and sends it to the standard output:</p> 
@@ -69,6 +69,6 @@ fun main() {
     println(num1) // prints the first number
 }</code></pre> 
   <h2>Conclusion</h2> 
-  <p>In this topic, we have discussed two options to read the standard input: the <code class="language-kotlin">readLine()</code> function or <code class="language-kotlin">Scanner</code> when solving programming problems during this course. Why them? They are the simplest ways to get values from the standard input.</p>
+  <p>In this topic, we have discussed two options to read standard input: the <code class="language-kotlin">readLine()</code> function and <code class="language-kotlin">Scanner</code>.We recommend that you use them when solving programming problems in this course. Why them? They are the simplest ways to get values from the standard input.</p>
  </body>
 </html>
