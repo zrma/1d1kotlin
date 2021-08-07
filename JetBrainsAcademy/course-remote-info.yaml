@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/271583/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Tue, 03 Aug 2021 14:15:46 UTC
+update_date: Sat, 07 Aug 2021 14:26:53 UTC
 stages:
 - id: 494
   step: 7817
@@ -136,14 +136,14 @@ topics:
     theory_id: 8977
   - title: Parameters and options
     theory_id: 9746
-  - title: Functions as objects
-    theory_id: 5991
-  - title: Lambda expressions
-    theory_id: 6154
   - title: The main() function
     theory_id: 10484
   - title: IntelliJ Run Configurations
     theory_id: 10630
+  - title: Functions as objects
+    theory_id: 5991
+  - title: Lambda expressions
+    theory_id: 6154
   - title: Errors in programs
     theory_id: 11559
   - title: What is an exception
