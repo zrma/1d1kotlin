@@ -16,7 +16,7 @@
     println(i)    
 }</code></pre> 
   <p>This loop prints each number from 1 to 4.</p> 
-  <pre><code class="language-kotlin">1
+  <pre><code class="language-no-highlight">1
 2
 3
 4</code></pre> 
@@ -25,10 +25,23 @@
     println(ch)
 }</code></pre> 
   <p>This loop prints:</p> 
-  <pre><code class="language-kotlin">a
+  <pre><code class="language-no-highlight">a
 b
 c</code></pre> 
   <p>From now on, all the examples will be about numbers because iterating through characters is always the same.</p> 
+  <h2 style="text-align: center;">Iterating through a String</h2> 
+  <p>Also, you may iterate over strings. The following code prints each symbol of a <code class="language-kotlin">String</code>:</p> 
+  <pre><code class="language-kotlin">val str = "Hello!"
+for (ch in str) {
+    println(ch)    
+}</code></pre> 
+  <p>This code prints:</p> 
+  <pre><code class="language-no-highlight">H
+e
+l
+l
+o
+!</code></pre> 
   <h2 style="text-align: center;">Iterating in the backward order</h2> 
   <p>You can also iterate a range in the backward order.</p> 
   <pre><code class="language-kotlin">for (i in 4 downTo 1) {

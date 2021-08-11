@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/271583/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Mon, 09 Aug 2021 09:57:30 UTC
+update_date: Sun, 29 Aug 2021 13:48:43 UTC
 stages:
 - id: 494
   step: 7817
@@ -25,12 +25,16 @@ stages:
   is_completed: false
 topics:
   0:
-  - title: Modulo division
-    theory_id: 10586
-  - title: Modulo division with negative numbers
-    theory_id: 13541
+  - title: Binary numbers
+    theory_id: 5544
+  - title: Hexadecimal numbers
+    theory_id: 8788
   - title: Units of information
     theory_id: 6865
+  - title: Computer algorithms
+    theory_id: 4953
+  - title: Computer programming
+    theory_id: 8739
   - title: Introduction to Kotlin
     theory_id: 4350
   - title: Basic literals
@@ -51,8 +55,18 @@ topics:
     theory_id: 4389
   - title: Standard output
     theory_id: 4425
+  - title: Arithmetic operations
+    theory_id: 4472
   - title: Boolean and logical operations
     theory_id: 4515
+  - title: Increment and decrement
+    theory_id: 10776
+  - title: Ordering and total order
+    theory_id: 9253
+  - title: Ordering of compound objects
+    theory_id: 9457
+  - title: Functions
+    theory_id: 13884
   - title: Invoking functions
     theory_id: 4575
   - title: Standard input
@@ -63,14 +77,6 @@ topics:
     theory_id: 11224
   - title: Objects
     theory_id: 11233
-  - title: String basics
-    theory_id: 12553
-  - title: String templates
-    theory_id: 4547
-  - title: Arithmetic operations
-    theory_id: 4472
-  - title: Increment and decrement
-    theory_id: 10776
   - title: Type of the numeric expression
     theory_id: 9506
   - title: Integers in action
@@ -79,6 +85,18 @@ topics:
     theory_id: 4525
   - title: Declaring functions
     theory_id: 4580
+  - title: Equality
+    theory_id: 11236
+  - title: String basics
+    theory_id: 12553
+  - title: String templates
+    theory_id: 4547
+  - title: If expression
+    theory_id: 4625
+  - title: Repeating blocks
+    theory_id: 4643
+  - title: Unicode
+    theory_id: 7899
   - title: Characters
     theory_id: 4680
   - title: Working with strings
@@ -87,18 +105,12 @@ topics:
     theory_id: 8535
   - title: Ranges
     theory_id: 4633
-  - title: Equality
-    theory_id: 11236
+  - title: For loop and ranges
+    theory_id: 4652
   - title: Arrays
     theory_id: 4564
   - title: String arrays
     theory_id: 11477
-  - title: If expression
-    theory_id: 4625
-  - title: Repeating blocks
-    theory_id: 4643
-  - title: For loop and ranges
-    theory_id: 4652
   - title: For loop and arrays
     theory_id: 4657
   - title: Introduction to collections
@@ -110,8 +122,6 @@ topics:
   1:
   - title: IDE
     theory_id: 10996
-  - title: Computer algorithms
-    theory_id: 4953
   - title: The big O notation
     theory_id: 13991
   - title: Linear search
@@ -123,15 +133,21 @@ topics:
   - title: EduTools
     theory_id: 5839
   2:
-  - title: When expression
-    theory_id: 4631
   - title: While loops
     theory_id: 4659
+  - title: When expression
+    theory_id: 4631
   - title: Jumps and returns
     theory_id: 6165
   3:
   - title: Introduction to operating systems
     theory_id: 9704
+  - title: Files
+    theory_id: 13025
+  - title: Functions as objects
+    theory_id: 5991
+  - title: Lambda expressions
+    theory_id: 6154
   - title: Command line overview
     theory_id: 8977
   - title: Parameters and options
@@ -140,16 +156,12 @@ topics:
     theory_id: 10484
   - title: IntelliJ Run Configurations
     theory_id: 10630
-  - title: Functions as objects
-    theory_id: 5991
-  - title: Lambda expressions
-    theory_id: 6154
+  - title: Reading files
+    theory_id: 6351
   - title: Errors in programs
     theory_id: 11559
   - title: What is an exception
     theory_id: 7243
-  - title: Reading files
-    theory_id: 6351
   4:
   - title: Mutable Map
     theory_id: 8021
@@ -158,18 +170,16 @@ topics:
   - title: Map
     theory_id: 12659
   5:
-  - title: Computer programming
-    theory_id: 8739
   - title: Introduction to OOP
     theory_id: 3614
+  - title: Declaring classes
+    theory_id: 6200
   - title: Functional decomposition
     theory_id: 12668
   - title: Default arguments
     theory_id: 4637
   - title: Named arguments
     theory_id: 4640
-  - title: Declaring classes
-    theory_id: 6200
   - title: Constructors
     theory_id: 10740
   - title: Member functions
