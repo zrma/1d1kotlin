@@ -1,0 +1,121 @@
+<h2>For loop and arrays</h2>
+<html>
+ <head></head>
+ <body>
+  <p>A <code class="language-kotlin">for</code> loop allows you to iterate through an entire array. Let's take a look at several ways how you can use it.</p> 
+  <h2 style="text-align: center;">Iterating through an array</h2> 
+  <p>The simplest way to process each array element is to use the following template:</p> 
+  <pre><code class="language-kotlin">for (element in array) {
+    // body of loop
+}</code></pre> 
+  <p>Suppose we have an array that includes weekdays. Let's print each day of the week:</p> 
+  <pre><code class="language-kotlin">fun main() {
+    val daysOfWeek = arrayOf("Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat")
+    
+    for (day in daysOfWeek){
+        println(day)
+    }
+}</code></pre> 
+  <p>After that, the program will print the following:</p> 
+  <pre><code class="language-kotlin">Sun
+Mon
+Tues
+Wed
+Thur
+Fri
+Sat</code></pre> 
+  <p>In the same way, you can process an array of integers, characters, as well as of any other type.</p> 
+  <h2 style="text-align: center;">Iterating by indexes</h2> 
+  <p>It is possible to access elements by their indexes directly from the loop. To do that, you must get the <code class="language-kotlin">array.indices</code> property that represents a range of valid <code class="language-kotlin">array</code> indexes.</p> 
+  <p>Take a look at the <code class="language-kotlin">daysOfWeek</code> array:</p> 
+  <pre><code class="language-kotlin">fun main() {
+    val daysOfWeek = arrayOf("Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat")
+
+    for (index in daysOfWeek.indices){
+        println("$index: ${daysOfWeek[index]}")
+    }
+}</code></pre> 
+  <p>The program will print the following:</p> 
+  <pre><code class="language-kotlin">0: Sun
+1: Mon
+2: Tues
+3: Wed
+4: Thur
+5: Fri
+6: Sat</code></pre> 
+  <h2 style="text-align: center;">Iterating by range indexes</h2> 
+  <p>We have discussed two ways to iterate through an array. They are useful when you need to process each array element. Sometimes, you may need to access a particular subarray. You can specify the range of the indexes you need.</p> 
+  <p><span style="background-color: transparent; color: #000000; font-size: 11pt; font-variant: normal;"></span></p>
+  <div class="alert alert-warning">
+   The first element of an array is always 0.
+   <span style="background-color: transparent; color: #000000; font-size: 11pt; font-variant: normal;"></span>
+  </div>
+  <p></p> 
+  <p>Take a look at the program below:</p> 
+  <pre><code class="language-kotlin">fun main() {
+    val daysOfWeek = arrayOf("Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat")
+
+    for (index in 1..5) {
+        println("$index: ${daysOfWeek[index]}")
+    }
+}</code></pre> 
+  <p>It will print only the workdays:</p> 
+  <pre><code class="language-kotlin">1: Mon
+2: Tues
+3: Wed
+4: Thur
+5: Fri</code></pre> 
+  <p>To use the last index of an array in ranges, you need to access <code class="language-kotlin">array.lastIndex</code>. So, we can modify the code this way:</p> 
+  <pre><code class="language-kotlin">for (index in 1 until daysOfWeek.lastIndex) {
+    println("$index: ${daysOfWeek[index]}")
+}</code></pre> 
+  <p>It displays the same days as before:</p> 
+  <pre><code class="language-kotlin">1: Mon
+2: Tues
+3: Wed
+4: Thur
+5: Fri</code></pre> 
+  <p>If you want to iterate through an array in reverse order, use <code class="language-kotlin">downTo</code> in a range. You can also specify the offset between indexes using <code class="language-kotlin">step</code>.</p> 
+  <p>This program below will print days in reverse order with a step of 2.</p> 
+  <pre><code class="language-kotlin">fun main() {
+    val daysOfWeek = arrayOf("Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat")
+
+    for (index in daysOfWeek.lastIndex downTo 0 step 2) {
+        println("$index: ${daysOfWeek[index]}")
+    }
+}</code></pre> 
+  <p>Output:</p> 
+  <pre><code class="language-kotlin">6: Sat
+4: Thur
+2: Tues
+0: Sun</code></pre> 
+  <p>You can iterate through an entire array or a part of it in both direct and reverse orders with any step you need.</p> 
+  <h2 style="text-align: center;">Reading array elements</h2> 
+  <p>Some tasks require you to read the array elements from the input. The first element in the input here is the array size, in other words, the number of array elements.</p> 
+  <p>For example, the program below reads integer numbers and prints them in reverse order.</p> 
+  <pre><code class="language-kotlin">fun main() {
+    val size = readLine()!!.toInt()
+    val array = IntArray(size)
+
+    for (i in 0..array.lastIndex) {
+        array[i] = readLine()!!.toInt()
+    }
+
+    for (i in array.lastIndex downTo 0) {
+        print("${array[i]} ")
+    }
+}</code></pre> 
+  <p>This is the input:</p> 
+  <pre><code class="language-kotlin">5
+1
+2
+3
+4
+5</code></pre> 
+  <p>The program will output the following:</p> 
+  <pre><code class="language-kotlin">5 4 3 2 1</code></pre> 
+  <p>You can use this program as a template for your own solutions.</p> 
+  <h2 style="text-align: center;">Conclusion</h2> 
+  <p>In this topic, we have discussed ways to iterate through arrays with a <code class="language-kotlin">for</code> loop in Kotlin. We can iterate through each array element, by element indexes, and by range indexes. In this light, Kotlin gives you a lot of freedom. Some applications can require reading array elements from the input. We have covered it too.</p>
+ </body>
+</html>
