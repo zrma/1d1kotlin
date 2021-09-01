@@ -8,17 +8,8 @@ files:
     }
   learner_created: false
 feedback_link: https://hyperskill.org/learn/step/13172#comment
-status: Failed
+status: Solved
 feedback:
-  message: "Failed test #1 of 6. Runtime error\n\nThis is a sample test from the problem\
-    \ statement!\n\nTest input:\n3\n1\n3\n2\n2 3\n\nCorrect output:\nYES\n\nYour code\
-    \ output:\n\n\nError:\nException in thread \"main\" java.lang.NumberFormatException:\
-    \ For input string: \"2 3\"\n\tat java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)\n\
-    \tat java.base/java.lang.Integer.parseInt(Integer.java:652)\n\tat java.base/java.lang.Integer.parseInt(Integer.java:770)\n\
-    \tat MainKt.main(main.kt:3)\n\tat MainKt.main(main.kt)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native\
-    \ Method)\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\
-    \tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\
-    \tat java.base/java.lang.reflect.Method.invoke(Method.java:566)\n\tat org.jetbrains.kotlin.runner.AbstractRunner.run(runners.kt:64)\n\
-    \tat org.jetbrains.kotlin.runner.Main.run(Main.kt:176)\n\tat org.jetbrains.kotlin.runner.Main.main(Main.kt:186)\n"
-  time: Sun, 29 Aug 2021 17:16:00 UTC
+  message: <html>Correct solution</html>
+  time: Sun, 29 Aug 2021 17:16:44 UTC
 record: -1

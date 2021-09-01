@@ -4,7 +4,7 @@
  <body>
   <p><strong>Standard input</strong> is a stream of data that is fed to a program. By default, standard input gets data from the keyboard, but it is also possible to get it from a file.</p> 
   <p>Not every program requires standard input. But we will refer to it quite often. Before we start writing programs that do something useful, you need to understand how to read data from the standard input.</p> 
-  <h2 style="text-align: center;">ReadLine function</h2> 
+  <h5 style="text-align: center;">ReadLine function</h5> 
   <p>Kotlin has a useful function to read data from the standard input. It is <code class="language-kotlin">readLine</code>. It reads the whole line <strong>as a string</strong>:</p> 
   <pre><code class="language-kotlin">val line = readLine()!!</code></pre> 
   <p>The line variable is of the String type because the <code class="language-kotlin">readLine()!!</code> expression returns a value of this type.</p> 
@@ -25,7 +25,7 @@
   <pre><code class="language-kotlin">Hello, Kotlin</code></pre> 
   <p>This function has several shortcomings. If you'd like to read several values from the same line one by one, you need to perform additional actions.</p> 
   <p>If you need to get a number from the input, you can use this construction: <code class="language-kotlin">val number = readLine()!!.toInt()</code>. We will discuss it in more detail later.</p> 
-  <h2 style="text-align: center;">Java Scanner</h2> 
+  <h5 style="text-align: center;">Java Scanner</h5> 
   <p>Another way to obtain data from the standard input is to use the Java <code class="language-kotlin">Scanner</code>. You can access it directly from Kotlin because it is interoperable with other Java libraries. <code class="language-kotlin">Scanner</code> allows a program to read values of <strong>different types </strong>(strings, numbers, etc) from the standard input.</p> 
   <p>To use this type, you need to add this import statement to the top of your file with the source code:</p> 
   <pre><code class="language-kotlin">import java.util.Scanner</code></pre> 
@@ -68,7 +68,7 @@ fun main() {
     println(num2) // prints the second number
     println(num1) // prints the first number
 }</code></pre> 
-  <h2>Conclusion</h2> 
-  <p>In this topic, we have discussed two options to read standard input: the <code class="language-kotlin">readLine()</code> function and <code class="language-kotlin">Scanner</code>.We recommend that you use them when solving programming problems in this course. Why them? They are the simplest ways to get values from the standard input.</p>
+  <h5>Conclusion</h5> 
+  <p>In this topic, we have discussed two options to read standard input: the <code class="language-kotlin">readLine()</code> function and <code class="language-kotlin">Scanner</code>. We recommend that you use them when solving programming problems in this course. Why them? They are the simplest ways to get values from the standard input.</p>
  </body>
 </html>
