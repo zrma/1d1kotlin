@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/271583/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Mon, 06 Sep 2021 10:11:31 UTC
+update_date: Sat, 25 Sep 2021 06:16:45 UTC
 stages:
 - id: 494
   step: 7817
@@ -118,12 +118,8 @@ topics:
     theory_id: 5819
   - title: EduTools
     theory_id: 5839
-  - title: Arrays
-    theory_id: 4564
-  - title: String arrays
-    theory_id: 11477
-  - title: For loop and arrays
-    theory_id: 4657
+  - title: Searching problem
+    theory_id: 15894
   - title: Linear search
     theory_id: 4970
   2:
@@ -154,6 +150,8 @@ topics:
     theory_id: 8977
   - title: Parameters and options
     theory_id: 9746
+  - title: Arrays
+    theory_id: 4564
   - title: The main() function
     theory_id: 10484
   - title: IntelliJ Run Configurations
@@ -167,14 +165,14 @@ topics:
   4:
   - title: Introduction to collections
     theory_id: 10390
-  - title: Mutable Map
-    theory_id: 8021
   - title: List
     theory_id: 10730
   - title: Mutable List
     theory_id: 11032
   - title: Map
     theory_id: 12659
+  - title: Mutable Map
+    theory_id: 15876
   5:
   - title: Introduction to OOP
     theory_id: 3614
