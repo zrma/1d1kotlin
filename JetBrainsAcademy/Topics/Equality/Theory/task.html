@@ -34,10 +34,10 @@ println(blueBox == cyanBox) // false</code></pre>
 var anotherTwo = 2
 println(two === anotherTwo) // true</code></pre> 
   <p>These variables point to the same object! Don't worry about this: as you remember, you cannot change an immutable object, so if you try to do something with the variable, it will point to a new object and other variables will still point to the old object. Try to change <code class="language-kotlin">two</code>:</p> 
-  <pre><code class="language-kotlin">two = two + 1
+  <pre><code class="language-kotlin">two++
 println(two)        // 3
 println(anotherTwo) // 2</code></pre> 
-  <p>So, immutable objects are really useful and help you avoid a lot of possible problems.</p> 
+  <p>So, immutable objects are really useful and help you avoid a lot of possible problems with copying.</p> 
   <h5>The difference between val and var</h5> 
   <p>Now we can finally understand the meaning of the <code class="language-kotlin">val</code> keyword. As you know, <code class="language-kotlin">val</code> denotes an immutable variable. Let's look at a simple analogy.</p> 
   <p>Suppose you have a box with five balls:</p> 

@@ -1,10 +1,10 @@
-<h5 style="text-align: center;">Description</h2>
+<h5 style="text-align: center;">Description</h5>
 
 <p>Now your program can successfully search for all matching lines, and the search is case- and space-insensitive. There is one problem though: you need to check each line to find out whether it contains the query string.</p>
 
 <p>To optimize your program, you can use a data structure called an <strong>Inverted Index</strong>. It maps each word to all positions/lines/documents in which the word occurs. As a result, when we receive a query, we can immediately find the answer without any comparisons.</p>
 
-<h5 style="text-align: center;">Objectives</h2>
+<h5 style="text-align: center;">Objectives</h5>
 
 <p>In this stage, build an inverted index at the start of the program and then use the index for searching operations. You can implement it using the <code class="java">Map</code> class. It connects an item with a list (or set) of indexes belonging to the lines that contain the item.</p>
 
@@ -30,7 +30,7 @@ Burgess -&gt; [3]</code></pre>
 
 <p>Note that the Inverted Index is not intended to search for parts of a word, it is only used to search for full words.</p>
 
-<h5 style="text-align: center;">Example</h2>
+<h5 style="text-align: center;">Example</h5>
 
 <p>The lines that start with <code class="java">&gt; </code> represent the user input. Note that these symbols are not part of the input. </p>
 

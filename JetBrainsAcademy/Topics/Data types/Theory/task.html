@@ -2,9 +2,9 @@
 <html>
  <head></head>
  <body>
-  <h2 style="text-align: center;">What is a data type?</h2> 
+  <h5 style="text-align: center;">What is a data type?</h5> 
   <p>All of us know that a number and a piece of text are pretty different. How do we know this? Well, you can perform arithmetic operations (such as multiplication) on numbers but not on texts. Kotlin also knows it. That's why every variable has a <strong>type</strong> that determines what possible operations you can perform on this variable and which values you can store in it.</p> 
-  <h2 style="text-align: center;">Variable types</h2> 
+  <h5 style="text-align: center;">Variable types</h5> 
   <p>A variable's type is set when the variable is declared:</p> 
   <pre><code class="language-kotlin">val text = "Hello, I am studying Kotlin now."
 val n = 1</code></pre> 
@@ -29,7 +29,7 @@ greeting = "hello"</code></pre>
   <p>The example above is incorrect because Kotlin cannot infer the type of the variable when it is merely declared, while every variable must have a type. On the contrary, the example below does work because the type is specified by the programmer:</p> 
   <pre><code class="language-kotlin">val greeting: String // ok
 greeting = "hello"</code></pre> 
-  <h2 style="text-align: center;">Type mismatch</h2> 
+  <h5 style="text-align: center;">Type mismatch</h5> 
   <p>One of the most important functions of data types is to protect you from assigning an unsuitable value to a variable. Take a look at an example of code that doesn't work:</p> 
   <pre><code class="language-kotlin">val n: Int = "abc" // Type mismatch: inferred type is String but Int was expected</code></pre> 
   <p>So, if you see a <strong>type mismatch</strong> error, it means you've assigned something unsuitable to a variable. The same problem occurs when you try to assign an unsuitable value to a mutable variable declared with type inference.</p> 
@@ -41,7 +41,7 @@ age = "31 years old" // Type mismatch</code></pre>
    <span style="background-color: transparent; color: #000000; font-size: 11pt; font-variant: normal;"></span>
   </div>
   <p></p> 
-  <h2 style="text-align: center;">Conclusion</h2> 
+  <h5 style="text-align: center;">Conclusion</h5> 
   <p>Further, we will learn about other data types and some problems associated with them. From now on, remember: once a variable is created, it has a type, and its type cannot be changed later.</p>
  </body>
 </html>

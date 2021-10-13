@@ -3,7 +3,7 @@
  <head></head>
  <body>
   <p>A <code class="language-kotlin">for</code> loop allows you to iterate through an entire array. Let's take a look at several ways how you can use it.</p> 
-  <h2 style="text-align: center;">Iterating through an array</h2> 
+  <h5 style="text-align: center;">Iterating through an array</h5> 
   <p>The simplest way to process each array element is to use the following template:</p> 
   <pre><code class="language-kotlin">for (element in array) {
     // body of loop
@@ -25,7 +25,7 @@ Thur
 Fri
 Sat</code></pre> 
   <p>In the same way, you can process an array of integers, characters, as well as of any other type.</p> 
-  <h2 style="text-align: center;">Iterating by indexes</h2> 
+  <h5 style="text-align: center;">Iterating by indexes</h5> 
   <p>It is possible to access elements by their indexes directly from the loop. To do that, you must get the <code class="language-kotlin">array.indices</code> property that represents a range of valid <code class="language-kotlin">array</code> indexes.</p> 
   <p>Take a look at the <code class="language-kotlin">daysOfWeek</code> array:</p> 
   <pre><code class="language-kotlin">fun main() {
@@ -43,7 +43,7 @@ Sat</code></pre>
 4: Thur
 5: Fri
 6: Sat</code></pre> 
-  <h2 style="text-align: center;">Iterating by range indexes</h2> 
+  <h5 style="text-align: center;">Iterating by range indexes</h5> 
   <p>We have discussed two ways to iterate through an array. They are useful when you need to process each array element. Sometimes, you may need to access a particular subarray. You can specify the range of the indexes you need.</p> 
   <p><span style="background-color: transparent; color: #000000; font-size: 11pt; font-variant: normal;"></span></p>
   <div class="alert alert-warning">
@@ -90,7 +90,7 @@ Sat</code></pre>
 2: Tues
 0: Sun</code></pre> 
   <p>You can iterate through an entire array or a part of it in both direct and reverse orders with any step you need.</p> 
-  <h2 style="text-align: center;">Reading array elements</h2> 
+  <h5 style="text-align: center;">Reading array elements</h5> 
   <p>Some tasks require you to read the array elements from the input. The first element in the input here is the array size, in other words, the number of array elements.</p> 
   <p>For example, the program below reads integer numbers and prints them in reverse order.</p> 
   <pre><code class="language-kotlin">fun main() {
@@ -115,7 +115,7 @@ Sat</code></pre>
   <p>The program will output the following:</p> 
   <pre><code class="language-kotlin">5 4 3 2 1</code></pre> 
   <p>You can use this program as a template for your own solutions.</p> 
-  <h2 style="text-align: center;">Conclusion</h2> 
+  <h5 style="text-align: center;">Conclusion</h5> 
   <p>In this topic, we have discussed ways to iterate through arrays with a <code class="language-kotlin">for</code> loop in Kotlin. We can iterate through each array element, by element indexes, and by range indexes. In this light, Kotlin gives you a lot of freedom. Some applications can require reading array elements from the input. We have covered it too.</p>
  </body>
 </html>

@@ -3,7 +3,7 @@
  <head></head>
  <body>
   <p>We can use arrays to process a bunch of data of the same type, and String is no exception. In this topic, we will take a close look at string arrays and cover the essential basics from initializing an array to changing its contents. Note, you can do the same with any other types.</p> 
-  <h2 style="text-align: center;">Initialization</h2> 
+  <h5 style="text-align: center;">Initialization</h5> 
   <p>Kotlin does not provide a special function to create an array of strings, so you need to use the function <code class="language-kotlin">arrayOf</code> which is already familiar to you. Take a look:</p> 
   <pre><code class="language-kotlin">val stringArray = arrayOf("array", "of", "strings")</code></pre> 
   <p>Basically, the function <code class="language-kotlin">arrayOf</code> is universal: you can use it to collect any type of data in an array, including <code class="language-kotlin">String</code>.</p> 
@@ -18,7 +18,7 @@
    <code class="language-kotlin">emptyArray()</code> can be filled with elements of any type that is defined. 
   </div>
   <p></p> 
-  <h2 style="text-align: center;">Accessing elements</h2> 
+  <h5 style="text-align: center;">Accessing elements</h5> 
   <p>Since everything you already know about arrays still applies, you can access a certain element by its index:</p> 
   <pre><code class="language-kotlin">val stringArray = arrayOf("sagacity", "and", "bravery")
 print(stringArray[2])   // bravery</code></pre> 
@@ -26,13 +26,13 @@ print(stringArray[2])   // bravery</code></pre>
   <p>You can set an array element in the same way:</p> 
   <pre><code class="language-kotlin">stringArray[0] = "smart"
 print(stringArray[0])   // smart</code></pre> 
-  <h2 style="text-align: center;">Outputting an array</h2> 
+  <h5 style="text-align: center;">Outputting an array</h5> 
   <p>Now you know how to create and fill a string array and access its elements. </p> 
   <p>To see what we get as a result, and, for example, print a string array, use the familiar function <code class="language-kotlin">joinToString()</code>:</p> 
   <pre><code class="language-kotlin">val southernCross = arrayOf("Acrux", "Gacrux", "Imai", "Mimosa")
 println(southernCross.joinToString())   //  Acrux, Gacrux, Imai, Mimosa</code></pre> 
   <p>Keep it in mind that <code class="language-kotlin">joinToString()</code> processes a single string of elements listed orderly and separated by a comma.</p> 
-  <h2 style="text-align: center;">Working with multiple arrays</h2> 
+  <h5 style="text-align: center;">Working with multiple arrays</h5> 
   <p>Let’s look at a couple of things you might want to know about working with several string arrays. </p> 
   <ul> 
    <li>String arrays can be added</li> 
@@ -54,7 +54,7 @@ val thirdArray = arrayOf("result")
 println(firstArray.contentEquals(secondArray))  //  true
 println(firstArray.contentEquals(thirdArray))   //  false</code></pre> 
   <p>Note that it returns <code class="language-kotlin">true</code> only if the elements of the two arrays match completely and are arranged in the same order.</p> 
-  <h2 style="text-align: center;">Changing the array contents</h2> 
+  <h5 style="text-align: center;">Changing the array contents</h5> 
   <p>No matter if you're using <code class="language-kotlin">val</code> or <code class="language-kotlin">var</code>, you can<strong> </strong>edit the values of the existing elements through their index:</p> 
   <pre><code class="language-kotlin">val southernCross = arrayOf("Acrux", "Gacrux", "Imai", "Mimosa")
 var stars = arrayOf("Ginan", "Mu Crucis")
@@ -80,7 +80,7 @@ println(southernCross.joinToString())  //  Acrux, Gacrux, Imai, Mimosa</code></p
   <p>So, we can add new elements if the array is declared as <code class="language-kotlin">var</code>. If you're using <code class="language-kotlin">val</code>, that is not possible:</p> 
   <pre><code class="language-kotlin">val southernCross = arrayOf("Acrux", "Gacrux", "Imai", "Mimosa")
 southernCross += "Ginan" // will not compile</code></pre> 
-  <h2 style="text-align: center;">Conclusion</h2> 
+  <h5 style="text-align: center;">Conclusion</h5> 
   <p>Let's sum things up! You figured out how to use some familiar functions and techniques for working with string arrays.</p> 
   <p>You can:</p> 
   <ul> 

@@ -2,7 +2,7 @@
 <html>
  <head></head>
  <body>
-  <h2 style="text-align: center;">List of relational operators</h2> 
+  <h5 style="text-align: center;">List of relational operators</h5> 
   <p>Kotlin provides six relational operators to work with numbers:</p> 
   <ul> 
    <li><code class="language-kotlin">==</code> — equal to <code class="language-kotlin">X</code></li> 
@@ -13,7 +13,7 @@
    <li><code class="language-kotlin">&lt;=</code> — less than or equal to <code class="language-kotlin">X</code></li> 
   </ul> 
   <p>A relational operator results in a Boolean value (<code class="language-kotlin">true</code> or <code class="language-kotlin">false</code>) regardless of the operand type.</p> 
-  <h2 style="text-align: center;">Comparing integer numbers</h2> 
+  <h5 style="text-align: center;">Comparing integer numbers</h5> 
   <p>Relational operators allow you to compare two integer numbers, among other things. Here are some examples:</p> 
   <pre><code class="language-kotlin">val one = 1
 val two = 2
@@ -38,7 +38,7 @@ val zero: Int = 0
 println(one &gt;= zero)          // OK, prints true  
 // println(one == zero)          Error
 println(one == zero.toLong()) // OK, prints false</code></pre> 
-  <h2 style="text-align: center;">Joining relational operations</h2> 
+  <h5 style="text-align: center;">Joining relational operations</h5> 
   <p>Kotlin cannot process expressions like:</p> 
   <pre><code class="language-java">a &lt;= b &lt;= c</code></pre> 
   <p>You should join two Boolean expressions using logical operators like <code class="language-kotlin">||</code> and <code class="language-kotlin">&amp;&amp;</code> instead.</p> 
@@ -67,7 +67,7 @@ println(one == zero.toLong()) // OK, prints false</code></pre>
    <li>100 is <code class="language-kotlin">true</code>;</li> 
    <li>200 is <code class="language-kotlin">true</code>, and so on.</li> 
   </ul> 
-  <h2 style="text-align: center;">Conclusion</h2> 
+  <h5 style="text-align: center;">Conclusion</h5> 
   <p>In this topic, we discussed a couple of very useful relational operators — <code class="language-kotlin">==</code>, <code class="language-kotlin">!=</code>, <code class="language-kotlin">&gt;</code>, <code class="language-kotlin">&gt;=</code>, <code class="language-kotlin">&lt;</code>, and <code class="language-kotlin">&lt;=</code>. You can construct difficult statements by joining them with logical operators. But remember, they will always result in a Boolean value. Further on, we will show you how can implement these operators in your programs in Kotlin.</p>
  </body>
 </html>
