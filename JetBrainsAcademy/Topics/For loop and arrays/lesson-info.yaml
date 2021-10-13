@@ -1,5 +1,5 @@
 content:
-- Theory
+  - Theory
 - Find the max
 - Is it here
 - Counting
@@ -8,3 +8,4 @@ content:
 - Cyclically shifting elements
 - Check the numbers
 - Individual taxes
+- Right Rotation
