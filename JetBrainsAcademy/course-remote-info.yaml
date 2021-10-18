@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/271583/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Wed, 20 Oct 2021 14:44:28 UTC
+update_date: Sun, 24 Oct 2021 10:41:00 UTC
 stages:
 - id: 494
   step: 7817
@@ -31,10 +31,6 @@ topics:
     theory_id: 8788
   - title: Units of information
     theory_id: 6865
-  - title: Computer algorithms
-    theory_id: 4953
-  - title: Computer programming
-    theory_id: 8739
   - title: Introduction to Kotlin
     theory_id: 4350
   - title: Basic literals
@@ -55,12 +51,6 @@ topics:
     theory_id: 4515
   - title: Increment and decrement
     theory_id: 10776
-  - title: Ordering and total order
-    theory_id: 9253
-  - title: Ordering of compound objects
-    theory_id: 9457
-  - title: Functions
-    theory_id: 13884
   - title: Invoking functions
     theory_id: 4575
   - title: Standard input
@@ -99,7 +89,7 @@ topics:
     theory_id: 4633
   - title: For loop and ranges
     theory_id: 4652
-  - title: Mutable list
+  - title: Introduction to MutableList
     theory_id: 14879
   - title: Work with MutableLists
     theory_id: 14902
@@ -110,6 +100,8 @@ topics:
   1:
   - title: IDE
     theory_id: 10996
+  - title: Computer algorithms
+    theory_id: 4953
   - title: The big O notation
     theory_id: 13991
   - title: IntelliJ IDEA
@@ -176,6 +168,8 @@ topics:
   - title: Mutable Map
     theory_id: 15876
   5:
+  - title: Computer programming
+    theory_id: 8739
   - title: Introduction to OOP
     theory_id: 3614
   - title: Declaring classes

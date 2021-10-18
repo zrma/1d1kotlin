@@ -1,15 +1,15 @@
 type: code
 files:
-  - name: src/Main.kt
-    visible: true
-    text: |-
-      fun main() {
-          // put your code here
-      }
-    learner_created: false
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun main() {
+        // put your code here
+    }
+  learner_created: false
 feedback_link: https://hyperskill.org/learn/step/4655#comment
 status: Solved
 feedback:
   message: <html>Correct solution</html>
-  time: Sat, 16 Oct 2021 14:56:23 UTC
+  time: Sat, 16 Oct 2021 14:58:13 UTC
 record: -1
