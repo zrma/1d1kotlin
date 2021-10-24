@@ -1,0 +1,17 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    text: |-
+      fun main() {
+          val characters = // ...
+
+          println(characters.joinToString())
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/14885#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sun, 24 Oct 2021 13:12:10 UTC
+record: -1

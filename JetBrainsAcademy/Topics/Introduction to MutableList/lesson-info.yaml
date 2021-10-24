@@ -1,0 +1,8 @@
+custom_name: Introduction to MutableList
+content:
+- Theory
+- Swap
+- Initializing a list
+- Initializing a mutable list of characters
+- Initializing a mutable list of longs
+- Initializing a mutable list of integers
