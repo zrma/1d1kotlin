@@ -1,0 +1,15 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    text: |-
+      fun main() {
+          // Write some code to cause an exception
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/7247#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sun, 31 Oct 2021 05:21:45 UTC
+record: -1

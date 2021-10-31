@@ -1,0 +1,62 @@
+<h2>What is an exception</h2>
+<html>
+ <head></head>
+ <body>
+  <p>Like in many other languages, some unexpected situations may occur in Kotlin. Imagine, you've written your program and now you are trying to run it. Suddenly, the Kotlin compiler says that code isn't correct and marks errors in the code. However, no compiler is almighty, so the Kotlin one can't prevent all the possible errors. Therefore, an error can happen while a program is running, even though it's <span style="color: #000000;">syntactically</span> correct and has been compiled without any problem. Such situations are called <strong>Exceptions</strong> in Kotlin and we are going to explore this concept.</p> 
+  <h5 style="text-align: center;">Causing an exception</h5> 
+  <p>First of all, let's describe an exception. Obviously, it's an unexpected and non-standard event, which occurs in different situations and may be annoying for any programmer. Let's look at the example below:</p> 
+  <pre><code class="language-kotlin">fun readNextInt(): Int {
+    return readLine()!!.toInt()
+}
+
+fun runIncrementer() {
+    val increment = 1 + readNextInt()
+    println(increment)
+}
+
+fun main() {
+    runIncrementer()
+}</code></pre> 
+  <p>We've just created a function to read from the standard input. It's quite a simple example: we just read a line, convert it to a number and return the result. Any possible problems? Well, here they are: we can't be sure that a user won't type something like this:</p> 
+  <pre><code class="language-kotlin">&gt; Hi :)</code></pre> 
+  <p>Oops! If you run the program and enter this line, an exception will happen and the program will just output this:</p> 
+  <pre><code class="language-no-highlight">Exception in thread "main" java.lang.NumberFormatException: For input string: "&gt; Hi :)"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at TmpKt.readNextInt(tmp.kt:2)
+	at TmpKt.runIncrementer(tmp.kt:6)
+	at TmpKt.main(tmp.kt:11)
+	at TmpKt.main(tmp.kt)</code></pre> 
+  <h5 style="text-align: center;">Reading an exception text</h5> 
+  <p>This text is a way to notify a user about an error. If the user passes this text to the application's programmers, they will have a chance to understand how to help the user and how to fix the problem. We will discuss variants of avoiding exceptions in the next topics, but here you are going to learn what the text is about and how to read it. Let's read it together!</p> 
+  <p>First of all, the exception text contains <code class="language-kotlin">java</code> because we've run the program as Kotlin/JVM. In other environments such as the Kotlin/Native, the text will be different.</p> 
+  <p>The <code class="language-kotlin">Exception in thread "main"</code> phrase notifies that an <strong>exception happened and</strong> says the <strong>thread name</strong>. If you don't know what a thread is, it's totally okay for now. There will be special topics about threads.</p> 
+  <p>The <code class="language-kotlin">java.lang.NumberFormatException: For input string: "&gt; Hi :)"</code> text demonstrates the <strong>exception name</strong> (<code class="language-kotlin">java.lang.NumberFormatException</code>) and the <strong>message</strong> (<code class="language-kotlin">For input string: "&gt; Hi :)"</code>).</p> 
+  <p></p>
+  <div class="alert alert-primary">
+   The name describes the kind of the exception and the message clarifies it.
+  </div>
+  <p></p> 
+  <p>Finally, there are the lines starting with "at":</p> 
+  <pre><code class="language-no-highlight">at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at TmpKt.readNextInt(tmp.kt:2)
+	at TmpKt.runIncrementer(tmp.kt:6)
+	at TmpKt.main(tmp.kt:11)
+	at TmpKt.main(tmp.kt)</code></pre> 
+  <p>They are called a <strong>stack trace</strong> and they show where the exception happened. It's a trace because using it you are able to track places of function's calls. Each line is called a <strong>stack trace element</strong>. As you see, a line contains the function name (<code class="language-kotlin">forInputString</code>, <code class="language-kotlin">readNextInt</code>, <code class="language-kotlin">main</code>), the file name (<code class="language-kotlin">NumberFormatException.java</code>, <code class="language-kotlin">Integer.java</code>, <code class="language-kotlin">tmp.kt</code>), and often even the line number in the file (<code class="language-kotlin">65</code>, <code class="language-kotlin">615</code>, <code class="language-kotlin">2</code>, <code class="language-kotlin">6</code>).</p> 
+  <p>Also, a stack trace element contains something that is called a <strong>canonical name</strong> of a <strong>class</strong> (<code class="language-kotlin">java.lang.NumberFormatException</code>, <code class="language-kotlin">java.lang.Integer</code>, <code class="language-kotlin">TmpKt</code>). This name allows you to locate the place of the exception, too. It's less precise than the line number in the file but it's more human-readable.</p> 
+  <p></p>
+  <div class="alert alert-primary">
+   We aren't covering classes and their canonical names now, there will be topics for this. Now you can use files and line numbers to determine the place.
+  </div>
+  <p></p> 
+  <h5 style="text-align: center;">Ordering of stack trace elements</h5> 
+  <p>It's important to mention that the order of stack trace elements is vital. A trace begins with the nearest place to the event and goes down to the first place of the functions call.</p> 
+  <p>For example, seeing the trace, you can say that the <code class="language-kotlin">runIncrementer</code> function calls the <code class="language-kotlin">readNextInt</code> function in the sixth line of the <code class="language-kotlin">tmp.kt</code> file and it somehow calls the <code class="language-kotlin">parseInt</code> function in the second line. Finally, the first line of a stack trace says pretty clearly where the event has happened.</p> 
+  <p>However, the first line often isn't enough to understand the problem because it can be an internal function that you don't even know about.</p> 
+  <p>In our example, the fourth stack trace element shows the problematic place in our function. And the third line demonstrates that an internal function that you can't modify is called. Which place to fix? It's a good question. You can't answer to it just by saying the first or the last stack trace element of your own code. Answering this question is more about common sense. We will discuss ways to fix the code later, but we can say now that actually it's better to fix the <code class="language-kotlin">tmp.kt:6</code> line in this situation. Why? You will learn soon.</p>
+ </body>
+</html>
