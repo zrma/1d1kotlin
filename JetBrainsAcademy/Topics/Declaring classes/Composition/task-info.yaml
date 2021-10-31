@@ -1,0 +1,12 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    text: // write the classes here
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/6209#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sun, 31 Oct 2021 08:22:42 UTC
+record: -1

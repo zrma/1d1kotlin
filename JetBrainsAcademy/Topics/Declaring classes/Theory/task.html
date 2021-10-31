@@ -1,0 +1,81 @@
+<h2>Declaring classes</h2>
+<html>
+ <head></head>
+ <body>
+  <p>When programmers implement an object-oriented program, they often use already defined classes to build it. For example, an object of the <code class="language-kotlin">Scanner</code> class allows you to get the next word from the console input, and this word is itself an object of the <code class="language-kotlin">String</code> class. Nevertheless, programmers still often need to declare some program-specific classes. In this topic, we will discuss several ways of creating and using your own simple class.</p> 
+  <h5>Declaring new classes</h5> 
+  <p>In order to declare a new class, you need to write the <code class="language-kotlin">class</code> keyword and the <strong>class name</strong> after it. First, let's declare a class named <code class="language-kotlin">Emptiness</code>:</p> 
+  <pre><code class="language-kotlin">class Emptiness {
+    // empty body
+}</code></pre> 
+  <p>In Kotlin, when a class has an <strong>empty body</strong>, <strong>curly braces</strong> can be <strong>omitted</strong>. So the same class can be defined in the following way:</p> 
+  <pre><code class="language-kotlin">class Emptiness</code></pre> 
+  <p>You can declare classes in <code class="language-kotlin">.kt</code> files. Usually, it's better to declare them at the top level of a file but you can declare them in other places, inside the function, as well.</p> 
+  <h5>Object creation</h5> 
+  <p>What's the purpose of declaring a class? Well, shortly speaking, each defined <strong>class</strong> introduces a <strong>new type</strong>. So you can create objects of a class and store them as variables and values. Sometimes standard types are not enough, so this comes in handy. There will be a few examples later on to make it clear.</p> 
+  <p>To create an instance of a class, simply write the <strong>class name</strong> and <strong>empty parentheses</strong>. In other words, the syntax is similar to calling a function. For example, let's do that for the <code class="language-kotlin">Emptiness</code> class:</p> 
+  <pre><code class="language-kotlin">val empty: Emptiness = Emptiness()</code></pre> 
+  <p>We have just assigned a new object of the <code class="language-kotlin">Emptiness</code> class to the <code class="language-kotlin">empty</code> variable. This variable has the <code class="language-kotlin">Emptiness</code> type so you can't reassign an object of any other type to it. As a general rule in Kotlin the explicit type directive can be omitted:</p> 
+  <pre><code class="language-kotlin">val empty = Emptiness()</code></pre> 
+  <h5>Class member</h5> 
+  <p>A class body can include <strong>class members</strong>. For now, we will discuss only <strong>properties</strong> that replace <strong>fields</strong> in Kotlin: they can <strong>store data</strong>, too. We will discuss other advantages of properties and other class members in further topics.</p> 
+  <p><span style="background-color: transparent; color: #000000; font-size: 11pt; font-variant: normal;"></span></p>
+  <div class="alert alert-primary">
+   Note that all class members are optional. For example, the 
+   <code class="language-kotlin">Emptiness</code> class has no properties.
+   <span style="background-color: transparent; color: #000000; font-size: 11pt; font-variant: normal;"></span>
+  </div>
+  <p></p> 
+  <h5>Writing properties</h5> 
+  <p>Properties are pretty similar to variables and values. If you want to assign a value to a property during runtime, you declare it as a <code class="language-kotlin">var</code>, otherwise, a <code class="language-kotlin">val</code> is your choice.</p> 
+  <p>Also, any property has a strict type. It can be a standard type, like a number or a string, or a custom type. So a property type can be your own class and even the same class where the property is declared.</p> 
+  <p>A property that just stores data must somehow receive an <strong>initial value</strong>. For example, you can set the property in the class body.</p> 
+  <p>A class can have as many properties as you need.</p> 
+  <p>Now let's declare a class for representing a patient in a hospital information system:</p> 
+  <pre><code class="language-kotlin">class Patient {
+    var name: String = "Unknown"
+    var age: Int = 0
+    var height: Double = 0.0
+}</code></pre> 
+  <p>Here we see that the <code class="language-kotlin">Patient</code> class has three properties that you can reassign: name, age, and height.</p> 
+  <p>Each object of the class has the <strong>same set of fields</strong>, but the <strong>values</strong> of the fields <strong>can differ</strong> from object to object.</p> 
+  <h5>Accessing properties</h5> 
+  <p>Now we will learn how to access object properties. First, we need to create an object:</p> 
+  <pre><code class="language-kotlin">var patient = Patient()</code></pre> 
+  <p>We haven't changed the object properties yet, so they have initial values now. To get those properties' values, type in <strong>a dot and the property name</strong> after the object name:</p> 
+  <pre><code class="language-kotlin">println(patient.name) // prints "Unknown"
+println(patient.age)  // prints "0"</code></pre> 
+  <h5>Changing properties</h5> 
+  <p>Take a look at the example below. This program creates two patients and sets their properties, then prints them.</p> 
+  <pre><code class="language-kotlin">class Patient {
+    var name: String = "Unknown"
+    var age: Int = 0
+    var height: Double = 0.0
+}
+
+fun main() {
+    val john = Patient()
+    john.name = "John"
+    john.age = 30
+    john.height = 180.0
+
+    val alice = Patient()
+    alice.name = "Alice"
+    alice.age = 22
+    alice.height = 165.0
+
+    println("${john.name}: ${john.age} yrs, ${john.height} cm")
+    println("${alice.name}: ${alice.age} yrs, ${alice.height} cm")
+}</code></pre> 
+  <p>The output is:</p> 
+  <pre><code class="language-no-highlight">John: 30 yrs, 180.0 cm
+Alice: 22 yrs, 165.0 cm</code></pre> 
+  <p><span style="background-color: transparent; color: #000000; font-size: 11pt; font-variant: normal;"></span></p>
+  <div class="alert alert-warning">
+   Pay attention that when we assign properties of Alice, the properties of John remain unchanged.
+   <span style="background-color: transparent; color: #000000; font-size: 11pt; font-variant: normal;"></span>
+  </div>
+  <p></p> 
+  <p>Also, you need to understand that the <code class="language-kotlin">val</code> before <code class="language-kotlin">alice</code> means that we can't reassign a <code class="language-kotlin">Patient</code> to <code class="language-kotlin">alice</code>. But we can reassign properties of <code class="language-kotlin">alice</code> because they are marked as <code class="language-kotlin">var</code> inside the <code class="language-kotlin">Patient</code> class.</p>
+ </body>
+</html>

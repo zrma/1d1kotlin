@@ -1,0 +1,12 @@
+type: code
+files:
+  - name: src/Main.kt
+    visible: true
+    text: // write the class Complex here
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/6206#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Tue, 02 Nov 2021 12:46:54 UTC
+record: -1

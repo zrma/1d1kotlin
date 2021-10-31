@@ -1,5 +1,5 @@
 content:
-- Overview of the basic program
+  - Overview of the basic program
 - Values and variables
 - Data types
 - Comments
@@ -26,3 +26,4 @@ content:
 - Introduction to MutableList
 - Errors in programs
 - What is an exception
+- Declaring classes

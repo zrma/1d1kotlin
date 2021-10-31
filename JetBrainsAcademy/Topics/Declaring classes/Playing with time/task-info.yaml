@@ -1,0 +1,16 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: "class Calendar(var day: String, var month: String, var year: String) {  \
+    \  \n    fun selectCurrentDay() {\n        day = \"d123d\"\n        month = \"\
+    m45m\"\n        year = \"y6y\"\n    }\n}\nfun createCalendar() =\n    Calendar(\"\
+    -\", \"-\", \"-\")\n\nfun main() {\n    val calendar = createCalendar()\n    //\
+    \ write your code here\n}"
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/6781#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sun, 31 Oct 2021 08:05:06 UTC
+record: -1

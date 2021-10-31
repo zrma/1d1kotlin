@@ -1,0 +1,21 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    class Point3D {
+        var x: Int = 0
+        var y: Int = 0
+        var z: Int = 0
+    }
+
+    fun createPoint(x: Int, y: Int, z: Int): Point3D {
+        // provide implementation here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/6207#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sun, 31 Oct 2021 08:24:57 UTC
+record: -1
