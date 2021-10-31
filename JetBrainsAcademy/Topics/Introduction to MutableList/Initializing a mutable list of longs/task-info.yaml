@@ -6,5 +6,5 @@ files:
     \ \n    println(longs.joinToString())\n}"
   learner_created: false
 feedback_link: https://hyperskill.org/learn/step/14884#comment
-status: Unchecked
+status: Solved
 record: -1
