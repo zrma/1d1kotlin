@@ -4,10 +4,10 @@
  <body>
   <h5 style="text-align: center;">Conversion between numeric types</h5> 
   <p>There are three most common numeric types: <code class="language-kotlin">Int</code>, <code class="language-kotlin">Long</code>, and <code class="language-kotlin">Double</code>. Sometimes, you may need to assign a value of one numeric type to a variable of another numeric type. In this case, you need to carry out <strong>type conversion </strong>by invoking a special function, for example, <code class="language-kotlin">toInt()</code>, <code class="language-kotlin">toLong()</code>, <code class="language-kotlin">toDouble()</code>, and so on.</p> 
-  <p>Imagine, you have a variable called <code class="language-kotlin">num</code>, which is of the <code class="language-kotlin">Int</code> type. You want to pass this variable to a function called <code class="language-kotlin">sqrt</code> that finds the square root of a number. This function requires a <code class="language-kotlin">Double</code> value rather than <code class="language-kotlin">Int</code>, so you need to convert it using <code class="language-kotlin">toDouble()</code> to prevent a <strong>type mismatch</strong> error.</p> 
+  <p>Imagine, you have a variable called <code class="language-kotlin">num</code>, which is of the <code class="language-kotlin">Int</code> type. You want to pass this variable to a function called <code class="language-kotlin">sqrt</code> (you can read more about this function and how to use it <a target="_blank" href="https://hyperskill.org/learn/step/12532" rel="noopener noreferrer nofollow">here</a>) that finds the square root of a number. This function requires a <code class="language-kotlin">Double</code> value rather than <code class="language-kotlin">Int</code>, so you need to convert it using <code class="language-kotlin">toDouble()</code> to prevent a <strong>type mismatch</strong> error.</p> 
   <pre><code class="language-kotlin">val num: Int = 100
 
-val res: Double = Math.sqrt(num.toDouble())
+val res: Double = sqrt(num.toDouble())
 println(res) // 10.0
 
 println(num) // 100, it is not modified</code></pre> 
