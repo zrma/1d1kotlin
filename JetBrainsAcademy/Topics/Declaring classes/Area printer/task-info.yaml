@@ -1,14 +1,14 @@
 type: code
 files:
-  - name: src/Main.kt
-    visible: true
-    text: |-
-      class Rectangle(val width: Int, val height: Int)
+- name: src/Main.kt
+  visible: true
+  text: |-
+    class Rectangle(val width: Int, val height: Int)
 
-      fun printArea(rectangle: Rectangle) {
-          // ...
-      }
-    learner_created: false
+    fun printArea(rectangle: Rectangle) {
+        // ...
+    }
+  learner_created: false
 feedback_link: https://hyperskill.org/learn/step/6208#comment
 status: Solved
 feedback:

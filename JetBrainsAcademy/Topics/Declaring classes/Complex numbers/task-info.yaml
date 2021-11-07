@@ -1,9 +1,9 @@
 type: code
 files:
-  - name: src/Main.kt
-    visible: true
-    text: // write the class Complex here
-    learner_created: false
+- name: src/Main.kt
+  visible: true
+  text: // write the class Complex here
+  learner_created: false
 feedback_link: https://hyperskill.org/learn/step/6206#comment
 status: Solved
 feedback:

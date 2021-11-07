@@ -1,5 +1,5 @@
 content:
-  - Overview of the basic program
+- Overview of the basic program
 - Values and variables
 - Data types
 - Comments
@@ -27,3 +27,4 @@ content:
 - Errors in programs
 - What is an exception
 - Declaring classes
+- When expression

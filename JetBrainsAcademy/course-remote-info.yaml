@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/271583/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Fri, 05 Nov 2021 13:38:53 UTC
+update_date: Sun, 07 Nov 2021 12:02:16 UTC
 stages:
 - id: 494
   step: 7817
@@ -31,14 +31,14 @@ topics:
     theory_id: 8788
   - title: Write, compile, and run
     theory_id: 3739
-  - title: JVM, JRE, and JDK
-    theory_id: 3499
   - title: JVM components
     theory_id: 3509
   - title: Garbage Collector
     theory_id: 15163
   - title: Units of information
     theory_id: 6865
+  - title: The concept of patterns
+    theory_id: 3611
   - title: IDE
     theory_id: 10996
   - title: Computer algorithms
@@ -47,8 +47,10 @@ topics:
     theory_id: 13991
   - title: Data structures
     theory_id: 5161
-  - title: Introduction to operating systems
-    theory_id: 9704
+  - title: Introduction to software architecture
+    theory_id: 15368
+  - title: Introduction to logging
+    theory_id: 5538
   - title: Computer programming
     theory_id: 8739
   - title: What is a bug
@@ -103,6 +105,10 @@ topics:
     theory_id: 4580
   - title: Equality
     theory_id: 11236
+  - title: Design principles
+    theory_id: 8956
+  - title: Single Responsibility Principle
+    theory_id: 8963
   - title: String basics
     theory_id: 12553
   - title: String templates
@@ -127,22 +133,6 @@ topics:
     theory_id: 5252
   - title: Call stack
     theory_id: 11550
-  - title: Command line overview
-    theory_id: 8977
-  - title: Parameters and options
-    theory_id: 9746
-  - title: Build tools
-    theory_id: 4284
-  - title: Java Archive
-    theory_id: 4311
-  - title: Gradle basics
-    theory_id: 5075
-  - title: Basic project with Gradle
-    theory_id: 5077
-  - title: Building apps using Gradle
-    theory_id: 7917
-  - title: Dependency management
-    theory_id: 5076
   - title: Unicode
     theory_id: 7899
   - title: Characters
@@ -189,9 +179,15 @@ topics:
     theory_id: 11559
   - title: What is an exception
     theory_id: 7243
+  - title: Introduction to creational patterns
+    theory_id: 16251
+  - title: Singleton
+    theory_id: 16469
   1:
   - title: EduTools
     theory_id: 5839
+  - title: Pseudocode
+    theory_id: 15090
   - title: Searching problem
     theory_id: 15894
   - title: Linear search
@@ -202,12 +198,18 @@ topics:
   - title: Jumps and returns
     theory_id: 6165
   3:
+  - title: Introduction to operating systems
+    theory_id: 9704
   - title: Files
     theory_id: 13025
   - title: Functions as objects
     theory_id: 5991
   - title: Lambda expressions
     theory_id: 6154
+  - title: Command line overview
+    theory_id: 8977
+  - title: Parameters and options
+    theory_id: 9746
   - title: Arrays
     theory_id: 4564
   - title: String arrays

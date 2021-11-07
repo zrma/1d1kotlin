@@ -4,7 +4,7 @@ language: English
 summary: In this project you will create your own search engine, though it probably
   won’t compete with Google. Yours will be a simple search engine that processes a
   limited collection of data and searches it for a word or a phrase. It’ll be simple
-  but cool.<br/><br/>Learn more at <a href="https://hyperskill.org">https://hyperskill.org/projects/89</a>
+  but cool.<br/><br/>Learn more at <a href="https://hyperskill.org/projects/89?utm_source=ide&utm_medium=ide&utm_campaign=ide&utm_content=project-card">https://hyperskill.org/projects/89</a>
 programming_language: Kotlin
 content:
 - Simple Search Engine

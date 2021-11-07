@@ -1,16 +1,16 @@
 type: code
 files:
-  - name: src/Main.kt
-    visible: true
-    text: |-
-      fun main() {
-          val line1 = nextLine()
-          val line2 = nextLine()
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun main() {
+        val line1 = nextLine()
+        val line2 = nextLine()
 
-          println(line1)
-          println(line2)
-      }
-    learner_created: false
+        println(line1)
+        println(line2)
+    }
+  learner_created: false
 feedback_link: https://hyperskill.org/learn/step/11564#comment
 status: Solved
 feedback:
