@@ -1,0 +1,22 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun f(x: Double): Double {
+        // call your implemented functions here
+    }
+
+    // implement your functions here
+    fun f1...
+
+    fun f2...
+
+    fun f3...
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/12675#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sun, 14 Nov 2021 12:10:49 UTC
+record: -1

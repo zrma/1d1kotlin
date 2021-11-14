@@ -1,0 +1,166 @@
+<h2>Functional decomposition</h2>
+<html>
+ <head></head>
+ <body>
+  <p>You already know how to create simple functions in Kotlin. This is a very useful skill that makes the code shorter, improves its readability, and allows you to reuse previously written parts of the code.</p> 
+  <p>As your programming tasks are becoming more complex, so are your functions. Though you can create a complex program that is wrapped in one solid function or even in a <code class="language-kotlin">main</code> function, it is better to divide a program into more specific parts that are easy to read and understand. The approach of dividing a complex program into a number of functions is called <strong>functional decomposition</strong>.</p> 
+  <p>In this topic, we'll see how to decompose the solution of a particular problem into separate functions.</p> 
+  <h5 style="text-align: center;">Solving complex tasks</h5> 
+  <p>The idea of decomposing a big problem into several subproblems is quite intuitive. If you want to cook a pizza, you don't just put all the ingredients in the oven: instead, you break the process up into separate tasks — from making the dough to actual cooking. Functional decomposition is not about cooking pizza, but it is based on the same principle of breaking a big problem down into smaller pieces associated with functions.</p> 
+  <p>Let's consider an example. Think of a program that simulates the Smart home app. This app is used to control home devices that can be remotely accessed: wireless speaker systems, lights, home security, door locks, and even robots. Imagine that we have a simple Smart home app that can perform three actions: turn the music on or off, switch the light on and off, and control the door lock. Let's consider these actions as parts of our computer program.</p> 
+  <p>The general algorithm of operating the Smart home app can be broken down into the following steps:</p> 
+  <ol> 
+   <li>Parse the input data (the entered password);</li> 
+   <li>Check that the password is correct;</li> 
+   <li>Ask the user what they want to do;</li> 
+   <li>If the action is supported, perform it.</li> 
+  </ol> 
+  <p>Imagine that you wrapped this program in code, but without a single additional function. That's how its structure would look like:</p> 
+  <pre><code class="language-kotlin">fun main() {
+    // ...
+    val password = "76543210"
+    var speakersState: String
+    var lampState: String
+    var doorState: String
+    // ...
+
+    // reading the password
+    println("Enter password: ")
+    val passwordInput = readLine()
+
+    // checking if the password is correct
+    if (passwordInput != password) {
+        println("Incorrect password!")
+    } else {
+        // asking the user what they want to do
+        println("Choose the object: 1 – speakers, 2 – lamp, 3 – door")
+        val action = readLine()
+
+        when (action) {
+            "1" -&gt; {
+                // asking the user about the speakers
+                when (speakersState) {
+                    "on" -&gt; {
+                        // ...
+                    }
+                    "off" -&gt; {
+                        // ...
+                    }
+                    else -&gt; {
+                        // ...
+                    }
+                }
+            }
+            "2" -&gt; {
+                // asking the user about the lights...
+            }
+            "3" -&gt; {
+                // asking the user about the door...
+            }
+            else -&gt; {
+                // ...
+            }
+        }
+    }
+}</code></pre> 
+  <p>Though you see a truncated version of a real program, the code still looks overloaded. At the same time, it works perfectly fine for our problem and we could leave it like that. However, we might want to adjust it for our needs or extend its functionality later.</p> 
+  <p>What if we want this code to work for multiple users? Or to expand the number of actions and make them more complex? Some parts of the code would still be used, and some of them would probably be deleted. To make this code less specific and more flexible, we can use functional decomposition.</p> 
+  <h5 style="text-align: center;">Decomposing a program into functions</h5> 
+  <p><strong>Functional decomposition </strong>is the process of decomposing a problem into several functions. Each function does a particular task which we can perform in a row to get the results we need. Considering a problem, we need to identify the actions that will be repeated multiple times or, alternatively, performed separately. This is how we get the desired functions that are easier to read, understand, reuse, test, and debug. </p> 
+  <p>Let's look at our Smart home app again and figure out which steps can be turned into separate functions. First of all, we can separate the user actions and create the corresponding functions: one to control the music, another one to turn the lights on and off, and the third one to operate the door lock.</p> 
+  <p>Take a look at the function <code class="language-kotlin">controlMusic()</code> that controls the music. Functions <code class="language-kotlin">controlLight()</code> and <code class="language-kotlin">controlDoor()</code> follow the same algorithm. </p> 
+  <pre><code class="language-kotlin">// turns the music on and off
+fun controlMusic() {
+    println("on/off?")
+    val tumbler = readLine()
+    when (tumbler) {
+        "on" -&gt; println("The music is on")
+        "off" -&gt; println("The music is off")
+        else -&gt; println("Invalid operation")
+    }
+}</code></pre> 
+  <p>These controlling functions perform the main actions that our app provides. The actions are greatly simplified and only used to illustrate the functionality revision process.</p> 
+  <p>Another function that can be separated is the password checker:</p> 
+  <pre><code class="language-kotlin">// verifies the password and gives the access to Smart home actions if the password is correct
+fun accessSmartHome() {
+    val password = "76543210"
+    print("Enter password: ")
+    val passwordInput = readLine()
+    if (passwordInput == password)
+        chooseAction()
+    else
+        println("Incorrect password!")
+}</code></pre> 
+  <p>We also created a function <code class="language-kotlin">chooseAction()</code> with the menu where the user can choose the action. This function asks the user what action they want to perform and gives control to the corresponding function.</p> 
+  <p>Finally, we can run our decomposed program in the <code class="language-kotlin">main</code> function, which is called once our program is started:</p> 
+  <pre><code class="language-kotlin">fun main() {
+    accessSmartHome()
+}</code></pre> 
+  <p>This function calls <code class="language-kotlin">accessSmartHome</code>, which asks the user to enter a password and, if it is correct, allows them to manage the Smart home.</p> 
+  <h5 style="text-align: center;">Adding new features</h5> 
+  <p>Now, if we want to add another action, all we have to do is define the corresponding function. For example, we've got a new Smart device — an electric kettle. We create a function that switches it on and off. To get access to the new function, we need to modify the <code class="language-kotlin">chooseAction()</code> function by adding a new available action value:</p> 
+  <pre><code class="language-kotlin">// controls electric kettle
+fun controlKettle() {
+    // ...
+}
+
+// main menu for choosing the action
+fun chooseAction() {
+    // ...
+
+    // adding new action 4
+    println("Choose the object: 1 – speakers, 2 – lamp, 3 – door, 4 – kettle")
+    // ...
+        "4" -&gt; controlKettle()
+    // ...
+}</code></pre> 
+  <p>As you can see, we now have a real functioning program that won't fall apart if we decide to change it a bit. We can easily test separate components since they are defined in separate functions. This also makes it easier to support the program in the future.</p> 
+  <h5 style="text-align: center;">Idiom</h5> 
+  <p>You already know that <code class="language-kotlin">if</code> and <code class="language-kotlin">when</code> can be expressions. So one obvious way of simplifying your code is to use their expression forms. We suggest you use this form in simple functions:</p> 
+  <pre><code class="language-kotlin">fun transform(color: String): Int { // you can lose one of the returns
+    when (color) {
+        "Red" -&gt; return 0
+        "Green" -&gt; return 1
+        "Blue" -&gt; return 2
+        else -&gt; return -1    
+    }
+
+fun transform(color: String): Int { // you can accidentally change the variable `colorNumber` 
+    var colorNumber = -1
+    when (color) {
+        "Red" -&gt; colorNumber = 0
+        "Green" -&gt; colorNumber = 1
+        "Blue" -&gt; colorNumber = 2
+    }
+    return colorNumber
+}
+
+fun transform(color: String): Int { // nice and concise code
+    return when (color) {
+        "Red" -&gt; 0
+        "Green" -&gt; 1
+        "Blue" -&gt; 2
+        else -&gt; -1    
+    }
+}</code></pre> 
+  <p>Also, you can use this idiom in single-expression functions:</p> 
+  <pre><code class="language-kotlin">fun transform(color: String) = when (color) {
+    "Red" -&gt; 0
+    "Green" -&gt; 1
+    "Blue" -&gt; 2
+    else -&gt; -1    
+}</code></pre> 
+  <p>There's also a short form of <code class="language-kotlin">if</code> expressions. Try writing short functions this way:</p> 
+  <pre><code class="language-kotlin">fun max(a: Int, b: Int) = if (a &gt; b) a else b</code></pre> 
+  <p>As you can see, <code class="language-kotlin">when</code> expressions keep things clear and help you to not lose your branches. Try making use of <a target="_blank" href="https://kotlinlang.org/docs/idioms.html#return-on-when-statement" rel="noopener noreferrer nofollow">this idiom</a> when you write code.</p> 
+  <h5 style="text-align: center;">Conclusion</h5> 
+  <p>Functional decomposition is an extremely useful programming approach, which will help you to:</p> 
+  <ul> 
+   <li>Structure the code, make it more readable and understandable;</li> 
+   <li>Modify the code easily;</li> 
+   <li>Reuse the functions and make the code terser;</li> 
+   <li>Make the testing process more convenient by testing components separately.</li> 
+  </ul> 
+  <p>Surely, functional decomposition is not a universal approach for everything, but it can help you to create neat and understandable programs that are easy to work with.</p>
+ </body>
+</html>
