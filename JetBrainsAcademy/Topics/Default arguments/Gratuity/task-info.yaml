@@ -1,0 +1,15 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun tip(bill: Int, percentage: Int): Int {
+        // TODO
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/7858#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Mon, 15 Nov 2021 13:56:59 UTC
+record: -1
