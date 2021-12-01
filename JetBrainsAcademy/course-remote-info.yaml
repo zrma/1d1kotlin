@@ -47,8 +47,6 @@ topics:
     theory_id: 16699
   - title: Data structures
     theory_id: 16927
-  - title: Introduction to software architecture
-    theory_id: 15368
   - title: Introduction to logging
     theory_id: 5538
   - title: Computer programming
@@ -119,6 +117,8 @@ topics:
     theory_id: 4643
   - title: Declaring classes
     theory_id: 6200
+  - title: Introduction to software architecture
+    theory_id: 15368
   - title: IntelliJ IDEA
     theory_id: 3801
   - title: IDEA Basics
