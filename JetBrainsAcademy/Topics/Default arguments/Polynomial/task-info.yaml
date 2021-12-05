@@ -1,0 +1,15 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun polynomial(x: Int, c: Int, b: Int, a: Int): Int {
+        // TODO
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/7857#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Wed, 01 Dec 2021 13:28:45 UTC
+record: -1
