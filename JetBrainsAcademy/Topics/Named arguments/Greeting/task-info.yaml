@@ -1,0 +1,16 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: "fun greetUser(\n    name: String,\n    admin: Boolean = false,\n    smith:\
+    \ Boolean = false,\n    honorific: String = \"\",\n    greet: String = \"Greetings\"\
+    \n): String {\n    return if (!admin && !smith) {\n        \"$greet, $honorific\
+    \ $name\"\n    } else {\n        \"Matrix Error\"\n    }\n}\n// do not change\
+    \ lines above        \n\nfun greetNeo() = greetUser(...)"
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/7863#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Tue, 14 Dec 2021 16:40:23 UTC
+record: -1

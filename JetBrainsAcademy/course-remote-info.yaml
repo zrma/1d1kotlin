@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/271583/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Sun, 05 Dec 2021 08:43:13 UTC
+update_date: Tue, 07 Dec 2021 13:49:30 UTC
 stages:
 - id: 494
   step: 7817
@@ -35,6 +35,8 @@ topics:
     theory_id: 3509
   - title: Garbage Collector
     theory_id: 15163
+  - title: Garbage collection approaches
+    theory_id: 17271
   - title: Units of information
     theory_id: 6865
   - title: The concept of patterns
@@ -65,6 +67,8 @@ topics:
     theory_id: 4362
   - title: Values and variables
     theory_id: 4371
+  - title: Val variables
+    theory_id: 17408
   - title: Data types
     theory_id: 4388
   - title: The classification of basic types
@@ -115,6 +119,8 @@ topics:
     theory_id: 4625
   - title: Repeating blocks
     theory_id: 4643
+  - title: While loops
+    theory_id: 4659
   - title: Declaring classes
     theory_id: 6200
   - title: Introduction to software architecture
@@ -133,6 +139,8 @@ topics:
     theory_id: 5252
   - title: Call stack
     theory_id: 11550
+  - title: Scopes
+    theory_id: 17116
   - title: Unicode
     theory_id: 7899
   - title: Characters
@@ -157,14 +165,16 @@ topics:
     theory_id: 10740
   - title: Member functions
     theory_id: 6364
-  - title: Object declarations
-    theory_id: 10698
   - title: Debugging techniques
     theory_id: 13739
   - title: Debugging overview
     theory_id: 14368
   - title: Debugging simple constructs
     theory_id: 15503
+  - title: Nested and inner classes
+    theory_id: 14723
+  - title: Object declarations
+    theory_id: 10698
   - title: Advanced debugger features
     theory_id: 16028
   - title: Introduction to MutableList
@@ -193,8 +203,6 @@ topics:
   - title: Linear search
     theory_id: 4970
   2:
-  - title: While loops
-    theory_id: 4659
   - title: Jumps and returns
     theory_id: 6165
   3:
