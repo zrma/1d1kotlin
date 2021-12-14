@@ -45,7 +45,7 @@ val n: Int = bigNum.toInt() // 276447232; oops</code></pre>
   <p>As you know, the <code class="language-kotlin">Short</code> and <code class="language-kotlin">Byte</code> types are really small. These types are rarely used, and if you need to store an integer number, you should use <code class="language-kotlin">Int</code>. Here is an example of why you need to do it.</p> 
   <p>Normally, you can use functions <code class="language-kotlin">toShort()</code> and <code class="language-kotlin">toByte()</code> to convert something to these types. Since Kotlin 1.4, you should avoid these functions when you try to convert <code class="language-kotlin">Double</code> or <code class="language-kotlin">Float</code> type. This feature will be removed in future releases. The main problem here is that the conversion can lead to unexpected results due to the variable's smaller size. Now, you need to convert <code class="language-kotlin">Double</code> or <code class="language-kotlin">Float</code> to <code class="language-kotlin">Int</code> and then convert the result to <code class="language-kotlin">Short</code> or <code class="language-kotlin">Byte</code>:</p> 
   <pre><code class="language-kotlin">val floatNumber = 10f
-val doubleNumber = 1
+val doubleNumber = 1.0
 
 val shortNumber = floatNumber.toShort() // avoid this
 val byteNumber = doubleNumber.toByte()  // avoid this
