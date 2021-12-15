@@ -1,0 +1,19 @@
+<h2>Deposit</h2>
+<html>
+ <head></head>
+ <body>
+  <p></p>
+  <div class="alert alert-primary">
+   Wow! This problem is kind of tricky. If you're ready to put your thinking cap on, brace yourself and good luck! Otherwise, you can skip it for now and return any time later
+  </div>
+  <p></p> 
+  <p>Let's create software that will be useful for a bank!</p> 
+  <p>Consider the <a target="_blank" href="https://en.wikipedia.org/wiki/Compound_interest" rel="noopener noreferrer nofollow">Compound interest</a> formula:</p> 
+  <p><span class="math-tex">\(finalAmount=startingAmount \cdot \left(1 + \frac{yearlyPercent}{100}\right)^{years}\)</span></p> 
+  <p>This equation shows how much money a customer should earn for a given <strong>starting amount</strong>, a <strong>yearly percent</strong> and a <strong>number of years</strong> for holding a deposit in the bank. The common arguments are <strong>$1000</strong> for the starting amount, <strong>5%</strong> for yearly percent, and <strong>10 years</strong> for a deposit.</p> 
+  <p>One of the banks asks you to create a program for bank employees. This program will help to calculate the <strong>final amount</strong> for non-default parameters. The employee will input one parameter that they want to change: the name of the parameter (<code class="java">amount</code>, <code class="java">percent</code>, or <code class="java">years</code>) and a new value of this parameter. Try to use named parameters to solve this problem!</p> 
+  <p>You need to create a program that reads the name and the value of a new parameter, calculates the compound interest, and prints the final amount for this new parameter.</p> 
+  <p>Input: the first line of the input contains the parameter that a customer changed: <code class="java">amount</code> for the starting amount, <code class="java">percent</code> for yearly percent, or <code class="java">years</code> for the number of years. The next line contains a single integer number: the value of the parameter.</p> 
+  <p>Output: the integer part of the sum.</p>
+ </body>
+</html><br><b>Sample Input:</b><br><pre><code class="language-no-highlight">amount<br>20000</code></pre><br><b>Sample Output:</b><br><pre><code class="language-no-highlight">32577</code></pre><br><br><b>Sample Input:</b><br><pre><code class="language-no-highlight">percent<br>10</code></pre><br><b>Sample Output:</b><br><pre><code class="language-no-highlight">2593</code></pre><br><br><br><font color="gray">Memory limit: 256 MB</font><br><font color="gray">Time limit: 8 seconds</font><br><br>
