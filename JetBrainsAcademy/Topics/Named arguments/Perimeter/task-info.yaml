@@ -1,0 +1,15 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun perimeter(x1: Double, y1: Double, x2: Double, y2: Double, x3: Double, y3: Double, x4: Double, y4: Double): Double {
+        return 0.0
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/7862#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Thu, 23 Dec 2021 09:40:46 UTC
+record: -1

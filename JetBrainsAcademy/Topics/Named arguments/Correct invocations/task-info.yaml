@@ -1,0 +1,22 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: f(10, 11, c = 12)
+- text: f(a = 10, c = 12, b = 11)
+- text: f(a = 10, b = 11, 12)
+- text: f(10, b = 11, 12)
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/4641#comment
+status: Solved
+record: -1
