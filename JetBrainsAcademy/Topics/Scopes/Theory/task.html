@@ -1,0 +1,121 @@
+<h2>Scopes</h2>
+<html>
+ <head></head>
+ <body>
+  <p>It's hard to imagine a program where you don't need to use variables. But what parts of the code do you think have access to your variables? Of course, they are not seen by another program or another computer. In fact, your code may not see them either! How come? Let's find out.</p> 
+  <h5 style="text-align: center;">Scope</h5> 
+  <p>Actually, each variable has a special <strong>scope</strong> in which it can be used. The scope of a variable is the syntactically-delimited area of code in which this variable or identifier, once declared, can be used in one way or another. That is, it is visible. For example, the scope can be an entire program, or a function, or a file.</p> 
+  <p>In the simplest cases, the scope is determined by where the identifier is declared. Out of this scope, the same identifier can be associated with another variable or not be associated with any of the variables at all. Let's look at this in more detail below. </p> 
+  <h5 style="text-align: center;">Branching</h5> 
+  <p>Let's start by considering scopes in a branch. Look at the following example:</p> 
+  <pre><code class="language-kotlin">val outer = 10
+if (outer &gt; 0) {
+    val inner = 10
+    print(inner)
+} else {
+    // beyond the if block 
+    print(outer)
+    print(inner)  // Unresolved reference: inner
+}
+// beyond the if-else expression
+print(outer)
+print(inner)  // Unresolved reference: inner</code></pre> 
+  <p>Here we have declared the variable <code class="language-kotlin">inner</code> <strong>inside</strong> the body of <code class="language-kotlin">if</code>, so the scope of this variable is the <code class="language-kotlin">if</code> block, from one curly brace to the other. If we try to access this variable in the <code class="language-kotlin">else</code> block or outside the <code class="language-kotlin">if-else</code> expression, we will get an error. The same will happen if we declare some variable in the body of the <code class="language-kotlin">else</code> block and try to reach it outside the <code class="language-kotlin">if-else</code> expression.</p> 
+  <p>There are no such problems with the variable <code class="language-kotlin">outer</code>: it is declared <strong>outside</strong> the <code class="language-kotlin">if-else</code> expression, so the <code class="language-kotlin">if-else</code> expression is included in <code class="language-kotlin">outer</code>'s scope. We can refer to this variable anywhere we want without any problem.</p> 
+  <h5 style="text-align: center;">Variables in loops</h5> 
+  <p>Let's take a look at scopes in loops. Here's an example with a <code class="language-kotlin">while</code> loop:</p> 
+  <pre><code class="language-kotlin">var outer = 5
+while (outer &lt; 10) {
+    var inner = 10
+    inner *= 2
+    print(inner)
+    outer++
+}  // prints 2020202020
+
+// outside the while loop
+print(inner)  // Unresolved reference: inner</code></pre> 
+  <p>You can see a similar situation here: the <code class="language-kotlin">inner</code> variable, which we initialized inside the body of the loop, is available only there: its scope is strictly the body of the loop. As you can see, with each new iteration of the cycle, <code class="language-kotlin">inner</code> initializes again, so as a result, the printed output will be "2020202020".</p> 
+  <p>Meanwhile, the <code class="language-kotlin">outer</code> variable declared outside the cycle is easily available anywhere in this code: the <code class="language-kotlin">while</code> cycle is just included in its scope.</p> 
+  <h5 style="text-align: center;">Variables in functions</h5> 
+  <p>Finally, let's deal with the variables that we declare inside a function. Take a look at the example:</p> 
+  <pre><code class="language-kotlin">fun localScope() {
+    val identifier = "Variable in the function localScope()"
+    println(identifier)  // prints "Variable in the function localScope()"
+}
+
+fun main() {
+    val identifier = "Variable in fun main()"
+    localScope()
+    println(identifier)  // prints "Variable in fun main()"
+}</code></pre> 
+  <p>We have the <code class="language-kotlin">localScope()</code> function here, in which we have declared the variable <code class="language-kotlin">identifier</code>. We have also declared a variable with the same name in the <code class="language-kotlin">main()</code> function. How will it all work?</p> 
+  <p>To begin with: the scope of a variable declared within a function is the function itself. In fact, you can think of this program as just two different functions. So when you declare an <code class="language-kotlin">identifier</code> variable inside a function, it will exist exactly within that function.</p> 
+  <p>Actually, we've just created two different variables with the same name. So the output of this program will be:</p> 
+  <pre><code class="language-no-highlight">Variable in the function localScope()
+Variable in fun main()</code></pre> 
+  <p></p>
+  <div class="alert alert-primary">
+   Out of scope, the same identifier can be associated with another variable or not be associated with any of the variables at all.
+  </div>
+  <p></p> 
+  <h5 style="text-align: center;">Interaction of scopes</h5> 
+  <p>In general, program scopes are often layered. Some scopes are included in others, and all this forms a hierarchy. Let's consider the following example:</p> 
+  <pre><code class="language-kotlin">var id = 5
+if (true) {
+    id = 6
+    var id = 10
+    println(id)  // prints 10
+}
+println(id)  // prints 6</code></pre> 
+  <p>As you can see, <code class="language-kotlin">println(id)</code> prints different results. Why? Well, here we need to look at the identifier <code class="language-kotlin">id</code>. Let's see what's going on line by line:</p> 
+  <ol> 
+   <li>On the first line, we declare a variable with the name <code class="language-kotlin">id</code> and assign the value 5 to it. </li> 
+   <li>Then the <code class="language-kotlin">if</code> block is declared, and it has its own scope. </li> 
+   <li>Inside the <code class="language-kotlin">if</code> block, we assign the variable named <code class="language-kotlin">id</code> to 6. In the <code class="language-kotlin">if</code> scope, such variable is not declared, but it was declared earlier in the outer scope that includes the <code class="language-kotlin">if</code> scope. Therefore, this <code class="language-kotlin">id</code> variable is assigned the value 6.</li> 
+   <li>Next, we declare a <em>new</em> variable <code class="language-kotlin">id</code> within the scope of the <code class="language-kotlin">if</code> block and assign it the value 10. This is <em>another</em> variable that exists in the current scope.</li> 
+   <li>When we call the <code class="language-kotlin">println(id)</code> command inside <code class="language-kotlin">if</code>, the program first looks for a variable with this name in the scope of <code class="language-kotlin">if</code>. The program is not interested whether a variable with the same name has been declared in other scopes; it has already found it in the current one. It is located, and it is equal to 10. So 10 is printed.</li> 
+   <li>When we go outside <code class="language-kotlin">if</code> and call <code class="language-kotlin">println(id)</code>, the program finds a variable named <code class="language-kotlin">id</code> again. In the current scope, it is equal to 6, since we changed the value of this particular variable in step 3. So 6 is printed.</li> 
+  </ol> 
+  <p>Look at the same code with explanations:</p> 
+  <pre><code class="language-kotlin">var id = 5  // id (outer scope) = 5
+if (true) {
+    id = 6  // id (outer scope) = 6
+    var id = 10  // id (inner scope) = 10
+    println(id)  // prints inner id
+}
+println(id)  // prints outer id</code></pre> 
+  <p>The previous examples help us formulate the way scopes interact:</p> 
+  <ul> 
+   <li>If scope <strong>B</strong> is nested in scope <strong>A</strong>, then identifiers from scope <strong>A</strong> can be used in scope <strong>B</strong> without additional declarations. </li> 
+   <li>If any identifiers are defined in such nested scope <strong>B</strong>, they are not visible in scope <strong>A</strong>.</li> 
+   <li>The called identifier is first searched in the current scope and then in scopes up the hierarchy.</li> 
+  </ul> 
+  <h5 style="text-align: center;">Top-level variables</h5> 
+  <p>The top level of a Kotlin file is also a scope – it contains all the scopes within a file. And broadly speaking, the variables in the program, depending on the scope, can be divided into <strong>top-level</strong> and <strong>local</strong> ones. Top-level variables are declared outside the body of any class or function, and their scope is the whole file, while local variables are created when you define them, for example, in the body of a function.</p> 
+  <p>In the following example, a top-level variable <code class="language-kotlin">top</code> is declared:</p> 
+  <pre><code class="language-kotlin">val top = "Top-level variable"
+fun localScope() {
+    println(top) 
+}
+
+fun main() {
+    println(top)  // prints "Top-level variable"
+    localScope()  // prints "Top-level variable"
+}</code></pre> 
+  <p>As you can easily see, it is accessible from anywhere in the program. This is the way to define constants:</p> 
+  <pre><code class="language-kotlin">const val CONSTANT = 0 // constant value definition
+
+fun main() {
+    // ...
+}</code></pre> 
+  <p>In all other examples, we've used local variables. Here’s a good-tone rule: it is better, if possible, to use local variables. It is not very good to use top-level ones: it impairs the readability of the code and leads to errors, which are sometimes difficult to find and correct.</p> 
+  <h5 style="text-align: center;">Conclusion</h5> 
+  <p>Let's summarize it all! Each variable has a scope – a program area where this variable is visible and can be used. In general, the scope of a variable is a block of code where this variable has been declared:</p> 
+  <ul> 
+   <li>if a variable is declared in one of the blocks of an <code class="language-kotlin">if-else</code> expression, then the scope of this variable is the body of this branch block;</li> 
+   <li>if a variable is declared inside a loop, then its scope is this loop;</li> 
+   <li>if a variable is declared inside a function, then its scope is this function.</li> 
+  </ul> 
+  <p>Some scopes are included in others, and all this forms a hierarchy. If we refer to some identifier, an entity with that name is first searched in the current scope and then in scopes up the hierarchy.</p>
+ </body>
+</html>
