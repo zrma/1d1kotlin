@@ -1,0 +1,16 @@
+type: code
+custom_name: The sequence 1 2 2 3 3 3 ...
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun main() {
+        // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/4668#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Fri, 24 Dec 2021 06:34:16 UTC
+record: -1

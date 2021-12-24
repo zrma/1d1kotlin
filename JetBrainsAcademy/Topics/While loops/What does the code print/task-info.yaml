@@ -1,0 +1,28 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: 0 2 4 6 8
+- text: 2 4 6 8
+- text: 0 2 4 6 8 10
+- text: 2 4 6 8 10
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/4662#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Fri, 24 Dec 2021 06:24:19 UTC
+record: -1
+selected_options:
+- 3
+custom_name: What does the code print?
