@@ -1,0 +1,117 @@
+<h2>Constructors</h2>
+<html>
+ <head></head>
+ <body>
+  <p>You already know how to declare simple classes with simple properties. Now let's learn about another kind of a class member: constructors.</p> 
+  <h5>Default constructor</h5> 
+  <p><strong>Constructors </strong>are class members that initialize a new object of the class. In other words, constructors set a new object state by defining its properties. So, when you create an object, you invoke a constructor.</p> 
+  <p>For further examples, let's use the class <code class="language-kotlin">Size</code>:</p> 
+  <pre><code class="language-kotlin">class Size {
+    var width: Int = 1
+    var height: Int = 1
+}</code></pre> 
+  <p>Let's remember for a second how to create objects. We write the class name and empty parentheses after it:</p> 
+  <pre><code class="language-kotlin">val size = Size()</code></pre> 
+  <p>This is actually a <strong>constructor call</strong>, and it's like calling a function with no arguments. Every class needs to have a constructor, so if it isn't explicitly defined, the compiler automatically generates a <strong>default constructor</strong>, which only creates an object and doesn't have any logic inside.</p> 
+  <h5>Primary constructor</h5> 
+  <p>Often you know the object's properties before you create it. To make your code more concise, you can set the properties in the constructor: just make the constructor receive the arguments you need.</p> 
+  <p>The <strong>primary constructor</strong> is the right tool for that. It does not contain any code, it just initializes an instance of a class and its properties. To define a primary constructor, you should put class initialization arguments in the parentheses after the class name.</p> 
+  <p>The primary constructor for the class <code class="language-kotlin">Size</code> will look like this:</p> 
+  <pre><code class="language-kotlin">class Size(width: Int, height: Int) {
+    val width: Int = width
+    val height: Int = height
+    val area: Int = width * height
+}</code></pre> 
+  <p>Usually, to define a constructor, you should put the keyword <code class="language-kotlin">constructor</code> before its parameters. Kotlin's primary constructor allows you to omit the keyword.</p> 
+  <p>In any way, another legitimate way to define the primary constructor looks like this:</p> 
+  <pre><code class="language-kotlin">class Size constructor(width: Int, height: Int) {
+    val width: Int = width
+    val height: Int = height
+    val area: Int = width * height
+}</code></pre> 
+  <h5>Property declarations</h5> 
+  <p>You can put simple property declarations <strong>inside </strong>the primary constructor. To declare a read-only property, put the keyword <code class="language-kotlin">val</code> in the parentheses before the argument name. For a mutable property, use the keyword <code class="language-kotlin">var</code>.</p> 
+  <p>For example, let's move the property <code class="language-kotlin">width</code> from the class body:</p> 
+  <pre><code class="language-kotlin">class Size(val width: Int, height: Int) {
+    val height: Int = height
+    val area: Int = width * height
+}</code></pre> 
+  <p>Now let's put the remaining property <code class="language-kotlin">height</code> inside the primary constructor:</p> 
+  <pre><code class="language-kotlin">class Size(val width: Int, val height: Int) {
+    val area: Int = width * height
+}</code></pre> 
+  <h5>Default and named arguments</h5> 
+  <p>Default values in primary constructors are set in the same way as in the class body. You declare the property with a keyword <code class="language-kotlin">val</code> or <code class="language-kotlin">var</code> and place the default value after the assignment operator:</p> 
+  <pre><code class="language-kotlin">class Size(var width: Int = 1, var height: Int = 1) {
+    val area: Int = width * height
+}</code></pre> 
+  <p>When creating an object of a class with default values in the primary constructor, you can use the default values by omitting the arguments:</p> 
+  <pre><code class="language-kotlin">val size = Size() // width == 1, height == 1</code></pre> 
+  <p>You can either provide values without property names or use <strong>named arguments</strong> when creating instances of a class:</p> 
+  <pre><code class="language-kotlin">val size1 = Size(3, 5) // width == 3, height == 5
+val size2 = Size(width = 3, height = 5) // width == 3, height == 5
+val size3 = Size(height = 5, width = 3) // width == 3, height == 5</code></pre> 
+  <p>You can also omit some of the properties with default values when creating an object. Keep it in mind though, if you break the order of the arguments in the primary constructor, you should always use named arguments:</p> 
+  <pre><code class="language-kotlin">val sizeWide = Size(10) // width == 10, height == 1
+val sizeHigh = Size(height = 10) // width == 1, height == 10</code></pre> 
+  <p>A primary constructor is a handy way to define a class concisely. If you want to avoid redundant lines of code, try to make use of primary constructors and default arguments.</p> 
+  <h5>Single line classes</h5> 
+  <p>If there are no other class members left except the ones in the primary constructor, we can omit empty curly braces. Imagine that the <code class="language-kotlin">area</code> property is missing in our example:</p> 
+  <pre><code class="language-kotlin">class Size(val width: Int, val height: Int)</code></pre> 
+  <p>You can see such classes frequently in real life. For example, <strong>data classes</strong>—classes whose main utility is storing data—are defined in this way. You will learn about them later on.</p> 
+  <h5>Init</h5> 
+  <p>Primary constructors cannot contain any code: they only set the values of class properties based on the passed arguments. Sometimes, we want to set some of our properties based on other properties' values or other sources of information. In such cases, we would use <strong>initializer blocks</strong>, which are prefixed with the keyword <code class="language-kotlin">init</code>:</p> 
+  <pre><code class="language-kotlin">class Size(_width: Int, _height: Int) {
+    var width: Int = 0
+    var height: Int = 0
+
+    init {
+        width = if (_width &gt;= 0) _width else {
+            println("Error, the width should be a non-negative value")
+            0
+        }
+        height = if (_height &gt;= 0) _height else {
+            println("Error, the height should be a non-negative value")
+            0
+        }
+    }
+}</code></pre> 
+  <p>The keyword <code class="language-kotlin">init</code> signifies a block of code that serves as an extension of the primary constructor. For example, the code below prints a message after the object properties have been set in the primary constructor:</p> 
+  <pre><code class="language-kotlin">class Size(val width: Int, val height: Int) {
+    init {
+        println("Initializer block that prints the width ($width) and the height ($height)")
+    }
+}</code></pre> 
+  <p>There may be several initializer blocks in the class body. In this case, property initializers and <code class="language-kotlin">init</code> blocks are executed in the order of their appearance:</p> 
+  <pre><code class="language-kotlin">class Size(_width: Int, _height: Int) {
+    // 1: the width property is initialized
+    val width = _width
+
+    // 2: 1st init block is executed
+    init {
+        println("First initializer block that prints the width $width")
+    }
+
+    // 3: the height property is initialized
+    val height = _height
+
+    // 4: 2nd init block is executed
+    init {
+        println("Second initializer block that prints the height $height")
+    }
+
+    // 5: the area property is initialized
+    val area = width * height
+}</code></pre> 
+  <p>In the examples above, the parameter names begin with underscores (<code class="language-kotlin">_width</code>, <code class="language-kotlin">_height</code>) to distinguish them from class members (<code class="language-kotlin">width</code>, <code class="language-kotlin">height</code>). It is a useful coding convention widely accepted in various programming languages.</p> 
+  <h5>Conclusion</h5> 
+  <p>Let's recap what we have learned about the constructors:</p> 
+  <ul> 
+   <li>Any Kotlin class has a constructor to initialize its objects.</li> 
+   <li>If a constructor for a class is not explicitly defined, an implicit default constructor with no arguments is set. It creates an object without initializing its properties.</li> 
+   <li>A constructor is available for invocation under the class name.</li> 
+   <li>There are different ways to declare a constructor, but the primary constructor is the most concise.</li> 
+   <li>Initializer blocks can be used along with constructors when some code needs to be executed during the object creation.</li> 
+  </ul>
+ </body>
+</html>

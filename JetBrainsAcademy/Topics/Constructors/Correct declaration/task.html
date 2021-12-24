@@ -1,0 +1,22 @@
+<h2>Correct declaration</h2>
+<html>
+ <head></head>
+ <body>
+  <p>Which of the classes below are declared correctly?</p> 
+  <pre><code class="language-kotlin">class Person(_firstName: String, _lastName: String, _age: String) {
+    var firstName: String = _firstName
+    var lastName: String = _lastName
+    var age: Int = _age
+}</code></pre> 
+  <pre><code class="language-kotlin">class Route(startPoint: Int = 0, finishPoint: Int) {
+    val distance = finishPoint - startPoint
+}</code></pre> 
+  <pre><code class="language-kotlin">class Worker(position: String, initialSalary: Int) {
+    val position = position
+    var salary = initialSalary
+    init {
+        if (position == "head of department") salary *= 2
+    }
+}</code></pre>
+ </body>
+</html>

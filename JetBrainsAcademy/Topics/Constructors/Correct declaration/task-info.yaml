@@ -1,0 +1,28 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: Person
+- text: Route
+- text: Worker
+- text: None
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10875#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Fri, 24 Dec 2021 07:02:09 UTC
+record: -1
+selected_options:
+- 1
+- 2
