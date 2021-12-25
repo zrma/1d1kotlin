@@ -1,0 +1,28 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: We can't. The scope of the <code>example()</code> function is not within the
+    scope of the <code>main()</code> function
+- text: We can, if a variable with the same name is also declared in the scope above
+    as top-level
+- text: Yes, we can, nothing is wrong
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/17119#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sat, 25 Dec 2021 09:57:09 UTC
+record: -1
+selected_options:
+- 0

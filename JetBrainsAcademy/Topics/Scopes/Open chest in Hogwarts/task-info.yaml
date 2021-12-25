@@ -1,0 +1,17 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    var madEye = "Barty Crouch"
+    // change only the code of the openChest() function
+    fun openChest() {
+        val madEye = "Alastor Moody"
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/17123#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sat, 25 Dec 2021 09:59:15 UTC
+record: -1

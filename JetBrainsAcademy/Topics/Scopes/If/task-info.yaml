@@ -1,0 +1,28 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: Only the block <code>if</code> in the <code>if-else</code> expression
+- text: All <code>if-else</code> expression
+- text: The entire program
+- text: This variable has no scope
+- text: The whole <code>main()</code> function
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/17120#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sat, 25 Dec 2021 09:57:38 UTC
+record: -1
+selected_options:
+- 0

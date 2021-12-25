@@ -1,0 +1,15 @@
+<h2>Non-overlapping scopes</h2>
+<html>
+ <head></head>
+ <body>
+  <p>Look at the code below:</p> 
+  <pre><code class="language-kotlin">fun example() {
+    val interesting = 0
+}
+
+fun main() {
+    println(interesting)
+}</code></pre> 
+  <p>Can we access exactly the <code class="language-kotlin">interesting</code> variable (not another variable with the same identifier) from the <code class="language-kotlin">main()</code> function like this? Or is there anything wrong?</p>
+ </body>
+</html>
