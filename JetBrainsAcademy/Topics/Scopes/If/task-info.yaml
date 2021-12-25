@@ -1,11 +1,11 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: Only the block <code>if</code> in the <code>if-else</code> expression
-- text: All <code>if-else</code> expression
 - text: The entire program
-- text: This variable has no scope
 - text: The whole <code>main()</code> function
+- text: All <code>if-else</code> expression
+- text: This variable has no scope
+- text: Only the block <code>if</code> in the <code>if-else</code> expression
 message_correct: Congratulations!
 message_incorrect: Incorrect solution
 files:

@@ -3,9 +3,9 @@ is_multiple_choice: false
 options:
 - text: We can't. The scope of the <code>example()</code> function is not within the
     scope of the <code>main()</code> function
+- text: Yes, we can, nothing is wrong
 - text: We can, if a variable with the same name is also declared in the scope above
     as top-level
-- text: Yes, we can, nothing is wrong
 message_correct: Congratulations!
 message_incorrect: Incorrect solution
 files:

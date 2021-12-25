@@ -1,15 +1,6 @@
 type: edu
 custom_name: stage2
 files:
-- name: src/search/Main.kt
-  visible: true
-  text: |
-    package search
-
-    fun main() {
-        println("Hello, World!")
-    }
-  learner_created: false
 - name: test/SimpleSearchEngineTest.java
   visible: false
   text: |
@@ -150,6 +141,15 @@ files:
         public static boolean ContainsItemFromList(String inputStr, String[] items) {
             return Arrays.stream(items).parallel().anyMatch(inputStr::contains);
         }
+    }
+  learner_created: false
+- name: src/search/Main.kt
+  visible: true
+  text: |
+    package search
+
+    fun main() {
+        println("Hello, World!")
     }
   learner_created: false
 feedback_link: https://hyperskill.org/learn/step/7818#comment
