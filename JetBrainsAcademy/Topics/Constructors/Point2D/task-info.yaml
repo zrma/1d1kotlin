@@ -1,0 +1,12 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: // write the Point2D class here
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/6242#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sat, 25 Dec 2021 10:01:57 UTC
+record: -1
