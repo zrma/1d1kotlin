@@ -1,0 +1,18 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    class Car(val make: String, val year: Int) {
+
+        var speed: Int = 0
+
+        // write the methods here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/6371#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sat, 25 Dec 2021 01:58:55 UTC
+record: -1

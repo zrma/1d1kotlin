@@ -1,0 +1,84 @@
+<h2>Member functions</h2>
+<html>
+ <head></head>
+ <body>
+  <h5>Writing member functions</h5> 
+  <p>Sometimes you need to store in objects not only the data itself but also a behavior. <strong style="font-size: inherit;">Member functions</strong> implement a common behavior for the whole set of objects which belong to the same class.</p> 
+  <p>Member functions look like functions placed in the class body. In the example below, we declare a class with one function <code class="language-kotlin">print()</code>:</p> 
+  <pre><code class="language-kotlin">class MyClass {
+    fun print() = println("Hello from print")
+}</code></pre> 
+  <p>This function is called a <strong>member</strong> function because it works with a specific object of a class and can access its fields. It's a class member:</p> 
+  <pre><code class="language-kotlin">class MyClassWithProperty(var property: Int) {
+    fun printProperty() {
+        println(this.property)
+    }
+}</code></pre> 
+  <p>As you may remember, the keyword <code class="language-kotlin">this</code> represents the current instance of the class. In the example above, it's an optional keyword, so you can omit it.</p> 
+  <p>Just like functions, member functions can take arguments and return a value of any type including the same type as the defined class.</p> 
+  <p></p>
+  <div class="alert alert-primary">
+   Note, 
+   <u>member function</u> is the Kotlin's 
+   <strong>official name</strong> of functions that are placed inside a class. Such functions are often called 
+   <u>methods</u>.
+  </div>
+  <p></p> 
+  <h5>Calling member functions</h5> 
+  <p>Let's take a look at the example below. It prints the value of the field of the particular object:</p> 
+  <pre><code class="language-kotlin">val myObject = MyClassWithProperty(10)
+myObject.printProperty()  // prints "10"</code></pre> 
+  <p>So to call a member function, you need to create an object of the class. Then, put a dot after the object name and write the function name with the arguments that you need in parentheses.</p> 
+  <h5>An example with cats</h5> 
+  <p>As a more complex example, let's consider a class that represents cats.</p> 
+  <p>A cat can sleep. Also, a cat can make one of the two sounds: "meow" or "zzz". It depends on its state. Finally, a cat can be awakened.</p> 
+  <p>Here we've added comments for class members. Read them to better understand the logic of the class.</p> 
+  <pre><code class="language-kotlin">import kotlin.random.Random // library for getting random numbers
+
+class Cat(val name: String) {
+
+    /** The current state of the cat (by default a cat isn't sleeping). */
+    var sleeping: Boolean = false
+
+    /**
+     * A cat says "meow" if it is not sleeping, otherwise, it says "zzz".
+     * After a cat says "meow", it can sometimes fall asleep.
+     */
+    fun say() {
+        if (sleeping) {
+            println("zzz")
+        } else {
+            println("meow")
+
+            if (Random.nextDouble() &lt; 0.5) { //generates a double value between 0 and 1.0 
+                sleeping = true
+            }
+        }
+    }
+
+    /** The function wakes the cat. */
+    fun wakeUp() {
+        sleeping = false
+    }
+}</code></pre> 
+  <p>Now, we can create an instance of a class and invoke its functions. Do not forget that a cat that you have just created is not sleeping.</p> 
+  <pre><code class="language-kotlin">fun main() {
+    val pharaoh = Cat("Pharaoh")  // Create a cat named "Pharaoh"
+
+    repeat (5) {
+        pharaoh.say()  // it says "meow" or "zzz"
+    }
+
+    pharaoh.wakeUp()  // wake the cat up
+    pharaoh.say()  // it says "meow"
+}</code></pre> 
+  <p>The output of the program can be different because of <code class="language-kotlin">Random.nextDouble()</code> inside the <code class="language-kotlin">say</code> function. Here is an example of a possible output:</p> 
+  <pre><code class="language-no-highlight">meow
+meow
+meow
+zzz
+zzz
+meow</code></pre> 
+  <p>So, member functions allow programmers to manipulate particular objects of a class and perform some operations. As always, functions unite a sequence of operations under a name that makes sense.</p>
+ </body>
+</html>
