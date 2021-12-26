@@ -1,0 +1,27 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: Ruin fast
+- text: Run fast
+- text: Break fast
+- text: Fail fast
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/13741#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sun, 26 Dec 2021 13:48:07 UTC
+record: -1
+selected_options:
+- 3

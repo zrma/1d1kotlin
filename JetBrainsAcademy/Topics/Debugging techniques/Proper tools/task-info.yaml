@@ -1,0 +1,27 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: Assertions help you detect bug conditions before the bug manifests itself
+- text: Assertions help you enforce invariants in your application
+- text: Assertions are used for logging
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/13748#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sun, 26 Dec 2021 13:47:12 UTC
+record: -1
+selected_options:
+- 0
+- 1

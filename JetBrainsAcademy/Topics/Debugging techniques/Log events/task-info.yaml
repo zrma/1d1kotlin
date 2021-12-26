@@ -1,0 +1,19 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun String?.capitalize(): String? {
+        return when {
+            isNullOrBlank() -> this
+            length == 1 -> uppercase()
+            else -> this[0].uppercase() + substring(1)
+        }
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/13740#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sun, 26 Dec 2021 13:52:05 UTC
+record: -1
