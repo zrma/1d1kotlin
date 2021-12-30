@@ -1,0 +1,39 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    class Hero {
+        val baseStrength = 1000
+        class Equipment {
+            val weapon = "trident"
+            val weaponStrength = 300
+        }
+    }
+
+    class Villain {
+        val baseStrength = 500
+        class Equipment {
+            val weapon = "bomb"
+            val weaponStrength = 700
+        }
+    }
+
+    fun main() {
+        val heroEquipment = ...
+        val heroTotalStrength = ...
+
+        val villainEquipment = ...
+        val villainTotalStrength = ...
+
+        // the following lines should remain as they are
+        println("The hero uses ${heroEquipment.weapon}. The total strength is $heroTotalStrength.")
+        println("The villain uses ${villainEquipment.weapon}. The total strength is $villainTotalStrength.")
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/14733#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Thu, 30 Dec 2021 14:57:28 UTC
+record: -1
