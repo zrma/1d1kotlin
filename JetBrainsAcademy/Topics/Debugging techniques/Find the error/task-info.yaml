@@ -1,0 +1,30 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    import java.util.Scanner
+
+    fun swapInts(ints: IntArray): IntArray {
+        return intArrayOf(ints[1], ints[0])
+    }
+
+    fun main() {
+        val scanner = Scanner(System.`in`)
+        while (scanner.hasNextLine()) {
+            var ints = intArrayOf(
+                scanner.nextLine().toInt(),
+                scanner.nextLine().toInt(),
+            )
+            swapInts(ints)
+            println(ints[0])
+            println(ints[1])
+        }
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/13746#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Mon, 03 Jan 2022 12:41:06 UTC
+record: -1
