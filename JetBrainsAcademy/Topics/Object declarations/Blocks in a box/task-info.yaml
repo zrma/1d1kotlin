@@ -1,0 +1,12 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: 'class Block(val color: String)'
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10705#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sat, 01 Jan 2022 06:09:03 UTC
+record: -1

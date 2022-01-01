@@ -1,0 +1,15 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    class Task(val name: String)
+
+    // create the Manager singleton here
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10703#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sat, 01 Jan 2022 06:49:19 UTC
+record: -1
