@@ -1,12 +1,5 @@
 type: choice
-is_multiple_choice: true
-options:
-- text: val counter = Counter()
-- text: val counter = Counter(1)
-- text: Counter().increment()
-- text: Counter().increment(1)
-- text: Counter(1).increment()
-- text: Counter(1).increment(1)
+is_multiple_choice: false
 message_correct: Congratulations!
 message_incorrect: Incorrect solution
 files:
