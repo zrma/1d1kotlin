@@ -1,5 +1,10 @@
 type: choice
 is_multiple_choice: false
+options:
+- text: Break fast
+- text: Fail fast
+- text: Ruin fast
+- text: Run fast
 message_correct: Congratulations!
 message_incorrect: Incorrect solution
 files:
