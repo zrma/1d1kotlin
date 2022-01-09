@@ -18,16 +18,16 @@
 val one = 1  // Int
 val oneMillion = 1_000_000  // Int
 
-val twoMillion = 2_000_000L // Long because it is tagged with L
+val twoMillion = 2_000_000L           // Long because it is tagged with L
 val bigNumber = 1_000_000_000_000_000 // Long, Kotlin automatically chooses it (Int is too small)
-val ten: Long = 10 // Long because the type is specified
+val ten: Long = 10                    // Long because the type is specified
 
 val shortNumber: Short = 15 // Short because the type is specified
 val byteNumber: Byte = 15   // Byte because the type is specified</code></pre> 
   <p><strong>Floating-point types</strong> represent numbers with fractional parts. Kotlin has two such types: <code class="language-kotlin">Double</code> (64 bits) and <code class="language-kotlin">Float</code> (32 bits). These types can store only a limited number of decimal digits (~6-7 for <code class="language-kotlin">Float</code> and ~14-16 for <code class="language-kotlin">Double</code>). The <code class="language-kotlin">Double</code> type is more common in practice:</p> 
-  <pre><code class="language-kotlin">val pi = 3.1415  // Double
-val e = 2.71828f // Float because it is tagged with f
-val fraction: Float = 1.51 // Float because the type is specified</code></pre> 
+  <pre><code class="language-kotlin">val pi = 3.1415              // Double
+val e = 2.71828f             // Float because it is tagged with f
+val fraction: Float = 1.51f  // Float because the type is specified</code></pre> 
   <p>To display the maximum and minimum value of a numeric type (including <code class="language-kotlin">Double</code> and <code class="language-kotlin">Float</code>), you need to write the type name followed by a dot <code class="language-kotlin">.</code> and then either <code class="language-kotlin">MIN_VALUE</code> or <code class="language-kotlin">MAX_VALUE</code>:</p> 
   <pre><code class="language-kotlin">println(Int.MIN_VALUE)  // -2147483648
 println(Int.MAX_VALUE)  // 2147483647
