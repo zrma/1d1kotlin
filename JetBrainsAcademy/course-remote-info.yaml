@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/271583/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Fri, 14 Jan 2022 10:47:39 UTC
+update_date: Sun, 16 Jan 2022 10:55:41 UTC
 stages:
 - id: 494
   step: 7817
@@ -25,10 +25,6 @@ stages:
   is_completed: false
 topics:
   0:
-  - title: Binary numbers
-    theory_id: 5544
-  - title: Hexadecimal numbers
-    theory_id: 8788
   - title: Write, compile, and run
     theory_id: 3739
   - title: JVM components
@@ -37,6 +33,10 @@ topics:
     theory_id: 15163
   - title: Garbage collection approaches
     theory_id: 17271
+  - title: Binary numbers
+    theory_id: 5544
+  - title: Hexadecimal numbers
+    theory_id: 8788
   - title: Units of information
     theory_id: 6865
   - title: The concept of patterns
@@ -49,14 +49,8 @@ topics:
     theory_id: 16699
   - title: Data structures
     theory_id: 16927
-  - title: Introduction to logging
-    theory_id: 5538
   - title: Computer programming
     theory_id: 8739
-  - title: What is a bug
-    theory_id: 5504
-  - title: Self-documenting code
-    theory_id: 12063
   - title: Introduction to OOP
     theory_id: 3614
   - title: Introduction to Kotlin
@@ -107,6 +101,12 @@ topics:
     theory_id: 4580
   - title: Equality
     theory_id: 11236
+  - title: What is a bug
+    theory_id: 5504
+  - title: Introduction to logging
+    theory_id: 5538
+  - title: Self-documenting code
+    theory_id: 12063
   - title: Design principles
     theory_id: 8956
   - title: Single Responsibility Principle

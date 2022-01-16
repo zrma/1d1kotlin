@@ -9,9 +9,5 @@ files:
     }
   learner_created: false
 feedback_link: https://hyperskill.org/learn/step/4719#comment
-status: Failed
-feedback:
-  message: |
-    Failed test #1 of 8. Wrong answer
-  time: Fri, 14 Jan 2022 11:02:55 UTC
+status: Solved
 record: -1
