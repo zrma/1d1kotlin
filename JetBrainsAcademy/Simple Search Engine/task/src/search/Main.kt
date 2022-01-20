@@ -1,15 +1,20 @@
 package search
 
 fun main() {
-    val inputStrings = readLine()
-    val targetString = readLine()
-
-    inputStrings?.split(" ")?.let { ss ->
-        val idx = ss.indexOf(targetString)
-        if (idx >= 0) {
-            print(idx + 1)
-        } else {
-            print("Not found")
+    val numOfData = readLine()!!.toInt()
+    val data = List(numOfData) { readLine()!! }
+    val numOfTarget = readLine()!!.toInt()
+    repeat(numOfTarget) {
+        val target = readLine()!!
+        var found = false
+        for (datum in data) {
+            if (datum.contains(target, ignoreCase = true)) {
+                println(datum)
+                found = true
+            }
+        }
+        if (!found) {
+            println("No matching people found.")
         }
     }
 }
