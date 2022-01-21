@@ -2,9 +2,9 @@ type: choice
 is_multiple_choice: true
 options:
 - text: Can be nested in another class
-- text: Can be created multiple times
 - text: Can be called anywhere in a code
 - text: Can be nested in another object declaration
+- text: Can be instantiated multiple times
 message_correct: Congratulations!
 message_incorrect: Incorrect solution
 files:
