@@ -1,0 +1,24 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    class Vehicle {
+        inner class Engine {
+            fun start() {
+                println("RRRrrrrrrr....")
+            }
+        }
+    }
+    // do not touch the class above
+
+    fun main() {
+        // start your vehicle, put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/14727#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sat, 22 Jan 2022 06:28:26 UTC
+record: -1

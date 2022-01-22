@@ -1,0 +1,30 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: To share inner class functionality with multiple classes from outside
+- text: To use some inner class functions without creating an instance of an outer
+    class
+- text: To organise your code
+- text: To increase encapsulation
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/14725#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sat, 22 Jan 2022 06:27:19 UTC
+record: -1
+selected_options:
+- 2
+- 3
+custom_name: Why do we need inner classes?
