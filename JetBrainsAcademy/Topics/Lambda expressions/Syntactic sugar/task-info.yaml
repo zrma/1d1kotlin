@@ -1,0 +1,33 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: first(5, { i -&gt; i })
+- text: first(5, { it })
+- text: first(5) { it }
+- text: second({ i -&gt; i }, 5)
+- text: second({ it }, 5)
+- text: second(5) { it }
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/6157#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Wed, 26 Jan 2022 15:59:32 UTC
+record: -1
+selected_options:
+- 0
+- 1
+- 2
+- 3
+- 4
