@@ -1,0 +1,29 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: (Int) -&gt; Unit
+- text: (Int) -&gt; Double
+- text: (String, Int) -&gt; Unit
+- text: (String, Int) -&gt; Double
+- text: (String, (Int) -&gt; Double) -&gt; Unit
+- text: (String, (Int) -&gt; Double) -&gt; Double
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/5996#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Thu, 27 Jan 2022 14:16:10 UTC
+record: -1
+selected_options:
+- 4
