@@ -1,0 +1,13 @@
+type: code
+custom_name: Find the first occurrence of the word "the"
+files:
+- name: src/Main.kt
+  visible: true
+  text: "fun main() {\n    // write your code here    \n}"
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/9035#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Thu, 27 Jan 2022 14:10:20 UTC
+record: -1
