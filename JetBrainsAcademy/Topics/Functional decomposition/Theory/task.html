@@ -117,7 +117,7 @@ fun chooseAction() {
   <p>As you can see, we now have a real functioning program that won't fall apart if we decide to change it a bit. We can easily test separate components since they are defined in separate functions. This also makes it easier to support the program in the future.</p> 
   <h5 style="text-align: center;">Idiom</h5> 
   <p>You already know that <code class="language-kotlin">if</code> and <code class="language-kotlin">when</code> can be expressions. So one obvious way of simplifying your code is to use their expression forms. We suggest you use this form in simple functions:</p> 
-  <pre><code class="language-kotlin">fun transform(color: String): Int { // you can lose one of the returns
+  <pre><code class="language-kotlin">fun transform(color: String): Int { // you can miss one of the returns
     when (color) {
         "Red" -&gt; return 0
         "Green" -&gt; return 1
