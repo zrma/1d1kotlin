@@ -1,0 +1,15 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun square(value: Int, context: Any, continuation: (Int, Any) -> Unit) {
+        // TODO: provide implementation here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/5999#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sat, 29 Jan 2022 13:52:07 UTC
+record: -1
