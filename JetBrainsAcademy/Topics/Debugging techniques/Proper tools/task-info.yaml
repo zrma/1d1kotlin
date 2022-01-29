@@ -1,9 +1,5 @@
 type: choice
-is_multiple_choice: true
-options:
-- text: Assertions help you detect bug conditions before the bug manifests itself
-- text: Assertions help you enforce invariants in your application
-- text: Assertions are used for logging
+is_multiple_choice: false
 message_correct: Congratulations!
 message_incorrect: Incorrect solution
 files:
