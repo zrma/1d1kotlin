@@ -1,3 +1,9 @@
 fun main(args: Array<String>) {
-    TODO()
+    if (args.size != 3) {
+        println("Invalid number of program arguments")
+        return
+    }
+    args.withIndex().forEach {
+        println("Argument ${it.index.inc()}: ${it.value}. It has ${it.value.length} characters")
+    }
 }

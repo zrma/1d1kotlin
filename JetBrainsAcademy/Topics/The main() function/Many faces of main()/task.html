@@ -1,0 +1,18 @@
+<h2>Many faces of main()</h2>
+<html>
+ <head></head>
+ <body>
+  <p>What will the following program output?</p> 
+  <pre><code class="language-kotlin">var counter = 6
+fun main() {
+    if(counter == 0) return
+    counter = counter - 1
+    main(counter)
+    main()
+}
+
+fun main(args: Int) {
+    print(args)
+}</code></pre>
+ </body>
+</html>
