@@ -1,5 +1,10 @@
 type: choice
-is_multiple_choice: false
+is_multiple_choice: true
+options:
+- text: Doesn't depend on its name
+- text: Can be stored as a variable
+- text: Can be returned from another function
+- text: Can be received as an argument of another function
 message_correct: Congratulations!
 message_incorrect: Incorrect solution
 files:

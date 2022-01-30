@@ -1,5 +1,12 @@
 type: choice
-is_multiple_choice: false
+is_multiple_choice: true
+options:
+- text: 'fun(number: Int) = number.toString()'
+- text: 'fun(number: Int): String { return number.toString() }'
+- text: '(number: Int) -&gt; { number.toString() }'
+- text: '(number: Int) =&gt; { number.toString() }'
+- text: '{ number: Int -&gt; number.toString() }'
+- text: '{ number: Int =&gt; number.toString() }'
 message_correct: Congratulations!
 message_incorrect: Incorrect solution
 files:

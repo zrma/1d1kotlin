@@ -1,5 +1,10 @@
 type: choice
-is_multiple_choice: false
+is_multiple_choice: true
+options:
+- text: a
+- text: b
+- text: c
+- text: d
 message_correct: Congratulations!
 message_incorrect: Incorrect solution
 files:
