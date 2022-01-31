@@ -5,19 +5,8 @@ files:
   text: "fun main() {\n    // write your code here    \n}"
   learner_created: false
 feedback_link: https://hyperskill.org/learn/step/9044#comment
-status: Failed
+status: Solved
 feedback:
-  message: |
-    Failed test #1 of 17. Length of the password should be 8, length of your password - 12
-
-    This is a sample test from the problem statement!
-
-    Test input:
-    3 4 1 8
-    Correct output:
-    PaSsw0rD
-
-    Your code output:
-    ABABababa01!
-  time: Mon, 31 Jan 2022 13:59:52 UTC
+  message: <html>Correct solution</html>
+  time: Mon, 31 Jan 2022 14:02:51 UTC
 record: -1
