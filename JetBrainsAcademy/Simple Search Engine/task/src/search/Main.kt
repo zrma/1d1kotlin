@@ -1,12 +1,13 @@
 package search
 
-fun main() {
-    val numOfData = readLine()!!.toInt()
-    val data = List(numOfData) { readLine()!! }
+import java.io.File
+
+fun main(args: Array<String>) {
+    val dataFile = args[1]
+    val data = File(dataFile).readLines()
 
     while (true) {
-        val command = readLine()!!.toInt()
-        when (command) {
+        when (readLine()!!.toInt()) {
             1 -> {
                 val target = readLine()!!
                 var found = false
