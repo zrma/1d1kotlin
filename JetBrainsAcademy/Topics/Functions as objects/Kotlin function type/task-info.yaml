@@ -1,5 +1,14 @@
 type: choice
-is_multiple_choice: false
+is_multiple_choice: true
+options:
+- text: (String) -&gt; Int
+- text: (String -&gt; Int)
+- text: (String) =&gt; Int
+- text: (String =&gt; Int)
+- text: (Short, Short) -&gt; Int, Int
+- text: (Short, Short -&gt; Int, Int)
+- text: (Short, Short) =&gt; Int, Int
+- text: (Short, Short =&gt; Int, Int)
 message_correct: Congratulations!
 message_incorrect: Incorrect solution
 files:

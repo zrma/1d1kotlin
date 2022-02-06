@@ -1,5 +1,11 @@
 type: choice
-is_multiple_choice: false
+is_multiple_choice: true
+options:
+- text: The scope of a variable is always the entire program.
+- text: The scope of a variable can be the entire file.
+- text: The scope of a variable is an area of code in which this variable is associated
+    with an identifier and can be used in one way or another.
+- text: One scope can be nested in another one.
 message_correct: Congratulations!
 message_incorrect: Incorrect solution
 files:
