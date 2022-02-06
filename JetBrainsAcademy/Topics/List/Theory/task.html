@@ -1,0 +1,78 @@
+<h2>List</h2>
+<html>
+ <head></head>
+ <body>
+  <br> You already have a basic idea of collections, their different types (set, list, map), and variations (mutable, immutable). In this topic, we will take a closer look at one specific type, 
+  <code class="language-kotlin">List</code>.
+  <p></p> 
+  <h5 style="text-align: center;">Introduction</h5> 
+  <p><code class="language-kotlin">List</code> is an <strong>immutable</strong> collection. Its size cannot be changed after it is initialized. This type allows duplicates and stores elements in a specific order.</p> 
+  <p>Let's assume we want to save information about the cars we drove last year. Let's do it with the help of <code class="language-kotlin">List</code>:</p> 
+  <pre><code class="language-kotlin">val cars = listOf&lt;String&gt;("BMW", "Honda", "Mercedes")
+println(cars) // output: [BMW, Honda, Mercedes]</code></pre> 
+  <p>Theoretically, we could use a <code class="language-kotlin">MutableList</code> to hold this kind of information: </p> 
+  <pre><code class="language-kotlin">val cars = mutableListOf&lt;String&gt;("BMW", "Honda", "Mercedes")
+println(cars) // output: [BMW, Honda, Mercedes]</code></pre> 
+  <p>However, this is a bad idea because anyone can change the content of an <code class="language-kotlin">MutableList</code> any time: </p> 
+  <pre><code class="language-kotlin">cars[0] = "Renault"
+println(cars) // output: [Renault, Honda, Mercedes]</code></pre> 
+  <p>If you want the content to stay the same, this can be a problem. <code class="language-kotlin">List</code> is <strong>immutable</strong>, so our content will not be changed. If you try to change it in a list, you will get an error:</p> 
+  <pre><code class="language-kotlin">val cars = listOf&lt;String&gt;("BMW", "Honda", "Mercedes")
+cars[0] = "Renault" // Error</code></pre> 
+  <h5 style="text-align: center;">Initialization</h5> 
+  <p><code class="language-kotlin">List</code> is a <strong>generic </strong>type. As you saw from the previous examples, you can initialize it with the help of <code class="language-kotlin">listOf&lt;E&gt;</code>, where <code class="language-kotlin">E</code> is the type of elements contained in the list:</p> 
+  <pre><code class="language-kotlin">val textUsMethod = listOf&lt;String&gt;("SMS", "Email")</code></pre> 
+  <p>The type can also be derived from the context: </p> 
+  <pre><code class="language-kotlin">val textUsMethod = listOf("SMS", "Email")</code></pre> 
+  <p>If you need to initialize an empty list, you can use the method <code class="language-kotlin">emptyList</code>: </p> 
+  <pre><code class="language-kotlin">val staff = emptyList&lt;String&gt;()
+println(staff) // output: []</code></pre> 
+  <h5 style="text-align: center;">Methods and properties</h5> 
+  <p>Let's recap the properties and methods of <code class="language-kotlin">List</code>:</p> 
+  <ul> 
+   <li><code class="language-kotlin">size</code> returns the size of your <code class="language-kotlin">List</code>.</li> 
+   <li><code class="language-kotlin">isEmpty()</code> shows whether the list is empty or not.</li> 
+  </ul> 
+  <p>Also, <code class="language-kotlin">List</code> has a method <code class="language-kotlin">get(index)</code>, that returns the <strong>element</strong> in that position. You can also use <code class="language-kotlin">[index]</code> to get an <strong>element</strong>. Remember that indexing starts with zero!</p> 
+  <p>Let' assume you have a guest list for a party:</p> 
+  <pre><code class="language-kotlin">val partyList = listOf("Fred", "Emma", "Isabella", "James", "Olivia")</code></pre> 
+  <p>How do we know when it's time to start a party? Let's check if the guests are already there using the method <code class="language-kotlin">isEmpty</code>. If the party is not empty, we would like to know the number of guests and find out who gets the first welcome cocktail!</p> 
+  <p>We will get something like this:</p> 
+  <pre><code class="language-kotlin">if (!partyList.isEmpty()) {
+    val size = partyList.size
+    val whoIsFirst = partyList[0]
+    println("The party will not be lonesome! We already got $size people. And $whoIsFirst was the first to arrive today!")
+    // The party will not be lonesome! We already got 5 people. And Fred was the first to arrive today!
+}</code></pre> 
+  <p> </p> 
+  <p>Let's see how to work with other familiar methods:</p> 
+  <ul> 
+   <li><code class="language-kotlin">indexOf(element)</code> returns the index of the first occurrence of the specified element. If it isn't in the list, the function returns <code class="language-kotlin">-1</code>.</li> 
+   <li><code class="language-kotlin">contains(element)</code> returns <code class="language-kotlin">true</code> if the element specified is in the list, and <code class="language-kotlin">false</code> if it's not.</li> 
+  </ul> 
+  <p>Emma argued that she was entitled to the first cocktail. But is that so? Let's check:</p> 
+  <pre><code class="language-kotlin">println("Emma came in ${partyList.indexOf("Emma") + 1}") // Emma came in 2</code></pre> 
+  <p>Looks like Emma didn't come first, she actually came second. Now, James wants to know (as always) if Isabella has come:</p> 
+  <pre><code class="language-kotlin">println("Guys, is it true that Isabella came? It's ${partyList.contains("Isabella")}") // Guys, is it true that Isabella came? It's true</code></pre> 
+  <p>There are many other useful <code class="language-kotlin">List</code> methods: check out <a target="_blank" href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/" rel="noopener noreferrer nofollow">kotlinlang.org</a> and get familiar with them!</p> 
+  <h5 style="text-align: center;">Iterating through elements</h5> 
+  <p>You can iterate through elements in the <code class="language-kotlin">List</code> with the help of the <code class="language-kotlin">for</code> loop. Let's see an example: </p> 
+  <pre><code class="language-kotlin">val participants = listOf("Fred", "Emma", "Isabella")
+
+for (participant in participants) {
+    println("Hello $participant!")
+}
+
+// Hello Fred!
+// Hello Emma!
+// Hello Isabella!</code></pre> 
+  <p>In this example, we iterate through the <code class="language-kotlin">participants</code> and print them to the console.</p> 
+  <h5 style="text-align: center;">Idiom</h5> 
+  <p>The <code class="language-kotlin">List</code> is a very common structure in programming. Predictably, it has its own idiom.</p> 
+  <p>You've already seen a few ways to create a <code class="language-kotlin">List</code>. As always, the Kotlin community recommends using the shortest way. You can find it on <a target="_blank" href="https://kotlinlang.org/docs/idioms.html#read-only-list" rel="noopener noreferrer nofollow">kotlinlang.org</a>.</p> 
+  <pre><code class="language-kotlin">val list = listOf("a", "b", "c")</code></pre> 
+  <h5 style="text-align: center;">Conclusion</h5> 
+  <p>Now you know the main difference between a <code class="language-kotlin">List</code> and a <code class="language-kotlin">MutableList</code> in Kotlin. Just to recap: use <code class="language-kotlin">List</code> when you don't want the content to change.</p> 
+  <p> You know how to initialize a list, check if it's empty, see if it contains a certain element, get it by index or find out its index, and figure out its size. You can iterate through the elements of the <code class="language-kotlin">List</code> with the help of the <code class="language-kotlin">for</code> loop. This is not all, but it's enough to start you off! Let's move on to some practice tasks.</p>
+ </body>
+</html>
