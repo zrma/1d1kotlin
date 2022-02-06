@@ -1,10 +1,5 @@
 type: choice
 is_multiple_choice: false
-options:
-- text: will output 1
-- text: will output 2
-- text: will not compile
-- text: will end with an error
 message_correct: Congratulations!
 message_incorrect: Incorrect solution
 files:

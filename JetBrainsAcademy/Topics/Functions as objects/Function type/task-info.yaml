@@ -1,12 +1,5 @@
 type: choice
 is_multiple_choice: false
-options:
-- text: (Int) -&gt; Unit
-- text: (Int) -&gt; Double
-- text: (String, Int) -&gt; Unit
-- text: (String, Int) -&gt; Double
-- text: (String, (Int) -&gt; Double) -&gt; Unit
-- text: (String, (Int) -&gt; Double) -&gt; Double
 message_correct: Congratulations!
 message_incorrect: Incorrect solution
 files:
