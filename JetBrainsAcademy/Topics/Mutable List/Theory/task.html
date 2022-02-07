@@ -1,0 +1,86 @@
+<h2>Mutable List</h2>
+<html>
+ <head></head>
+ <body>
+  <p>You already know quite a lot about collections. In the previous topics, you got familiar with <code class="language-kotlin">List</code>. In this topic, we return to an already familiar <code class="language-kotlin">MutableList</code> collection. You already know how to work with <code class="language-kotlin">MutableList</code>, so we recap this knowledge and discuss when and how it is used, where it differs from <code class="language-kotlin">List</code> and what its main purpose is.</p> 
+  <h5 style="text-align: center;">Introduction</h5> 
+  <p>Let's recap: <code class="language-kotlin">List</code> is a collection. <code class="language-kotlin">List</code> has a lot of methods and properties out-of-the-box. You cannot make changes to the elements of a <code class="language-kotlin">List</code> because it is immutable. Now we will learn about its mutable twin brother.<br> <br> <code class="language-kotlin">MutableList</code> is another version of <code class="language-kotlin">List</code>. It allows duplicates and stores elements in a specific order. In contrast to <code class="language-kotlin">List</code>, <code class="language-kotlin">MutableList</code> is a mutable or modifiable collection that allows you to add and remove elements.</p> 
+  <p>Imagine you decided to keep a <code class="language-kotlin">List</code> of all the places you've been to:</p> 
+  <pre><code class="language-kotlin">val places = listOf&lt;String&gt;("Paris", "Moscow", "Tokyo")
+println(places) // output: [Paris, Moscow, Tokyo]</code></pre> 
+  <p>You keep traveling, and your most recent trip was to Saint Petersburg. You want to add it to your <code class="language-kotlin">List</code> of places, but there is a problem: you cannot add another item to the <code class="language-kotlin">List</code> because it is <strong>immutable</strong>. You can do this by reassigning. but this is a slow and inefficient way:</p> 
+  <pre><code class="language-kotlin">var places = listOf&lt;String&gt;("Paris", "Moscow", "Tokyo") // note var keyword
+places += "Saint-Petersburg" // reassignment, slow operation
+println(places) // output: [Paris, Moscow, Tokyo, Saint-Petersburg]</code></pre> 
+  <p>This is where <code class="language-kotlin">MutableList</code> comes to our rescue. As we said before, <code class="language-kotlin">MutableList</code> supports adding elements. So, let's switch to <code class="language-kotlin">MutableList</code> and add one more element:</p> 
+  <pre><code class="language-kotlin">val places = mutableListOf&lt;String&gt;("Paris", "Moscow", "Tokyo")
+places.add("Saint-Petersburg")
+println(places) // output: [Paris, Moscow, Tokyo, Saint-Petersburg]</code></pre> 
+  <h5 style="text-align: center;">Initializing</h5> 
+  <p>Here is how you can initialize <code class="language-kotlin">MutableList</code>:</p> 
+  <pre><code class="language-kotlin">val cars = mutableListOf("Ford", "Toyota", "Audi", "Mazda", "Tesla")
+println(cars) // output: [Ford, Toyota, Audi, Mazda, Tesla]</code></pre> 
+  <p>That is it! Here, we didn't even need to specify the type for our objects because it can be derived from the context. However, note that if you create an empty <code class="language-kotlin">MutableList</code>, you do have to specify the type:</p> 
+  <pre><code class="language-kotlin">val cars = mutableListOf&lt;String&gt;()
+println(cars) // output: []</code></pre> 
+  <p>You can also transform <code class="language-kotlin">List</code> into a <code class="language-kotlin">MutableList</code> with the help of the function <code class="language-kotlin">toMutableList()</code>:</p> 
+  <pre><code class="language-kotlin">val cars = listOf("Ford", "Toyota").toMutableList()
+cars.add("Tesla")
+println(cars) // output: [Ford, Toyota, Tesla]</code></pre> 
+  <h5 style="text-align: center;">Adding and replacing elements</h5> 
+  <p><code class="language-kotlin">MutableList</code> has the same properties and methods as <code class="language-kotlin">List</code>: <code class="language-kotlin">size</code>, <code class="language-kotlin">get(index)</code>, <code class="language-kotlin">isEmpty()</code>, <code class="language-kotlin">indexOf(element)</code>, <code class="language-kotlin">contains(element)</code>, and so on.</p> 
+  <p>Since <code class="language-kotlin">MutableList</code> is special because it can be modified, it has additional functionality for changing the contents:</p> 
+  <ul> 
+   <li><code class="language-kotlin">add(element)</code> is a method that adds an extra element to your list.</li> 
+   <li><code class="language-kotlin">set(index, element)</code> replaces the element at the specified position with the specified element. Laconic form:<br> <code class="language-kotlin">mutableList[index] = element</code></li> 
+   <li><code class="language-kotlin">addAll(elements)</code> adds all of the elements of the specified collection to the end of the list.</li> 
+  </ul> 
+  <p>Let's take a look at some examples. Imagine that you're about to go get groceries, so you're making a <code class="language-kotlin">List</code> of products you need:</p> 
+  <pre><code class="language-kotlin">val products = listOf("Milk", "Cheese", "Coke")</code></pre> 
+  <p>You had a change of heart: suddenly, you decided that you also need to get some chips, and maybe get water instead of milk. Let's update our list of products:</p> 
+  <pre><code class="language-kotlin">val finalList = products.toMutableList()
+finalList.add("Chips")
+finalList[0] = "Water" // or finalList.set(0, "Water")
+println(finalList) // output: [Water, Cheese, Coke, Chips]</code></pre> 
+  <p>Then, let's say your dad came in and gave you his grocery list. Okay, let's add these products to our list as well:</p> 
+  <pre><code class="language-kotlin">val products = mutableListOf("Milk", "Cheese", "Coke")
+val dadsProducts = listOf("Banana", "Watermelon", "Apple")
+
+products.addAll(dadsProducts)
+
+println(products) // output: [Milk, Cheese, Coke, Banana, Watermelon, Apple]</code></pre> 
+  <h5 style="text-align: center;">Removing elements</h5> 
+  <p>You might also need to remove some or all elements from your list. Let's see how this can be done:</p> 
+  <ul> 
+   <li><code class="language-kotlin">removeAt(index)</code> removes an element at a specified index.</li> 
+   <li><code class="language-kotlin">remove(element)</code> remove the specified element.</li> 
+   <li><code class="language-kotlin">clear()</code> removes all elements from the current collection.</li> 
+  </ul> 
+  <p>Let's go back to our grocery list. As you were getting dressed, you were gradually realizing that you actually have all this food in your fridge. One by one, you decided to clear your list of these products:</p> 
+  <pre><code class="language-kotlin">val products = mutableListOf("Milk", "Cheese", "Coke")
+
+products.removeAt(0)
+println(products) // output: [Cheese, Coke]
+
+products.remove("Coke")
+println(products) // output: [Cheese]
+
+products.clear()
+println(products) // output: []</code></pre> 
+  <p>This is not an exhaustive list of methods you can use. To learn about other <code class="language-kotlin">MutableList</code> methods, check out <a target="_blank" href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/" rel="noopener noreferrer nofollow">kotlinlang.org</a>. </p> 
+  <h5 style="text-align: center;">Iterating through elements</h5> 
+  <p>You can iterate through the elements in <code class="language-kotlin">MutableList</code> with the help of the <code class="language-kotlin">for</code> loop. Here is an example: </p> 
+  <pre><code class="language-kotlin">val products = mutableListOf("Cheese", "Milk", "Coke")
+
+for (product in products) {
+    println("$product")
+}
+
+// Cheese
+// Milk
+// Coke</code></pre> 
+  <p>We iterated through our <code class="language-kotlin">MutableList</code> and printed the name of each product.</p> 
+  <h5 style="text-align: center;">Conclusion </h5> 
+  <p>Now you know the difference between a <code class="language-kotlin">List</code> and a <code class="language-kotlin">MutableList</code>. <code class="language-kotlin">List</code> is <strong>immutable</strong>, so use it when you don't want the content to change. <code class="language-kotlin">MutableList</code> is useful when you know that its contents will need some modifications in the future. Now you know how to initialize a <code class="language-kotlin">MutableList</code> and add, replace, and remove elements from it. You also know how to make a <code class="language-kotlin">List</code> mutable and iterate through its elements using the <code class="language-kotlin">for</code> loop.</p>
+ </body>
+</html>
