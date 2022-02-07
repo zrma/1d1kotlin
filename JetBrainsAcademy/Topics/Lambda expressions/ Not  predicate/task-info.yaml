@@ -1,0 +1,13 @@
+type: code
+custom_name: '"Not" predicate'
+files:
+- name: src/Main.kt
+  visible: true
+  text: 'val notPredicate: (Char) -> Boolean = TODO("Provide implementation")'
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/6163#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Mon, 07 Feb 2022 13:28:00 UTC
+record: -1
