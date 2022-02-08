@@ -1,0 +1,15 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun summator(map: Map<Int, Int>): Int {
+        // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/12666#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Tue, 08 Feb 2022 14:12:52 UTC
+record: -1
