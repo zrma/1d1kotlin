@@ -1,5 +1,6 @@
 public class SearchEngineTests {
-    public static final String NAMES = "Kristofer Galley\n" +
+    public static final String NAMES =
+        "Kristofer Galley\n" +
         "Fernando Marbury fernando_marbury@gmail.com\n" +
         "Kristyn Nix nix-kris@gmail.com\n" +
         "Regenia Enderle\n" +
@@ -9,7 +10,7 @@ public class SearchEngineTests {
         "Jim Gray\n" +
         "Coreen Beckham\n" +
         "Bob Yeh bobyeah@gmail.com\n" +
-        "Shannan Strope stropeshah@gmail.com\n" +
+        "Shannan Bob stropeshah@gmail.com\n" +
         "Yer Fillion\n" +
         "Margene Resendez marres@gmail.com\n" +
         "Blossom Ambler\n" +
@@ -19,13 +20,13 @@ public class SearchEngineTests {
         "Yer Leopold\n" +
         "Stefania Trunzo\n" +
         "Alexis Leopold\n" +
-        "Carlene Pompa\n" +
+        "Carlene Bob\n" +
         "Oliver Dacruz\n" +
         "Jonie Richter\n" +
         "Pasquale Gallien gallien@evilcorp.com\n" +
         "Verdie Gentle\n" +
         "Gerardo Strouth gallien@evilcorp.com\n" +
-        "Agripina Dones\n" +
+        "Agripina Bob\n" +
         "Latricia Niebuhr\n" +
         "Malena Schommer\n" +
         "Drema Leopold\n" +
@@ -42,7 +43,7 @@ public class SearchEngineTests {
         "Nydia Mcduffie\n" +
         "Florencio Defibaugh\n" +
         "Warner Giblin\n" +
-        "May Mans\n" +
+        "Bob Mans\n" +
         "Shu Gray\n" +
         "Kaycee Gray\n" +
         "Victorina Froehlich victory@gmail.com\n" +
