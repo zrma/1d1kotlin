@@ -1,0 +1,13 @@
+<h2>Application</h2>
+<html>
+ <head></head>
+ <body>
+  <p>A beginner programmer is a site administrator. He has a map where for each user there is a key (the login) and a value (the password). Now he needs to add the data of a new user. Write a function <code class="java">addUser</code> that takes a map with user data <code class="java">userMap</code>, a login, and a password and adds the latter two to <code class="java">userMap</code>.</p> 
+  <p>If <code class="java">userMap</code> already contains a user with such a login, leave <code class="java">userMap</code> unchanged and print the following string: "<em>User with this login is already registered!</em>".</p> 
+  <p><em><strong>Input</strong></em>: <code class="java">userMap</code>: Map&lt;String, String&gt;, login: <code class="java">String</code>, password: <code class="java">String</code> </p> 
+  <p><em><strong>Output</strong></em>: updated <code class="java">userMap</code>: MutableMap&lt;String, String&gt;</p>
+ </body>
+</html><br><b>Sample Input:</b><br><pre><code class="language-no-highlight">new_login<br>new_password</code></pre><br><b>Sample Output:</b><br><pre><code class="language-no-highlight">{user1@mail.com=qwerty123, hi_john@mail.com=abcdef00, dr_mike@mail.com=000000, new_login=new_password}</code></pre><br><br><b>Sample Input:</b><br><pre><code class="language-no-highlight">user1@mail.com<br>qwerty123</code></pre><br><b>Sample Output:</b><br><pre><code class="language-no-highlight">User with this login is already registered!<br>{user1@mail.com=qwerty123, hi_john@mail.com=abcdef00, dr_mike@mail.com=000000}</code></pre><br><br><br><font color="gray">Memory limit: 256 MB</font><br><font color="gray">Time limit: 8 seconds</font><br><br>
+<b>Caution</b><br><br>
+You may see errors in your code or execution results due to missing context. Don’t worry about it, just write the solution and press Check.
+<br><br>

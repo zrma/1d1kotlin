@@ -1,0 +1,11 @@
+<h2>Application</h2>
+<html>
+ <head></head>
+ <body>
+  <p>Write a program that reads the names of students and their exam scores, adds them to <code class="java">MutableMap</code>, and prints the result. In this <code class="java">MutableMap</code>, names are keys, and scores are values. It is guaranteed that the keys are <code class="java">Strings</code> and the values are of <code class="java">Int</code> type. </p> 
+  <p>Keys and values must be read on a new line each. Input is over when the program receives the word "stop" instead of the next key. If the same key is entered more than one time, <code class="java">MutableMap</code> must keep the value that was entered first.</p> 
+  <p>See the input and output examples:</p> 
+  <p><em><strong>Input</strong></em>: key: <code class="java">String</code>, value: <code class="java">Int</code> (on a new line), until the word "stop" is read.</p> 
+  <p><em><strong>Output</strong></em>: resulting MutableMap&lt;String, Int&gt;.</p>
+ </body>
+</html><br><b>Sample Input:</b><br><pre><code class="language-no-highlight">Alice<br>88<br>John<br>92<br>Harry<br>60<br>stop</code></pre><br><b>Sample Output:</b><br><pre><code class="language-no-highlight">{Alice=88, John=92, Harry=60}</code></pre><br><br><b>Sample Input:</b><br><pre><code class="language-no-highlight">Alice<br>45<br>Alice<br>66<br>stop</code></pre><br><b>Sample Output:</b><br><pre><code class="language-no-highlight">{Alice=45}</code></pre><br><br><br><font color="gray">Memory limit: 256 MB</font><br><font color="gray">Time limit: 8 seconds</font><br><br>
