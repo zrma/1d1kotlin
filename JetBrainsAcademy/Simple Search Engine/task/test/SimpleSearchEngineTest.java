@@ -1,6 +1,6 @@
-import org.hyperskill.hstest.testcase.TestCase;
 import org.hyperskill.hstest.stage.StageTest;
 import org.hyperskill.hstest.testcase.CheckResult;
+import org.hyperskill.hstest.testcase.TestCase;
 
 import java.util.*;
 
@@ -14,80 +14,43 @@ class TestClue {
 
 public class SimpleSearchEngineTest extends StageTest<TestClue> {
 
-    public static final String test1 =
-        "2\n" +
-        "0";
-
-    public static final String test2 =
-        "1\n" +
-        "qwerty\n" +
-        "0";
-
-    public static final String test3 =
-        "1\n" +
-        "Leopold\n" +
-        "0";
-
-    public static final String test4 =
-        "3\n" +
-        "1\n" +
-        "Bob\n" +
-        "2\n" +
-        "2\n" +
-        "1\n" +
-        "Leopold\n" +
-        "0";
-
-    public static final String test5 =
-        "1\n" +
-        "@\n" +
-        "1\n" +
-        "Leopold\n" +
-        "0";
-
-    public static final String test6 =
-        "0";
-
-    public static final String test7 =
-        "1\n" +
-        "this text never find some match\n" +
-        "0";
-
-    public static final String test8 =
-        "1\n" +
-        "h\n" +
-        "1\n" +
-        "gallien@evilcorp.com\n" +
-        "0";
-
-    public static final String test9 =
-        "4\n" +
-        "2\n" +
-        "2\n" +
-        "1\n" +
-        "this text never gonna be matched\n" +
-        "1\n" +
-        "h\n" +
-        "1\n" +
-        "gallien@evilcorp.com\n" +
-        "0";
-
     @Override
     public List<TestCase<TestClue>> generate() {
-
-        List<TestCase<TestClue>> tests = new ArrayList<>();
-
-        for (String input : new String[]{
-            test1, test2, test3, test4, test5, test6, test7, test8, test9}) {
-
-            tests.add(new TestCase<TestClue>()
-                .setAttach(new TestClue(input))
-                .setInput(input)
+        return Arrays.asList(
+            new TestCase<TestClue>().setAttach(
+                new TestClue("1\n" +
+                "ANY\n" +
+                "bob gallien@evilcorp.com\n" +
+                "2\n" +
+                "1\n" +
+                "NONE\n" +
+                "bob gallien@evilcorp.com\n" +
+                "0")).setInput("1\n" +
+                "ANY\n" +
+                "bob gallien@evilcorp.com\n" +
+                "2\n" +
+                "1\n" +
+                "NONE\n" +
+                "bob gallien@evilcorp.com\n" +
+                "0")
                 .addArguments("--data", "names.txt")
-                .addFile("names.txt", SearchEngineTests.NAMES));
-        }
+                .addFile("names.txt", SearchEngineTests.NAMES),
 
-        return tests;
+
+            new TestCase<TestClue>().setAttach(new TestClue("2\n" +
+                "1\n" +
+                "ALL\n" +
+                "this text never gonna be matched\n" +
+                "2\n" +
+                "0")).setInput("2\n" +
+                "1\n" +
+                "ALL\n" +
+                "this text never gonna be matched\n" +
+                "2\n" +
+                "0")
+                .addArguments("--data", "names.txt")
+                .addFile("names.txt", SearchEngineTests.NAMES)
+        );
     }
 
     @Override
@@ -96,7 +59,6 @@ public class SimpleSearchEngineTest extends StageTest<TestClue> {
         List<String> outputLines = new LinkedList<String>(Arrays.asList(reply.split(cR)));
         String[] inputLines = clue.input.split(cR);
         String[] reference;
-        String[] currentSearchResult;
 
         reference = SearchEngineTests.NAMES.split("\n");
 
@@ -125,28 +87,98 @@ public class SimpleSearchEngineTest extends StageTest<TestClue> {
                 case 1:
                     currentInputLine++;
 
-                    String toSearch = inputLines[currentInputLine].trim().toLowerCase();
-
-                    currentInputLine++;
+                    List<Integer> result = new ArrayList<>();
 
                     List<String> intendedResult = new ArrayList<>();
 
-                    for (String s : reference) {
-                        s = s.toLowerCase();
-                        if (s.contains(" " + toSearch + " ")
-                            || s.startsWith(toSearch + " ")
-                            || s.endsWith(" " + toSearch)) {
+                    while (true) {
+                        String mode = inputLines[currentInputLine].trim().toLowerCase();
+                        currentInputLine++;
 
-                            intendedResult.add(s);
+                        String toSearch = "";
+
+                        if (mode.equalsIgnoreCase("all")) {
+                            toSearch = inputLines[currentInputLine].trim().toLowerCase();
+                            currentInputLine++;
+                            String[] allChecks = toSearch.split(" ");
+
+                            for (String s : reference) {
+                                s = s.toLowerCase();
+
+                                boolean isPassedChecks = true;
+
+                                for (String currCheck : allChecks) {
+                                    if (!(s.contains(" " + currCheck + " ")
+                                        || s.startsWith(currCheck + " ")
+                                        || s.endsWith(" " + currCheck))) {
+
+                                        isPassedChecks = false;
+                                        break;
+                                    }
+                                }
+
+                                if (isPassedChecks) {
+                                    intendedResult.add(s);
+                                }
+                            }
+                            break;
+                        } else if (mode.equalsIgnoreCase("any")) {
+                            toSearch = inputLines[currentInputLine].trim().toLowerCase();
+                            currentInputLine++;
+                            String[] allChecks = toSearch.split(" ");
+
+                            for (String s : reference) {
+                                s = s.toLowerCase();
+
+                                boolean isPassedChecks = false;
+
+                                for (String currCheck : allChecks) {
+                                    if (s.contains(" " + currCheck + " ")
+                                        || s.startsWith(currCheck + " ")
+                                        || s.endsWith(" " + currCheck)) {
+
+                                        isPassedChecks = true;
+                                        break;
+                                    }
+                                }
+
+                                if (isPassedChecks) {
+                                    intendedResult.add(s);
+                                }
+                            }
+                            break;
+                        } else if (mode.equalsIgnoreCase("none")) {
+                            toSearch = inputLines[currentInputLine].trim().toLowerCase();
+                            currentInputLine++;
+                            String[] allChecks = toSearch.split(" ");
+
+                            for (String s : reference) {
+                                s = s.toLowerCase();
+
+                                boolean isPassedChecks = true;
+
+                                for (String currCheck : allChecks) {
+                                    if (s.contains(" " + currCheck + " ")
+                                        || s.startsWith(currCheck + " ")
+                                        || s.endsWith(" " + currCheck)) {
+
+                                        isPassedChecks = false;
+                                        break;
+                                    }
+                                }
+
+                                if (isPassedChecks) {
+                                    intendedResult.add(s);
+                                }
+                            }
+                            break;
                         }
                     }
 
-
-
-                    currentSearchResult = new String[intendedResult.size()];
+                    String[] userResult = new String[intendedResult.size()];
                     for (int i = 0; i < intendedResult.size(); i++) {
                         try {
-                            currentSearchResult[i] = cleanedOutput.get(currentOutputLine++);
+                            userResult[i] = cleanedOutput.get(currentOutputLine++);
                         } catch (IndexOutOfBoundsException e) {
                             return new CheckResult(false,
                                 "Seems like you output less than expected. " +
@@ -159,9 +191,9 @@ public class SimpleSearchEngineTest extends StageTest<TestClue> {
                     String[] correctOutput = intendedResult.toArray(new String[0]);
 
                     Arrays.sort(correctOutput);
-                    Arrays.sort(currentSearchResult);
+                    Arrays.sort(userResult);
 
-                    if (!Arrays.equals(correctOutput, currentSearchResult)) {
+                    if (!Arrays.equals(correctOutput, userResult)) {
                         return new CheckResult(false,
                             "Search result is not equal " +
                                 "to the expected search");
@@ -216,4 +248,3 @@ public class SimpleSearchEngineTest extends StageTest<TestClue> {
         return Arrays.stream(items).parallel().anyMatch(inputStr::contains);
     }
 }
-

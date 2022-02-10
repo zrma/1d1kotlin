@@ -1,6 +1,5 @@
 public class SearchEngineTests {
-    public static final String NAMES =
-        "Kristofer Galley\n" +
+    public static final String NAMES = "Kristofer Galley\n" +
         "Fernando Marbury fernando_marbury@gmail.com\n" +
         "Kristyn Nix nix-kris@gmail.com\n" +
         "Regenia Enderle\n" +
