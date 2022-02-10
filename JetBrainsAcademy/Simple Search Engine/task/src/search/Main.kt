@@ -5,19 +5,15 @@ import java.io.File
 fun main(args: Array<String>) {
     val dataFile = args[1]
     val data = File(dataFile).readLines()
+    val index = buildIndex(data)
 
     while (true) {
         when (readLine()!!.toInt()) {
             1 -> {
                 val target = readLine()!!
-                var found = false
-                for (datum in data) {
-                    if (datum.contains(target, ignoreCase = true)) {
-                        println(datum)
-                        found = true
-                    }
-                }
-                if (!found) {
+                if (target in index) {
+                    index[target]!!.forEach { println(data[it]) }
+                } else {
                     println("No matching people found.")
                 }
             }
@@ -35,4 +31,14 @@ fun main(args: Array<String>) {
             }
         }
     }
+}
+
+fun buildIndex(data: List<String>): Map<String, List<Int>> {
+    val result = mutableMapOf<String, List<Int>>()
+    for ((index, datum) in data.withIndex()) {
+        for (word in datum.split(" ")) {
+            result[word] = result.getOrDefault(word, listOf()) + index
+        }
+    }
+    return result
 }
