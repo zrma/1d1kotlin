@@ -1,0 +1,19 @@
+<h2>Board game basics: Player</h2>
+<html>
+ <head></head>
+ <body>
+  <p>In our new board game, we've already specified a <code class="language-kotlin">Player</code> class:</p> 
+  <pre><code class="language-kotlin">class Player(val id: Int, val name: String, val hp: Int)</code></pre> 
+  <p>Now we should create a companion object for the <code class="language-kotlin">Player</code> class that implements a <code class="language-kotlin">create</code> method:</p> 
+  <pre><code class="language-kotlin">fun create(name: String): Player</code></pre> 
+  <p>The <code class="language-kotlin">id</code> should be unique. The default player <code class="language-kotlin">hp</code> equals 100.</p> 
+  <p><button class="btn-sm btn-outline-secondary" onclick="getElementById('hint-559').style.display='inline'"> Hint </button> </p>
+  <div id="hint-559" style="display:none;">
+   For creating a unique id, you can create a custom variable and change its value with each function call.
+  </div>
+  <p></p>
+ </body>
+</html><br><br><font color="gray">Memory limit: 256 MB</font><br><font color="gray">Time limit: 8 seconds</font><br><br>
+<b>Caution</b><br><br>
+You may see errors in your code or execution results due to missing context. Don’t worry about it, just write the solution and press Check.
+<br><br>

@@ -1,0 +1,26 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    class Player(val id: Int, val name: String, val speed: Int, val health: Int, val armor: Int) {
+
+       object BaseProperties {
+           val baseSpeed = 7
+           val baseHealth = 100
+           val baseArmor = 100
+        }
+
+        object MaxProperties {
+            val maxSpeed = 13
+            val maxHealth = 140
+            val maxArmor = 100
+        }
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10713#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sun, 13 Feb 2022 13:41:18 UTC
+record: -1

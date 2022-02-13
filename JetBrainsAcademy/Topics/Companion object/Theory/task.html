@@ -1,0 +1,146 @@
+<h2>Companion object</h2>
+<html>
+ <head></head>
+ <body>
+  <p>You already know how to create singletons associated with classes.<span style="color: #66cc66;"> </span>However, in many cases, you need only one singleton for a class, and using its full name may seem wordy. For example, you might need to store only one common property. In this case, you can use another Kotlin feature, <strong>the companion object</strong>.</p> 
+  <h5>Companion object</h5> 
+  <p>An object declaration inside a class can be marked with the <strong>companion</strong> keyword:</p> 
+  <pre><code class="language-kotlin">class Player(val id: Int) {
+    companion object Properties {
+        /* Default player speed in playing field - 7 cells per turn */
+        val defaultSpeed = 7
+
+        fun calcMovePenalty(cell: Int): Int {
+            /* calc move speed penalty */
+        }
+    }
+}
+
+/* prints 7 */
+println(Player.Properties.defaultSpeed)</code></pre> 
+  <p>A companion object is a singleton attached to an outer class, and hence it cannot be accessed without accessing the outer class. It allows us to understand that the current object is somehow connected with the outer class. For example, we can store the default speed for all players in the <code class="language-kotlin">Player</code> companion object. That also means that every <code class="language-kotlin">Player</code> instance contains a reference to the companion object and will return its instance every time.</p> 
+  <p>Until now, we've worked with a named companion object. However, unlike the case of a nested object, the name can be omitted. Let's try it:</p> 
+  <pre><code class="language-kotlin">class Player(val id: Int) {
+    companion object {
+        /* Default player speed in playing field - 7 cells per turn */
+        val defaultSpeed = 7
+
+        fun calcMovePenalty(cell: Int): Int {
+            /* calc move speed penalty */
+        }
+    }
+}
+
+/* prints 7 */
+println(Player.defaultSpeed)</code></pre> 
+  <p>As you can see, if we omit the name of a companion object, we can still access it through the outer class declaration. If we want to somehow use it, we can define it manually. If a companion object doesn't have a name, we can also use the default name <span style="color: #66cc66;"><code class="language-kotlin">Companion</code></span>:</p> 
+  <pre><code class="language-kotlin">/* prints 7 too */
+println(Player.Companion.defaultSpeed)</code></pre> 
+  <h5>Companion object and outer class</h5> 
+  <p>A companion is really closely associated with the outer class. You may freely use properties and functions from the companion object in the outer class. For example:</p> 
+  <pre><code class="language-kotlin">class Deck {
+    companion object {
+        val size = 10
+        val height = 2
+        fun volume(bottom: Int, height: Int) = bottom * height
+    }
+
+    val square = size * size             //100
+    val volume = volume(square, height)  //200
+}</code></pre> 
+  <p>But what happens if the outer class has a property with the same name as the companion object? Well, in this case, the properties from the class will shadow the properties of the companion.</p> 
+  <pre><code class="language-kotlin">class Deck {
+    companion object {
+        val size = 10
+    }
+    val size = 2
+    val square = size * size // 4
+}</code></pre> 
+  <p>In this case, if you want to use a property from the companion, you must use the companion's name, or, if it wasn't named, the default name Companion:</p> 
+  <pre><code class="language-kotlin">class Deck {
+    companion object {
+        val size = 10
+    }
+    val size = 2
+    val square = Companion.size * Companion.size // 100
+}</code></pre> 
+  <p>Similar to the case of nested objects, you cannot use the properties and the functions of the outer class in the inner one. For example, you cannot do something like that:</p> 
+  <pre><code class="language-kotlin">class Deck() {    
+    val size = 2
+    object Properties {
+        val defaultSize = size // you cannot get this variable
+    }
+}</code></pre> 
+  <h5>Limitations of companion objects</h5> 
+  <p>Only one companion object is available for each class. That means you can't create multiple companion objects for a class because Kotlin does not support this behavior, even if they have different names. If we try to do it, an error will occur:</p> 
+  <pre><code class="language-kotlin">class BadClass {
+    companion object Properties {
+    
+    }
+
+    companion object Factory {
+    
+    }
+}
+
+// Compilation error
+// Error: Only one companion object is allowed per class</code></pre> 
+  <p>However, we can create one companion object and several nested objects:</p> 
+  <pre><code class="language-kotlin">class Player(val id: Int) {
+    companion object Properties {
+        /* Default player speed in playing field - 7 cells per turn */
+        val defaultSpeed = 7
+
+        fun calcMovePenalty(cell: Int): Int {
+            /* calc move speed penalty */
+        }
+    }
+
+    /* creates a new instance of Player */
+    object Factory {
+        fun create(playerId: Int): Player {
+            return Player(playerId)
+        }
+    }
+}
+
+/* prints 7 */
+println(Player.Properties.defaultSpeed)
+
+/* also prints 7 */
+println(Player.defaultSpeed)
+
+/* prints 13 */
+println(Player.Factory.create(13).id)</code></pre> 
+  <p>There is one more limitation: we cannot create a companion object inside another singleton (or a companion object) because that violates the global access principle.</p> 
+  <pre><code class="language-kotlin">object OuterSingleton {
+    companion object InnerSingleton { // Modifier 'companion' is not applicable inside 'object'  
+  
+    }
+}</code></pre> 
+  <h5>Analogue in other languages</h5> 
+  <p>If you come from another programming language, you may be a little confused by companion objects. The closest concept to it is <code class="language-kotlin">static</code> members. The keyword <code class="language-kotlin">static</code> means that fields and methods with this modifier are common for all objects of the class and can be used without creating an instance of the class. You may encounter this keyword in several languages.</p> 
+  <p>For example, in Java, the usage of <code class="language-kotlin">static</code> will look like this:</p> 
+  <pre><code class="language-java">class Dog {
+    public static int numOfPaws = 4;
+
+    public static String createSound() {
+        return "WUF-WUF";
+    }
+}
+/*prints WUF-WUF*/
+System.out.println(Dog.createSound());</code></pre> 
+  <p>As you may know, Kotlin doesn’t have the <code class="language-kotlin">static</code> keyword. If you need something common to all instances of a class, you can use a companion object:</p> 
+  <pre><code class="language-kotlin">class Dog {
+    companion object {
+        val numOfPaws: Int = 4
+        fun createSound(): String = "WUF-WUF"
+    }
+}
+/*prints WUF-WUF*/
+println(Dog.createSound())</code></pre> 
+  <p>As you can see, when you use a companion object you also don't need to create a class instance to get this function! Remember, a companion object is not equal to a Java <code class="language-kotlin">static</code> initializer. In Kotlin, it is a single nested object that wraps all methods and fields which are common for the whole class. </p> 
+  <h5>Conclusion</h5> 
+  <p>Let's recap! Declaring a companion object is a good way to organize your data. It is like a nested object, but more closely related to the class. You can freely work with its properties from the outer class as if they are the companion's own properties. Use a companion object when you need one singleton associated with a class: it is preferable to<span style="color: #66cc66;"> </span>use a companion object rather than a nested class. Now, let's move on to practice!</p>
+ </body>
+</html>

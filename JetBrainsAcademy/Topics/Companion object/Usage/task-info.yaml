@@ -1,0 +1,28 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: You want to create some common object for the existing singleton.
+- text: You need one structure connected to a class rather than to its instances.
+- text: You want some properties to be the same for all instances of the class
+- text: You need a class that has only one instance.
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10710#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sun, 13 Feb 2022 13:46:55 UTC
+record: -1
+selected_options:
+- 1
+- 2
