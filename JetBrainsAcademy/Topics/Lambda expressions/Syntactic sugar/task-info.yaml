@@ -1,5 +1,12 @@
 type: choice
-is_multiple_choice: false
+is_multiple_choice: true
+options:
+- text: first(5, { i -&gt; i })
+- text: first(5, { it })
+- text: first(5) { it }
+- text: second({ i -&gt; i }, 5)
+- text: second({ it }, 5)
+- text: second(5) { it }
 message_correct: Congratulations!
 message_incorrect: Incorrect solution
 files:

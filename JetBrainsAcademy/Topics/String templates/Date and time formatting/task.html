@@ -2,6 +2,12 @@
 <html>
  <head></head>
  <body>
-  <p>You need to write a program that prints date and time in a special format. Hours, minutes and seconds are split by a colon, and day, month and year are split by a slash. Take a look at the examples below.</p>
+  <p>You need to write a program that prints dates and times in a special format. Hours, minutes, and seconds are split by a colon, and day, month, and year are split by a slash. Take a look at the examples below.</p> 
+  <p>You can read three numbers in a line this way:</p> 
+  <pre><code class="language-kotlin">val (a, b, c) = readLine()!!.split(' ')
+
+// or since Kotlin 1.6
+
+val (d, e, f) = readln().split(' ')</code></pre>
  </body>
 </html><br><b>Sample Input:</b><br><pre><code class="language-no-highlight">23 59 59<br>12 12 2018</code></pre><br><b>Sample Output:</b><br><pre><code class="language-no-highlight">23:59:59 12/12/2018</code></pre><br><br><b>Sample Input:</b><br><pre><code class="language-no-highlight">1 2 3<br>4 5 2018</code></pre><br><b>Sample Output:</b><br><pre><code class="language-no-highlight">1:2:3 4/5/2018</code></pre><br><br><br><font color="gray">Memory limit: 256 MB</font><br><font color="gray">Time limit: 8 seconds</font><br><br>

@@ -1,5 +1,11 @@
 type: choice
-is_multiple_choice: false
+is_multiple_choice: true
+options:
+- text: The keyword continue only works together with the if expression.
+- text: With a label, it provides a possibility to exit from the inner loop.
+- text: It lets us skip the current iteration of the loop using a condition.
+- text: It cannot be used with break and return expressions in the same loop.
+- text: The keyword continue only works together with labels.
 message_correct: Congratulations!
 message_incorrect: Incorrect solution
 files:
