@@ -1,0 +1,33 @@
+<h2>Ordinal property</h2>
+<html>
+ <head></head>
+ <body>
+  <p>What is the output of this code?</p> 
+  <pre><code class="language-kotlin">enum class Rainbow(val colorName: String) {
+
+    RED("Red"),
+    ORANGE("Orange"),
+    YELLOW("Yellow"),
+    GREEN("Green"),
+    BLUE("Blue"),
+    INDIGO("Indigo"),
+    VIOLET("Violet"),
+    NULL("");
+
+    companion object {
+
+        fun findByName(name: String): Rainbow {
+            for (color in values()) {
+                if (name == color.colorName) return color
+            }
+            return NULL
+        }
+    }
+}
+
+fun main() {
+    val color = Rainbow.findByName("Black")
+    println(color.ordinal)
+}</code></pre>
+ </body>
+</html>
