@@ -1,0 +1,33 @@
+<h2>Shapeshifter</h2>
+<html>
+ <head></head>
+ <body>
+  <p>Imagine you have a 2D list <code class="language-kotlin">inputList</code>. It is guaranteed that it has at least two nested lists.</p> 
+  <p>Create a new two-dimensional list with two nested lists — the first and last lists of <code class="language-kotlin">inputList</code> — in reverse order. In other words, the last one should become the first, and vice versa.</p> 
+  <p>Print the resulting list.</p> 
+  <p><button class="btn-sm btn-outline-secondary" onclick="getElementById('hint-409').style.display='inline'"> Hint </button> </p>
+  <div id="hint-409" style="display:none;">
+   You can use 
+   <code class="language-kotlin">first()</code> and 
+   <code class="language-kotlin">last()</code>.
+  </div>
+  <p></p> 
+  <p><strong>Sample Input 1:</strong></p> 
+  <pre><code class="language-kotlin">val inputList = mutableListOf(
+    mutableListOf('P', 'R', 'O', 'G', 'R', 'A', 'M', 'M', 'I', 'N', 'G'),
+    mutableListOf('I', 'S'),
+    mutableListOf('M', 'A', 'G', 'I', 'C')
+)</code></pre> 
+  <p><strong>Sample Output 1:</strong></p> 
+  <pre><code class="language-no-highlight">[[M, A, G, I, C], [P, R, O, G, R, A, M, M, I, N, G]]</code></pre> 
+  <p><strong>Sample Input 2:</strong></p> 
+  <pre><code class="language-kotlin">val inputList = mutableListOf(
+        mutableListOf(1, 2),
+        mutableListOf(3, 4),
+        mutableListOf(5, 6),
+        mutableListOf(7, 8)
+)</code></pre> 
+  <p><strong>Sample Output 2:</strong></p> 
+  <pre><code class="language-no-highlight">[[7, 8], [1, 2]]</code></pre>
+ </body>
+</html><br><br><font color="gray">Memory limit: 256 MB</font><br><font color="gray">Time limit: 8 seconds</font><br><br>

@@ -1,0 +1,28 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: a
+- text: b
+- text: c
+- text: d
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/15131#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Tue, 15 Feb 2022 12:55:29 UTC
+record: -1
+selected_options:
+- 1
+- 3
