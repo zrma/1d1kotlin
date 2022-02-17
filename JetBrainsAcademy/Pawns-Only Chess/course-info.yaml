@@ -10,4 +10,5 @@ summary: Chess is a very popular game, but over time even the classic chess rule
 programming_language: Kotlin
 content:
 - Pawns-Only Chess
+- Topics
 mode: Study

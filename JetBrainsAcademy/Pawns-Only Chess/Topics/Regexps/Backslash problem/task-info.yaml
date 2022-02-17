@@ -1,0 +1,15 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: val regex = TODO()
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10728#comment
+status: Solved
+feedback:
+  message: '<html>Passed. Interesting: seemingly, we do screen \ with \\. But if we
+    keep three backslashes, Kotlin will decide that one of it is for the quotation
+    mark (\" is interpreted as escape sequence for " in String literals). So we need
+    four backslashes. Later, we’ll talk about how to avoid multiple levels of escaping.</html>'
+  time: Thu, 17 Feb 2022 12:18:23 UTC
+record: -1
