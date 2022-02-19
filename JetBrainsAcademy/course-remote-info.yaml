@@ -13,7 +13,7 @@ stages:
   is_completed: true
 - id: 924
   step: 13176
-  is_completed: false
+  is_completed: true
 - id: 925
   step: 13177
   is_completed: false
@@ -38,22 +38,16 @@ topics:
     theory_id: 17408
   - title: Data types
     theory_id: 4388
-  - title: The classification of basic types
-    theory_id: 4455
   - title: Comments
     theory_id: 4406
   - title: Coding style conventions
     theory_id: 4419
   - title: Naming variables
     theory_id: 4389
+  - title: The classification of basic types
+    theory_id: 4455
   - title: Standard output
     theory_id: 4425
-  - title: Arithmetic operations
-    theory_id: 4472
-  - title: Boolean and logical operations
-    theory_id: 4515
-  - title: Increment and decrement
-    theory_id: 10776
   - title: Invoking functions
     theory_id: 4575
   - title: Standard input
@@ -62,22 +56,28 @@ topics:
     theory_id: 4672
   - title: Reading data with a readLine
     theory_id: 11224
-  - title: Objects
-    theory_id: 11233
+  - title: String basics
+    theory_id: 12553
+  - title: String templates
+    theory_id: 4547
+  - title: Boolean and logical operations
+    theory_id: 4515
+  - title: Arithmetic operations
+    theory_id: 4472
   - title: Type of the numeric expression
     theory_id: 9506
+  - title: Increment and decrement
+    theory_id: 10776
   - title: Integers in action
     theory_id: 4488
   - title: Relational operators
     theory_id: 4525
   - title: Declaring functions
     theory_id: 4580
+  - title: Objects
+    theory_id: 11233
   - title: Equality
     theory_id: 11236
-  - title: String basics
-    theory_id: 12553
-  - title: String templates
-    theory_id: 4547
   - title: IntelliJ IDEA
     theory_id: 3801
   - title: IDEA Basics
@@ -91,8 +91,6 @@ topics:
     theory_id: 5544
   - title: Hexadecimal numbers
     theory_id: 8788
-  - title: Regexps basics
-    theory_id: 7580
   - title: If expression
     theory_id: 4625
   - title: Repeating blocks
@@ -101,28 +99,30 @@ topics:
     theory_id: 7899
   - title: Characters
     theory_id: 4680
-  - title: Working with strings
-    theory_id: 12561
-  - title: Getting substrings
-    theory_id: 8535
   - title: Ranges
     theory_id: 4633
   - title: For loop and ranges
     theory_id: 4652
-  - title: Regexps
-    theory_id: 10721
-  - title: Sets, ranges, and alternations
-    theory_id: 14514
-  - title: Shorthands
-    theory_id: 14540
   - title: Introduction to MutableList
     theory_id: 14879
   - title: Work with MutableLists
     theory_id: 14902
   - title: For loop and lists
     theory_id: 15022
+  - title: Working with strings
+    theory_id: 12561
+  - title: Getting substrings
+    theory_id: 8535
   - title: Processing strings
     theory_id: 9027
+  - title: Regexps basics
+    theory_id: 7580
+  - title: Regexps
+    theory_id: 10721
+  - title: Sets, ranges, and alternations
+    theory_id: 14514
+  - title: Shorthands
+    theory_id: 14540
   2:
   - title: Multi-dimensional list
     theory_id: 15127
@@ -134,32 +134,20 @@ topics:
   - title: Jumps and returns
     theory_id: 6165
   4:
-  - title: The concept of patterns
-    theory_id: 3611
   - title: Computer algorithms
     theory_id: 16547
   - title: The big O notation
     theory_id: 16699
   - title: Data structures
     theory_id: 16927
+  - title: The concept of patterns
+    theory_id: 3611
   - title: Computer programming
     theory_id: 8739
   - title: Introduction to OOP
     theory_id: 3614
-  - title: Design principles
-    theory_id: 8956
-  - title: Single Responsibility Principle
-    theory_id: 8963
   - title: Declaring classes
     theory_id: 6200
-  - title: Introduction to software architecture
-    theory_id: 15368
-  - title: Stack
-    theory_id: 5252
-  - title: Call stack
-    theory_id: 11550
-  - title: Scopes
-    theory_id: 17116
   - title: Functional decomposition
     theory_id: 12668
   - title: Default arguments
@@ -170,8 +158,20 @@ topics:
     theory_id: 10740
   - title: Member functions
     theory_id: 6364
+  - title: Stack
+    theory_id: 5252
+  - title: Call stack
+    theory_id: 11550
+  - title: Scopes
+    theory_id: 17116
   - title: Nested and inner classes
     theory_id: 14723
+  - title: Introduction to software architecture
+    theory_id: 15368
+  - title: Design principles
+    theory_id: 8956
+  - title: Single Responsibility Principle
+    theory_id: 8963
   - title: Object declarations
     theory_id: 10698
   - title: Companion object
