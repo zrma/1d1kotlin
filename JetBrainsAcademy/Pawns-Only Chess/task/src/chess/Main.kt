@@ -1,5 +1,7 @@
 package chess
 
+import kotlin.math.abs
+
 fun main() {
     val title = "Pawns-Only Chess"
     println(title)
@@ -12,20 +14,21 @@ fun main() {
     val board =
         Board(
             arrayListOf(
-                arrayListOf(" ", " ", " ", " ", " ", " ", " ", " "),
-                arrayListOf("W", "W", "W", "W", "W", "W", "W", "W"),
-                arrayListOf(" ", " ", " ", " ", " ", " ", " ", " "),
-                arrayListOf(" ", " ", " ", " ", " ", " ", " ", " "),
-                arrayListOf(" ", " ", " ", " ", " ", " ", " ", " "),
-                arrayListOf(" ", " ", " ", " ", " ", " ", " ", " "),
-                arrayListOf("B", "B", "B", "B", "B", "B", "B", "B"),
-                arrayListOf(" ", " ", " ", " ", " ", " ", " ", " "),
+                arrayListOf(Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" ")),
+                arrayListOf(Cell("W"), Cell("W"), Cell("W"), Cell("W"), Cell("W"), Cell("W"), Cell("W"), Cell("W")),
+                arrayListOf(Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" ")),
+                arrayListOf(Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" ")),
+                arrayListOf(Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" ")),
+                arrayListOf(Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" ")),
+                arrayListOf(Cell("B"), Cell("B"), Cell("B"), Cell("B"), Cell("B"), Cell("B"), Cell("B"), Cell("B")),
+                arrayListOf(Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" "), Cell(" ")),
             )
         )
     board.print()
 
-    var firstPlayer = true
+    var turn = 0
     while (true) {
+        val firstPlayer = turn % 2 == 0
         if (firstPlayer) {
             println("$player0's turn:")
         } else {
@@ -43,81 +46,169 @@ fun main() {
             println("Invalid Input")
             continue
         }
-        if (!board.move(input, firstPlayer)) {
+        if (!board.move(input, turn)) {
             continue
         }
 
         board.print()
-        firstPlayer = !firstPlayer
+        ++turn
     }
 }
 
-class Board(private val pawns: ArrayList<ArrayList<String>>) {
-    fun move(command: String, firstPlayer: Boolean): Boolean {
+class Board(private val pawns: ArrayList<ArrayList<Cell>>) {
+    fun move(command: String, turn: Int): Boolean {
         val fromX = command[0].code - 97 // 'a'
         val fromY = command[1].code - 49 // '1'
         val toX = command[2].code - 97
         val toY = command[3].code - 49
 
         val from = pawns[fromY][fromX]
-        if (firstPlayer && from != "W") {
-            println("No white pawn at ${command.subSequence(0, 2)}")
-            return false
-        }
-        if (!firstPlayer && from != "B") {
-            println("No black pawn at ${command.subSequence(0, 2)}")
-            return false
-        }
-
-        if (fromX != toX || fromY == toY) {
-            println("Invalid Input")
-            return false
-        }
-
         val to = pawns[toY][toX]
-        if (to != " ") {
+
+        val opt = CommandOpt(
+            command,
+            fromX,
+            fromY,
+            from,
+            toX,
+            toY,
+            to,
+            turn,
+            firstPlayer = turn % 2 == 0
+        )
+
+        if (!exist(opt)) {
+            return false
+        }
+
+        if (!checkY(opt)) {
+            return false
+        }
+
+        if (abs(toX - fromX) == 1) {
+            return capture(opt)
+        }
+
+        if (toX != fromX) {
             println("Invalid Input")
             return false
         }
 
-        val dist0 = if (firstPlayer) 1 else -1
-        val dist1 =
-            if (firstPlayer && fromY == 1 || !firstPlayer && fromY == 6) dist0 * 2 else dist0
-
-        if (toY - fromY != dist0 && toY - fromY != dist1) {
+        if (to.color != " ") {
             println("Invalid Input")
             return false
         }
 
-        pawns[toY][toX] = from
-        pawns[fromY][fromX] = " "
+        pawns[toY][toX] = Cell(from.color, turn)
+        pawns[fromY][fromX] = Cell(" ")
         return true
+    }
+
+    private fun capture(opt: CommandOpt): Boolean {
+        val firstPlayer = opt.firstPlayer
+        val from = opt.from
+        val fromX = opt.fromX
+        val fromY = opt.fromY
+        val toX = opt.toX
+        val toY = opt.toY
+        val turn = opt.turn
+
+        val dist = if (firstPlayer) 1 else -1
+        if (toY - fromY != dist) {
+            println("Invalid Input")
+            return false
+        }
+
+        val enemy = if (firstPlayer) "B" else "W"
+        val to = pawns[toY][toX]
+        if (to.color == enemy) {
+            pawns[toY][toX] = Cell(from.color, turn)
+            pawns[fromY][fromX] = Cell(" ")
+            return true
+        }
+        val guardTarget = pawns[toY - dist][toX]
+        if (guardTarget.color == enemy && guardTarget.turn == turn - 1) {
+            pawns[toY][toX] = Cell(from.color, turn)
+            pawns[fromY][fromX] = Cell(" ")
+            pawns[toY - dist][toX] = Cell(" ")
+            return true
+        }
+        println("Invalid Input")
+        return false
+    }
+
+    companion object {
+        fun exist(opt: CommandOpt): Boolean {
+            val firstPlayer = opt.firstPlayer
+            val from = opt.from
+            val command = opt.command
+
+            if (firstPlayer && from.color != "W") {
+                println("No white pawn at ${command.subSequence(0, 2)}")
+                return false
+            }
+            if (!firstPlayer && from.color != "B") {
+                println("No black pawn at ${command.subSequence(0, 2)}")
+                return false
+            }
+            return true
+        }
+
+        fun checkY(opt: CommandOpt): Boolean {
+            val firstPlayer = opt.firstPlayer
+            val fromY = opt.fromY
+            val toY = opt.toY
+
+            val dist0 = if (firstPlayer) 1 else -1
+            val dist1 =
+                if (firstPlayer && fromY == 1 || !firstPlayer && fromY == 6) dist0 * 2 else dist0
+
+            if (toY - fromY != dist0 && toY - fromY != dist1) {
+                println("Invalid Input")
+                return false
+            }
+            return true
+        }
     }
 
     fun print() {
         println(
             listOf(
-                    "  +---+---+---+---+---+---+---+---+",
-                    "8 | ${pawns[7][0]} | ${pawns[7][1]} | ${pawns[7][2]} | ${pawns[7][3]} | ${pawns[7][4]} | ${pawns[7][5]} | ${pawns[7][6]} | ${pawns[7][7]} |",
-                    "  +---+---+---+---+---+---+---+---+",
-                    "7 | ${pawns[6][0]} | ${pawns[6][1]} | ${pawns[6][2]} | ${pawns[6][3]} | ${pawns[6][4]} | ${pawns[6][5]} | ${pawns[6][6]} | ${pawns[6][7]} |",
-                    "  +---+---+---+---+---+---+---+---+",
-                    "6 | ${pawns[5][0]} | ${pawns[5][1]} | ${pawns[5][2]} | ${pawns[5][3]} | ${pawns[5][4]} | ${pawns[5][5]} | ${pawns[5][6]} | ${pawns[5][7]} |",
-                    "  +---+---+---+---+---+---+---+---+",
-                    "5 | ${pawns[4][0]} | ${pawns[4][1]} | ${pawns[4][2]} | ${pawns[4][3]} | ${pawns[4][4]} | ${pawns[4][5]} | ${pawns[4][6]} | ${pawns[4][7]} |",
-                    "  +---+---+---+---+---+---+---+---+",
-                    "4 | ${pawns[3][0]} | ${pawns[3][1]} | ${pawns[3][2]} | ${pawns[3][3]} | ${pawns[3][4]} | ${pawns[3][5]} | ${pawns[3][6]} | ${pawns[3][7]} |",
-                    "  +---+---+---+---+---+---+---+---+",
-                    "3 | ${pawns[2][0]} | ${pawns[2][1]} | ${pawns[2][2]} | ${pawns[2][3]} | ${pawns[2][4]} | ${pawns[2][5]} | ${pawns[2][6]} | ${pawns[2][7]} |",
-                    "  +---+---+---+---+---+---+---+---+",
-                    "2 | ${pawns[1][0]} | ${pawns[1][1]} | ${pawns[1][2]} | ${pawns[1][3]} | ${pawns[1][4]} | ${pawns[1][5]} | ${pawns[1][6]} | ${pawns[1][7]} |",
-                    "  +---+---+---+---+---+---+---+---+",
-                    "1 | ${pawns[0][0]} | ${pawns[0][1]} | ${pawns[0][2]} | ${pawns[0][3]} | ${pawns[0][4]} | ${pawns[0][5]} | ${pawns[0][6]} | ${pawns[0][7]} |",
-                    "  +---+---+---+---+---+---+---+---+",
-                    "    a   b   c   d   e   f   g   h",
-                    "",
-                )
+                "  +---+---+---+---+---+---+---+---+",
+                "8 | ${pawns[7].joinToString(" | ") { it.color }} |",
+                "  +---+---+---+---+---+---+---+---+",
+                "7 | ${pawns[6].joinToString(" | ") { it.color }} |",
+                "  +---+---+---+---+---+---+---+---+",
+                "6 | ${pawns[5].joinToString(" | ") { it.color }} |",
+                "  +---+---+---+---+---+---+---+---+",
+                "5 | ${pawns[4].joinToString(" | ") { it.color }} |",
+                "  +---+---+---+---+---+---+---+---+",
+                "4 | ${pawns[3].joinToString(" | ") { it.color }} |",
+                "  +---+---+---+---+---+---+---+---+",
+                "3 | ${pawns[2].joinToString(" | ") { it.color }} |",
+                "  +---+---+---+---+---+---+---+---+",
+                "2 | ${pawns[1].joinToString(" | ") { it.color }} |",
+                "  +---+---+---+---+---+---+---+---+",
+                "1 | ${pawns[0].joinToString(" | ") { it.color }} |",
+                "  +---+---+---+---+---+---+---+---+",
+                "    a   b   c   d   e   f   g   h",
+                "",
+            )
                 .joinToString("\n")
         )
     }
 }
+
+data class Cell(val color: String, var turn: Int = 0)
+
+data class CommandOpt(
+    val command: String,
+    val fromX: Int,
+    val fromY: Int,
+    val from: Cell,
+    val toX: Int,
+    val toY: Int,
+    val to: Cell,
+    val turn: Int,
+    val firstPlayer: Boolean
+)
