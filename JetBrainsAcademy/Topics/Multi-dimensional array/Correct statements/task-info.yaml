@@ -1,0 +1,30 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: Nested arrays can be of different types in the same multi-dimensional array
+- text: A multi-dimensional array can be only two- or three-dimensional
+- text: A multi-dimensional array can be represented as an array of arrays
+- text: Nested arrays can have different numbers of elements in the same multi-dimensional
+    array
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10951#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Mon, 21 Feb 2022 12:46:00 UTC
+record: -1
+selected_options:
+- 0
+- 2
+- 3

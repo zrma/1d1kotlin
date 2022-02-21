@@ -1,0 +1,30 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: Position of an object in 3D space
+- text: 'For some mathematical operations '
+- text: Creating matrices
+- text: Creating tables
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10952#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Mon, 21 Feb 2022 12:46:17 UTC
+record: -1
+selected_options:
+- 0
+- 1
+- 2
+- 3

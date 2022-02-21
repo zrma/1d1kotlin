@@ -5,19 +5,19 @@ files:
   text: |-
     fun main() {
         //Do not touch code below
-        var inputList: MutableList<MutableList<String>> = mutableListOf()
+        var inputArray: Array<Array<String>> = arrayOf()
         val n = readLine()!!.toInt()
         for (i in 0 until n) {
-            val strings = readLine()!!.split(' ').toMutableList()
-            inputList.add(strings)
+            val strings = readLine()!!.split(' ').toTypedArray()
+            inputArray += strings
         }
         //write your code here
 
     }
   learner_created: false
-feedback_link: https://hyperskill.org/learn/step/15136#comment
+feedback_link: https://hyperskill.org/learn/step/10959#comment
 status: Solved
 feedback:
   message: <html>Correct solution</html>
-  time: Mon, 21 Feb 2022 12:50:34 UTC
+  time: Mon, 21 Feb 2022 12:51:30 UTC
 record: -1
