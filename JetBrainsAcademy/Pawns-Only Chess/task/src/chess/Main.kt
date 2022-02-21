@@ -52,6 +52,22 @@ fun main() {
 
         board.print()
         ++turn
+
+        if (board.isWinningWhite()) {
+            println("White Wins!")
+            println("Bye!")
+            break
+        }
+        if (board.isWinningBlack()) {
+            println("Black Wins!")
+            println("Bye!")
+            break
+        }
+        if (board.isStalemate(turn)) {
+            println("Stalemate!")
+            println("Bye!")
+            break
+        }
     }
 }
 
@@ -101,6 +117,52 @@ class Board(private val pawns: ArrayList<ArrayList<Cell>>) {
 
         pawns[toY][toX] = Cell(from.color, turn)
         pawns[fromY][fromX] = Cell(" ")
+        return true
+    }
+
+    fun isWinningWhite(): Boolean {
+        return pawns.last().any { it.color == "W" } || pawns.all { it.all { cell -> cell.color != "B" } }
+    }
+
+    fun isWinningBlack(): Boolean {
+        return pawns.first().any { it.color == "B" } || pawns.all { it.all { cell -> cell.color != "W" } }
+    }
+
+    fun isStalemate(turn: Int): Boolean {
+        val firstPlayer = turn % 2 == 0
+        if (firstPlayer) {
+            for ((y, pawn) in pawns.withIndex()) {
+                for ((x, cell) in pawn.withIndex()) {
+                    if (cell.color != "W") {
+                        continue
+                    }
+                    if (pawns[y + 1][x].color == " ") {
+                        return false
+                    }
+                    if (x + 1 < 8 && pawns[y + 1][x + 1].color == "B"
+                        || x - 1 >= 0 && pawns[y + 1][x - 1].color == "B"
+                    ) {
+                        return false
+                    }
+                }
+            }
+        } else {
+            for ((y, pawn) in pawns.withIndex()) {
+                for ((x, cell) in pawn.withIndex()) {
+                    if (cell.color != "B") {
+                        continue
+                    }
+                    if (pawns[y - 1][x].color == " ") {
+                        return false
+                    }
+                    if (x + 1 < 8 && pawns[y - 1][x + 1].color == "W"
+                        || x - 1 >= 0 && pawns[y - 1][x - 1].color == "W"
+                    ) {
+                        return false
+                    }
+                }
+            }
+        }
         return true
     }
 
