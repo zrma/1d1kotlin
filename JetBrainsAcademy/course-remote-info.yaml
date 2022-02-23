@@ -1,31 +1,34 @@
 hyperskill_project:
-  id: 182
-  ide_files: https://stepik.org/media/attachments/lesson/531252/additional_files.json
+  id: 165
+  ide_files: https://stepik.org/media/attachments/lesson/495737/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Wed, 23 Feb 2022 08:52:28 UTC
+update_date: Thu, 01 Jan 1970 00:00:00 UTC
 stages:
-- id: 922
-  step: 13174
-  is_completed: true
-- id: 923
-  step: 13175
-  is_completed: true
-- id: 924
-  step: 13176
-  is_completed: true
-- id: 925
-  step: 13177
-  is_completed: true
-- id: 926
-  step: 13178
-  is_completed: true
+- id: 856
+  step: 12345
+  is_completed: false
+- id: 857
+  step: 12346
+  is_completed: false
+- id: 858
+  step: 12347
+  is_completed: false
+- id: 859
+  step: 12348
+  is_completed: false
 topics:
   0:
+  - title: Binary numbers
+    theory_id: 5544
+  - title: Hexadecimal numbers
+    theory_id: 8788
+  - title: Converting from decimal to binary
+    theory_id: 5614
+  - title: Octal numbers
+    theory_id: 11949
   - title: Units of information
     theory_id: 6865
-  - title: IDE
-    theory_id: 10996
   - title: Introduction to Kotlin
     theory_id: 4350
   - title: Basic literals
@@ -38,12 +41,6 @@ topics:
     theory_id: 17408
   - title: Data types
     theory_id: 4388
-  - title: Comments
-    theory_id: 4406
-  - title: Coding style conventions
-    theory_id: 4419
-  - title: Naming variables
-    theory_id: 4389
   - title: The classification of basic types
     theory_id: 4455
   - title: Standard output
@@ -72,29 +69,27 @@ topics:
     theory_id: 4488
   - title: Relational operators
     theory_id: 4525
+  - title: If expression
+    theory_id: 4625
+  - title: Repeating blocks
+    theory_id: 4643
+  - title: While loops
+    theory_id: 4659
+  1:
+  - title: Converting from binary to decimal
+    theory_id: 5622
+  - title: Comments
+    theory_id: 4406
+  - title: Coding style conventions
+    theory_id: 4419
+  - title: Naming variables
+    theory_id: 4389
   - title: Declaring functions
     theory_id: 4580
   - title: Objects
     theory_id: 11233
   - title: Equality
     theory_id: 11236
-  - title: IntelliJ IDEA
-    theory_id: 3801
-  - title: IDEA Basics
-    theory_id: 5819
-  - title: Navigation through code
-    theory_id: 5824
-  - title: Writing code with pleasure
-    theory_id: 5829
-  1:
-  - title: Binary numbers
-    theory_id: 5544
-  - title: Hexadecimal numbers
-    theory_id: 8788
-  - title: If expression
-    theory_id: 4625
-  - title: Repeating blocks
-    theory_id: 4643
   - title: Unicode
     theory_id: 7899
   - title: Characters
@@ -115,70 +110,11 @@ topics:
     theory_id: 8535
   - title: Processing strings
     theory_id: 9027
-  - title: Regexps basics
-    theory_id: 7580
-  - title: Regexps
-    theory_id: 10721
-  - title: Sets, ranges, and alternations
-    theory_id: 14514
-  - title: Shorthands
-    theory_id: 14540
   2:
-  - title: Multi-dimensional list
-    theory_id: 15127
+  - title: BigInteger
+    theory_id: 7964
   3:
-  - title: While loops
-    theory_id: 4659
-  - title: When expression
-    theory_id: 4631
-  - title: Jumps and returns
-    theory_id: 6165
-  4:
-  - title: Computer algorithms
-    theory_id: 16547
-  - title: The big O notation
-    theory_id: 16699
-  - title: Data structures
-    theory_id: 16927
-  - title: The concept of patterns
-    theory_id: 3611
-  - title: Computer programming
-    theory_id: 8739
-  - title: Introduction to OOP
-    theory_id: 3614
-  - title: Declaring classes
-    theory_id: 6200
-  - title: Functional decomposition
-    theory_id: 12668
-  - title: Default arguments
-    theory_id: 4637
-  - title: Named arguments
-    theory_id: 4640
-  - title: Constructors
-    theory_id: 10740
-  - title: Member functions
-    theory_id: 6364
-  - title: Stack
-    theory_id: 5252
-  - title: Call stack
-    theory_id: 11550
-  - title: Scopes
-    theory_id: 17116
-  - title: Nested and inner classes
-    theory_id: 14723
-  - title: Introduction to software architecture
-    theory_id: 15368
-  - title: Design principles
-    theory_id: 8956
-  - title: Single Responsibility Principle
-    theory_id: 8963
-  - title: Object declarations
-    theory_id: 10698
-  - title: Companion object
-    theory_id: 10707
-  - title: Enum
-    theory_id: 6245
-  - title: Introduction to creational patterns
-    theory_id: 16251
-  - title: Singleton
-    theory_id: 16469
+  - title: 'Decimal to binary: fractions'
+    theory_id: 11938
+  - title: BigDecimal
+    theory_id: 12536
