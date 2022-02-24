@@ -1,260 +1,51 @@
 <h5>Description</h5>
 
-<p>There are several moves that a pawn can make — a <strong>forward move</strong> and a <strong>capture</strong>. In this stage, you need to implement forwards moves only. A forward move is a move that propels your pawn by <strong>one</strong> <strong>rank </strong>(horizontal line) if the square is not taken by another pawn, or by <strong>two ranks </strong>if this is the first move of the pawn:</p>
+<p>Ideally, we want to convert numbers in different bases, not only from or to the decimal system. In this stage, we will add support for converting numbers from any given source base to any target base. As there are 26 Latin letters and 10 digits, the maximum base is 26 + 10 = 36. So, the target and source base will be between 2 and 36.</p>
 
-<div style="text-align: center;">
-    <figure class="image" style=""><img alt="White's turn. All posible forward moves." height="279" src="https://ucarecdn.com/36498bf2-2c6e-45fe-a099-ef6ea35b80b2/" width="302">
-        <figcaption>White's turn. All possible forward moves.</figcaption>
-    </figure>
-</div>
+<p>Also, it might be more convenient for our users if the program didn't ask for the base before each conversion and instead remembered the previously input base. This way, the users will have to do much less typing when they need to convert a bunch of numbers from base A to base B.</p>
 
-<div style="text-align: center;">
-    <figure class="image" style=""><img alt="Black's turn. All possible forward moves." height="282" src="https://ucarecdn.com/48235e44-1d2b-48e1-a36a-9a3debab8f35/" width="304">
-        <figcaption>Black's turn. All possible forward moves.</figcaption>
-    </figure>
-</div>
+<p>To convert a number from the source base to the target base, you should first convert it to the decimal system and then convert the decimal number to the target base.</p>
 
-<p>If a user inputs an invalid or impossible move, warn them with a message and ask for another move.</p>
+<p>Note that from this stage on, numbers might be larger than you expect, so you should use <code class="java">BigInteger</code> instead of <code class="java">Int</code> or <code class="java">Long</code> to avoid errors.</p>
 
 <h5>Objectives</h5>
 
-<p>When a player inputs a valid move, the program should move the pawn and print an updated chessboard (see Example 1).</p>
+<p>Your program should have a two-level menu:</p>
 
-<p>If a user inputs a move and there is no pawn at the initial square, or it is a pawn of the opposite color, print <code class="java">No white pawn at &lt;Start position&gt;</code> or <code class="java">No black pawn at &lt;Start position&gt;</code>, where <code class="java">&lt;Start position&gt;</code> is the initial square and ask for another move.</p>
+<ul>
+    <li>On the first level, the user sees the following prompt: <code class="java">Enter two numbers in format: {source base} {target base} (To quit type /exit)</code>. Then, they input two numbers separated by a single space: source base and target base. The user also has the option to use the <code class="java">/exit</code> command to quit the program.</li>
+    <li>On the second level, the user sees another prompt: <code class="java">Enter number in base {user source base} to convert to base {user target base} (To go back type /back)</code>, and inputs the number in the source base. The program outputs the message <code class="java">Conversion result:</code> followed by the number in the target base. Then, the program asks for the new number to convert from the previously provided source base to the target base. To change the bases, the user can choose the <code class="java">BACK</code> command and return to the first level menu to make the necessary changes.</li>
+</ul>
 
-<p>Print <code class="java">Invalid Input</code> and ask to make another move if the player's move is invalid.</p>
-
-<h5>Examples</h5>
+<h5>Example</h5>
 
 <p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
 
-<p><strong>Example 1: </strong><em>Correct moves</em></p>
+<pre><code class="language-no-highlight">Enter two numbers in format: {source base} {target base} (To quit type /exit) &gt; 10 2
+Enter number in base 10 to convert to base 2 (To go back type /back) &gt; 11
+Conversion result: 1011
 
-<pre><code class="language-no-highlight">Pawns-Only Chess
-First Player's name:
-&gt; Jane
-Second Player's name:
-&gt; Peter
-  +---+---+---+---+---+---+---+---+
-8 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-7 | B | B | B | B | B | B | B | B |
-  +---+---+---+---+---+---+---+---+
-6 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-5 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-4 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-3 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-2 | W | W | W | W | W | W | W | W |
-  +---+---+---+---+---+---+---+---+
-1 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-    a   b   c   d   e   f   g   h
+Enter number in base 10 to convert to base 2 (To go back type /back) &gt; 18
+Conversion result: 10010
 
-Jane's turn:
-&gt; a2a3
-  +---+---+---+---+---+---+---+---+
-8 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-7 | B | B | B | B | B | B | B | B |
-  +---+---+---+---+---+---+---+---+
-6 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-5 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-4 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-3 | W |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-2 |   | W | W | W | W | W | W | W |
-  +---+---+---+---+---+---+---+---+
-1 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-    a   b   c   d   e   f   g   h
+Enter number in base 10 to convert to base 2 (To go back type /back) &gt; 127
+Conversion result: 1111111
 
-Peter's turn:
-&gt; b7b5
-  +---+---+---+---+---+---+---+---+
-8 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-7 | B |   | B | B | B | B | B | B |
-  +---+---+---+---+---+---+---+---+
-6 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-5 |   | B |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-4 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-3 | W |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-2 |   | W | W | W | W | W | W | W |
-  +---+---+---+---+---+---+---+---+
-1 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-    a   b   c   d   e   f   g   h
+Enter number in base 10 to convert to base 2 (To go back type /back) &gt; 189344562689000108753301247
+Conversion result: 1001110010011111010001010100111110001111101101011010101101001001111110100010111011111111
 
-Jane's turn:
-&gt; e2e4
-  +---+---+---+---+---+---+---+---+
-8 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-7 | B |   | B | B | B | B | B | B |
-  +---+---+---+---+---+---+---+---+
-6 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-5 |   | B |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-4 |   |   |   |   | W |   |   |   |
-  +---+---+---+---+---+---+---+---+
-3 | W |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-2 |   | W | W | W |   | W | W | W |
-  +---+---+---+---+---+---+---+---+
-1 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-    a   b   c   d   e   f   g   h
+Enter number in base 10 to convert to base 2 (To go back type /back) &gt; /back
 
-Peter's turn:
-&gt; exit
-Bye!</code></pre>
+Enter two numbers in format: {source base} {target base} (To quit type /exit) &gt; 36 10
+Enter number in base 36 to convert to base 10 (To go back type /back) &gt; abcde
+Conversion result: 17325410
 
-<p><strong>Example 2: </strong><em>Invalid moves</em></p>
+Enter number in base 36 to convert to base 10 (To go back type /back) &gt; 13a0
+Conversion result: 50904
 
-<pre><code class="language-no-highlight">Pawns-Only Chess
-First Player's name:
-&gt; Jane
-Second Player's name:
-&gt; Peter
-  +---+---+---+---+---+---+---+---+
-8 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-7 | B | B | B | B | B | B | B | B |
-  +---+---+---+---+---+---+---+---+
-6 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-5 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-4 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-3 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-2 | W | W | W | W | W | W | W | W |
-  +---+---+---+---+---+---+---+---+
-1 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-    a   b   c   d   e   f   g   h
+Enter number in base 36 to convert to base 10 (To go back type /back) &gt; az
+Conversion result: 395
 
-Jane's turn:
-&gt; e2e5
-Invalid Input
-Jane's turn:
-&gt; d3d4
-No white pawn at d3
-Jane's turn:
-&gt; e2e3
-  +---+---+---+---+---+---+---+---+
-8 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-7 | B | B | B | B | B | B | B | B |
-  +---+---+---+---+---+---+---+---+
-6 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-5 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-4 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-3 |   |   |   |   | W |   |   |   |
-  +---+---+---+---+---+---+---+---+
-2 | W | W | W | W |   | W | W | W |
-  +---+---+---+---+---+---+---+---+
-1 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-    a   b   c   d   e   f   g   h
+Enter number in base 36 to convert to base 10 (To go back type /back) &gt; /back
 
-Peter's turn:
-&gt; a7a4
-Invalid Input
-Peter's turn:
-&gt; d6d5
-No black pawn at d6
-Peter's turn:
-&gt; b7b5
-  +---+---+---+---+---+---+---+---+
-8 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-7 | B |   | B | B | B | B | B | B |
-  +---+---+---+---+---+---+---+---+
-6 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-5 |   | B |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-4 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-3 |   |   |   |   | W |   |   |   |
-  +---+---+---+---+---+---+---+---+
-2 | W | W | W | W |   | W | W | W |
-  +---+---+---+---+---+---+---+---+
-1 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-    a   b   c   d   e   f   g   h
-
-Jane's turn:
-&gt; e3e5
-Invalid Input
-Jane's turn:
-&gt; e3d4
-Invalid Input
-Jane's turn:
-&gt; e3e4
-  +---+---+---+---+---+---+---+---+
-8 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-7 | B |   | B | B | B | B | B | B |
-  +---+---+---+---+---+---+---+---+
-6 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-5 |   | B |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-4 |   |   |   |   | W |   |   |   |
-  +---+---+---+---+---+---+---+---+
-3 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-2 | W | W | W | W |   | W | W | W |
-  +---+---+---+---+---+---+---+---+
-1 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-    a   b   c   d   e   f   g   h
-
-Peter's turn:
-&gt; b5b7
-Invalid Input
-Peter's turn:
-&gt; b5a4
-Invalid Input
-Peter's turn:
-&gt; b5b4
-  +---+---+---+---+---+---+---+---+
-8 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-7 | B |   | B | B | B | B | B | B |
-  +---+---+---+---+---+---+---+---+
-6 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-5 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-4 |   | B |   |   | W |   |   |   |
-  +---+---+---+---+---+---+---+---+
-3 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-2 | W | W | W | W |   | W | W | W |
-  +---+---+---+---+---+---+---+---+
-1 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-    a   b   c   d   e   f   g   h
-
-Jane's turn:
-&gt; exit
-Bye!</code></pre>
+Enter two numbers in format: {source base} {target base} (To quit type /exit) &gt; /exit</code></pre>

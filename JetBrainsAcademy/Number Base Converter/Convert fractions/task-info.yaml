@@ -563,6 +563,6 @@ files:
     \ 1 == resultIndex;\n            }\n            \n        } else {\n         \
     \   return true;\n        }\n        \n    }\n}\n"
   learner_created: false
-feedback_link: https://hyperskill.org/projects/165/stages/859/implement#comment
+feedback_link: https://hyperskill.org/learn/step/12348#comment
 status: Unchecked
 record: -1

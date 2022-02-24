@@ -1,45 +1,81 @@
 <h5>Description</h5>
 
-<p>Chess has many variations. One of them is Pawns-only chess. It has only pawns. Not even a king. In this project, you create a two-player program for this chess variant.</p>
+<p>In daily life, we mostly use the decimal numeral system, but still, there are many other ways to represent numbers. For example, when working with computers, you'll probably deal with binary, octal, and hexadecimal numbers. It's really nice to have a tool that can help you easily and correctly convert numbers from one system to another: in this project, we will build such a tool step-by-step.</p>
 
-<p>In this stage, you need to print a chessboard made of characters as seen in the following picture:</p>
+<p>In the first stage, you need to implement conversion from decimal to binary, octal, and hexadecimal. The program will read the user's decimal number and the user's target <a target="_blank" href="https://en.wikipedia.org/wiki/Radix" rel="nofollow noopener noreferrer">radix</a> (or base). Then, it will output the given number in the corresponding base.</p>
 
-<p><img alt="" height="261" src="https://ucarecdn.com/a5f6dcd0-7e26-4403-9ba8-dd4de2357929/" width="246"></p>
+<p>Converting from decimal to octal and hexadecimal isn't much different from converting to binary. The algorithm is really similar to binary conversion, only the base number is different with <samp>8</samp> or <samp>16</samp> in place of <samp>2</samp>. See some examples of converting the number <samp>110</samp> from decimal to octal and hexadecimal below:</p>
 
-<p>The white pawns are denoted with the capital <code class="java">W</code>, the black pawns are the capital <code class="java">B</code> characters.</p>
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px;">
+	<tbody>
+		<tr>
+			<td style="text-align: center;"><strong>Quotient</strong></td>
+			<td style="text-align: center;"><strong>Remainder of 8</strong></td>
+		</tr>
+		<tr>
+			<td style="text-align: center;">110</td>
+			<td style="text-align: center;">6</td>
+		</tr>
+		<tr>
+			<td style="text-align: center;">13</td>
+			<td style="text-align: center;">5</td>
+		</tr>
+		<tr>
+			<td style="text-align: center;">1</td>
+			<td style="text-align: center;">1</td>
+		</tr>
+	</tbody>
+</table>
 
-<p>A unique pair of coordinates (a letter and a number) identifies each square of the chessboard. From White's left to right, the squares in the vertical lines are called <strong>files</strong>. They are labeled from <code class="java">a</code> to <code class="java">h</code>. The horizontal lines, known as <strong>ranks</strong>, are numbered from <code class="java">1</code> to <code class="java">8</code>. These are legit coordinate pairs: <code class="java">a2</code>, <code class="java">c6</code>, <code class="java">d8</code>, <code class="java">h5</code>, and so on. This corresponds to the <a target="_blank" href="https://en.wikipedia.org/wiki/Algebraic_notation_(chess)" rel="noopener noreferrer nofollow">chess algebraic notation</a> for recording moves in chess.</p>
+<p>Result: <span class="math-tex">\(110_{10} = 156_{8}\)</span></p>
 
-<p>The Pawns-only chess has very simple rules. The pawns can make any <a target="_blank" href="https://en.wikipedia.org/wiki/Pawn_(chess)" rel="noopener noreferrer nofollow">standard pawn moves</a>, except promotion. A player wins the game when one of the pawns reaches the opponent's last row, or if all opponent pawns are captured. A draw occurs when one of the players is unable to make a valid move. This is called a stalemate.</p>
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px;">
+	<tbody>
+		<tr>
+			<td style="text-align: center;"><strong>Quotient</strong></td>
+			<td style="text-align: center;"><strong>Remainder of 16</strong></td>
+		</tr>
+		<tr>
+			<td style="text-align: center;">110</td>
+			<td style="text-align: center;">14 (E)</td>
+		</tr>
+		<tr>
+			<td style="text-align: center;">6</td>
+			<td style="text-align: center;">6</td>
+		</tr>
+	</tbody>
+</table>
 
-<p>Use a <strong>monospaced font</strong> for the program output, to print the chessboard correctly. It is a font with fixed-width characters. By default, IntelliJ IDEA uses the monospaced font.</p>
+<p>Result: <span class="math-tex">\(110_{10} = 6E_{16}\)</span></p>
 
 <h5>Objectives</h5>
 
-<p>Print the program name: <code class="java">Pawns-Only Chess</code> and the text chessboard (see Example 1). Note the number of spaces.</p>
+<p>Your program's output should consist of the following three lines:</p>
 
-<h5>Examples</h5>
+<ol>
+	<li>On the first line, the prompt <code class="java">Enter number in decimal system:</code> is shown, and the user inputs a decimal number to be converted.</li>
+	<li>On the second one, the prompt <code class="java">Enter target base: </code> is printed, and the user enters the target base (2, 8, or 16).</li>
+	<li>On the third one, the message <code class="java">Conversion result: </code> is printed, followed by the correct number representation in the given base.</li>
+</ol>
+
+<h5>Example</h5>
 
 <p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
 
 <p><strong>Example 1:</strong></p>
 
-<pre><code class="language-no-highlight"> Pawns-Only Chess
-  +---+---+---+---+---+---+---+---+
-8 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-7 | B | B | B | B | B | B | B | B |
-  +---+---+---+---+---+---+---+---+
-6 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-5 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-4 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-3 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-2 | W | W | W | W | W | W | W | W |
-  +---+---+---+---+---+---+---+---+
-1 |   |   |   |   |   |   |   |   |
-  +---+---+---+---+---+---+---+---+
-    a   b   c   d   e   f   g   h</code></pre>
+<pre><code class="language-no-highlight">Enter number in decimal system: &gt; 8
+Enter target base: &gt; 16
+Conversion result: 8</code></pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><code class="language-no-highlight">Enter number in decimal system: &gt; 101
+Enter target base: &gt; 2
+Conversion result: 1100101</code></pre>
+
+<p><strong>Example 3:</strong></p>
+
+<pre><code class="language-no-highlight">Enter number in decimal system: &gt; 103
+Enter target base: &gt; 8
+Conversion result: 147</code></pre>
