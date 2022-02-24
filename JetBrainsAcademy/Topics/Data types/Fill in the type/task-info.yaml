@@ -1,0 +1,37 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: Int
+- text: We can remove the colon (:) and the blank line and let Kotlin figure out the
+    type
+- text: String
+- text: Char
+- text: var
+- text: string
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/13661#comment
+status: Solved
+feedback:
+  message: |-
+    <html>string -> there is no such type as a string (with lowercase s)
+    Int -> right-hand side is a String literal thus left side type should be String, not Int
+    var -> var is a keyword to declare variables not types
+    String -> correct
+    Char -> right-hand side is not a character but a String
+    remove : and ____ and let Kotlin use Type Inference to figure out the type for us</html>
+  time: Thu, 24 Feb 2022 15:23:34 UTC
+record: -1
+selected_options:
+- 1
+- 2

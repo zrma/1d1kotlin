@@ -1,2 +1,10 @@
 content:
 - Theory
+- Equivalent
+- Fill in the type
+- How to declare a type
+- Statements
+- The form of declaration without type inference
+- Type mismatch
+- What is type inference
+- Think as a compiler

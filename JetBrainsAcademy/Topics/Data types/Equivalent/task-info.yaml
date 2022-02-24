@@ -1,0 +1,37 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: 'val age: Int = 42'
+- text: Int age = 42
+- text: 'val age = “42”: String'
+- text: String age = “42”
+- text: var age = 42
+- text: 'val age: String = “42”'
+- text: 'val age: Char = ‘42’'
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/13660#comment
+status: Solved
+feedback:
+  message: |-
+    <html>val age: Int = 42  // this is correct for integer type not a String type
+    Int age = 42  // invalid Kotlin syntax
+    val age = “42”: String  // invalid syntax, colon, and type should come right after the value name
+    String age = “42”  // valid in Java but not in Kotlin
+    var age = 42  // var is used here not val, and age is of type Int, not a String
+    val age: String = “42”  // correct syntax, although not mandatory we can explicitly declare the type
+    val age: Char = ‘42’  // '42' is not Char type, in fact, it is not a valid type Kotlin knows about</html>
+  time: Thu, 24 Feb 2022 15:22:55 UTC
+record: -1
+selected_options:
+- 5
