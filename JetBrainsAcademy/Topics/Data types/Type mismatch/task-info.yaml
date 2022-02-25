@@ -1,10 +1,10 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: 'val n: Int = 22'
-- text: 'val n: Int = "22"'
-- text: val n = "22"
-- text: 'val n: String = "22"'
+- text: a
+- text: b
+- text: c
+- text: d
 message_correct: Congratulations!
 message_incorrect: Incorrect solution
 files:
@@ -17,7 +17,7 @@ files:
       // put your code here
     }
   learner_created: false
-feedback_link: https://hyperskill.org/learn/step/4401#comment
+feedback_link: https://hyperskill.org/learn/step/4402#comment
 status: Solved
 feedback:
   message: <html>Correct solution</html>
