@@ -1,0 +1,27 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: isEmpty()
+- text: mapIsEmpty()
+- text: hasElements()
+- text: isEmptyMap()
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/12661#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sun, 27 Feb 2022 06:49:36 UTC
+record: -1
+selected_options:
+- 0
