@@ -1,0 +1,29 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: String::toUpperCase
+- text: s.toUpperCase
+- text: String::toUpperCase()
+- text: s::toUpperCase
+- text: String.toUpperCase
+- text: s::toUpperCase()
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/15431#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Mon, 28 Feb 2022 15:45:03 UTC
+record: -1
+selected_options:
+- 0

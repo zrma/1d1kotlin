@@ -1,0 +1,23 @@
+<h2>Creating employees</h2>
+<html>
+ <head></head>
+ <body>
+  <p>Imagine that you work at Hyperskill and you need to add newly hired employees to a database. A lot of employees are hired daily, and you need to optimize the process. <br> You have a class Employee:</p> 
+  <pre><code class="language-kotlin">class Employee(val id: Int, val name: String, val lastName: String, val telNum: String, val email: String) {
+
+    fun printData() {
+        println("Employee $id")
+        println("full name: $name $lastName")
+        println("tel. num: $telNum")
+        println("email: $email")
+    }
+}</code></pre> 
+  <p>From input in the first line you get the number of new employees.</p> 
+  <p>Then on each line of input you have <span style="color: #000000;">data of one employee: their </span>first name, last name, phone number, and mail, separated by a space.</p> 
+  <p>You need to read their data, create new employees, and display their data on the screen in the special format by using method <code class="language-kotlin">printData()</code> from class <code class="language-kotlin">Employee</code>. Don't forget about their id!</p> 
+  <p>You can print employee's information right after creating him or you can collect Employee instances to the array and after creating all of them, print information about each employee.</p>
+ </body>
+</html><br><b>Sample Input:</b><br><pre><code class="language-no-highlight">2<br>Jack Jordan +1333-456-7890 jackJordan@gmail.com<br>Mary May +1111-111-1111 maryMay@gmail.com</code></pre><br><b>Sample Output:</b><br><pre><code class="language-no-highlight">Employee 1<br>full name: Jack Jordan<br>tel. num: +1333-456-7890<br>email: jackJordan@gmail.com<br>Employee 2<br>full name: Mary May<br>tel. num: +1111-111-1111<br>email: maryMay@gmail.com</code></pre><br><br><br><font color="gray">Memory limit: 256 MB</font><br><font color="gray">Time limit: 8 seconds</font><br><br>
+<b>Caution</b><br><br>
+You may see errors in your code or execution results due to missing context. Don’t worry about it, just write the solution and press Check.
+<br><br>

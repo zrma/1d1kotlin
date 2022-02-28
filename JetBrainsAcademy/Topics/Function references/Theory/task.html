@@ -1,0 +1,149 @@
+<h2>Function references</h2>
+<html>
+ <head></head>
+ <body>
+  <p>As you know, lambda expressions allow you to use code as data and pass it as a function's arguments. Another way to do it is to use <strong>function references</strong>. They are often even more readable than corresponding lambda expressions. Besides, function references force developers to decompose a program into a set of short functions with clear areas of responsibility.</p> 
+  <h5 style="text-align: center;">Make code clearer with function references</h5> 
+  <p>A quick reminder: a <strong>function reference </strong>is a special link<strong> </strong>that<strong> </strong>refers to a certain function by its name and can be called at any time whenever we need it. Let’s look at an example of how we can do that:</p> 
+  <pre><code class="language-kotlin">fun isOdd(x: Int) = x % 2 != 0
+
+fun isEven(x: Int) = x % 2 == 0
+
+fun printNumbers(numbers: MutableList&lt;Int&gt;, filter: (Int) -&gt; Boolean) {
+    for (number in numbers) {
+        if (filter(number))
+            print("$number ")
+    }
+}
+
+fun main() {
+    val numbers = mutableListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    val oddFunction = ::isOdd
+    print("Odd numbers: ")
+    printNumbers(numbers, oddFunction)
+    print("\nEven numbers: ")
+    printNumbers(numbers, ::isEven)
+}</code></pre> 
+  <p>As you can see, we can call functions <code class="language-kotlin">isOdd()</code> and <code class="language-kotlin">isEven()</code> either directly or by passing their value using <code class="language-kotlin">::</code>.</p> 
+  <p>The result of the program will be:</p> 
+  <pre><code class="language-no-highlight">Odd numbers: 1 3 5 7 9 
+Even numbers: 2 4 6 8 10</code></pre> 
+  <h5 style="text-align: center;">Reference by class</h5> 
+  <p>Also, you can reference functions that belong to a class. The base syntax in such cases looks like this:</p> 
+  <pre><code class="language-kotlin">objectOrClass::functionName</code></pre> 
+  <p>Here, <code class="language-kotlin">objectOrClass</code> can be a <strong>class name</strong> or a <strong>particular instance</strong> of a class.</p> 
+  <p>Let's take a look at an example with the class <code class="language-kotlin">Person</code>:</p> 
+  <pre><code class="language-kotlin">class Person(val name: String, val lastname: String) {
+
+    fun printFullName(): String {
+        return("full name: $name $lastname")
+    }
+}</code></pre> 
+  <p>Here, we create a function reference:</p> 
+  <pre><code class="language-kotlin">val person: Person = Person("Sara", "Rogers")
+val personFun: () -&gt; String = person::printFullName</code></pre> 
+  <p>And now, we call the function by using a special function <code class="language-kotlin">invoke</code>:</p> 
+  <pre><code class="language-kotlin">print(personFun.invoke())</code></pre> 
+  <p>Actually, you can also call the function without the function <code class="language-kotlin">invoke</code>:</p> 
+  <pre><code class="language-kotlin">print(personFun())</code></pre> 
+  <p>And here is the result:</p> 
+  <pre><code class="language-no-highlight">full name: Sara Rogers</code></pre> 
+  <p>Now you see how you can easily turn a function into an object by using a reference to it. <br> This is a very useful skill in programming, and when you start working on serious projects, it will help you with many problems.</p> 
+  <p>Let's see some other possibilities of function references.</p> 
+  <h5 style="text-align: center;">Standard classes and function reference</h5> 
+  <p>Function references also work with functions from Kotlin standard classes. Let's see an example.</p> 
+  <p>We create a reference to the standard function <code class="language-kotlin">dec</code> of the <code class="language-kotlin">Int</code> class. The function <code class="language-kotlin">dec</code> decreases the number by one (decrement).</p> 
+  <pre><code class="language-kotlin">val dec: (Int) -&gt; Int = Int::dec</code></pre> 
+  <p>Here, <code class="language-kotlin">Int::dec</code> is a reference to a function.</p> 
+  <p>This code works because the definition of the function <code class="language-kotlin">operator fun dec(): Int</code> fits the type <code class="language-kotlin">(Int) -&gt; Int</code>: they both mean taking one integer argument and returning an integer value.</p> 
+  <p>Now we have the <code class="language-kotlin">dec</code> object that can be used as a function. Let's invoke it!</p> 
+  <pre><code class="language-kotlin">print(dec(4)) // 3</code></pre> 
+  <p>So, once assigned to an object, a function reference works in the same way as a lambda expression.</p> 
+  <p>Here is an alternative way to create the same object using a lambda expression:</p> 
+  <pre><code class="language-kotlin">val dec: (Int) -&gt; Int = {x -&gt; x.dec()}</code></pre> 
+  <p>It is recommended to use function references rather than lambda expressions if you just need to invoke a standard function without other operations. Your code will be shorter, more readable, and easier to test.</p> 
+  <p></p>
+  <div class="alert alert-primary">
+   Note that we can refer to both standard and our custom functions using function references.
+  </div>
+  <p></p> 
+  <h5 style="text-align: center;">Kinds of function references</h5> 
+  <p>In general, there are four kinds of function references:</p> 
+  <ol> 
+   <li>reference to a function;</li> 
+   <li>reference by Class;</li> 
+   <li>reference by Object;</li> 
+   <li>reference to a constructor.</li> 
+  </ol> 
+  <p> </p> 
+  <p><strong>1. Reference to a function</strong></p> 
+  <p>This reference has the following declaration:</p> 
+  <pre><code class="language-no-highlight">::functionName</code></pre> 
+  <p>Let's see an example of using a reference to functions <code class="language-kotlin">multiply</code> and <code class="language-kotlin">add</code>:</p> 
+  <pre><code class="language-kotlin">fun multiply(x: Int, y: Int) = x * y
+
+fun add(x: Int, y: Int) = x + y
+
+fun main() {
+    val operatorMultiply: (Int, Int) -&gt; Int = ::multiply
+    val operatorAdd: (Int, Int) -&gt; Int = ::add
+}</code></pre> 
+  <p>Now we can invoke both functions <code class="language-kotlin">operatorMultiply</code> and <code class="language-kotlin">operatorAdd</code> for double values and see the result:</p> 
+  <pre><code class="language-kotlin">operatorMultiply(10, 5) // 50
+operatorAdd(5, 4) // 9</code></pre> 
+  <p>The <code class="language-kotlin">operatorMultiply</code> and <code class="language-kotlin">operatorAdd</code> functions can be also written using the following lambda expression:</p> 
+  <pre><code class="language-kotlin">val operatorMultiply: (Int, Int) -&gt; Int = {x: Int, y: Int -&gt; x * y}
+val operatorAdd: (Int, Int) -&gt; Int = {x: Int, y: Int -&gt; x + y}</code></pre> 
+  <p><strong>2. Reference by Class</strong></p> 
+  <p>The general form is the following:</p> 
+  <pre><code class="language-kotlin">ClassName::functionName</code></pre> 
+  <p>Let's take a look at the function <code class="language-kotlin">and</code><strong> </strong>of the class <code class="language-kotlin">Int</code>, which allow us to do logical AND with two binary numbers:</p> 
+  <p>There's an example of how this function works:</p> 
+  <pre><code class="language-kotlin">val a = 5 and 4 // 101 &amp; 100 = 100 (4)</code></pre> 
+  <p>Also, we can call the function <code class="language-kotlin">and</code> in another way:</p> 
+  <pre><code class="language-kotlin">val b = 9.and(3) // 1001 &amp; 0011 = 0001 (1)</code></pre> 
+  <p>So, <code class="language-kotlin">and</code> is the function of class <code class="language-kotlin">Int</code> and we can get the reference to it: </p> 
+  <pre><code class="language-kotlin">val and: (Int, Int) -&gt; Int = Int::and</code></pre> 
+  <p>Now we can invoke the <code class="language-kotlin">and</code> function with two values, for example, 1 and 3:</p> 
+  <pre><code class="language-kotlin">and(1, 3) // the result is 1</code></pre> 
+  <p>The <code class="language-kotlin">and</code> function can be also written using the following lambda expression:</p> 
+  <pre><code class="language-kotlin">val and: (Int, Int) -&gt; Int = {a: Int, b: Int -&gt; a.and(b)}</code></pre> 
+  <p><strong>3. Reference by Object</strong></p> 
+  <p>The general form looks like this:</p> 
+  <pre><code class="language-kotlin">objectName::functionName</code></pre> 
+  <p>Let's check out an example of a reference to the <code class="language-kotlin">indexOf</code> function from a particular string; the function finds the index of the first occurrence of an element in the text. This function takes a string to find, an index from which we start the search, and a Boolean that determines whether the case will be ignored when matching a character (by default it is <strong>false</strong>).</p> 
+  <pre><code class="language-kotlin">val whatsGoingOnText: String = "What's going on here?"
+val indexWithinWhatsGoingOnText: (String, Int, Boolean) -&gt; Int = whatsGoingOnText::indexOf</code></pre> 
+  <p>Here is the result of applying it to different arguments:</p> 
+  <pre><code class="language-kotlin">println(indexWithinWhatsGoingOnText("going", 0, true)) // 7
+println(indexWithinWhatsGoingOnText("Hi", 0, true))  // -1
+println(indexWithinWhatsGoingOnText("what's", 0, false))  // -1
+println(indexWithinWhatsGoingOnText("what's", 0, true))  // 0</code></pre> 
+  <p>As you can see, we actually always work with the <code class="language-kotlin">whatsGoingOnText</code> object captured from the context.</p> 
+  <p>The following example of a lambda expression is a full equivalent of the above reference and can help you better understand the situation:</p> 
+  <pre><code class="language-kotlin">val indexWithinWhatsGoingOnText: (String, Int, Boolean) -&gt; Int =
+        { string: String, startIndex: Int, ignoreCase: Boolean -&gt;
+            whatsGoingOnText.indexOf(string, startIndex, ignoreCase)
+        }</code></pre> 
+  <p><strong>4. Reference to a constructor</strong></p> 
+  <p>This reference has the following declaration:</p> 
+  <pre><code class="language-kotlin">::ClassName</code></pre> 
+  <p>For example, let's consider our custom class <code class="language-kotlin">Person</code> with a single field <code class="language-kotlin">name</code>.</p> 
+  <pre><code class="language-kotlin">class Person (val name: String){
+}</code></pre> 
+  <p>Here is a reference to the constructor of this class:</p> 
+  <pre><code class="language-kotlin">val personGenerator: (String) -&gt; Person = ::Person</code></pre> 
+  <p>This function produces new <code class="language-kotlin">Person</code> objects based on their names.</p> 
+  <pre><code class="language-kotlin">val johnFoster:Person = personGenerator("John Foster")</code></pre> 
+  <p>Here is the corresponding lambda expression that does the same:</p> 
+  <pre><code class="language-kotlin">val personGenerator: (String) -&gt; Person = {string -&gt; Person(string)}</code></pre> 
+  <p>Further, we will use lambda expressions and function references together.</p> 
+  <p></p>
+  <div class="alert alert-primary">
+   More practical examples will be explored in the following topics. For now, it is enough to grasp the general idea and the syntax of function references.
+  </div>
+  <p></p> 
+  <h5 style="text-align: center;">Conclusion</h5> 
+  <p>You've learned a new way to create function objects by using function references. It has a lot in common with lambda expressions but allows writing more readable and decomposed code. Having covered this topic, you should memorize all four types of function references and be ready to use them in your programs when you need to pass a piece of code to some function.</p>
+ </body>
+</html>

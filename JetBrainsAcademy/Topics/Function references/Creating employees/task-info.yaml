@@ -1,0 +1,21 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: "class Employee(val id: Int, val name: String, val lastName: String, val telNum:\
+    \ String, val email: String) {\n\n    fun printData() {\n        println(\"Employee\
+    \ $id\")\n        println(\"full name: $name $lastName\")\n        println(\"\
+    tel. num: $telNum\")\n        println(\"email: $email\")\n    }\n}\nfun main()\
+    \ {\n    val count = readLine()!!.toInt()\n    // create reference to the constructor\
+    \ Employee \n    createEmployees(..., count)\n}\nfun createEmployees(employeeCreator:\
+    \ (Int, String, String, String, String) -> Employee, count: Int) {\n    for (i\
+    \ in 1..count) {\n        val (name, lastName, telNum, email) = readLine()!!.split('\
+    \ ').toList()\n        // write your code here\n        val newEmployee = ...\n\
+    \    }\n}"
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/15433#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Mon, 28 Feb 2022 15:49:53 UTC
+record: -1
