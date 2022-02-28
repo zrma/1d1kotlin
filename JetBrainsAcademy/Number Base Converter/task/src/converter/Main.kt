@@ -1,33 +1,37 @@
 package converter
 
+import java.math.BigInteger
 import kotlin.math.pow
 
 fun main() {
     while (true) {
-        print("Do you want to convert /from decimal or /to decimal? (To quit type /exit)")
-        when (readLine()) {
-            "/from" -> from()
-            "/to" -> to()
-            else -> break
-        }
+        print("Enter two numbers in format: {source base} {target base} (To quit type /exit)")
+        val input = readLine() ?: continue
+        if (input == "/exit") break
+
+        val (source, target) = input.split(" ")
+
+        convertLoop(source.toInt(), target.toBigInteger())
     }
 }
 
-fun from() {
-    print("Enter number in decimal system:")
-    val decimalNumber = readLine()!!.toInt()
+fun convertLoop(source: Int, target: BigInteger) {
+    while (true) {
+        print("Enter number in base $source to convert to base $target (To go back type /back)")
+        val number = readLine()
+        if (number == null || number == "/back") return
 
-    print("Enter target base:")
-    val targetBase = readLine()!!.toInt()
-
-    println("Conversion result: ${convertFromDecimal(decimalNumber, targetBase)}")
+        val decimal = convertToDecimal(number, source)
+        val result = convertFromDecimal(decimal, target)
+        println("Conversion result: $result")
+    }
 }
 
-fun convertFromDecimal(decimalNumber: Int, targetBase: Int): String {
+fun convertFromDecimal(decimalNumber: BigInteger, targetBase: BigInteger): String {
     val digits = mutableListOf<Char>()
     var number = decimalNumber
-    while (number > 0) {
-        val digit = number % targetBase
+    while (number > BigInteger.ZERO) {
+        val digit = (number % targetBase).toInt()
         if (digit < 10) {
             digits.add(digit.digitToChar())
         } else {
@@ -38,21 +42,12 @@ fun convertFromDecimal(decimalNumber: Int, targetBase: Int): String {
     return digits.reversed().joinToString("") { it.toString() }
 }
 
-fun to() {
-    print("Enter source number:")
-    val sourceNumber = readLine()!!
-
-    print("Enter source base:")
-    val sourceBase = readLine()!!.toInt()
-
-    println("Conversion to decimal result: ${convertToDecimal(sourceNumber, sourceBase)}")
-}
-
-fun convertToDecimal(sourceNumber: String, sourceBase: Int): Int {
-    var decimalNumber = 0
+fun convertToDecimal(sourceNumber: String, sourceBase: Int): BigInteger {
+    var decimalNumber = BigInteger.ZERO
     var power = 0
     for (digit in sourceNumber.reversed()) {
-        decimalNumber += charToInt(digit) * sourceBase.toDouble().pow(power).toInt()
+        val cur = charToInt(digit).toBigInteger() * sourceBase.toBigInteger().pow(power)
+        decimalNumber = decimalNumber.add(cur)
         power++
     }
     return decimalNumber
