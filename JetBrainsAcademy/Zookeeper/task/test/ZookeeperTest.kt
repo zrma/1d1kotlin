@@ -5,21 +5,33 @@ import org.hyperskill.hstest.testing.TestedProgram
 
 class ZookeeperTest : StageTest<String>() {
 
-    private val correctOutput = """
-        I love animals!
-        Let's check on the animals...
-        The deer looks fine.
-        The bat looks happy.
-        The lion looks healthy.
-        """.trimIndent()
+    val camel = """Switching on the camera in the camel habitat...
+ ___.-''''-.
+/___  @    |
+',,,,.     |         _.'''''''._
+     '     |        /           \
+     |     \    _.-'             \
+     |      '.-'                  '-.
+     |                               ',
+     |                                '',
+      ',,-,                           ':;
+           ',,| ;,,                 ,' ;;
+              ! ; !'',,,',',,,,'!  ;   ;:
+             : ;  ! !       ! ! ;  ;   :;
+             ; ;   ! !      ! !  ; ;   ;,
+            ; ;    ! !     ! !   ; ;
+            ; ;    ! !    ! !     ; ;
+           ;,,      !,!   !,!     ;,;
+           /_I      L_I   L_I     /_I
+Look at that! Our little camel is sunbathing!"""
 
     @DynamicTest
     fun test(): CheckResult {
-        val testedProgram = TestedProgram()
-        val output = testedProgram.start().trim()
+        val testedProgram = TestedProgram();
+        val output = testedProgram.start().trim();
 
-        if (output != correctOutput) {
-            return CheckResult.wrong("Your output should be like in the example!")
+        if (output != camel) {
+            return CheckResult.wrong("You should output a camel!");
         }
 
         return CheckResult.correct()
