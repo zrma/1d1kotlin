@@ -55,3 +55,4 @@ content:
 - Multi-dimensional list
 - Multi-dimensional array
 - BigInteger
+- BigDecimal
