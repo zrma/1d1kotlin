@@ -1,34 +1,24 @@
 hyperskill_project:
-  id: 165
-  ide_files: https://stepik.org/media/attachments/lesson/495737/additional_files.json
-  is_template_based: false
+  id: 196
+  ide_files: https://stepik.org/media/attachments/lesson/557366/additional_files.json
+  is_template_based: true
   use_ide: true
-update_date: Sat, 26 Feb 2022 14:50:58 UTC
+update_date: Thu, 01 Jan 1970 00:00:00 UTC
 stages:
-- id: 856
-  step: 12345
-  is_completed: true
-- id: 857
-  step: 12346
-  is_completed: true
-- id: 858
-  step: 12347
-  is_completed: true
-- id: 859
-  step: 12348
-  is_completed: true
+- id: 975
+  step: 14133
+  is_completed: false
+- id: 976
+  step: 14134
+  is_completed: false
+- id: 977
+  step: 14135
+  is_completed: false
+- id: 978
+  step: 14136
+  is_completed: false
 topics:
   0:
-  - title: Binary numbers
-    theory_id: 5544
-  - title: Hexadecimal numbers
-    theory_id: 8788
-  - title: Converting from decimal to binary
-    theory_id: 5614
-  - title: Octal numbers
-    theory_id: 11949
-  - title: Units of information
-    theory_id: 6865
   - title: Introduction to Kotlin
     theory_id: 4350
   - title: Basic literals
@@ -41,24 +31,32 @@ topics:
     theory_id: 17408
   - title: Data types
     theory_id: 4388
-  - title: The classification of basic types
-    theory_id: 4455
   - title: Standard output
     theory_id: 4425
   - title: Invoking functions
     theory_id: 4575
+  1:
+  - title: Units of information
+    theory_id: 6865
+  - title: The classification of basic types
+    theory_id: 4455
   - title: Standard input
     theory_id: 4445
   - title: Type conversion
     theory_id: 4672
-  - title: Reading data with a readLine
-    theory_id: 11224
   - title: String basics
     theory_id: 12553
-  - title: String templates
-    theory_id: 4547
   - title: Boolean and logical operations
     theory_id: 4515
+  - title: Objects
+    theory_id: 11233
+  2:
+  - title: Binary numbers
+    theory_id: 5544
+  - title: Hexadecimal numbers
+    theory_id: 8788
+  - title: Reading data with a readLine
+    theory_id: 11224
   - title: Arithmetic operations
     theory_id: 4472
   - title: Type of the numeric expression
@@ -69,52 +67,18 @@ topics:
     theory_id: 4488
   - title: Relational operators
     theory_id: 4525
+  - title: Unicode
+    theory_id: 7899
+  - title: Characters
+    theory_id: 4680
+  - title: Introduction to MutableList
+    theory_id: 14879
+  3:
+  - title: String templates
+    theory_id: 4547
   - title: If expression
     theory_id: 4625
   - title: Repeating blocks
     theory_id: 4643
   - title: While loops
     theory_id: 4659
-  1:
-  - title: Converting from binary to decimal
-    theory_id: 5622
-  - title: Comments
-    theory_id: 4406
-  - title: Coding style conventions
-    theory_id: 4419
-  - title: Naming variables
-    theory_id: 4389
-  - title: Declaring functions
-    theory_id: 4580
-  - title: Objects
-    theory_id: 11233
-  - title: Equality
-    theory_id: 11236
-  - title: Unicode
-    theory_id: 7899
-  - title: Characters
-    theory_id: 4680
-  - title: Ranges
-    theory_id: 4633
-  - title: For loop and ranges
-    theory_id: 4652
-  - title: Introduction to MutableList
-    theory_id: 14879
-  - title: Work with MutableLists
-    theory_id: 14902
-  - title: For loop and lists
-    theory_id: 15022
-  - title: Working with strings
-    theory_id: 12561
-  - title: Getting substrings
-    theory_id: 8535
-  - title: Processing strings
-    theory_id: 9027
-  2:
-  - title: BigInteger
-    theory_id: 7964
-  3:
-  - title: 'Decimal to binary: fractions'
-    theory_id: 11938
-  - title: BigDecimal
-    theory_id: 12536
