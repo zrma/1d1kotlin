@@ -119,11 +119,18 @@ const val rabbit =
 (" ~----( ~   Y.  )
 It looks like we will soon have more rabbits!"""
 
+val animals = arrayOf(camel, lion, deer, goose, bat, rabbit)
+
 fun main() {
-    print("Please enter the number of the habitat you would like to view:")
-    println(arrayOf(camel, lion, deer, goose, bat, rabbit)[readLine()!!.toInt()])
-    println("---")
-    println(
-        "You've reached the end of the program. To check another habitat, please restart the watcher."
-    )
+    while (true) {
+        print("Please enter the number of the habitat you would like to view:")
+        val input = readLine()!!
+
+        if (input == "exit") {
+            break
+        }
+
+        println(animals[input.toInt()])
+    }
+    println("See you later!")
 }

@@ -121,7 +121,7 @@ This bat looks like it's doing fine."""
 (" ~----( ~   Y.  )
 It looks like we will soon have more rabbits!"""
 
-    private var theEndMessage = "---\nYou've reached the end of the program. To check another habitat, please restart the watcher."
+    private var theEndMessage = "See you later!"
     private var indexArray = arrayOf("0", "1", "2", "3", "4", "5")
     private var animalIndex = mapOf(
             "0" to arrayOf(camel, "camel"),
@@ -132,23 +132,44 @@ It looks like we will soon have more rabbits!"""
             "5" to arrayOf(rabbit, "rabbit")
     )
 
-    @DynamicTest(data = "indexArray")
-    fun test(index: String): CheckResult {
+    private var tests = arrayOf(
+            "1\nexit",
+            "3\nexit",
+            "5\nexit",
+            "0\n2\n4\nexit",
+            "0\n1\n2\n3\n4\n5\nexit"
+    )
+
+    @DynamicTest(data = "tests")
+    fun test(input: String): CheckResult {
+
+        val includedAnimals = input.replace("\nexit", "").split("\n")
+        val excludedAnimals = indexArray.filter { element -> !includedAnimals.contains(element) }
 
         val testedProgram = TestedProgram()
         testedProgram.start()
+        val output = testedProgram.execute(input)
 
-        val output = testedProgram.execute(index)
+        for (includedAnimal in includedAnimals) {
+            val animalImage = animalIndex[includedAnimal]?.get(0).toString()
+            val animalName = animalIndex[includedAnimal]?.get(1).toString()
 
-        val animalImage = animalIndex[index]?.get(0).toString()
-        val animalName = animalIndex[index]?.get(1).toString()
+            if (!output.contains(animalImage)) {
+                return CheckResult.wrong("The $animalName wasn't printed but was expected")
+            }
+        }
 
-        if (!output.contains(animalImage)) {
-            return CheckResult.wrong("You should output a $animalName when the input is the number $index")
+        for (excludedAnimal in excludedAnimals) {
+            val animalImage = animalIndex[excludedAnimal]?.get(0).toString()
+            val animalName = animalIndex[excludedAnimal]?.get(1).toString()
+
+            if (output.contains(animalImage)) {
+                return CheckResult.wrong("The $animalName was printed but wasn't expected")
+            }
         }
 
         if (!output.contains(theEndMessage)) {
-            return CheckResult.wrong("You should output the message about the end of the program!")
+            return CheckResult.wrong("You should print '$theEndMessage' at the end of the program")
         }
 
         return CheckResult.correct()
