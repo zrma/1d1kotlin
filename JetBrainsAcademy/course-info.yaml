@@ -1,14 +1,12 @@
 type: hyperskill
-title: Number Base Converter
+title: Minesweeper
 language: English
-summary: We’re all quite used to our good old decimal system of numerals. But let’s
-  not forget that there are other ways to count! Whether we need to convert numbers
-  from one system to another just for fun or to store large data more efficiently,
-  a converter proves helpful. In this project, you will create your own tool that
-  will help you convert numbers from one system to another.<br/><br/>Learn more at
-  <a href="https://hyperskill.org/projects/165?utm_source=ide&utm_medium=ide&utm_campaign=ide&utm_content=project-card">https://hyperskill.org/projects/165</a>
+summary: 'They say a minesweeper makes only two mistakes in their life: the first
+  is their choice of occupation, and the second one is fatal. In this project, you
+  will create your own, safe "Minesweeper" – a game that will be a brain teaser for
+  both you and your players.<br/><br/>Learn more at <a href="https://hyperskill.org/projects/8?utm_source=ide&utm_medium=ide&utm_campaign=ide&utm_content=project-card">https://hyperskill.org/projects/8</a>'
 programming_language: Kotlin
 content:
-- Number Base Converter
+- Minesweeper
 - Topics
 mode: Study

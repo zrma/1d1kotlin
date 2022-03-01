@@ -1,24 +1,33 @@
 hyperskill_project:
-  id: 196
-  ide_files: https://stepik.org/media/attachments/lesson/557366/additional_files.json
-  is_template_based: true
+  id: 8
+  ide_files: https://stepik.org/media/attachments/lesson/254284/additional_files.json
+  is_template_based: false
   use_ide: true
-update_date: Tue, 01 Mar 2022 08:57:32 UTC
+update_date: Thu, 01 Jan 1970 00:00:00 UTC
 stages:
-- id: 975
-  step: 14133
-  is_completed: true
-- id: 976
-  step: 14134
-  is_completed: true
-- id: 977
-  step: 14135
-  is_completed: true
-- id: 978
-  step: 14136
-  is_completed: true
+- id: 46
+  step: 7686
+  is_completed: false
+- id: 47
+  step: 7687
+  is_completed: false
+- id: 48
+  step: 7688
+  is_completed: false
+- id: 49
+  step: 7689
+  is_completed: false
+- id: 469
+  step: 7690
+  is_completed: false
 topics:
   0:
+  - title: Binary numbers
+    theory_id: 5544
+  - title: Hexadecimal numbers
+    theory_id: 8788
+  - title: Units of information
+    theory_id: 6865
   - title: Introduction to Kotlin
     theory_id: 4350
   - title: Basic literals
@@ -31,32 +40,24 @@ topics:
     theory_id: 17408
   - title: Data types
     theory_id: 4388
+  - title: The classification of basic types
+    theory_id: 4455
   - title: Standard output
     theory_id: 4425
   - title: Invoking functions
     theory_id: 4575
-  1:
-  - title: Units of information
-    theory_id: 6865
-  - title: The classification of basic types
-    theory_id: 4455
   - title: Standard input
     theory_id: 4445
   - title: Type conversion
     theory_id: 4672
-  - title: String basics
-    theory_id: 12553
-  - title: Boolean and logical operations
-    theory_id: 4515
-  - title: Objects
-    theory_id: 11233
-  2:
-  - title: Binary numbers
-    theory_id: 5544
-  - title: Hexadecimal numbers
-    theory_id: 8788
   - title: Reading data with a readLine
     theory_id: 11224
+  - title: String basics
+    theory_id: 12553
+  - title: String templates
+    theory_id: 4547
+  - title: Boolean and logical operations
+    theory_id: 4515
   - title: Arithmetic operations
     theory_id: 4472
   - title: Type of the numeric expression
@@ -67,18 +68,108 @@ topics:
     theory_id: 4488
   - title: Relational operators
     theory_id: 4525
-  - title: Unicode
-    theory_id: 7899
-  - title: Characters
-    theory_id: 4680
-  - title: Introduction to MutableList
-    theory_id: 14879
-  3:
-  - title: String templates
-    theory_id: 4547
   - title: If expression
     theory_id: 4625
   - title: Repeating blocks
     theory_id: 4643
+  - title: Objects
+    theory_id: 11233
+  - title: Equality
+    theory_id: 11236
+  - title: Unicode
+    theory_id: 7899
+  - title: Characters
+    theory_id: 4680
+  - title: Ranges
+    theory_id: 4633
+  - title: For loop and ranges
+    theory_id: 4652
+  - title: Introduction to MutableList
+    theory_id: 14879
+  - title: Work with MutableLists
+    theory_id: 14902
+  - title: For loop and lists
+    theory_id: 15022
+  - title: Multi-dimensional list
+    theory_id: 15127
+  1:
+  - title: IDE
+    theory_id: 10996
+  - title: Comments
+    theory_id: 4406
+  - title: Coding style conventions
+    theory_id: 4419
+  - title: Naming variables
+    theory_id: 4389
+  - title: Random
+    theory_id: 11801
+  - title: IntelliJ IDEA
+    theory_id: 3801
+  - title: IDEA Basics
+    theory_id: 5819
+  - title: EduTools
+    theory_id: 5839
+  2:
+  - title: Computer programming
+    theory_id: 8739
+  - title: Declaring functions
+    theory_id: 4580
+  - title: Introduction to OOP
+    theory_id: 3614
+  - title: Declaring classes
+    theory_id: 6200
+  - title: When expression
+    theory_id: 4631
+  - title: Functional decomposition
+    theory_id: 12668
+  - title: Default arguments
+    theory_id: 4637
+  - title: Named arguments
+    theory_id: 4640
+  - title: Constructors
+    theory_id: 10740
+  - title: Member functions
+    theory_id: 6364
+  - title: Extension functions
+    theory_id: 6621
+  - title: Encapsulation
+    theory_id: 8519
+  - title: Properties accessors
+    theory_id: 10511
+  3:
+  - title: Computer algorithms
+    theory_id: 16547
+  - title: The big O notation
+    theory_id: 16699
+  - title: Data structures
+    theory_id: 16927
+  - title: The concept of patterns
+    theory_id: 3611
   - title: While loops
     theory_id: 4659
+  - title: Secondary constructor
+    theory_id: 10746
+  - title: Stack
+    theory_id: 5252
+  - title: Call stack
+    theory_id: 11550
+  - title: Scopes
+    theory_id: 17116
+  - title: Nested and inner classes
+    theory_id: 14723
+  - title: Introduction to software architecture
+    theory_id: 15368
+  - title: Design principles
+    theory_id: 8956
+  - title: Single Responsibility Principle
+    theory_id: 8963
+  - title: Object declarations
+    theory_id: 10698
+  - title: Companion object
+    theory_id: 10707
+  - title: Enum
+    theory_id: 6245
+  - title: Introduction to creational patterns
+    theory_id: 16251
+  - title: Singleton
+    theory_id: 16469
