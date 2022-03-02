@@ -57,3 +57,4 @@ content:
 - BigInteger
 - BigDecimal
 - Function references
+- Random

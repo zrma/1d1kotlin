@@ -1,0 +1,27 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: a-b
+- text: c-d
+- text: none of them, they are all different
+- text: a-b, c-d
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/11804#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Wed, 02 Mar 2022 13:18:58 UTC
+record: -1
+selected_options:
+- 0
