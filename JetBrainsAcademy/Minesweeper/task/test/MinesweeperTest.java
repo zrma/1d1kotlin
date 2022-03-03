@@ -1,24 +1,31 @@
 import org.hyperskill.hstest.stage.StageTest;
 import org.hyperskill.hstest.testcase.CheckResult;
 import org.hyperskill.hstest.testcase.TestCase;
+import org.hyperskill.hstest.testing.TestedProgram;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.Collectors;
 
-public class MinesweeperTest extends StageTest {
-
+public class MinesweeperTest extends StageTest<Integer> {
     @Override
-    public List<TestCase> generate() {
-        return Arrays.asList(
-            new TestCase<>()
-        );
+    public List<TestCase<Integer>> generate() {
+        List<TestCase<Integer>> tests = new ArrayList<>();
+        for (int i = 1; i <= 50; i++) {
+            int mines = i;
+            TestCase<Integer> test = new TestCase<Integer>()
+                .setDynamicTesting(() -> {
+                    TestedProgram main = new TestedProgram();
+                    main.start();
+                    String output = main.execute("" + mines);
+                    return test(output, mines);
+                });
+            tests.add(test);
+            tests.add(test);
+        }
+        return tests;
     }
 
-    @Override
-    public CheckResult check(String reply, Object attach) {
+    public CheckResult test(String reply, Integer attach) {
         List<String> lines =
             Arrays.stream(reply.split("\n"))
                 .map(String::trim)
@@ -30,49 +37,40 @@ public class MinesweeperTest extends StageTest {
             );
         }
 
-        int firstLineLength = lines.get(0).length();
-
-        if (lines.size() < 2) {
-            return CheckResult.wrong("Your game field should contain at least 2 lines.");
+        if (lines.size() != 9) {
+            return CheckResult.wrong(
+                "You should output exactly 9 lines of the field. Found: " + lines.size() + "."
+            );
         }
 
-        Set<Character> symbols = new TreeSet<>();
+        int mines = 0;
 
         for (String line : lines) {
-            int currLineLength = line.length();
-
-            if (currLineLength != firstLineLength) {
+            if (line.length() != 9) {
                 return CheckResult.wrong(
-                    "You have lines with different lengths!\n" +
-                        "Found lines with " + currLineLength + " and " +
-                        firstLineLength + " length."
+                    "One of the lines of the field doesn't have 9 symbols, " +
+                        "but has " + line.length() + ".\n" +
+                        "This line is \"" + line + "\""
                 );
             }
 
             for (char c : line.toCharArray()) {
-                symbols.add(c);
-
-                if (symbols.size() == 3) {
-                    Character[] ch = symbols.toArray(new Character[0]);
-                    char first = ch[0];
-                    char second = ch[1];
-                    char third = ch[2];
-
+                if (c != 'X' && c != '.') {
                     return CheckResult.wrong(
-                        "There are three different symbols, " +
-                            "but there must be two - " +
-                            "one for mines, one for safe zones. " +
-                            "Symbols found: " +
-                            "\'" + first + "\', " +
-                            "\'" + second + "\', " +
-                            "\'" + third + "\'."
+                        "One of the characters is not equal to either 'X' or '.'.\n" +
+                            "In this line: \"" + line + "\"."
                     );
+                }
+                if (c == 'X') {
+                    mines++;
                 }
             }
         }
-        if (symbols.size() < 2) {
-            return CheckResult.wrong("Your field should contain 2 different symbols: " +
-                "one for mines, one for safe zones.");
+
+        if (attach != mines) {
+            return CheckResult.wrong(
+                "Expected to see " + attach + " mines, found " + mines
+            );
         }
 
         return CheckResult.correct();
