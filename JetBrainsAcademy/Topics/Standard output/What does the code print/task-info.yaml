@@ -1,0 +1,27 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: <b>Output:</b><br>1234
+- text: <b>Output:</b><br>123<br> <br>4
+- text: <b>Output:</b><br>12<br>3<br>4
+- text: <b>Output:</b><br>123<br>4
+message_correct: Congratulations!
+message_incorrect: Incorrect solution
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/4428#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Thu, 03 Mar 2022 13:16:06 UTC
+record: -1
+selected_options:
+- 1
