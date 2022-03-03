@@ -1,0 +1,56 @@
+<h2>Extension functions</h2>
+<html>
+ <head></head>
+ <body>
+  <p>Often a developer doesn't write everything from scratch but uses an already written code. It saves them some time. However, there are some downsides such as the inability to edit the used code, especially when the code comes from another developer. Let's look how to optimize your work!</p> 
+  <h5>Problem with existing classes</h5> 
+  <p>To work with classes that you can't modify, you can write a function that takes an object of that class as an argument:</p> 
+  <pre><code class="language-kotlin">fun repeated(string: String): String = string + string
+
+repeated("ha")  // returns "haha"</code></pre> 
+  <p>Do you see an issue here? In Kotlin, standard operations are available as member functions. For example, to get the first symbol of the <code class="language-kotlin">"ha"</code> string, you can write <code class="language-kotlin">"ha".first()</code>. It's more convenient to use a single syntax for all operations. So how can we add a member function to the uneditable <code class="language-kotlin">String</code> class?</p> 
+  <h5>Defining and calling extension functions</h5> 
+  <p>Kotlin has just the right <strong>syntactic sugar</strong> for it: extension functions. Let's rewrite the <code class="language-kotlin">repeated</code> function as an extension one:</p> 
+  <pre><code class="language-kotlin">fun String.repeated(): String = this + this</code></pre> 
+  <p>Now to get the <code class="language-kotlin">"haha"</code> we can write</p> 
+  <pre><code class="language-kotlin">"ha".repeated()</code></pre> 
+  <p>As you can see, the syntax to define an extension function is like defining a simple function. Just write the <strong>name of</strong> a <strong>class</strong> that you would like to extend <strong>and</strong> add a <strong>dot</strong> <u>before</u> the function name. The class to be extended is called a <strong>receiver type</strong>.</p> 
+  <p>You can get access to the field of an object in the extension function almost as easily, as in the member function. That object is called a <strong>receiver object</strong>.</p> 
+  <pre><code class="language-kotlin">class Client(val name: String, val age: Int)
+
+fun Client.getInfo() = "$name $age" // Client is the receiver type
+
+
+val client = Client("John", 32)
+print(client.getInfo()) // client is the receiver object</code></pre> 
+  <p>Note, if the developer hides some information (you will know how to do it later) and your code cannot get it, the extension function can't have access too. So, it works more like a simple function, not a member function</p> 
+  <p></p>
+  <div class="alert alert-primary">
+   <strong style="font-size: inherit;">Note</strong>, that just like other functions, extension functions 
+   <strong style="font-size: inherit;">can take arguments and return a value</strong> of any type including the same type as the receiver type.
+  </div>
+  <p></p> 
+  <p>So the issue is solved: Kotlin developers can add any functions to any classes they want.</p> 
+  <p>We also need to mention that extension functions are used even in Kotlin standard library. For example, if you look at the <code class="language-kotlin">String</code> class definition, you will see only necessary member functions. Other functions such as <code class="language-kotlin">.first()</code> and <code class="language-kotlin">.toUpperCase()</code> are actually extension functions needed just to simplify the code of the class.</p> 
+  <h5>Extension function vs member function</h5> 
+  <p>Let's assume we have the following class:</p> 
+  <pre><code class="language-kotlin">class A {
+    fun member() = println("hi from member")
+}
+
+fun A.extension() = println("hi from extension")</code></pre> 
+  <p>Both functions can be called in the same way: <code class="language-kotlin">A().member()</code> and <code class="language-kotlin">A().extension()</code>. So we actually can't be sure if it's a member or an extension function just by looking at its calling line. We need to check the implementation.</p> 
+  <p>And what if a developer tries to add an already existing function to a class? The answer is a bit complex here because there can be several different cases.</p> 
+  <p>If we try to define another <code class="language-kotlin">fun A.extension()</code>, the code won't compile. You cannot define two functions with the same signature, as always.</p> 
+  <p>If we add <code class="language-kotlin">fun A.member() = println("bye from not member")</code>, the code will compile but calling <code class="language-kotlin">A().member()</code> will give us <code class="language-kotlin">"hi from member"</code>.</p> 
+  <p>So <strong>member functions always win</strong>. It helps when somebody wants to change the object behavior intentionally or unintentionally.</p> 
+  <p>If you want to give an extension function the name that already exists, you must change the signature of the function, for example, change its arguments. It won't break the already existing code.</p> 
+  <h5>Idiom</h5> 
+  <p>The extension function is an idiomatic way to add some functionality to an existing class. It is simple to use and shows that your new function is closely related to the class. So use it, with community approval! This idiom is documented on <a target="_blank" href="https://kotlinlang.org/docs/idioms.html#extension-functions" rel="noopener noreferrer nofollow">kotlinlang.org</a>.</p> 
+  <pre><code class="language-kotlin">fun String.spaceToCamelCase() { ... }
+
+"Convert this to camelcase".spaceToCamelCase()</code></pre> 
+  <h5>Conclusion</h5> 
+  <p>The extension function is a useful instrument, that can help you work with the existing class. Sometimes you can't change this class. Other times you need to add some functionality and don't want to store it in your class, because it takes up a lot of space. The extension function is a good solution for all of this. Good luck with tasks!</p>
+ </body>
+</html>
