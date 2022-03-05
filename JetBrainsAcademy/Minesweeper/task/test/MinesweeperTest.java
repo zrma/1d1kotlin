@@ -55,9 +55,9 @@ public class MinesweeperTest extends StageTest<Integer> {
             }
 
             for (char c : line.toCharArray()) {
-                if (c != 'X' && c != '.') {
+                if (c != 'X' && c != '.' && !(c >= '0' && c <= '9')) {
                     return CheckResult.wrong(
-                        "One of the characters is not equal to either 'X' or '.'.\n" +
+                        "One of the characters is not equal to 'X' or '.' or to a number.\n" +
                             "In this line: \"" + line + "\"."
                     );
                 }
@@ -71,6 +71,55 @@ public class MinesweeperTest extends StageTest<Integer> {
             return CheckResult.wrong(
                 "Expected to see " + attach + " mines, found " + mines
             );
+        }
+
+        int[] around = new int[] {-1, 0, 1};
+
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++) {
+                char c = line.charAt(x);
+
+                if (c == 'X') {
+                    continue;
+                }
+
+                int minesAround = 0;
+
+                for (int dx : around) {
+                    for (int dy : around) {
+
+                        int newX = x + dx;
+                        int newY = y + dy;
+
+                        if (0 <= newX && newX < 9 &&
+                            0 <= newY && newY < 9) {
+
+                            char newC = lines.get(newY).charAt(newX);
+
+                            if (newC == 'X') {
+                                minesAround++;
+                            }
+                        }
+                    }
+                }
+
+                if (minesAround == 0 && c != '.') {
+                    return CheckResult.wrong(
+                        "There are no mines around, but found number " + c + ".\n" +
+                            "In line " + (y+1) + ", symbol " + (x+1) + "."
+                    );
+                }
+
+                if (minesAround != 0 && c != '0' + minesAround) {
+                    return CheckResult.wrong(
+                        "In this cell should be number " + minesAround + ", " +
+                            "but found symbol \"" + c + "\".\n" +
+                            "In line " + (y+1) + ", symbol " + (x+1) + "."
+                    );
+                }
+
+            }
         }
 
         return CheckResult.correct();

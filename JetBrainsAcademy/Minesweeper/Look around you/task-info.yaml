@@ -142,29 +142,8 @@ files:
     }
   learner_created: false
 feedback_link: https://hyperskill.org/learn/step/7688#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Wrong answer in test #1
-
-    In this cell should be number 1, but found symbol &quot;.&quot;.
-    In line 8, symbol 3.
-
-    Please find below the output of your program during this failed test.
-    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
-
-    ---
-
-    How many mines do you want on the field?
-    &gt; 1
-    .........
-    .........
-    .........
-    .........
-    .........
-    .........
-    .........
-    .........
-    ...X.....
-  time: Thu, 03 Mar 2022 15:14:03 UTC
+  message: Congratulations!
+  time: Sat, 05 Mar 2022 11:34:56 UTC
 record: 3
