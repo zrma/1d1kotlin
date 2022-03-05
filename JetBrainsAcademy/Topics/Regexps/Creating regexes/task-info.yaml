@@ -6,8 +6,6 @@ options:
 - text: c
 - text: d
 - text: e
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Main.kt
   visible: true

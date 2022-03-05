@@ -7,8 +7,6 @@ options:
 - text: Counter().increment(1)
 - text: Counter(1).increment()
 - text: Counter(1).increment(1)
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Main.kt
   visible: true

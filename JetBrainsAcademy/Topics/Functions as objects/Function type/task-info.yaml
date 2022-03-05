@@ -7,8 +7,6 @@ options:
 - text: (String, Int) -&gt; Double
 - text: (String, (Int) -&gt; Double) -&gt; Unit
 - text: (String, (Int) -&gt; Double) -&gt; Double
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Main.kt
   visible: true

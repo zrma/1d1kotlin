@@ -6,8 +6,6 @@ options:
 - text: .ea..
 - text: learning
 - text: learn
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Main.kt
   visible: true

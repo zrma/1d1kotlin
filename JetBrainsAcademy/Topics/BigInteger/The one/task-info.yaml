@@ -2,11 +2,9 @@ type: choice
 is_multiple_choice: true
 options:
 - text: 'val one: BigInteger = 1'
-- text: val one = BigInteger.valueOf(1)
-- text: val one = BigInteger(1)
 - text: val one = BigInteger.ONE
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
+- text: val one = BigInteger(1)
+- text: val one = BigInteger.valueOf(1)
 files:
 - name: src/Main.kt
   visible: true

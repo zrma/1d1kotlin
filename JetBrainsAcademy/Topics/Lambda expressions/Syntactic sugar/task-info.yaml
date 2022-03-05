@@ -7,8 +7,6 @@ options:
 - text: second({ i -&gt; i }, 5)
 - text: second({ it }, 5)
 - text: second(5) { it }
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Main.kt
   visible: true

@@ -7,8 +7,6 @@ options:
 - text: a place marked with the /* start */ comment
 - text: Main() function
 - text: the start of file
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Main.kt
   visible: true

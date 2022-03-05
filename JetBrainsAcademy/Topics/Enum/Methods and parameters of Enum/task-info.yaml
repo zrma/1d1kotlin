@@ -6,8 +6,6 @@ options:
 - text: values()
 - text: name
 - text: value()
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Main.kt
   visible: true

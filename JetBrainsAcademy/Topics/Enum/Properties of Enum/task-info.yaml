@@ -5,8 +5,6 @@ options:
 - text: Enum allows to store only uppercase underscore-separated names
 - text: Enum can be extended by adding a custom method
 - text: Enum cannot store an instance with NULL value
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Main.kt
   visible: true

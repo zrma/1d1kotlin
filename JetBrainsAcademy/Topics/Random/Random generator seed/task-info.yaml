@@ -5,8 +5,6 @@ options:
 - text: A number that a random generator uses to initiate random sequence
 - text: A number that a random generator always returns first
 - text: A package where Random class is located
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Main.kt
   visible: true

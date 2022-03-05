@@ -8,8 +8,6 @@ options:
 - text: var age = 42
 - text: 'val age: String = “42”'
 - text: 'val age: Char = ‘42’'
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Main.kt
   visible: true

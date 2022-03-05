@@ -5,8 +5,6 @@ options:
 - text: val list = listOf(&quot;Day&quot;, &quot;and&quot;, &quot;night&quot;)
 - text: val list = List(1, 2, 3, 4, 5)
 - text: val list = listOf&lt;String&gt;(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;)
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Main.kt
   visible: true

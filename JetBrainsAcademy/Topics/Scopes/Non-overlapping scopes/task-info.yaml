@@ -6,8 +6,6 @@ options:
 - text: Yes, we can, nothing is wrong
 - text: We can, if a variable with the same name is also declared in the scope above
     as top-level
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Main.kt
   visible: true

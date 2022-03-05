@@ -5,8 +5,6 @@ options:
 - text: return
 - text: break
 - text: '@exit'
-message_correct: Congratulations!
-message_incorrect: Incorrect solution
 files:
 - name: src/Main.kt
   visible: true
