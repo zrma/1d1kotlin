@@ -7,73 +7,133 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Test extends StageTest<String> {
-
     @Override
     public List<TestCase<String>> generate() {
         return Arrays.asList(
-                new TestCase<String>().setDynamicTesting(() -> {
-                    TestedProgram main = new TestedProgram();
-                    main.start();
+            new TestCase<String>().setDynamicTesting(() -> {
+                TestedProgram main = new TestedProgram();
+                main.start();
 
-                    // sum of one-digit positive numbers
-                    String output = main.execute("0 1").trim();
-                    return new CheckResult(output.equals("1"),
-                        "Your program cannot sum two positive single digits");
-                }),
-                new TestCase<String>().setDynamicTesting(() -> {
-                    TestedProgram main = new TestedProgram();
-                    main.start();
+                // test of exit
+                String output = main.execute("/exit")
+                    .toLowerCase().replace("\"", "");
 
-                    // sum of one-digit positive numbers
-                    String output = main.execute("1 0").trim();
-                    return new CheckResult(output.equals("1"),
-                        "Your program cannot sum two positive single digits");
-                }),
-                new TestCase<String>().setDynamicTesting(() -> {
-                    TestedProgram main = new TestedProgram();
-                    main.start();
+                if (!output.startsWith("bye")) {
+                    return CheckResult.wrong(
+                        "Your program didn't print \"bye\" after entering \"/exit\".");
+                }
 
-                    // sum of one-digit positive numbers
-                    String output = main.execute("5 7").trim();
-                    return new CheckResult(output.equals("12"),
-                        "Your program cannot sum two positive single digits");
-                }),
-                new TestCase<String>().setDynamicTesting(() -> {
-                    TestedProgram main = new TestedProgram();
-                    main.start();
+                return new CheckResult(main.isFinished(),
+                    "Your program should exit after entering \"/exit\".");
+            }),
 
-                    // sum of three-digit numbers
-                    String output = main.execute("100 123").trim();
-                    return new CheckResult(output.equals("223"),
-                        "Your program cannot sum two three-digit number");
-                }),
-                new TestCase<String>().setDynamicTesting(() -> {
-                    TestedProgram main = new TestedProgram();
-                    main.start();
+            new TestCase<String>().setDynamicTesting(() -> {
+                // sum of singe digits
+                TestedProgram main = new TestedProgram();
+                main.start();
 
-                    // sum of positive and negative number
-                    String output = main.execute("-1 5").trim();
-                    return new CheckResult(output.equals("4"),
-                        "Your program cannot sum negative and positive number");
-                }),
-                new TestCase<String>().setDynamicTesting(() -> {
-                    TestedProgram main = new TestedProgram();
-                    main.start();
+                // two positive
+                String output = main.execute("17 9").trim();
+                if (!output.equals("26")) {
+                    return CheckResult.wrong(
+                        "Your program cannot sum two positive single digits.");
+                }
 
-                    // sum of positive and negative number
-                    String output = main.execute("5 -2").trim();
-                    return new CheckResult(output.equals("3"),
-                        "Your program cannot sum positive and negative number");
-                }),
-                new TestCase<String>().setDynamicTesting(() -> {
-                    TestedProgram main = new TestedProgram();
-                    main.start();
+                // positive and negative
+                output = main.execute("-2 5").trim();
+                if (!output.equals("3")) {
+                    return CheckResult.wrong(
+                        "Your program cannot sum positive and negative numbers.");
+                }
 
-                    // sum of two negative numbers
-                    String output = main.execute("-300 -400").trim();
-                    return new CheckResult(output.equals("-700"),
-                        "Your program cannot sum two negative numbers");
-                })
+                // input empty string
+                output = main.execute("");
+                if (output.length() != 0) {
+                    return CheckResult.wrong(
+                        "Incorrect response to an empty string. " +
+                        "The program should not print anything.");
+                }
+
+                // input one number
+                output = main.execute("7").trim();
+                if (!output.equals("7")) {
+                    return CheckResult.wrong(
+                        "The program printed not the same number that was entered.");
+                }
+
+                // test of /exit
+                output = main.execute("/exit")
+                    .toLowerCase().replace("\"", "");
+
+                if (!output.startsWith("bye")) {
+                    return CheckResult.wrong(
+                        "Your program didn't print \"bye\" after entering \"/exit\".");
+                }
+
+                return new CheckResult(main.isFinished(),
+                    "Your program should exit after entering \"/exit\".");
+            }),
+
+            new TestCase<String>().setDynamicTesting(() -> {
+                // sum of three-digit numbers
+                TestedProgram main = new TestedProgram();
+                main.start();
+
+                // sum of two positive numbers
+                String output = main.execute("100 200").trim();
+                if (!output.equals("300")) {
+                    return CheckResult.wrong(
+                        "Your program cannot sum two positive three-digit numbers.");
+                }
+
+                // input one number
+                output = main.execute("500").trim();
+                if (!output.equals("500")) {
+                    return CheckResult.wrong(
+                        "The program printed not the same number that was entered.");
+                }
+
+                // sum of positive and negative numbers
+                output = main.execute("300 -400").trim();
+                if (!output.equals("-100")) {
+                    return CheckResult.wrong(
+                        "Your program cannot sum positive and negative numbers.");
+                }
+
+                // input empty string
+                output = main.execute("");
+                if (output.length() != 0) {
+                    return CheckResult.wrong(
+                        "Incorrect response to an empty string. " +
+                        "The program should not print anything.");
+                }
+
+                // input one negative number
+                output = main.execute("-500").trim();
+                if (!output.equals("-500")) {
+                    return CheckResult.wrong(
+                        "The program printed not the same number that was entered.");
+                }
+
+                // the sum of the numbers is zero
+                output = main.execute("1 -1").trim();
+                if (!output.equals("0")) {
+                    return CheckResult.wrong(
+                        "The problem when sum is equal to 0 has occurred");
+                }
+
+                // test of /exit
+                output = main.execute("/exit")
+                    .toLowerCase().replace("\"", "");
+
+                if (!output.startsWith("bye")) {
+                    return CheckResult.wrong(
+                        "Your program didn't print \"bye\" after entering \"/exit\".");
+                }
+
+                return new CheckResult(main.isFinished(),
+                    "Your program should exit after entering \"/exit\".");
+            })
         );
     }
 }
