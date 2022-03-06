@@ -14,9 +14,14 @@ class Grid {
         for (int i = 0; i < rows.length; i++) {
             this.rows[i] = rows[i].toCharArray();
             for (char c : this.rows[i]) {
-                if (c != '.' && c != '*' && !(c >= '0' && c <= '9')) {
+                if (c != '/'
+                    && c != 'x'
+                    && c != '.'
+                    && c != '*'
+                    && !(c >= '0' && c <= '9')) {
                     throw new Exception(
-                        "A row of the grid should contain '.' or '*' or numbers. \n" +
+                        "A row of the grid should contain " +
+                            "'/', 'X', '.' or '*' or numbers. \n" +
                             "Found: '" + c + "' in row \"" + rows[i] + "\""
                     );
                 }
@@ -86,21 +91,6 @@ class Grid {
         }
     }
 
-    void markImpossibles() {
-        for (int x = 1; x <= 9; x++) {
-            for (int y = 1; y <= 9; y++) {
-                char curr = get(x, y);
-                if (curr >= '1' && curr <= '9') {
-                    int num = curr - '0';
-                    int minesAround = countAround(x, y, '*');
-                    if (num == minesAround) {
-                        replaceAround(x, y, '.', 'X');
-                    }
-                }
-            }
-        }
-    }
-
     char get(int x, int y) {
         return rows[y-1][x-1];
     }
@@ -131,9 +121,84 @@ class Grid {
         return diff;
     }
 
+    void checkField(boolean withRealMines) throws Exception {
+        for (int x = 1; x <= 9; x++) {
+            for (int y = 1; y <= 9; y++) {
+                char c = get(x, y);
+                if (!withRealMines && c == 'x') {
+                    throw new Exception(
+                        "The word \"failed\" was not found, " +
+                            "but the last grid contains 'X' characters. " +
+                            "This should not be the case."
+                    );
+                }
+                if (c == '/') {
+                    int dotsAround = countAround(x, y, '.');
+                    if (dotsAround != 0) {
+                        throw new Exception(
+                            "The last grid contains '.' and '/' " +
+                                "characters that are next to each other. " +
+                                "This situation is impossible."
+                        );
+                    }
+                    if (withRealMines) {
+                        int minesAround = countAround(x, y, 'x');
+                        if (minesAround != 0) {
+                            throw new Exception(
+                                "The last grid contains 'X' and '/' " +
+                                    "characters that are next to each other. " +
+                                    "This situation is impossible."
+                            );
+                        }
+                    }
+                }
+                if (c >= '1' && c <= '9') {
+                    int num = c - '0';
+                    int freePlacesAround =
+                        countAround(x, y, '.') +
+                            countAround(x, y, '*');
+
+                    if (withRealMines) {
+                        freePlacesAround += countAround(x, y, 'x');
+                    }
+
+                    if (num > freePlacesAround) {
+                        throw new Exception(
+                            "There is a number " + num + " in the last grid, " +
+                                "but there are fewer free fields " +
+                                "around which to put a mine. " +
+                                "This situation is impossible."
+                        );
+                    }
+                }
+                if (c == '*') {
+                    int guaranteedEmptyAround = countAround(x, y, '/');
+                    if (guaranteedEmptyAround != 0) {
+                        throw new Exception(
+                            "The last grid contains '*' and '/' " +
+                                "characters that are next to each other. " +
+                                "This situation is impossible. If there is " +
+                                "'*' character that is " +
+                                "next to '/' it should be replaced to '/' " +
+                                "or to a number."
+                        );
+                    }
+                }
+            }
+        }
+    }
+
+    void checkMiddleGame() throws Exception {
+        checkField(false);
+    }
+
+    void checkFail() throws Exception {
+        checkField(true);
+    }
+
     static List<Grid> parse(String output) throws Exception {
 
-        output = output.replaceAll("│", "|");
+        output = output.replaceAll("\u2502", "|");
         output = output.replaceAll("—", "-");
 
         List<Grid> grids = new LinkedList<>();
@@ -153,7 +218,7 @@ class Grid {
                             "Found grid that contains " + newGrid.size() +
                                 " but grid should contain 9 lines. \n" +
                                 "The tests assume that the grid is " +
-                                "between the lines containing the line \"-│--\"."
+                                "between the lines containing the line \"-\u2502--\"."
                         );
                     }
                     grids.add(
@@ -203,299 +268,268 @@ class Grid {
 
 }
 
-class State {
-    int xStar;
-    int yStar;
-    Grid first;
-    int starCount = 0;
+class Coords {
+    int x;
+    int y;
+    Coords(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 }
 
-public class MinesweeperTest extends StageTest<Integer> {
+enum FirstPressStatus {
+    NOT_PRESSED_FREE, PRESSED_FREE, VERIFIED_OK
+}
 
+enum Action {
+    NONE, MINE, FREE
+}
+
+class State {
+    int minesCount = 0;
+    FirstPressStatus isStart = FirstPressStatus.NOT_PRESSED_FREE;
+    List<Coords> marks = new ArrayList<>();
+
+    int actionX = 0;
+    int actionY = 0;
+    Action lastAction = Action.NONE;
+    char lastCharAtCoords = '\0';
+    String fullAction = null;
+}
+
+public class MinesweeperTest extends StageTest<State> {
 
     @Override
-    public List<TestCase<Integer>> generate() {
-        List<TestCase<Integer>> tests = new ArrayList<>();
+    public List<TestCase<State>> generate() {
+        List<TestCase<State>> tests = new ArrayList<>();
 
-        State state = new State();
-
-        TestCase<Integer> test = new TestCase<Integer>()
-            .addInput("1")
-            .addInput(out -> {
-                out = out.trim();
-
-                List<Grid> grids;
-                try {
-                    grids = Grid.parse(out);
-                } catch (Exception ex) {
-                    return CheckResult.wrong(ex.getMessage());
-                }
-
-                if (grids.size() != 1) {
-                    return CheckResult.wrong(
-                        "Expected to see one grid after printing the number of mines. " +
-                            "Found: " + grids.size() + " grids."
-                    );
-                }
-
-                Grid grid = grids.get(0);
-                int starCount = grid.count('*');
-
-                if (starCount != 0) {
-                    return CheckResult.wrong(
-                        "There should be no '*' symbols in the " +
-                            "initial grid showdown. Found: " + starCount
-                    );
-                }
-
-                int onesCount = grid.count('1');
-
-                if (onesCount != 3 && onesCount != 5 && onesCount != 8) {
-                    return CheckResult.wrong(
-                        "If there is one mine the grid should show 3, 5 or 8 '1' symbols. " +
-                            "Found: " + onesCount
-                    );
-                }
-
-                int dotsCount = 9 * 9 - onesCount;
-                int realDotsCount = grid.count('.');
-
-                if (realDotsCount != dotsCount) {
-                    return CheckResult.wrong(
-                        "There should be " + dotsCount + " '.' symbols in the grid. " +
-                            "Found: " + realDotsCount
-                    );
-                }
-
-                for (int x = 1; x <= 9; x++) {
-                    for (int y = 1; y <= 9; y++) {
-                        if (x == y) {
-                            continue;
-                        }
-                        if (grid.get(x, y) == '.') {
-                            state.xStar = x;
-                            state.yStar = y;
-                            state.first = grid;
-                            return x + " " + y;
-                        }
-                    }
-                }
-                return null;
-            })
-            .addInput(out -> {
-                out = out.trim();
-
-                if (out.toLowerCase().contains("congratulations")) {
-                    return CheckResult.correct();
-                }
-
-                List<Grid> grids;
-                try {
-                    grids = Grid.parse(out);
-                } catch (Exception ex) {
-                    return CheckResult.wrong(ex.getMessage());
-                }
-
-                if (grids.size() != 1) {
-                    return CheckResult.wrong(
-                        "Expected to see one grid after printing the coordinates. " +
-                            "Found: " + grids.size() + " grids."
-                    );
-                }
-
-                Grid grid = grids.get(0);
-                int starCount = grid.count('*');
-
-                if (starCount != 1) {
-                    return CheckResult.wrong(
-                        "There should be one '*' symbol in the " +
-                            "grid after printing the coordinates. Found: " + starCount
-                    );
-                }
-
-                char checkStar = grid.get(state.xStar, state.yStar);
-                if (checkStar != '*') {
-                    return CheckResult.wrong(
-                        "There should be '*' symbol in the coordinates " +
-                            state.xStar + " " + state.yStar + " but found \'" + checkStar + "\'"
-                    );
-                }
-
-                int difference = grid.differences(state.first);
-
-                if (difference != 1) {
-                    return CheckResult.wrong(
-                        "The first and second grid must match except " +
-                            "for one *' character. " +
-                            "There are " + difference + " differences between the grids."
-                    );
-                }
-
-                return state.xStar + " " + state.yStar;
-            })
-            .addInput(out -> {
-                out = out.trim();
-
-                List<Grid> grids;
-                try {
-                    grids = Grid.parse(out);
-                } catch (Exception ex) {
-                    return CheckResult.wrong(ex.getMessage());
-                }
-
-                if (grids.size() != 1) {
-                    return CheckResult.wrong(
-                        "Expected to see one grid after printing the coordinates. " +
-                            "Found: " + grids.size() + " grids."
-                    );
-                }
-
-                Grid grid = grids.get(0);
-
-                int starCount = grid.count('*');
-
-                if (starCount != 0) {
-                    return CheckResult.wrong(
-                        "There should be no '*' symbols in the " +
-                            "grid after printing the coordinates twice. Found: " + starCount
-                    );
-                }
-
-                int difference = grid.differences(state.first);
-
-                if (difference != 0) {
-                    return CheckResult.wrong(
-                        "The first and third grid must match after printing " +
-                            "the coordinates twice. " +
-                            "There are " + difference + " differences between the grids."
-                    );
-                }
-
-                int potentialX = 0;
-                int potentialY = 0;
-                int maxOnesAround = 0;
-                for (int x = 1; x <= 9; x++) {
-                    for (int y = 1; y <= 9; y++) {
-                        int onesAround = 0;
-                        if (grid.get(x, y) == '.') {
-                            onesAround = grid.countAround(x, y, '1');
-                        }
-                        if (onesAround > maxOnesAround) {
-                            maxOnesAround = onesAround;
-                            potentialX = x;
-                            potentialY = y;
-                        }
-                    }
-                }
-
-                return potentialX + " " + potentialY;
-            });
-
-        for (int i = 0; i < 10; i++) {
-            tests.add(test);
+        for (int i = 1; i < 70; i += i < 10 ? 1 : 5) {
+            for (int j = 0; j < (i < 5 ? 20 : 2); j++) {
+                State state = new State();
+                state.minesCount = i;
+                tests.add(new TestCase<State>()
+                    .addInput("" + i)
+                    .addInfInput(out -> createDynamicInput(out, state))
+                    .setAttach(state)
+                );
+            }
         }
-
-        for (int i = 0; i < 3; i++) {
-            State state2 = new State();
-            tests.add(new TestCase<Integer>()
-                .addInput("5")
-                .addInput(5, out -> {
-                    out = out.trim();
-
-                    List<Grid> grids;
-                    try {
-                        grids = Grid.parse(out);
-                    } catch (Exception ex) {
-                        return CheckResult.wrong(ex.getMessage());
-                    }
-
-                    if (grids.size() == 0) {
-                        if (out.toLowerCase().contains("there is a number")) {
-                            return CheckResult.wrong(
-                                "Solver doesn't input cells with numbers," +
-                                    " only dots. Maybe, you messed up " +
-                                    "with X and Y coordinates?"
-                            );
-                        }
-
-                        return CheckResult.wrong(
-                            "Cannot find a field after the last input. Make sure you output " +
-                                "this field using '|' and '-' characters."
-                        );
-                    }
-
-                    Grid grid = grids.get(0);
-                    int starCount = grid.count('*');
-
-                    if (starCount != state2.starCount) {
-                        return CheckResult.wrong(
-                            "There should be " + state2.starCount + " '*' symbols in the " +
-                                "grid. Found: " + starCount
-                        );
-                    }
-
-                    if (state2.first == null) {
-                        state2.first = grid;
-                    }
-
-                    int potentialX = 0;
-                    int potentialY = 0;
-                    int maxNumsAround = 0;
-                    int maxDistToCenter = 0;
-                    for (int x = 1; x <= 9; x++) {
-                        for (int y = 1; y <= 9; y++) {
-                            int numsAround = 0;
-                            if (state2.first.get(x, y) == '.') {
-                                for (char c = '1'; c <= '9'; c++) {
-                                    numsAround += state2.first.countAround(x, y, c);
-                                }
-                            }
-
-                            boolean needUpdate = numsAround > maxNumsAround;
-                            if (numsAround == maxNumsAround) {
-                                int currDistToCenter =
-                                    state2.first.distanceToCenter(x, y);
-                                needUpdate |= currDistToCenter > maxDistToCenter;
-                            }
-
-                            if (needUpdate) {
-                                maxNumsAround = numsAround;
-                                potentialX = x;
-                                potentialY = y;
-                                maxDistToCenter =
-                                    state2.first.distanceToCenter(x, y);
-                            }
-                        }
-                    }
-
-                    state2.starCount++;
-                    state2.first.set(potentialX, potentialY, '*');
-                    state2.first.markImpossibles();
-                    return potentialX + " " + potentialY;
-                })
-                .addInput(out -> {
-                    return CheckResult.wrong(
-                        "Solver can't solve your grid with 5 mines. " +
-                            "Maybe your program shows wrong numbers? " +
-                            "But solver misses 1% of the time, so it is worth trying " +
-                            "to test one more time."
-                    );
-                })
-            );
-        }
-
         return tests;
     }
 
-    @Override
-    public CheckResult check(String reply, Integer attach) {
-        reply = reply.toLowerCase();
+    private Object createDynamicInput(String out, State state) {
+        out = out.trim().toLowerCase();
 
-        if (reply.contains("congratulations")) {
+        List<Grid> grids;
+        try {
+            grids = Grid.parse(out);
+        } catch (Exception ex) {
+            return CheckResult.wrong(ex.getMessage());
+        }
+
+        if (grids.size() == 0) {
+            return CheckResult.wrong(
+                "Cannot find a field after the last input. Make sure you output " +
+                    "this field using '|' and '-' characters."
+            );
+        }
+
+        Grid grid = grids.get(0);
+
+        state.marks.removeIf(elem -> {
+            char c = grid.get(elem.x, elem.y);
+            boolean isGuaranteedEmptyNow = c == '/';
+            boolean isNumberNow = c >= '1' && c <= '9';
+            boolean isFailed = c == 'x';
+            return isGuaranteedEmptyNow || isNumberNow || isFailed;
+        });
+
+        boolean isFailed = out.contains("failed");
+        boolean isWin = out.contains("congratulations");
+
+        int starCount = grid.count('*');
+        int shouldBeStars = state.marks.size();
+        if (starCount != shouldBeStars && !isFailed && !isWin) {
+            return CheckResult.wrong(
+                "There should be " + shouldBeStars + " '*' " +
+                    "symbol" + (starCount > 1? "s": "") + " in the last " +
+                    "grid. Found: " + starCount
+            );
+        }
+
+        if (state.lastAction != Action.NONE) {
+            int x = state.actionX;
+            int y = state.actionY;
+            int oldCell = state.lastCharAtCoords;
+            int newCell = grid.get(x, y);
+
+            if (oldCell == newCell) {
+                return CheckResult.wrong(
+                    "Grid's cell at coordinates \"" + x + " " + y + "\" " +
+                        "didn't changed after action \"" + state.fullAction + "\"");
+            }
+
+            if (state.lastAction == Action.MINE) {
+                if (oldCell == '.' && newCell != '*') {
+                    return CheckResult.wrong(
+                        "Grid's cell at coordinates \"" + x + " " + y + "\" " +
+                            "should be equal to \"*\"");
+                } else if (oldCell == '*' && newCell != '.') {
+                    return CheckResult.wrong(
+                        "Grid's cell at coordinates \"" + x + " " + y + "\" " +
+                            "should be equal to \".\"");
+                }
+
+            } else if (state.lastAction == Action.FREE) {
+                if (newCell != '/' && newCell != 'x' && !(newCell >= '0' && newCell <= '9')) {
+                    return CheckResult.wrong(
+                        "Grid's cell at coordinates \"" + x + " " + y + "\" " +
+                            "should be equal to \"x\", \"/\" or to a number");
+                }
+            }
+        }
+
+        if (isFailed) {
+            if (state.isStart != FirstPressStatus.VERIFIED_OK) {
+                return CheckResult.wrong(
+                    "The user should not lose after the first \"free\" move."
+                );
+            }
+            try {
+                grid.checkFail();
+                int minesCount = grid.count('x');
+                if (minesCount != state.minesCount) {
+                    return CheckResult.wrong(
+                        "There " + (minesCount > 1? "are" : "is") +
+                            " " + minesCount + " mine" + (minesCount > 1? "s": "") +
+                            " in the last grid marked 'X'. " +
+                            "But initially the user " +
+                            "entered " + state.minesCount + " mine" +
+                            (state.minesCount > 1? "s": "") +". " +
+                            "Every real mine should be marked as 'X' at the end " +
+                            "in case of failure."
+                    );
+                }
+                return CheckResult.correct();
+            } catch (Exception ex) {
+                return CheckResult.wrong(ex.getMessage());
+            }
+        }
+
+        if (state.isStart == FirstPressStatus.PRESSED_FREE) {
+            state.isStart = FirstPressStatus.VERIFIED_OK;
+        }
+
+        try {
+            grid.checkMiddleGame();
+        } catch (Exception ex) {
+            return CheckResult.wrong(ex.getMessage());
+        }
+
+        if (isWin) {
+            int freeCellsCount = grid.count('.') + grid.count('*');
+            if (freeCellsCount != state.minesCount &&
+                state.marks.size() != state.minesCount) {
+                return CheckResult.wrong(
+                    "The word \"congratulations\" was found, " +
+                        "but not every mine was found. \n" +
+                        "Mines to find: " + state.minesCount + "\n" +
+                        "Free cells left: " + freeCellsCount
+
+                );
+            }
             return CheckResult.correct();
         }
 
-        return CheckResult.wrong("After guessing right there should be " +
-            "\"Congratulations\" word printed.");
+        Random random = new Random();
+
+        int dotsCount = grid.count('.');
+
+        if (starCount != 0 && (random.nextInt(4) == 0 || dotsCount == 0)) {
+            int nextMine = random.nextInt(state.marks.size());
+            Coords mineToRemove = state.marks.get(nextMine);
+            state.marks.remove(mineToRemove);
+            int x = mineToRemove.x;
+            int y = mineToRemove.y;
+
+            String fullAction = x + " " + y + " mine";
+
+            state.actionX = x;
+            state.actionY = y;
+            state.lastAction = Action.MINE;
+            state.lastCharAtCoords = grid.get(x, y);
+            state.fullAction = fullAction;
+            return fullAction;
+        }
+
+        if (dotsCount == 0) {
+            return CheckResult.wrong(
+                "There are no '.' cells in the field, " +
+                    "but the game is not over. Something is wrong."
+            );
+        }
+
+        while (true) {
+            int x = 1 + random.nextInt(9);
+            int y = 1 + random.nextInt(9);
+
+            char c = grid.get(x, y);
+            if (c == '.') {
+                boolean isMine = random.nextInt(3) == 0;
+                if (isMine) {
+                    state.marks.add(new Coords(x, y));
+
+                    String fullAction = x + " " + y + " mine";
+
+                    state.actionX = x;
+                    state.actionY = y;
+                    state.lastAction = Action.MINE;
+                    state.lastCharAtCoords = '.';
+                    state.fullAction = fullAction;
+                    return fullAction;
+                } else {
+                    if (state.isStart == FirstPressStatus.NOT_PRESSED_FREE) {
+                        state.isStart = FirstPressStatus.PRESSED_FREE;
+                    }
+
+                    String fullAction = x + " " + y + " free";
+
+                    state.actionX = x;
+                    state.actionY = y;
+                    state.lastAction = Action.FREE;
+                    state.lastCharAtCoords = '.';
+                    state.fullAction = fullAction;
+                    return fullAction;
+                }
+            }
+        }
+    }
+
+    @Override
+    public CheckResult check(String reply, State attach) {
+        reply = reply.toLowerCase();
+
+        try {
+            List<Grid> grids = Grid.parse(reply);
+            if (grids.size() <= 1) {
+                return CheckResult.wrong(
+                    "You should output at least 2 grids, found " + grids.size());
+            }
+        } catch (Exception ex) {
+            return CheckResult.wrong(ex.getMessage());
+        }
+
+        boolean isFailed = reply.contains("failed");
+        boolean isWin = reply.contains("congratulations");
+
+        if (!isFailed && !isWin) {
+            return CheckResult.wrong(
+                "No words " +
+                    "\"congratulations\" or \"failed\" were found. " +
+                    "The program must end in one of these ways."
+            );
+        }
+
+        return CheckResult.correct();
     }
 }
