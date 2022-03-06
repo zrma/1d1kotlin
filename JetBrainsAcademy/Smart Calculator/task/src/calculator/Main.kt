@@ -1,5 +1,6 @@
 package calculator
 
 fun main() {
-    println("Hello, World!")
+    val (a, b) = readLine()!!.split(" ").map { it.toInt() }
+    println(a + b)
 }
