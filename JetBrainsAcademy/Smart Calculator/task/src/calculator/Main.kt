@@ -3,23 +3,31 @@ package calculator
 fun main() {
     while (true) {
         val input = readLine() ?: continue
-        if (input == "/exit") {
-            println("Bye!")
-            break
+
+        when (input) {
+            "/exit" -> {
+                println("Bye!")
+                break
+            }
+            "/help" -> {
+                println("The program calculates the sum of numbers")
+                continue
+            }
+            else -> {
+                calc(input)
+            }
         }
-        if (input.isEmpty()) {
-            continue
-        }
-        if (!input.contains(" ")) {
-            println(input)
-            continue
-        }
-        val args = input.split(" ").map { it.toInt() }
-        if (args.size != 2) {
-            println(input)
-            continue
-        }
-        val (a, b) = args
-        println(a + b)
     }
+}
+
+fun calc(input: String) {
+    if (input.isEmpty()) {
+        return
+    }
+    if (!input.contains(" ")) {
+        println(input)
+        return
+    }
+    val sum = input.split(" ").sumOf { it.toInt() }
+    println(sum)
 }
