@@ -1,12 +1,12 @@
 type: hyperskill
-title: Minesweeper
+title: Smart Calculator
 language: English
-summary: 'They say a minesweeper makes only two mistakes in their life: the first
-  is their choice of occupation, and the second one is fatal. In this project, you
-  will create your own, safe "Minesweeper" – a game that will be a brain teaser for
-  both you and your players.<br/><br/>Learn more at <a href="https://hyperskill.org/projects/8?utm_source=ide&utm_medium=ide&utm_campaign=ide&utm_content=project-card">https://hyperskill.org/projects/8</a>'
+summary: Calculators are a very helpful tool that we all use on a regular basis. Why
+  not create one yourself, and make it really special? In this project, you will write
+  a calculator that not only adds, subtracts, and multiplies, but is also smart enough
+  to remember your previous calculations.<br/><br/>Learn more at <a href="https://hyperskill.org/projects/88?utm_source=ide&utm_medium=ide&utm_campaign=ide&utm_content=project-card">https://hyperskill.org/projects/88</a>
 programming_language: Kotlin
 content:
-- Minesweeper
+- Smart Calculator
 - Topics
 mode: Study
