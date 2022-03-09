@@ -28,6 +28,34 @@ fun calc(input: String) {
         println(input)
         return
     }
-    val sum = input.split(" ").sumOf { it.toInt() }
-    println(sum)
+
+    var res = 0
+    var negative = false
+    val tokens = input.split(" ").toMutableList()
+    while (tokens.isNotEmpty()) {
+        val token = tokens.removeAt(0)
+        if (token.isEmpty()) {
+            continue
+        }
+        val isDigit =
+            token.toIntOrNull()?.let {
+                if (negative) {
+                    res -= it
+                } else {
+                    res += it
+                }
+                negative = false
+                true
+            }
+                ?: false
+        if (isDigit) {
+            continue
+        }
+        for (c in token) {
+            if (c == '-') {
+                negative = !negative
+            }
+        }
+    }
+    println(res)
 }
