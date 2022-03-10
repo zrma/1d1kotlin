@@ -9,7 +9,7 @@
    <li>Assertions</li> 
    <li>Attaching a debugger</li> 
   </ul> 
-  <h5>Logging/'println' debugging </h5> 
+  <h5 id="loggingprintln-debugging">Logging/'println' debugging </h5> 
   <p>One way to track the changes in the program state is to insert additional print statements in the code. When executed, they will inform you about what's happening under the hood at runtime.</p> 
   <p>For example, you can insert a line just before a method returns that will print the return value to the console. This way, in addition to seeing the final result, you will also be able to understand what happens at a certain stage of data processing.</p> 
   <p>Let's look at the following code snippet, which hangs indefinitely when run:</p> 
@@ -46,7 +46,7 @@ count() started</code></pre>
   <p>This output shows us that the program reaches the start of the <code class="language-kotlin">count()</code> method, but never reaches its end, which means that the problem is in the <code class="language-kotlin">while</code> loop. After we take a closer look at the construct, we see that there is an extra semicolon, and the loop 'body' is actually an unused lambda expression.</p> 
   <p>Inserting print statements is the most basic way to debug your code, however, we provide it just so you know this technique. You should not use this method in real projects because modern debuggers can do the same in a much more convenient way and because you would not be able to do that everywhere. For example, if you want to get information from some library code, this would be a problem because you cannot modify compiled code.</p> 
   <p>Be patient, we will cover the nice way shortly.</p> 
-  <h5>Assertions</h5> 
+  <h5 id="assertions">Assertions</h5> 
   <p>In order to detect bugs in the program at earlier development stages, you can use assertions. The assertion is a mechanism that monitors the program state, but unlike additional print statements, it terminates the program in a fail-fast manner when things go wrong.</p> 
   <p>Fail-fast is an approach when errors that could otherwise be non-fatal are forced to cause an immediate failure, thus making them visible. </p> 
   <p>You may wonder why one would want to crash the production code. That's because failing immediately is much more safer than doing the wrong thing.</p> 
@@ -72,10 +72,10 @@ class Cat(val name: String, val age: Int)</code></pre>
   at BrokenInvariantsKt.main(brokenInvariants.kt:3)</code></pre> 
   <p>You may have noticed that we used the word <em>invariants </em>and are curious what it means. <strong>Invariants</strong> are constraints that must be met for a program to function properly. In the code above, positive <code class="language-kotlin">age</code> is an example of an invariant. Using a negative <code class="language-kotlin">age</code> is asking for a problem. Enforcing invariants is exactly why we need assertions. </p> 
   <p>We can also use assertions to check method preconditions and postconditions, that is conditions that must be met before or after a method is invoked.</p> 
-  <h5>Attaching a debugger</h5> 
+  <h5 id="attaching-a-debugger">Attaching a debugger</h5> 
   <p>A debugger is a tool that interferes with the normal program execution allowing you to get runtime information and test different scenarios to diagnose bugs. This is the most popular use of debuggers. However, when you grow more experienced with them, you'll see that they can be helpful in various situations, not necessarily related to bugs.</p> 
   <p>Modern debuggers provide a vast variety of tools that can be used to diagnose the most intricate failure conditions, so they definitely warrant a section of their own. In the next topics, we will get started with IntelliJ IDEA and Android Studio debugger and learn how to debug simple code.</p> 
-  <h5>Conclusion</h5> 
+  <h5 id="conclusion">Conclusion</h5> 
   <p>In this topic, you have learned about different debugging techniques you can use to ensure that your code is error-free. The most basic method is inserting print statements to keep track of the values and the execution order of your program. Also, you may add assertions using <code class="language-kotlin">require</code> and <code class="language-kotlin">check</code> functions to make potential hidden errors visible at an early stage of development. Finally, you may attach a debugger to the program to examine its internal state at runtime. These techniques will help you to detect and fix bugs in your code efficiently.</p>
  </body>
 </html>

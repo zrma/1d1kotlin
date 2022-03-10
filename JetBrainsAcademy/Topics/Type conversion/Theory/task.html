@@ -25,7 +25,7 @@ val bigNum: Long = num.toLong() // 100</code></pre>
   <p><code class="language-kotlin">Char</code> is not a numeric type, but you can convert a number to a character and vice versa according to the character code. You can take a look at the code in the Unicode table. This code is basically an integer number.</p> 
   <pre><code class="language-kotlin">val n1: Int = 125
 val ch: Char = n1.toChar() // '}'
-val n2: Int = ch.toInt()   // 125</code></pre> 
+val n2: Int = ch.code      // 125</code></pre> 
   <p>If you have a value of a floating type, a <code class="language-kotlin">Double</code> value, for example, you may convert it to a value of an integer type, such as <code class="language-kotlin">Int</code> or <code class="language-kotlin">Long</code>.</p> 
   <pre><code class="language-kotlin">val d: Double = 12.5
 val n: Long = d.toLong() // 12</code></pre> 

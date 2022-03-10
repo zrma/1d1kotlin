@@ -18,7 +18,7 @@ println(ch) // @</code></pre>
   <p>For example, Latin capital letters have hexadecimal codes from <code class="language-kotlin">'\u0041'</code> to <code class="language-kotlin">'\u005A'</code>, and Latin lowercase letters have codes ranging from <code class="language-kotlin">'\u0061'</code> to <code class="language-kotlin">'\u007A'</code>.</p> 
   <p>You can also convert numbers to characters and vice versa. Let's take a look at how it works:</p> 
   <pre><code class="language-kotlin">val ch = 'a'
-println(ch.toInt())   // 97
+println(ch.code)   // 97
 val num = 97
 println(num.toChar()) // a</code></pre> 
   <h5 style="text-align: center;" id="how-to-read-characters">How to read characters</h5> 

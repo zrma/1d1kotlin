@@ -3,7 +3,7 @@
  <head></head>
  <body>
   <p>You already know that objects are really complex structures and variables only point to objects. This time, you will learn about equality and how to understand that variables point to the same object. In addition, you will finally fully understand the meaning of the <code class="language-kotlin">val</code> keyword and avoid one of the most common beginner mistakes: assuming that the <code class="language-kotlin">val</code> keyword guarantees immutability.</p> 
-  <h5>Comparison</h5> 
+  <h5 id="comparison">Comparison</h5> 
   <p>Imagine a situation: you receive two identical messages from your friend. The messages are "Hi" and "Hi". You see them and understand: the messages are the same. If you want to compare these messages in Kotlin, you can store them as string values:</p> 
   <pre><code class="language-kotlin">val msg1 = "Hi"
 val msg2 = "Hi"</code></pre> 
@@ -16,7 +16,7 @@ println(blueBox == azureBox ) // true, it's a copy
 blueBox.addBall()             // add a ball to the first box
 println(blueBox == azureBox ) // true, the second box also contains 4 balls</code></pre> 
   <p>When you change the first box, its copy changes, too. This is because <code class="language-kotlin">blueBox</code>and <code class="language-kotlin">azureBox</code>point to the same object. How do you check this? Let's see how to check the <strong>referential equality</strong>.</p> 
-  <h5>Referential equality</h5> 
+  <h5 id="referential-equality">Referential equality</h5> 
   <p>You know that variables can have the same state and can <strong>be</strong> the same (point to the same object). In both cases, <code class="language-kotlin">==</code> returns <code class="language-kotlin">true</code>. However, Kotlin provides a special operator <code class="language-kotlin">===</code> to check if the variables point to the same object. For example:</p> 
   <pre><code class="language-kotlin">val blueBox = Box(3)
 val azureBox = blueBox 
@@ -38,7 +38,7 @@ println(two === anotherTwo) // true</code></pre>
 println(two)        // 3
 println(anotherTwo) // 2</code></pre> 
   <p>So, immutable objects are really useful and help you avoid a lot of possible problems with copying.</p> 
-  <h5>The difference between val and var</h5> 
+  <h5 id="the-difference-between-val-and-var">The difference between val and var</h5> 
   <p>Now we can finally understand the meaning of the <code class="language-kotlin">val</code> keyword. As you know, <code class="language-kotlin">val</code> denotes an immutable variable. Let's look at a simple analogy.</p> 
   <p>Suppose you have a box with five balls:</p> 
   <pre><code class="language-kotlin">val box = Box(5) // a box with 5 balls</code></pre> 
@@ -53,7 +53,7 @@ newBox = Box(6) // reassignment of value is impossible</code></pre>
   <pre><code class="language-kotlin">var anotherBox = Box(6)
 anotherBox = Box(2)</code></pre> 
   <p>To sum up, you can change the contents of<strong> </strong><code class="language-kotlin">val</code> with member functions, but you cannot assign another value to it. Remember that <code class="language-kotlin">Int</code>, <code class="language-kotlin">Double</code>, <code class="language-kotlin">String</code>, and other standard types are immutable, so you cannot change their inner state. In this case, <code class="language-kotlin">val</code> keyword implies immutability because the only way to change a standard type is by reassignment, and <code class="language-kotlin">val</code> doesn't allow this operation.</p> 
-  <h5>Conclusion</h5> 
+  <h5 id="conclusion">Conclusion</h5> 
   <p>Let's go over the main points of the topic once again:</p> 
   <ul> 
    <li>Structural equality of variables implies equality of inner states.</li> 

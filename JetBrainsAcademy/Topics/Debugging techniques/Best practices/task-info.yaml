@@ -1,9 +1,9 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: Use a debugging tool to examine the code
 - text: Keep restarting the program until it produces correct results
 - text: Log expected and actual values in critical parts of the code
+- text: Use a debugging tool to examine the code
 - text: Add assertions to localize broken invariants
 files:
 - name: src/Main.kt
