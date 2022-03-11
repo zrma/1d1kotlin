@@ -1,0 +1,26 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: RuntimeException
+- text: StackOverFlowError
+- text: IOException
+- text: Throwable
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/13267#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Fri, 11 Mar 2022 07:54:09 UTC
+record: -1
+selected_options:
+- 0
+- 2
