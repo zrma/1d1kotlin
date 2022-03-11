@@ -1,0 +1,24 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun intDivision(x: String, y: String): Int {
+        try {
+            TODO()
+        }
+    }
+
+    fun main() {
+        val x = readLine()!!
+        val y = readLine()!!
+        println(intDivision(x, y))
+
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10629#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Fri, 11 Mar 2022 14:30:06 UTC
+record: -1

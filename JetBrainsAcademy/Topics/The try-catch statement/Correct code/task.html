@@ -1,0 +1,51 @@
+<h2>Correct code</h2>
+<html>
+ <head></head>
+ <body>
+  <p>Which of these <code class="language-kotlin">try-catch</code> statements below are correct?</p> 
+  <p>Code is considered correct not just when it's technically correct, but also when it runs smoothly and always compiles as expected.</p> 
+  <p>a)</p> 
+  <pre><code class="language-kotlin">try {
+    // code that may throw an exception
+} 
+catch (e: RuntimeException) {
+    // ...
+} 
+catch (e: Exception) {
+    // ...
+}</code></pre> 
+  <p>b)</p> 
+  <pre><code class="language-kotlin">try {
+    // code that may throw an exception
+} 
+catch (e: Exception) {
+    // ...
+}
+catch (e: RuntimeException) {
+    // ...
+}</code></pre> 
+  <p>c)</p> 
+  <pre><code class="language-kotlin">try {
+    // code that may throw an exception
+} 
+catch (Exception) {
+    // ...
+} 
+catch (RuntimeException) {
+    // ...
+}</code></pre> 
+  <p>d)</p> 
+  <pre><code class="language-kotlin">try {
+    // code that may throw an exception
+} 
+catch 1: (e: ArithmeticException) {
+    // ...
+} 
+catch 2: (e: RuntimeException) {
+    // ...
+} 
+catch 3: (e: Exception) {
+    // ...
+}</code></pre>
+ </body>
+</html>

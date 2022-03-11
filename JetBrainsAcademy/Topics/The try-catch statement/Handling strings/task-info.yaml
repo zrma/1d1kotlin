@@ -1,0 +1,15 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun printFifthCharacter(input: String): String {
+        return "The fifth character of the entered word is ${input[4]}"
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10626#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Fri, 11 Mar 2022 14:28:41 UTC
+record: -1
