@@ -16,6 +16,8 @@
   <p>In Kotlin, to read data from the standard input you can use the function <code class="language-kotlin">readln()</code>. It reads the whole line as a string:</p> 
   <pre><code class="language-kotlin">val line = readln()</code></pre> 
   <p>The variable line has the type String because the expression <code class="language-kotlin">readln()</code> returns a value of this type.</p> 
+  <p>If you are working with older versions of the Kotlin language you need to use <code class="language-kotlin">readLine()!!</code> instead of <code class="language-kotlin">readln()</code>. These functions do the same thing, but <code class="language-kotlin">readln()</code> is shorter and preferred, so if you're working with Kotlin 1.6 or higher, use <code class="language-kotlin">readln()</code>.</p> 
+  <pre><code class="language-kotlin">val line = readLine()!! // before Kotlin 1.6</code></pre> 
   <p></p>
   <div class="alert alert-primary">
    You are probably a little confused about the exclamation marks. This construction guarantees non-empty input to the compiler. We will talk about it in more detail later.
