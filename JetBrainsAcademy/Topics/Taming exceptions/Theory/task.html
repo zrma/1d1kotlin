@@ -1,0 +1,59 @@
+<h2>Taming exceptions</h2>
+<html>
+ <head></head>
+ <body>
+  <p>You now know what's an exception and how one can happen and crash your program. Also, you know how to understand where an exception happened. In this topic, we're going to discuss other types of exceptions and a way to prevent them. Moreover, we'll learn a way to produce exceptions ourselves.</p> 
+  <h5>Another type of exceptions</h5> 
+  <p>Consider the following code:</p> 
+  <pre><code class="language-kotlin">fun calculateSpentMoney(total: Int, itemPrice: Int): Int {
+    val amountToBuy = total / itemPrice
+    return amountToBuy * itemPrice
+}</code></pre> 
+  <p>This function can be used in the following situation. Let's imagine you want to calculate how much you spend if you buy a maximum amount of hamburgers which price is <code class="language-kotlin">itemPrice</code> and you have <code class="language-kotlin">total</code> money. How to use the function? For example, <code class="language-kotlin">itemPrice</code> is <code class="language-kotlin">$2</code> and you have <code class="language-kotlin">$37</code> in <code class="language-kotlin">total</code>. The function will return <code class="language-kotlin">36</code>.</p> 
+  <p>Don't you see a problem here? We do: what if items are free? Some candies for tasting at a chocolate factory? We are definitely grabbing many of them and not spending a cent!</p> 
+  <p>However, the function isn't ready for free stuff... If we call it like <code class="language-kotlin">calculateSpentMoney(37, 0)</code>, it will produce an <code class="language-kotlin">ArithmeticException</code> with the <code class="language-kotlin">/ by zero</code> message.</p> 
+  <h5>A way to fix</h5> 
+  <p>No need to worry: in many cases, we can prevent exceptions. We just have to decide which cases are problematic. Here when items are free the function should return <code class="language-kotlin">0</code> but it crashes. </p> 
+  <p>Actually, we've just formulated our special case. So let's handle this situation by simply adding a condition:</p> 
+  <pre><code class="language-kotlin">fun calculateSpentMoney(total: Int, itemPrice: Int): Int {
+    if (itemPrice == 0) {
+        return 0
+    }
+    val amountToBuy = total / itemPrice
+    return amountToBuy * itemPrice
+}</code></pre> 
+  <p>This was an example of preventing your code from a crash: we predicted a special case.</p> 
+  <p></p>
+  <div class="alert alert-primary">
+   Remember: in many cases, you can avoid exceptions using conditions. So think about special cases in your program and add checks.
+  </div>
+  <p></p> 
+  <h5>Throwing exceptions</h5> 
+  <p>We know one more special case of input data for our function: negative numbers. The function doesn't crash but results are useless.</p> 
+  <p>Let's list special cases:</p> 
+  <ul> 
+   <li>we can't have a <em>negative amount of cash</em> in our pocket,</li> 
+   <li>if an <em>item price</em> is <em>negative</em>, we can take all the items but we don't know how many there are.</li> 
+  </ul> 
+  <p>In both cases, there are no sensible results the function can return. If we return, for example, <code class="language-kotlin">0</code>, we will suppress an error quietly.</p> 
+  <p>So we are producing an exception ourselves! In Kotlin, there is the <code class="language-kotlin">throw</code> keyword to do this. Just put an exception object after the word and it will happen:</p> 
+  <pre><code class="language-kotlin">fun calculateSpentMoney(total: Int, itemPrice: Int): Int {
+    if (total &lt; 0) {
+        throw Exception("Total can't be negative")
+    }
+    if (itemPrice &lt; 0) {
+        throw Exception("Item price can't be negative")
+    }
+    if (itemPrice == 0) {
+        return 0
+    }
+    val amountToBuy = total / itemPrice
+    return amountToBuy * itemPrice
+}</code></pre> 
+  <p>For example, if somebody calls this function like <code class="language-kotlin">calculateSpentMoney(-10, 4)</code>, the first condition is true and the program crashes with the provided exception message.</p> 
+  <p>Why should we write <strong>Exception(...)</strong>? That's the right question! Actually, all exceptions are located in a <strong>hierarchy tree</strong>. In this way, <strong>Exception </strong>represents a common type without specific signs. There are other more specific types like <code class="language-kotlin">ArithmeticException</code> and <code class="language-kotlin">NumberFormatException</code>. They help to define what has exactly happened better. However, we suppose that these types of exceptions don't fit the current situation. We will devote another topic to the hierarchy overview and you will learn other types better.</p> 
+  <p>Don't forget that an exception is an object, so you can put it into a variable: <code class="language-kotlin">val countError = Exception("Number is too big")</code>. If you do this, the program won't crash. It will only when you do something like <code class="language-kotlin">throw countError</code>.</p> 
+  <h5>Conclusion</h5> 
+  <p>Now you know some other types of exceptions and how to produce your own. All in all, the main fact here is that there can be situations when you can avoid an exception and situations when you better produce an exception manually.</p>
+ </body>
+</html>
