@@ -1,0 +1,19 @@
+<h2>Braking distance</h2>
+<html>
+ <head></head>
+ <body>
+  <p>Now you need to write a function <code class="java">calculateBrakingDistance</code> that calculates the braking distance of a car.</p> 
+  <p>In order to calculate the distance, you need the initial speed (when braking starts) and the acceleration of the car: </p> 
+  <p><span class="math-tex">\(S = {v_{2}^{2} - v_{1}^{2}\over2a}\)</span>,</p> 
+  <p>where <span class="math-tex">\(S\)</span> is the braking distance, <strong><span class="math-tex">\(a\)</span></strong> is the acceleration, <span class="math-tex">\(v_{1}\)</span> is the initial speed, and <span class="math-tex">\(v_{2}\)</span> is the final speed, which in the case of this problem is always equal to 0. </p> 
+  <p>The function accepts <code class="java">String</code> values as input: convert them to <code class="java">Int</code>. Take care that different exceptions may be thrown. If an exception is thrown, display its message using <code class="java">message</code>. It may happen that the acceleration is 0: then you might get an <code class="java">ArithmeticException</code>. If an <code class="java">ArithmeticException</code> is thrown, display the following instead of the exception message: <code class="java">The car does not slow down!</code>. </p> 
+  <p>If the braking distance could not be calculated, return -1.</p> 
+  <p><strong>Input</strong>: <code class="java">v1</code>: String, <code class="java">a</code>: String</p> 
+  <p><strong>Output</strong>: Int</p> 
+  <p> </p> 
+  <p>Don't worry about the units of measurement, they are always SI units.</p>
+ </body>
+</html><br><b>Sample Input:</b><br><pre><code class="language-no-highlight">6<br>-1</code></pre><br><b>Sample Output:</b><br><pre><code class="language-no-highlight">18</code></pre><br><br><b>Sample Input:</b><br><pre><code class="language-no-highlight">10<br>0</code></pre><br><b>Sample Output:</b><br><pre><code class="language-no-highlight">The car does not slow down!<br>-1</code></pre><br><br><b>Sample Input:</b><br><pre><code class="language-no-highlight">nine<br>one</code></pre><br><b>Sample Output:</b><br><pre><code class="language-no-highlight">For input string: &quot;nine&quot;<br>-1</code></pre><br><br><br><font color="gray">Memory limit: 256 MB</font><br><font color="gray">Time limit: 8 seconds</font><br><br>
+<b>Caution</b><br><br>
+You may see errors in your code or execution results due to missing context. Don’t worry about it, just write the solution and press Check.
+<br><br>
