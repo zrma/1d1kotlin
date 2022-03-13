@@ -1,0 +1,87 @@
+<h2>Regexps in use</h2>
+<html>
+ <head></head>
+ <body>
+  <p>You already know quite a lot about <strong>regular expressions</strong>. In this topic, we will take a broader look at how they are used, particularly, with the <code class="language-kotlin">split</code> and <code class="language-kotlin">replace</code> functions.</p> 
+  <p>Using regexps in these methods allows us to describe a wider group of text elements. You will appreciate the efficiency of this approach!</p> 
+  <h5 style="text-align: center;">Regexps and split()</h5> 
+  <p>You are already familiar with <code class="language-kotlin">split()</code> from the topics in which we discussed string processing. Let's quickly recap what it is.</p> 
+  <p>This method is used to split a string into parts according to a certain principle: the argument of <code class="language-kotlin">split()</code> defines the sequence of characters around which the string is split. The result of <code class="language-kotlin">split()</code> is a list of strings containing parts of the original string. So let's see what the overloaded <code class="language-kotlin">split()</code> method with the use of regular expressions looks like. You will see that it is quite similar!</p> 
+  <p>The definition looks as follows:</p> 
+  <pre><code class="language-kotlin">fun CharSequence.split(
+    regex: Regex,
+    limit: Int = 0
+): List</code></pre> 
+  <p>Let's consider the arguments. The <code class="language-kotlin">regex</code> argument is responsible for the regular expression which defines the delimiter, and <code class="language-kotlin">limit</code> sets the maximum number of substrings to return. Zero by default means no limit is set.</p> 
+  <p>So, <code class="language-kotlin">split()</code> splits the input char sequence around the matches of a given regular expression.</p> 
+  <h5 style="text-align: center;">Regexps and split(): example</h5> 
+  <p>If you remember, in previous topics we looked at an example of using <code class="language-kotlin">split()</code> in phone number splitting. We split an American phone number into its country code, area code, central office code, and other remaining digits:</p> 
+  <pre><code class="language-kotlin">val number = "+1-213-345-6789"
+val parts = number.split("-") // {"+1", "213", "345", "6789"}</code></pre> 
+  <p>Now let's make the previously considered problem more complex. There may be parentheses in the number. Or there may be none. We need to cover both of these cases.</p> 
+  <p>This is where regular expressions help us! Let's compose a regular expression that will match either the separator "<code class="language-kotlin">-</code>", or "<code class="language-kotlin">-(</code>", or "<code class="language-kotlin">)-</code>". We will use <code class="language-kotlin">toRegex()</code> to create a regular expression from a string.</p> 
+  <pre><code class="language-kotlin">"(-\\(|\\)-|-)".toRegex()</code></pre> 
+  <p>Let's check the method for both variants of number spelling:</p> 
+  <pre><code class="language-kotlin">val number = "+1-213-345-6789"
+val brackets = "+1-(213)-345-6789"
+// splitting all substrings in number with brackets
+val splitBrackets = brackets.split("(-\\(|\\)-|-)".toRegex()) // {"+1", "213", "345", "6789"}
+// splitting only two substring
+val splitFirstBrackets = number.split("(-\\(|\\)-|-)".toRegex(), 2) // {"+1", "213-345-6789"}
+// splitting all substrings in number without brackets
+val splitNumber = number.split("(-\\(|\\)-|-)".toRegex()) // {"+1", "213", "345", "6789"}</code></pre> 
+  <p>Everything works!</p> 
+  <h5 style="text-align: center;">Regexps and replace()</h5> 
+  <p>Let's look at the use of regexps with another method: <code class="language-kotlin">replace()</code>. As you may remember, this method is used to replace some parts of the original string with new ones:</p> 
+  <pre><code class="language-kotlin">fun String.replace(
+    oldValue: String,
+    newValue: String,
+    ignoreCase: Boolean = false
+): String</code></pre> 
+  <p>Accordingly, we can either define the desired parts of the string directly as another string or cover more cases using a regular expression.</p> 
+  <p>Let's look at the overload of <code class="language-kotlin">replace()</code> for regular expressions:</p> 
+  <pre><code class="language-kotlin">fun CharSequence.replace(
+    regex: Regex,
+    replacement: String
+): String</code></pre> 
+  <p>As arguments, it accepts <code class="language-kotlin">regex</code>, which searches for replaceable parts in the text, and the string with which they will be replaced.</p> 
+  <h5 style="text-align: center;">Regexps and replace(): example</h5> 
+  <p>So, let's look at an example of using <code class="language-kotlin">replace()</code> with regexp. </p> 
+  <p>Suppose we have a text in which we need to replace all the digits with the string "[digits]". It will be difficult to define exactly what we want with one string. But with regular expressions, everything is solved very easily:</p> 
+  <pre><code class="language-kotlin">val withDigits = "The first test flight of Falcon 9 was on June 4, 2010, " +
+        "from Cape Canaveral, Florida, and the first resupply mission " +
+        "to the ISS was made on October 7, 2012."
+val processedString = withDigits.replace("\\d+".toRegex(), "[digits]")</code></pre> 
+  <p>It's easy to see that regex <code class="language-kotlin">\\d+</code> matches all occurrences of one or more numbers in the text. </p> 
+  <p>As a result of executing the code above, the following text will be stored in <code class="language-kotlin">processedString</code>:</p> 
+  <p><code class="language-no-highlight">The first test flight of Falcon [digits] was on June [digits], [digits], from Cape Canaveral, Florida, and the first resupply mission to the ISS was made on October [digits], [digits].</code></p> 
+  <p>As you can see, all the numbers in the text have been replaced with the specified string.</p> 
+  <h5 style="text-align: center;">find() and findAll()</h5> 
+  <p>Finally, let's take a look at two more functions that will definitely come in handy.</p> 
+  <p>The <code class="language-kotlin">find</code> function is used to find the <strong>first match</strong> of a regular expression in the input. It searches from the start index of the input string.</p> 
+  <p>Let's make the phone number regex even more versatile and see how it all works:</p> 
+  <pre><code class="language-kotlin">val regex = """[+]?[(]?[0-9]{1,4}[)]?[-0-9]*""".toRegex() // phone number template
+val matchResult = regex.find("Her phone number is +1-234-567-89-01. You can also call the second one: +1-111-568-01-01")!!
+print(matchResult.value) // +1-234-567-89-01</code></pre> 
+  <p></p>
+  <div class="alert alert-primary">
+    Note that we care about null safety. The text may not contain matches at all and the result of 
+   <code class="language-kotlin">find()</code> is 
+   <code class="language-kotlin">String?</code> so you should use the 
+   <code class="language-kotlin">!!</code> operator or the Elvis operator. 
+  </div>
+  <p></p> 
+  <p>The <code class="language-kotlin">findAll</code> function is required if you want to find <strong>all matches</strong>. It returns all suitable substrings at once:</p> 
+  <pre><code class="language-kotlin">val regex = """\d{4}-\d{2}-\d{2}""".toRegex() // date template in format YYYY-MM-DD 
+val matchResult =
+    regex.findAll("Harry was born 1980-07-31 in the Godric's Hollow."
+                  + "In 1997-12-24, on Christmas Eve, he returned there" 
+                  + "for the legendary Gryffindor sword")
+for (matches in matchResult) println(matches.value)
+//1980-07-31
+//1997-12-24</code></pre> 
+  <h5 style="text-align: center;">Conclusion</h5> 
+  <p>In this topic, we have considered the use of regular expressions with the <code class="language-kotlin">replace()</code> and <code class="language-kotlin">split()</code> methods and studied examples of this approach. This offers us more versatile tools for working with text.</p> 
+  <p>And now — good luck with the tasks!</p>
+ </body>
+</html>
