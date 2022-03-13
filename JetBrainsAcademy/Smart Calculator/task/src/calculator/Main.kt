@@ -4,17 +4,26 @@ fun main() {
     while (true) {
         val input = readLine() ?: continue
 
-        when (input) {
-            "/exit" -> {
-                println("Bye!")
-                break
+        if (input.startsWith("/")) {
+            when (input) {
+                "/exit" -> {
+                    println("Bye!")
+                    break
+                }
+                "/help" -> {
+                    println("The program calculates the sum of numbers")
+                    continue
+                }
+                else -> {
+                    println("Unknown command")
+                    continue
+                }
             }
-            "/help" -> {
-                println("The program calculates the sum of numbers")
-                continue
-            }
-            else -> {
+        } else {
+            try {
                 calc(input)
+            } catch (_: Exception) {
+                println("Invalid expression")
             }
         }
     }
@@ -25,7 +34,7 @@ fun calc(input: String) {
         return
     }
     if (!input.contains(" ")) {
-        println(input)
+        println(input.toInt())
         return
     }
 
@@ -54,6 +63,8 @@ fun calc(input: String) {
         for (c in token) {
             if (c == '-') {
                 negative = !negative
+            } else if (c != '+') {
+                throw Exception()
             }
         }
     }
