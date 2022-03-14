@@ -6,11 +6,11 @@ content:
 - Pseudorandomness
 - Predictable  random  password
 - Always win the dice game
-- Theory (1)
-- Roll the dice (1)
-- Predictable sequence (1)
-- Random generator seed (1)
-- Pseudorandomness (1)
-- Predictable  random  password (1)
-- Always win the dice game (1)
+- Theory
+- Roll the dice
+- Predictable sequence
+- Random generator seed
+- Pseudorandomness
+- Predictable  random  password
+- Always win the dice game
 - Temperature generator
