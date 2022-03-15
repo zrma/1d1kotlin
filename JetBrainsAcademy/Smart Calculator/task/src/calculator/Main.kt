@@ -1,11 +1,10 @@
 package calculator
 
+import java.math.BigInteger
 import java.util.*
 
-class List()
-
 fun main() {
-    val variables = mutableMapOf<String, Int>()
+    val variables = mutableMapOf<String, BigInteger>()
 
     while (true) {
         val input = readLine() ?: continue
@@ -35,7 +34,7 @@ fun main() {
     }
 }
 
-fun calc(input: String, variables: MutableMap<String, Int>) {
+fun calc(input: String, variables: MutableMap<String, BigInteger>) {
     if (input.isEmpty()) {
         return
     }
@@ -53,7 +52,7 @@ fun calc(input: String, variables: MutableMap<String, Int>) {
     println(res)
 }
 
-fun processAssignment(input: String, variables: MutableMap<String, Int>) {
+fun processAssignment(input: String, variables: MutableMap<String, BigInteger>) {
     val tokens = input.split("=").map { it.trim() }
     if (tokens.size != 2) {
         throw Exception("Invalid assignment")
@@ -65,7 +64,7 @@ fun processAssignment(input: String, variables: MutableMap<String, Int>) {
         throw Exception("Invalid identifier")
     }
 
-    val digit = right.toIntOrNull()
+    val digit = right.toBigIntegerOrNull()
     if (digit != null) {
         variables[left] = digit
         return
@@ -77,7 +76,7 @@ fun processAssignment(input: String, variables: MutableMap<String, Int>) {
     }
 }
 
-fun processUnary(input: String, variables: MutableMap<String, Int>): Boolean {
+fun processUnary(input: String, variables: MutableMap<String, BigInteger>): Boolean {
     if (input in variables) {
         println(variables[input] ?: 0)
         return true
@@ -85,7 +84,7 @@ fun processUnary(input: String, variables: MutableMap<String, Int>): Boolean {
     if (isValidVariableName(input)) {
         throw Exception("Unknown variable")
     }
-    val digit = input.toIntOrNull()
+    val digit = input.toBigIntegerOrNull()
     if (digit != null) {
         println(digit)
         return true
@@ -93,13 +92,13 @@ fun processUnary(input: String, variables: MutableMap<String, Int>): Boolean {
     return false
 }
 
-fun calcExpression(input: String, variables: MutableMap<String, Int>): Int {
+fun calcExpression(input: String, variables: MutableMap<String, BigInteger>): BigInteger {
     val expr = infixToPostfix(input, variables)
     return calcPostfix(expr)
 }
 
-fun calcPostfix(queue: MutableList<String>): Int {
-    val stack = Stack<Int>()
+fun calcPostfix(queue: MutableList<String>): BigInteger {
+    val stack = Stack<BigInteger>()
     val operators =
         mapOf(
             "+" to 1,
@@ -123,14 +122,14 @@ fun calcPostfix(queue: MutableList<String>): Int {
                 }
             stack.push(result)
         } else {
-            val digit = token.toIntOrNull() ?: throw Exception("Invalid expression")
+            val digit = token.toBigIntegerOrNull() ?: throw Exception("Invalid expression")
             stack.push(digit)
         }
     }
     return stack.pop()
 }
 
-fun infixToPostfix(input: String, variables: MutableMap<String, Int>): MutableList<String> {
+fun infixToPostfix(input: String, variables: MutableMap<String, BigInteger>): MutableList<String> {
     val queue: Queue<String> = LinkedList()
     val operators =
         mapOf(
@@ -180,7 +179,7 @@ fun infixToPostfix(input: String, variables: MutableMap<String, Int>): MutableLi
                 }
             }
             else -> {
-                var digit = token.toIntOrNull()
+                var digit = token.toBigIntegerOrNull()
                 if (digit == null) {
                     if (!isValidVariableName(token)) {
                         throw Exception("Invalid identifier")
@@ -218,5 +217,5 @@ fun parseExpr(input: String): MutableList<String> {
 }
 
 fun isValidVariableName(variable: String): Boolean {
-    return variable.matches(Regex("[a-zA-Z]*"))
+    return variable.matches(Regex("[a-zA-Z]+"))
 }
