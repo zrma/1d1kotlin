@@ -1,8 +1,8 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: of
 - text: pairOf
+- text: of
 - text: to
 - text: createPair
 files:
