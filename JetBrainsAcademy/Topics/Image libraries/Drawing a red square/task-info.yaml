@@ -1,0 +1,13 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: "import java.awt.Color\nimport java.awt.image.BufferedImage  \n\nfun drawSquare():\
+    \ BufferedImage {\n  // Add your code here\n}"
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/16352#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sun, 20 Mar 2022 13:20:38 UTC
+record: -1

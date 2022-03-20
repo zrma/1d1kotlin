@@ -1,0 +1,18 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    import java.awt.Color
+    import java.awt.image.BufferedImage
+
+    fun drawStrings(): BufferedImage {
+      // Add your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/16354#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sun, 20 Mar 2022 13:26:33 UTC
+record: -1

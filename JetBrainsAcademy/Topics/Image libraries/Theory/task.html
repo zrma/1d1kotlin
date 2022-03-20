@@ -1,0 +1,112 @@
+<h2>Image libraries</h2>
+<html>
+ <head></head>
+ <body>
+  <h5>Introduction</h5> 
+  <p>Digital image processing is the technique of using computers to process (view, edit, and transform) digital images. The benefit of using computers to process images is the ease of applying various edits or transformations to the image compared with analog processing.</p> 
+  <p>Digital image processing has a wide range of applications spread across various industries – for example, processing satellite data and transforming it into maps, transforming real-life photographs into textures that can be used in video games, modifying your favourite profile picture using image filters, and many others.</p> 
+  <p>Let's see how we can work with images in Kotlin!</p> 
+  <h5>What are images?</h5> 
+  <p>Before getting started, let's define what images actually are. An image is a two-dimensional collection of points of color encoding a visual – for example, a photograph or a piece of digital art. We distinguish between two types of image encodings: <strong>raster</strong> graphics and <strong>vector</strong> graphics.</p> 
+  <p>A raster image is a dot matrix data structure containing a grid of pixels. Pixels are points of color (optionally, with a transparency value) in the two-dimensional (X, Y) screen space.</p> 
+  <p>As they are maps of bits (hence the name bitmap), raster images cannot be scaled up or down to different resolutions without distortion (aliasing).</p> 
+  <p>Vector images are points on a two-dimensional plane that are connected by lines and curves to form polygons and other geometric shapes. As such, they can easily be redrawn at any scale without aliasing.</p> 
+  <p>In this guide, we will be taking a look at raster graphics: their properties and representation in Kotlin, and ways to create, edit, and read/store such objects.</p> 
+  <h5>Images in Kotlin</h5> 
+  <p>In Kotlin, images are represented by the <code class="language-kotlin">java.awt.Image</code> class. This is the class at the top of the hierarchy for all graphical images. For the purpose of this lesson, we will focus on an image subclass, <code class="language-kotlin">BufferedImage</code>. </p> 
+  <p>A <code class="language-kotlin">BufferedImage</code> exposes the buffer of image data that can be read or modified. </p> 
+  <h5>Creating Images</h5> 
+  <p>Creating an image from scratch is as simple as creating an instance of <code class="language-kotlin">BufferedImage</code>.</p> 
+  <pre><code class="language-kotlin">import java.awt.image.BufferedImage 
+
+val height: Int = 800
+val width: Int = 600
+val image = BufferedImage(height, width, BufferedImage.TYPE_INT_RGB)</code></pre> 
+  <p>The last parameter in this particular constructor represents the image type. The <code class="language-kotlin">TYPE_INT_RGB</code> represents an image with 8 bits (or one byte) per color component, with the colors Red, Green, and Blue stored in 3 bytes.</p> 
+  <p>Other examples of image types are:</p> 
+  <ul> 
+   <li> <p><code class="language-kotlin">TYPE_INT_ARGB</code>, which includes a transparency (sometimes called an alpha) component;</p> </li> 
+   <li> <p><code class="language-kotlin">TYPE_BYTE_GRAY</code>, which only includes a single byte value to encode a grayscale color.</p> </li> 
+  </ul> 
+  <p>In our example, we did not add an alpha component, which means the image can not have transparency associated with its pixel data.</p> 
+  <h5>Editing Images</h5> 
+  <p>In order to edit images, we could directly access the pixel matrix in the <code class="language-kotlin">BufferedImage</code>; however, this is very inconvenient, especially if we want to draw more complex geometry, such as lines, polygons, text, or other images. </p> 
+  <p>Luckily, there is a more convenient way to do this. From a <code class="language-kotlin">BufferedImage</code>, we can create a <code class="language-kotlin">Graphics2D</code> by using the <code class="language-kotlin">createGraphics()</code> method. </p> 
+  <pre><code class="language-kotlin">val graphics = image.createGraphics()</code></pre> 
+  <p>This class offers a lot of convenient methods for two-dimensional drawing, such as:</p> 
+  <table> 
+   <tbody> 
+    <tr> 
+     <td> <p><code class="language-kotlin">drawString(String, Int, Int)</code> </p> <p><code class="language-kotlin">drawString(String, Float, Float)</code></p> </td> 
+     <td> <p>Draws a string at the specified (x, y) coordinates.</p> </td> 
+    </tr> 
+    <tr> 
+     <td><code class="language-kotlin">drawLine(x1: Int, y1: Int, x2: Int, y2: Int)</code></td> 
+     <td> <p>Draws a line between the given points (x1, y1) and (x2, y2).</p> </td> 
+    </tr> 
+    <tr> 
+     <td> <p><code class="language-kotlin">drawPolygon(IntArray, IntArray, Int)</code></p> </td> 
+     <td> <p>Draws a polygon between the points with x-coordinates contained in the first <code class="language-kotlin">IntArray</code> and y-coordinates in the second <code class="language-kotlin">IntArray</code>. The third parameter is the number of points contained in the arrays.</p> </td> 
+    </tr> 
+    <tr> 
+     <td><code class="language-kotlin">drawOval(x: Int, y: Int, width: Int, height: Int)</code></td> 
+     <td> <p>Draws an oval at (x, y) with the specified width and height.</p> </td> 
+    </tr> 
+    <tr> 
+     <td><code class="language-kotlin">drawPolyLine(IntArray, IntArray, Int)</code></td> 
+     <td> <p>Draws a PolyLine. The parameters are the same as for drawing a polygon.</p> </td> 
+    </tr> 
+    <tr> 
+     <td> <p><code class="language-kotlin">drawRect(x: Int, y: Int, width: Int, height: Int)</code> </p> </td> 
+     <td> <p>Draws the outline of the specified rectangle.</p> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <p> Building on the newly created image above, drawing a string becomes as simple as: </p> 
+  <pre><code class="language-kotlin">graphics.drawString("Playing with images", 80, 80)
+
+graphics.color = Color.ORANGE
+
+graphics.drawArc(200, 200, 100, 250, 45, 90)</code></pre> 
+  <p>The code above will draw a white (the default color) string at the position (80, 80). It will then change the drawing color to orange and use it to draw an arc at (200, 200) of width 100 and height 250, with a start angle of 45 and an arc angle of 90.</p> 
+  <h5>Writing and Reading Images</h5> 
+  <p>Instead of programatically creating an image from scratch, the <code class="language-kotlin">javax.imageio.ImageIO</code> class offers many convenient methods for encoding (writing) and decoding (reading) images from files in the supported formats. </p> 
+  <p>Format is the binary encoding of an image, and the following formats are supported out of the box: JPEG, PNG, BMP, WBMP, and GIF.</p> 
+  <p>In order to save this newly created image, we will use the <code class="language-kotlin">ImageIO.write(RenderedImage im, String formatName, File output)</code> method and save the image as a PNG file.</p> 
+  <pre><code class="language-kotlin">import java.awt.image.BufferedImage
+import java.io.File
+import javax.imageio.ImageIO
+
+val height: Int = 800
+val width: Int = 600
+
+val image = BufferedImage(height, width, BufferedImage.TYPE_INT_RGB)
+val imageFile = File("myFirstImage.png")
+
+saveImage(image, imageFile)   
+
+fun saveImage(image: BufferedImage, imageFile: File) {
+  ImageIO.write(image, "png", imageFile)
+}</code></pre> 
+  <p>With the file saved to disk, we can reuse it later to continue our work. We will continue by adding a red triangle to the image we have created so far. </p> 
+  <p>The first step to do this is to read the file into a <code class="language-kotlin">BufferedImage</code> using the <code class="language-kotlin">ImageIO.read(File input)</code> function.</p> 
+  <pre><code class="language-kotlin">import java.awt.Color
+import java.awt.image.BufferedImage
+import java.io.File
+import javax.imageio.ImageIO
+
+val imageFile = File("myFirstImage.png")
+
+val image: BufferedImage = ImageIO.read(imageFile)</code></pre> 
+  <p>Secondly, we need to obtain a <code class="language-kotlin">Graphics2D</code> instance, and change the color to red.</p> 
+  <pre><code class="language-kotlin">val graphics = image.createGraphics()
+
+graphics.color = Color.RED</code></pre> 
+  <p>Finally, we will use the <code class="language-kotlin">Graphics2D.drawPolygon(IntArray, IntArray, Int)</code> function to draw our triangle. Remember that the parameters are: an array containing the X-axis coordinates, a second array containing the corresponding Y-axis coordinates, and the size of the arrays.</p> 
+  <pre><code class="language-kotlin">graphics.drawPolygon(intArrayOf(10, 20, 30), intArrayOf(100, 20, 100), 3)</code></pre> 
+  <p>Defining the form of a triangle is beyond the scope of the current lesson. However, note that the points must form an area greater than zero, and be non-collinear. Finally, in order to save the newly drawn triangle, let’s reuse the <code class="language-kotlin">saveImage</code> function defined above.</p> 
+  <pre><code class="language-kotlin">saveImage(image, imageFile)</code></pre> 
+  <h5>Conclusion</h5> 
+  <p>Image processing has many applications, and the standard libraries we've covered facilitate the creation and manipulation of image data in Kotlin. To recap, we have covered what images are, how they are represented in Kotlin, and how we can create images from scratch. Finally, we looked at how to edit images and how to read images from and save them to files.</p>
+ </body>
+</html>
