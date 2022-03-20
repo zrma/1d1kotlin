@@ -1,12 +1,26 @@
 <h5>Description</h5>
 
-<p>Write a program that reads two integer numbers from the same line and prints their sum in the standard output. Numbers can be positive, negative, or zero.</p>
+<p>At this stage, you'll learn some basic image manipulation.</p>
 
-<h5>Input/Output example</h5>
+<h5>Objective</h5>
 
-<p>The example below shows input and the corresponding output. Your program should work in the same way.</p>
+<p>Your task is to draw a black rectangle of a given size, draw two red lines crossing it and save the image. Your program should read the rectangle's width and height, as well as the output file name from the input. We will use only <code class="java">.png</code> file format for this project. </p>
 
-<pre><code class="java">5 8
-13</code></pre>
+<p>We recommend to use <code class="java">java.awt.image.BufferedImage</code> class to handle and manipulate the image data and <code class="java">javax.imageio.ImageIO</code> for reading and saving images from/to a file. You can check out some nice explanations and examples of <a target="_blank" href="https://www.tutorialspoint.com/java_dip/java_buffered_image.htm" rel="noopener noreferrer nofollow">BufferedImage</a> and <a target="_blank" href="https://www.tutorialspoint.com/How-to-convert-Byte-Array-to-Image-in-java" rel="noopener noreferrer nofollow">ImageIO</a> to be more confident in what you're doing. You can also look at official documentation on <a target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/awt/image/BufferedImage.html" rel="noopener noreferrer nofollow">BufferedImage</a> and <a target="_blank" href="https://docs.oracle.com/javase/8/docs/api/javax/imageio/ImageIO.html" rel="noopener noreferrer nofollow">ImageIO</a> classes.</p>
 
-<p>Do not add extra characters after the output.</p>
+<p>Tests use hash comparison of output files to test your solution. Using the proposed classes will help you avoid unintended difficulties.</p>
+
+<h5>Example</h5>
+
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+
+<pre><code class="language-no-highlight">Enter rectangle width:
+&gt; 20
+Enter rectangle height:
+&gt; 10
+Enter output image name:
+&gt; out.png</code></pre>
+
+<p><code class="java">out.png</code> should look like this:</p>
+
+<p><img alt="" height="193" name="pasted image 0.png" src="https://ucarecdn.com/47479c8c-65a0-4029-a2b8-dec645d43913/" width="384"></p>

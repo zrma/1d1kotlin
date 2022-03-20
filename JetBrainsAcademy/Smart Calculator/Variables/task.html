@@ -1,74 +1,44 @@
 <h5>Description</h5>
 
-<p>At this stage, your program should support variables. We suppose that the name of a variable (identifier) can contain only Latin letters. The case is also important; for example, <strong>n</strong> is not the same as <strong>N</strong>. The value can be an integer number or a value of another variable.</p>
+<p>Now you have everything to resize the image while preserving its content. Simply remove the seam, then remove the seam from the resulting image and so on!</p>
 
-<p>The assignment statement may look like the following:</p>
+<h5>Objective</h5>
 
-<pre><code class="java">n = 3
-m=4
-a  =   5
-b = a
-v=   7
-n =9</code></pre>
+<p>Add two more command line parameters. Use parameter <code class="java">-width</code> for the number of vertical seams to remove and <code class="java">-height</code> for horizontal seams.</p>
 
-<p>A variable can have a name consisting of more than one letter.</p>
+<p>At this stage, your program should reduce the input image and save the result using the following algorithm:</p>
 
-<pre><code class="java">count = 10</code></pre>
+<ol>
+	<li>Find a vertical seam and remove all the pixels that this seam contains. Then find another vertical seam on the resulted image and delete all the pixels that the second seam contains. Repeat the process until you remove the specified number of vertical seams.</li>
+	<li>Do the same, but with horizontal seams.</li>
+</ol>
 
-<p>To print the value of a variable you should just type its name.</p>
+<h5>Example</h5>
 
-<pre><code class="java">N = 5
-N
-5</code></pre>
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
 
-<p>It should be possible to set a new value to an existing variable.</p>
+<p><strong>Example 1:</strong></p>
 
-<pre><code class="java">a = 1
-a = 2
-a = 3
-a
-3</code></pre>
+<p>In the following example, the program should reduce the image width by 125 pixels and height by 50 pixels</p>
 
-<p>If an identifier or value of a variable is invalid, the program must print a message like the one below.</p>
+<pre><code class="language-no-highlight">&gt; java Main -in sky.png -out sky-reduced.png -width 125 -height 50</code></pre>
 
-<pre><code class="java">a1 = 8
-Invalid identifier
-n = a2a
-Invalid assignment
-a = 7 = 8
-Invalid assignment</code></pre>
+<p>For the following <code class="java">sky.png</code>:</p>
 
-<p>If a variable is not declared yet, the program should print <code class="java">"Unknown variable"</code>.</p>
+<p><img alt="" height="334" name="pasted image 0 (12).png" src="https://ucarecdn.com/dfc369ac-62fa-49c2-bc96-f8e5d6f527db/" width="500"></p>
 
-<pre><code class="java">a = 8
-b = c
-Unknown variable
-e
-Unknown variable</code></pre>
+<p><code class="java">sky-reduced.png</code> should look like this:</p>
 
-<p>Handle as many incorrect inputs as possible. The program must never throw the <code class="java">NumberFormatException</code> or any other exception.</p>
+<p><img alt="" height="209" name="pasted image 0 (13).png" src="https://ucarecdn.com/b40f577e-32ad-4297-8aa7-36dc2711693a/" width="450"></p>
 
-<p>It is important to note, all variables must store their values between calculations of different expressions.</p>
+<p><strong>Example 2:</strong></p>
 
-<h5>Input/Output example</h5>
+<pre><code class="language-no-highlight">&gt; java Main -in trees.png -out trees-reduced.png -width 100 -height 30</code></pre>
 
-<pre><code class="java">a  =  3
-b= 4
-c =5
-a + b - c
-2
-b - c + 4 - a
-0
-a = 800
-a + b + c
-809
-BIG = 9000
-BIG
-9000
-big
-Unknown variable
-/exit
-Bye!
-</code></pre>
+<p>For <code class="java">trees.png</code>:</p>
 
-<p>The program should not stop until the user enters the <code class="java">/exit</code> command.</p>
+<p><img alt="" height="429" name="pasted image 0 (14).png" src="https://ucarecdn.com/f03252dc-6774-4f6f-8bf8-ebe1146ed375/" width="600"></p>
+
+<p><code class="java">trees-reduced.png</code> should look like this:</p>
+
+<p><img alt="" height="399" name="pasted image 0 (15).png" src="https://ucarecdn.com/ca96c6c9-d3dd-4f05-ae21-e1e6ff9b82b1/" width="500"></p>
