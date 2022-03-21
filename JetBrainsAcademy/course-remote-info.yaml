@@ -7,7 +7,7 @@ update_date: Thu, 01 Jan 1970 00:00:00 UTC
 stages:
 - id: 550
   step: 9015
-  is_completed: false
+  is_completed: true
 - id: 551
   step: 9016
   is_completed: false

@@ -1,7 +1,7 @@
 import org.apache.commons.codec.binary.Hex;
+import org.hyperskill.hstest.testcase.TestCase;
 import org.hyperskill.hstest.stage.StageTest;
 import org.hyperskill.hstest.testcase.CheckResult;
-import org.hyperskill.hstest.testcase.TestCase;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -12,6 +12,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
+
 
 class CheckFailException extends Exception {
     public CheckFailException(String s) {
@@ -114,16 +115,16 @@ public class SeamCarvingTest extends StageTest<OutFile> {
 
         return Arrays.asList(
             new TestCase<OutFile>()
-                .setInput("20\n10\ntest/out1.png\n")
-                .setAttach(new OutFile("test/out1.png", 20, 10, "b56a8b4fce6cfcc00965be5c9b1eb157")),
+                .addArguments("-in", "test/small.png", "-out", "test/small-negative.png")
+                .setAttach(new OutFile("test/small-negative.png",15, 10, "b25b6f88aaa616e81c04cf3bc2713946")),
 
             new TestCase<OutFile>()
-                .setInput("10\n10\ntest/out2.png\n")
-                .setAttach(new OutFile("test/out2.png",10, 10, "031a1b56b1a2754c69a6119c61b1f28f")),
+                .addArguments("-in", "test/blue.png", "-out", "test/blue-negative.png")
+                .setAttach(new OutFile("test/blue-negative.png", 500, 334, "f2f4c0ea34926b1a711a6d04bd108923")),
 
             new TestCase<OutFile>()
-                .setInput("20\n20\ntest/out3.png\n")
-                .setAttach(new OutFile("test/out3.png", 20, 20, "a4b4885a3aa7a3acdc318885b865178b"))
+                .addArguments("-in", "test/trees.png", "-out", "test/trees-negative.png")
+                .setAttach(new OutFile("test/trees-negative.png", 600, 429, "e6eaf77401b4d6d9c27368bdb11a0862"))
         );
     }
 
