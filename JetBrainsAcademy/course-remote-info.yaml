@@ -3,4 +3,255 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/312105/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Mon, 21 Mar 2022 12:06:53 UTC
+update_date: Thu, 01 Jan 1970 00:00:00 UTC
+stages:
+- id: 550
+  step: 9015
+  is_completed: false
+- id: 551
+  step: 9016
+  is_completed: false
+- id: 552
+  step: 9017
+  is_completed: false
+- id: 553
+  step: 9018
+  is_completed: false
+- id: 554
+  step: 9019
+  is_completed: false
+- id: 555
+  step: 9020
+  is_completed: false
+topics:
+  0:
+  - title: Cartesian coordinates
+    theory_id: 13114
+  - title: Binary numbers
+    theory_id: 5544
+  - title: Hexadecimal numbers
+    theory_id: 8788
+  - title: Units of information
+    theory_id: 6865
+  - title: IDE
+    theory_id: 10996
+  - title: Introduction to operating systems
+    theory_id: 9704
+  - title: Files
+    theory_id: 13025
+  - title: Vectors, matrices, scalars
+    theory_id: 16969
+  - title: Introduction to matrices
+    theory_id: 7112
+  - title: Types of matrices
+    theory_id: 17812
+  - title: Computer programming
+    theory_id: 8739
+  - title: Introduction to Kotlin
+    theory_id: 4350
+  - title: Basic literals
+    theory_id: 4351
+  - title: Overview of the basic program
+    theory_id: 4362
+  - title: Values and variables
+    theory_id: 4371
+  - title: Val variables
+    theory_id: 17408
+  - title: Data types
+    theory_id: 4388
+  - title: Comments
+    theory_id: 4406
+  - title: Coding style conventions
+    theory_id: 4419
+  - title: Naming variables
+    theory_id: 4389
+  - title: The classification of basic types
+    theory_id: 4455
+  - title: Standard output
+    theory_id: 4425
+  - title: Invoking functions
+    theory_id: 4575
+  - title: Standard input
+    theory_id: 4445
+  - title: Type conversion
+    theory_id: 4672
+  - title: Reading data with a readLine
+    theory_id: 11224
+  - title: String basics
+    theory_id: 12553
+  - title: String templates
+    theory_id: 4547
+  - title: Boolean and logical operations
+    theory_id: 4515
+  - title: Arithmetic operations
+    theory_id: 4472
+  - title: Type of the numeric expression
+    theory_id: 9506
+  - title: Increment and decrement
+    theory_id: 10776
+  - title: Integers in action
+    theory_id: 4488
+  - title: Relational operators
+    theory_id: 4525
+  - title: If expression
+    theory_id: 4625
+  - title: Declaring functions
+    theory_id: 4580
+  - title: Repeating blocks
+    theory_id: 4643
+  - title: Objects
+    theory_id: 11233
+  - title: Equality
+    theory_id: 11236
+  - title: Functions as objects
+    theory_id: 5991
+  - title: Lambda expressions
+    theory_id: 6154
+  - title: Unicode
+    theory_id: 7899
+  - title: Characters
+    theory_id: 4680
+  - title: Ranges
+    theory_id: 4633
+  - title: For loop and ranges
+    theory_id: 4652
+  - title: Introduction to MutableList
+    theory_id: 14879
+  - title: Work with MutableLists
+    theory_id: 14902
+  - title: For loop and lists
+    theory_id: 15022
+  - title: Introduction to collections
+    theory_id: 10390
+  - title: List
+    theory_id: 10730
+  - title: Mutable List
+    theory_id: 11032
+  - title: External resources
+    theory_id: 6216
+  - title: Multi-dimensional list
+    theory_id: 15127
+  - title: Reading files
+    theory_id: 6351
+  - title: Writing files
+    theory_id: 9710
+  - title: IntelliJ IDEA
+    theory_id: 3801
+  - title: Libraries
+    theory_id: 8504
+  - title: RGB
+    theory_id: 8819
+  - title: Image colors
+    theory_id: 14484
+  - title: Image libraries
+    theory_id: 16348
+  - title: Errors in programs
+    theory_id: 11559
+  - title: What is an exception
+    theory_id: 7243
+  1:
+  - title: Working with strings
+    theory_id: 12561
+  - title: Arrays
+    theory_id: 4564
+  - title: String arrays
+    theory_id: 11477
+  - title: Command line overview
+    theory_id: 8977
+  - title: Parameters and options
+    theory_id: 9746
+  - title: The main() function
+    theory_id: 10484
+  - title: IntelliJ Run Configurations
+    theory_id: 10630
+  - title: Hierarchy of exceptions
+    theory_id: 13264
+  - title: Taming exceptions
+    theory_id: 7601
+  - title: The try-catch statement
+    theory_id: 10622
+  2:
+  - title: Introduction to OOP
+    theory_id: 3614
+  - title: Declaring classes
+    theory_id: 6200
+  - title: When expression
+    theory_id: 4631
+  - title: Functional decomposition
+    theory_id: 12668
+  - title: Default arguments
+    theory_id: 4637
+  - title: Named arguments
+    theory_id: 4640
+  - title: Constructors
+    theory_id: 10740
+  - title: Member functions
+    theory_id: 6364
+  - title: Secondary constructor
+    theory_id: 10746
+  - title: Floating-point types
+    theory_id: 4502
+  - title: The Math library
+    theory_id: 12532
+  - title: Encapsulation
+    theory_id: 8519
+  - title: Properties accessors
+    theory_id: 10511
+  - title: What is a bug
+    theory_id: 5504
+  3:
+  - title: Computer algorithms
+    theory_id: 16547
+  - title: The big O notation
+    theory_id: 16699
+  - title: Data structures
+    theory_id: 16927
+  - title: Pseudocode
+    theory_id: 15090
+  - title: Queue
+    theory_id: 5350
+  - title: Priority queue
+    theory_id: 7384
+  - title: Recursion basics
+    theory_id: 5984
+  - title: Decrease and conquer
+    theory_id: 14669
+  - title: Divide and conquer
+    theory_id: 3544
+  - title: Dynamic programming basics
+    theory_id: 7948
+  - title: Graph
+    theory_id: 15967
+  - title: Nodes, cycles and paths
+    theory_id: 15968
+  - title: Representation of graphs
+    theory_id: 15969
+  - title: Weighted graph
+    theory_id: 5645
+  - title: Shortest path problem
+    theory_id: 15223
+  - title: Breadth-first search
+    theory_id: 7068
+  - title: Dijkstra's algorithm
+    theory_id: 5772
+  - title: Directed acyclic graph
+    theory_id: 5186
+  4:
+  - title: Operations with matrices
+    theory_id: 7296
+  - title: While loops
+    theory_id: 4659
+  - title: Stack
+    theory_id: 5252
+  - title: Call stack
+    theory_id: 11550
+  - title: Scopes
+    theory_id: 17116
+  - title: Inheritance
+    theory_id: 9844
+  - title: Inheritance
+    theory_id: 7770
+  - title: Polymorphism
+    theory_id: 10027
+  - title: Overriding functions
+    theory_id: 7884

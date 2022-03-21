@@ -1,0 +1,23 @@
+<h5>Description</h5>
+
+<p>Before digital photography came around, people used to work with negative images on film. Let’s get nostalgic and emulate a warm analog negative film image!</p>
+
+<p>To create a negative image, you should invert all color components for every pixel. Inverted color for <code class="java"><strong>(r, g, b)</strong></code> is <code class="java"><strong>(255 - r, 255 - g, 255 - b)</strong></code>.</p>
+
+<h5>Objective</h5>
+
+<p>At this stage, you should add command-line parameters to specify the input and output files for your program. Use parameter <code class="java">-in</code> for the input file path and parameter <code class="java">-out</code> for the output file path. For simplicity, we will use only <code class="java">.png</code> file format in this project. Your program should read the specified input image file, inverse colors and save the file to a given location.</p>
+
+<h5>Example</h5>
+
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+
+<pre><code class="language-no-highlight">&gt; java Main -in sky.png -out sky_negative.png</code></pre>
+
+<p>For the following <code class="java">sky.png</code>:</p>
+
+<p><img alt="" height="410" name="pasted image 0 (1).png" src="https://ucarecdn.com/0380c7b3-9f63-4332-bb7a-20f1e8eb830e/" width="614"></p>
+
+<p><code class="java">sky_negative.png</code> should look like this:</p>
+
+<p><img alt="" height="410" name="pasted image 0 (2).png" src="https://ucarecdn.com/28f26afe-8d85-4696-b520-1348be698da9/" width="614"></p>

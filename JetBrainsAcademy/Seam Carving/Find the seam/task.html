@@ -1,0 +1,31 @@
+<h5>Description</h5>
+
+<p>Now you are ready to find the best seam to remove. Vertical seam is a sequence of adjacent pixels crossing the image top to bottom. The seam can have only one pixel in each row of the image. For example, subsequent pixels for pixel <span class="math-tex">\((x,y)\)</span> are <span class="math-tex">\((x -1, y + 1)\)</span>, <span class="math-tex">\((x, y + 1)\)</span> , and <span class="math-tex">\((x + 1, y + 1)\)</span>.</p>
+
+<p>The best seam to remove is the seam with the lowest sum of pixel energies from all possible seams. The problem of finding the best seam is very similar to finding the shortest path in a graph. Think of pixels as vertices. Connect them with imaginary edges. Edge weight should be equal to the energy of the pixel this edge is pointing to.</p>
+
+<p><img alt="" height="278" name="pasted image 0 (6).png" src="https://ucarecdn.com/b7bf158a-41d5-4d82-b05a-100fdde40ff2/" width="417"></p>
+
+<p>The easiest way to apply the shortest path finding algorithm to your energy graph is to add imaginary zero rows with the horizontal links on the top and on the bottom. Then you can search for the shortest path between top-left and bottom-right corners.</p>
+
+<p><img alt="" height="335" name="pasted image 0 (7).png" src="https://ucarecdn.com/f8717437-3c16-4fc6-a2cc-e9fbdb67827a/" width="417"></p>
+
+<p>Also, you can come up with a dynamic programming solution without adding rows.</p>
+
+<h5>Objective</h5>
+
+<p>At this stage, your program should find the seam with the lowest energy and highlight it in red. Red is <code class="java">(255, 0, 0)</code>.</p>
+
+<h5>Example</h5>
+
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+
+<pre><code class="language-no-highlight">&gt; java Main -in sky.png -out sky-seam.png</code></pre>
+
+<p>For the following <code class="java">sky.png</code>:</p>
+
+<p><img alt="" height="236" name="pasted image 0 (8).png" src="https://ucarecdn.com/b85d134c-92c3-4e87-b2eb-e06339a64edf/" width="354"></p>
+
+<p><code class="java">sky-seam.png</code> should look like this:</p>
+
+<p><img alt="" height="236" name="pasted image 0 (9).png" src="https://ucarecdn.com/a6a902c3-b741-48e3-ad0b-87e9ec4d7b50/" width="354"></p>

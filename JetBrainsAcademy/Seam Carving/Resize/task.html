@@ -1,0 +1,44 @@
+<h5>Description</h5>
+
+<p>Now you have everything to resize the image while preserving its content. Simply remove the seam, then remove the seam from the resulting image and so on!</p>
+
+<h5>Objective</h5>
+
+<p>Add two more command line parameters. Use parameter <code class="java">-width</code> for the number of vertical seams to remove and <code class="java">-height</code> for horizontal seams.</p>
+
+<p>At this stage, your program should reduce the input image and save the result using the following algorithm:</p>
+
+<ol>
+	<li>Find a vertical seam and remove all the pixels that this seam contains. Then find another vertical seam on the resulted image and delete all the pixels that the second seam contains. Repeat the process until you remove the specified number of vertical seams.</li>
+	<li>Do the same, but with horizontal seams.</li>
+</ol>
+
+<h5>Example</h5>
+
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+
+<p><strong>Example 1:</strong></p>
+
+<p>In the following example, the program should reduce the image width by 125 pixels and height by 50 pixels</p>
+
+<pre><code class="language-no-highlight">&gt; java Main -in sky.png -out sky-reduced.png -width 125 -height 50</code></pre>
+
+<p>For the following <code class="java">sky.png</code>:</p>
+
+<p><img alt="" height="334" name="pasted image 0 (12).png" src="https://ucarecdn.com/dfc369ac-62fa-49c2-bc96-f8e5d6f527db/" width="500"></p>
+
+<p><code class="java">sky-reduced.png</code> should look like this:</p>
+
+<p><img alt="" height="209" name="pasted image 0 (13).png" src="https://ucarecdn.com/b40f577e-32ad-4297-8aa7-36dc2711693a/" width="450"></p>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><code class="language-no-highlight">&gt; java Main -in trees.png -out trees-reduced.png -width 100 -height 30</code></pre>
+
+<p>For <code class="java">trees.png</code>:</p>
+
+<p><img alt="" height="429" name="pasted image 0 (14).png" src="https://ucarecdn.com/f03252dc-6774-4f6f-8bf8-ebe1146ed375/" width="600"></p>
+
+<p><code class="java">trees-reduced.png</code> should look like this:</p>
+
+<p><img alt="" height="399" name="pasted image 0 (15).png" src="https://ucarecdn.com/ca96c6c9-d3dd-4f05-ae21-e1e6ff9b82b1/" width="500"></p>
