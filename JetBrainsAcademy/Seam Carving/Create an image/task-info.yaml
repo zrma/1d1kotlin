@@ -164,7 +164,7 @@ files:
 - name: test/out2.png
   visible: true
   learner_created: true
-feedback_link: https://hyperskill.org/projects/100/stages/550/implement#comment
+feedback_link: https://hyperskill.org/learn/step/9015#comment
 status: Solved
 feedback:
   message: Congratulations!

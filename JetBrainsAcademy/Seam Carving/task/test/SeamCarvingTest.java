@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -115,16 +116,16 @@ public class SeamCarvingTest extends StageTest<OutFile> {
 
         return Arrays.asList(
             new TestCase<OutFile>()
-                .addArguments("-in", "test/small.png", "-out", "test/small-negative.png")
-                .setAttach(new OutFile("test/small-negative.png",15, 10, "b25b6f88aaa616e81c04cf3bc2713946")),
+                .addArguments("-in", "test/small.png", "-out", "test/small-energy.png")
+                .setAttach(new OutFile("test/small-energy.png", 15, 10, "931d2f37bb499ef6892db026f57525ba")),
 
             new TestCase<OutFile>()
-                .addArguments("-in", "test/blue.png", "-out", "test/blue-negative.png")
-                .setAttach(new OutFile("test/blue-negative.png", 500, 334, "f2f4c0ea34926b1a711a6d04bd108923")),
+                .addArguments("-in", "test/blue.png", "-out", "test/blue-energy.png")
+                .setAttach(new OutFile("test/blue-energy.png", 500, 334, "0bdde2d55124785b16df005088f17e1a")),
 
             new TestCase<OutFile>()
-                .addArguments("-in", "test/trees.png", "-out", "test/trees-negative.png")
-                .setAttach(new OutFile("test/trees-negative.png", 600, 429, "e6eaf77401b4d6d9c27368bdb11a0862"))
+                .addArguments("-in", "test/trees.png", "-out", "test/trees-energy.png")
+                .setAttach(new OutFile("test/trees-energy.png", 600, 429, "89c4037e6c0b0de040d9fb85e4450ebc"))
         );
     }
 
