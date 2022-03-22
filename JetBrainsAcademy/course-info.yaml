@@ -1,5 +1,5 @@
 type: hyperskill
-title: Smart Calculator
+title: Seam Carving
 language: English
 summary: "Seam carving is an image processing technique for content aware image resizing.\r\
   \nContent aware means that it saves objects and object aspect ratio at processed\
@@ -7,6 +7,6 @@ summary: "Seam carving is an image processing technique for content aware image 
   >https://hyperskill.org/projects/100</a>"
 programming_language: Kotlin
 content:
-- Smart Calculator
+- Seam Carving
 - Topics
 mode: Study

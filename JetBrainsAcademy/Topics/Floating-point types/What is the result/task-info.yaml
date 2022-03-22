@@ -1,0 +1,26 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: 4.8
+- text: 3.0
+- text: 4.0
+- text: 5.5
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/4505#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Tue, 22 Mar 2022 13:09:02 UTC
+record: -1
+selected_options:
+- 2
+custom_name: What is the result?
