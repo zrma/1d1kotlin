@@ -1,0 +1,30 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: ceil, floor, round
+- text: abs, pow, log, sqrt
+- text: min, max
+- text: integrate, differentiate
+- text: average, median, mode
+- text: sin, cos, tan
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/4559#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Wed, 23 Mar 2022 13:20:27 UTC
+record: -1
+selected_options:
+- 0
+- 1
+- 2
+- 5

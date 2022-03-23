@@ -1,0 +1,109 @@
+<h2>The Math library</h2>
+<html>
+ <head></head>
+ <body>
+  <p>Kotlin provides a set of functions to perform calculations. This can be helpful in a variety of fields, for example, statistics, geometry, machine learning, cryptography, and so on.</p> 
+  <p>We will use the library <code class="language-kotlin">kotlin.math</code> developed specifically for Kotlin; since Kotlin 1.2, it provides common math for the Java platform and JS. You can access all the functions with one line:</p> 
+  <pre><code class="language-kotlin">import kotlin.math.*</code></pre> 
+  <p>In this topic, we will go through some of the most common functions. </p> 
+  <p></p>
+  <div class="alert alert-primary">
+   Be careful! Most of these functions work only with Floating-point types, so you need to convert 
+   <code class="language-kotlin">Int</code> or 
+   <code class="language-kotlin">Long</code> types to use them!
+  </div>
+  <p></p> 
+  <h5 style="text-align: center;">Basic functions</h5> 
+  <p>You will often need to do simple operations in your work: for example, determining the greater or smaller of two numbers. Luckily, you don't need to do it manually since you can use the Math library.</p> 
+  <p>The following functions work with <code class="language-kotlin">Int</code>, <code class="language-kotlin">Long</code>, <code class="language-kotlin">Float</code>, and <code class="language-kotlin">Double</code> types (both <strong>a</strong> and <strong>b</strong> must be the same type):</p> 
+  <ul> 
+   <li><code class="language-kotlin">abs(n)</code> returns the absolute value of its argument;</li> 
+   <li><code class="language-kotlin">min(a, b)</code> returns the smaller value of two arguments;</li> 
+   <li><code class="language-kotlin">max(a, b)</code> returns the greater value of two arguments.</li> 
+  </ul> 
+  <p>Here are some examples: </p> 
+  <pre><code class="language-kotlin">val abs = abs(-10)     // 10
+val dAbs = abs(-10.33) // 10.33
+
+val min = min(11, 81) // 11
+val max = max(20, 30) // 30</code></pre> 
+  <h5 style="text-align: center;">Power and exponential functions</h5> 
+  <p>Another very common operation is taking a square root of some number or raising it to the n-th power. Math library provides separate functions for that:</p> 
+  <ul> 
+   <li><code class="language-kotlin">sqrt(x)</code> returns the square root of its argument (works with <code class="language-kotlin">Float</code> and <code class="language-kotlin">Double</code> types);</li> 
+   <li><code class="language-kotlin">x.pow(n)</code> returns the value of <em>x</em> raised to the power of <em>n</em>, where<strong><em> </em></strong><em>x</em> can be <code class="language-kotlin">Float</code> or <code class="language-kotlin">Double</code> and <em>n</em> can be <code class="language-kotlin">Int</code>, <code class="language-kotlin">Long</code>, <code class="language-kotlin">Float</code>, or <code class="language-kotlin">Double</code>. </li> 
+  </ul> 
+  <p>If you need to work with logarithms, you can use the functions listed below. Exponential and logarithmic functions work with <code class="language-kotlin">Float</code> and <code class="language-kotlin">Double</code> types:</p> 
+  <ul> 
+   <li><code class="language-kotlin">exp(x)</code> returns the exponential function of <em>x</em>;</li> 
+   <li><code class="language-kotlin">ln(x)</code> returns the natural logarithm of <em>x</em>;</li> 
+   <li><code class="language-kotlin">log(x, base)</code> returns the logarithm of <em>x</em><strong> </strong>to <em>base</em>. </li> 
+  </ul> 
+  <p>Also, Math library provides the constant <code class="language-kotlin">E</code> that is the base of the natural logarithm.</p> 
+  <p>Now, let's look at the examples:</p> 
+  <pre><code class="language-kotlin">val sqrt = sqrt(2.0)      // 1.4142...
+val square = 5.0.pow(2.0) // 25.0
+val cube = 2.0.pow(3.0)   // 8.0
+
+
+val e = E        // 2.718
+val ln = ln(e)   // 1
+val log = log(16.0, 4.0)  // 2
+val logSum = ln(exp(2.0) * exp(3.0))  // 5</code></pre> 
+  <h5 style="text-align: center;">Trigonometric functions</h5> 
+  <p>If you need to calculate trigonometric functions such as finding a sine or cosine, the easiest way to do it is, as you may have guessed, Math library.</p> 
+  <p>The following functions work with <code class="language-kotlin">Float</code><strong> </strong>and <code class="language-kotlin">Double</code><strong> </strong>types and accept angles in radians:</p> 
+  <ul> 
+   <li><code class="language-kotlin">sin(x)</code> returns the trigonometric sine of the given angle in radians;</li> 
+   <li><code class="language-kotlin">cos(x)</code> returns the trigonometric cosine of the given angle in radians;</li> 
+   <li><code class="language-kotlin">tan(x)</code> returns the trigonometric tangent of the given angle in radians.</li> 
+  </ul> 
+  <p>Also, the library provides the constant <code class="language-kotlin">PI</code> that is the ratio of the circumference of a circle to its diameter.</p> 
+  <p>Here are some examples:</p> 
+  <pre><code class="language-kotlin">val pi = PI // pi is 3.1415...
+
+val sin = sin(pi / 2) // 1.0
+val cos = cos(pi) // -1.0
+val tan = tan(pi / 4) // 0.99999999... (an inaccurate result)</code></pre> 
+  <p>Another helpful operation is calculating the hypotenuse. Imagine we have a right triangle one of whose angles is 90 degrees. We know the lengths of both sides: <code class="language-kotlin">a = 3.0</code> and <code class="language-kotlin">b = 4.0</code>. Here is how we can calculate the length of the hypotenuse:</p> 
+  <pre><code class="language-kotlin">val a = 3.toDouble()
+val b = 4.toDouble()
+val c = hypot(a, b) // c is 5.0, function works with Double or Float</code></pre> 
+  <p>The Math library has many other trigonometric functions: you may find arcus and hyperbolic functions on the <a target="_blank" href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.math/" rel="noopener noreferrer nofollow">kotlin.math</a> page.</p> 
+  <h5 style="text-align: center;">Rounding functions</h5> 
+  <p>You will often need to round numbers. As you may know, there are several different ways to do this.</p> 
+  <p>Rounding functions work with <code class="language-kotlin">Float</code> and <code class="language-kotlin">Double</code> types:</p> 
+  <ul> 
+   <li><code class="language-kotlin">floor(x)</code> returns the largest double value that is less than or equal to its argument and is equal to an integer;</li> 
+   <li><code class="language-kotlin">ceil(x)</code> returns the smallest double value that is greater than or equal to its argument and is equal to an integer;</li> 
+   <li><code class="language-kotlin">round(x)</code> returns the closest double value that is equal to an integer. Numbers like <code class="language-kotlin">3.5</code> or <code class="language-kotlin">4.5</code> are rounded to the nearest even integer. Also, you can use <code class="language-kotlin">roundToInt()</code> to round number and convert it to <code class="language-kotlin">Int</code> in one function!</li> 
+  </ul> 
+  <p>Let's see how they work:</p> 
+  <pre><code class="language-kotlin">val floor = floor(3.78) // 3.0
+val ceil = ceil(4.15)   // 5.0
+
+val negativeFloor = floor(-3.78)  // -4.0
+val negativeCeil = ceil(-4.15)    // -4.0
+
+val roundDown = round(4.15)       // 4.0
+val roundUp = (4.75).roundToInt() // 5, Int 
+
+val roundDownToEven = round(2.5)  // 2.0
+val roundUpToEven = round(3.5)    // 4.0</code></pre> 
+  <h5 style="text-align: center;">Example</h5> 
+  <p>Now that you know the basic functions, let's try them on a real task.</p> 
+  <p>As you know, the sides of an equilateral triangle are of the same length, and all angles are 60°. We will try to check it using the law of cosines: <span class="math-tex">\(c^2 = a^2 + b^2 - 2ab\cos(\gamma)\)</span> where <span class="math-tex">\(a\)</span> and <span class="math-tex">\(b\)</span> are the sides of the triangle and <span class="math-tex">\(\gamma\)</span> is the angle between them:</p> 
+  <pre><code class="language-kotlin">val size1 = 6
+val size2 = 6
+val angle = 60
+
+val a = size1.toDouble()  // pow works with double
+val b = size2.toDouble()
+val radianAngle = angle * PI / 180 // cos requires an angle in radians
+
+val c = sqrt(a.pow(2.0) + b.pow(2.0) - 2 * a * b * cos(radianAngle))
+print(c) // 5.999999999999999, inaccurate, but the correct result</code></pre> 
+  <h5 style="text-align: center;">Conclusion</h5> 
+  <p>As you can see, the <code class="language-kotlin">math</code> library provides a lot of helpful functions. With this library, you can perform calculations with numbers, solve trigonometry tasks, and round numbers. This is a kind of functionality that you'll definitely use in your future projects. We cannot cover all functions in one topic, so if we didn't cover a specific function here or you want to see the whole list, check the official page <a target="_blank" href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.math/" rel="noopener noreferrer nofollow">kotlin.math</a>. Good luck!</p>
+ </body>
+</html>

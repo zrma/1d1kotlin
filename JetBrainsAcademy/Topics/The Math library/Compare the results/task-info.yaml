@@ -1,0 +1,26 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: round(9.7)
+- text: ceil(9.7)
+- text: floor(9.7)
+- text: abs(9.7)
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/4558#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Wed, 23 Mar 2022 13:27:43 UTC
+record: -1
+selected_options:
+- 0
+- 1
