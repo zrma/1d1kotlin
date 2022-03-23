@@ -1,0 +1,15 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun main() {
+        println("Learn Kotlin")
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/18840#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Wed, 23 Mar 2022 13:05:02 UTC
+record: -1

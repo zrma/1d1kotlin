@@ -1,0 +1,29 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: App
+- text: app
+- text: Run
+- text: run
+- text: Main
+- text: main
+- text: Program
+- text: program
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/4367#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Wed, 23 Mar 2022 13:03:51 UTC
+record: -1
+selected_options:
+- 5
