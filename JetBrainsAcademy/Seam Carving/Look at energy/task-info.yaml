@@ -167,6 +167,18 @@ files:
 - name: test/trees.png
   visible: false
   learner_created: false
+- name: test/small-energy.png
+  visible: true
+  learner_created: true
+- name: test/blue-energy.png
+  visible: true
+  learner_created: true
+- name: test/trees-energy.png
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/9017#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Thu, 24 Mar 2022 13:58:46 UTC
 record: -1
