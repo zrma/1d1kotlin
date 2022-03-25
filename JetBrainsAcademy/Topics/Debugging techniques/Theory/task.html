@@ -9,7 +9,7 @@
    <li>Assertions</li> 
    <li>Attaching a debugger</li> 
   </ul> 
-  <h5 id="loggingprintln-debugging">Logging/'println' debugging </h5> 
+  <h5 id="loggingprintln-debugging">Logging/"println" debugging </h5> 
   <p>One way to track the changes in the program state is to insert additional print statements in the code. When executed, they will inform you about what's happening under the hood at runtime.</p> 
   <p>For example, you can insert a line just before a method returns that will print the return value to the console. This way, in addition to seeing the final result, you will also be able to understand what happens at a certain stage of data processing.</p> 
   <p>Let's look at the following code snippet, which hangs indefinitely when run:</p> 
@@ -43,21 +43,21 @@ fun count(start: Int, to: Int) {
   <p>Now, instead of just hanging, the program will output:</p> 
   <pre><code class="language-kotlin">main() started
 count() started</code></pre> 
-  <p>This output shows us that the program reaches the start of the <code class="language-kotlin">count()</code> method, but never reaches its end, which means that the problem is in the <code class="language-kotlin">while</code> loop. After we take a closer look at the construct, we see that there is an extra semicolon, and the loop 'body' is actually an unused lambda expression.</p> 
+  <p>This output shows us that the program reaches the start of the <code class="language-kotlin">count()</code> method, but never reaches its end, which means that the problem is in the <code class="language-kotlin">while</code> loop. After we take a closer look at the construct, we see that there is an extra semicolon, and the loop "body" is actually an unused lambda expression.</p> 
   <p>Inserting print statements is the most basic way to debug your code, however, we provide it just so you know this technique. You should not use this method in real projects because modern debuggers can do the same in a much more convenient way and because you would not be able to do that everywhere. For example, if you want to get information from some library code, this would be a problem because you cannot modify compiled code.</p> 
   <p>Be patient, we will cover the nice way shortly.</p> 
   <h5 id="assertions">Assertions</h5> 
   <p>In order to detect bugs in the program at earlier development stages, you can use assertions. The assertion is a mechanism that monitors the program state, but unlike additional print statements, it terminates the program in a fail-fast manner when things go wrong.</p> 
   <p>Fail-fast is an approach when errors that could otherwise be non-fatal are forced to cause an immediate failure, thus making them visible. </p> 
-  <p>You may wonder why one would want to crash the production code. That's because failing immediately is much more safer than doing the wrong thing.</p> 
-  <p>Let’s take a look at the following program:</p> 
+  <p>You may wonder why one would want to crash the production code. That's because failing immediately is much safer than doing the wrong thing.</p> 
+  <p>Let's take a look at the following program:</p> 
   <pre><code class="language-kotlin">fun main() {
     val casper = Cat("Casper", -1)
 }
 
 class Cat(val name: String, val age: Int)</code></pre> 
   <p>This code creates a <code class="language-kotlin">Cat</code> object. This would be fine if it weren't for the negative age value that makes no sense. Naturally, in a more complex program, this may lead to various bugs. Such an object may be passed around for a long time before we see a problem, and when a problem arises, it is not always obvious what was the cause.</p> 
-  <p>To prevent that from happening, we can check 'age' parameter to be positive and 'name' is non-empty:</p> 
+  <p>To prevent that from happening, we can check "age" parameter to be positive and "name" is non‑empty:</p> 
   <pre><code class="language-kotlin">class Cat(val name: String, val age: Int) {
     val enoughCat = false // Of course, it's a false, there are never enough cats!
     init {
@@ -65,7 +65,7 @@ class Cat(val name: String, val age: Int)</code></pre>
         require(age &gt;= 0) { "Invalid age: $age" }        // IllegalArgumentException
     }
 }</code></pre> 
-  <p>The first parameter is the boolean expression that should be checked, and when it evaluates to <code class="language-kotlin">false</code>, any exception is thrown. The second parameter is a function which generates a message that describes this error. You should use <code class="language-kotlin">require</code> when you are validating the argument passed to the function and <code class="language-kotlin">check</code> when you are checking the state of the object, as in this case.</p> 
+  <p>The first parameter is the boolean expression that should be checked, and when it evaluates to <code class="language-kotlin">false</code>, an exception is thrown. The second parameter is a function which generates a message that describes this error. You should use <code class="language-kotlin">require</code> when you are validating the argument passed to the function and <code class="language-kotlin">check</code> when you are checking the state of the object, as in this case.</p> 
   <p>Now, if we run the code, the program will throw an error and terminate right in the <code class="language-kotlin">Cat</code> constructor:</p> 
   <pre><code class="language-kotlin">Exception in thread "main" java.lang.IllegalArgumentException: Invalid age: -1
   at Cat.&lt;init&gt;(brokenInvariants.kt:7)

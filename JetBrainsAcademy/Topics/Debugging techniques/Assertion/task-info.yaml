@@ -2,11 +2,11 @@ type: choice
 is_multiple_choice: false
 options:
 - text: It throws an Exception if the condition in the parentheses is evaluated to
-    true
+    false
 - text: It throws an Error if the condition in the parentheses is evaluated to true
 - text: It throws an Error if the condition in the parentheses is evaluated to false
 - text: It throws an Exception if the condition in the parentheses is evaluated to
-    false
+    true
 files:
 - name: src/Main.kt
   visible: true
