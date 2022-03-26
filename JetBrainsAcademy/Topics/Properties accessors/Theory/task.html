@@ -1,0 +1,168 @@
+<h2>Properties accessors</h2>
+<html>
+ <head></head>
+ <body>
+  <p>As you already know, each class in Kotlin has zero or more <strong>properties</strong>. You will be using properties in almost all of your classes. In this topic, we will take a closer look at how to work with properties such as changing them and getting their values.</p> 
+  <h5>Property getter</h5> 
+  <p>Suppose you have a simple class <code class="language-kotlin">Client</code> with one property <code class="language-kotlin">name</code>:</p> 
+  <pre><code class="language-kotlin">class Client {
+    val name = "Unknown"
+}
+
+val client = Client()</code></pre> 
+  <p>You already know how to retrieve a property name: just type in the dot and the property name after the object name:</p> 
+  <pre><code class="language-kotlin">client.name</code></pre> 
+  <p>This looks very simple, but in fact, when you want to get the value of some property, you call a special <code class="language-kotlin">get()</code> function called <strong>getter</strong>. This is what it actually looks like:</p> 
+  <pre><code class="language-kotlin">class Client {
+    val name = "Unknown"
+        get() {
+            return field
+        }
+}
+
+// or with omitted curly brackets and the body of the get() function
+
+class Client {
+    val name = "Unknown"
+        get() = field
+}</code></pre> 
+  <p>This function takes nothing (you only ask a value, nothing more) and returns one value. When you try to retrieve a value, you will get the result of the <code class="language-kotlin">get()</code> function. So, what is <code class="language-kotlin">field</code>? Every property in Kotlin has its own <strong>backing field</strong>, which contains a property value that can be accessed with the special keyword <code class="language-kotlin">field</code>.</p> 
+  <p>In this case, your getter just returns the value of the <code class="language-kotlin">name</code> variable. This is the expected behavior, so Kotlin generates this function for us, and you don't need to write it. If you want to change the logic of the getter, you should write your own <code class="language-kotlin">get()</code> function.</p> 
+  <h5>Custom getter</h5> 
+  <p>Let's print the customer's name every time we access <code class="language-kotlin">name</code>:</p> 
+  <pre><code class="language-kotlin">class Client {
+    val name = "Unknown"
+        get() {
+            println("Somebody wants to know $field name")
+            return field
+        }
+}
+
+val client = Client()
+
+val name = client.name // prints Somebody wants to know Unknown name
+println(name)          // prints Unknown</code></pre> 
+  <p>Another use for a custom getter is if you want to return something else. For example, your task could be to store complete customer information in a variable. If you change some information about one person, you will have to change this variable as well. If you are using a custom getter, you can generate information on-demand. In the example below, the <code class="language-kotlin">Client</code> class gets an <code class="language-kotlin">age</code> property that stores the age of the client, and <code class="language-kotlin">info</code> property that returns the information about them:</p> 
+  <pre><code class="language-kotlin">class Client {
+    var name: String = "Unknown"
+    var age: Int = 18
+    val info: String
+        get() {
+            return "name = $name, age = $age"
+        }
+}
+
+val client = Client()
+println(client.info) // name = Unknown, age = 18
+client.name = "Lester"
+client.age = 20
+println(client.info) // name = Lester, age = 20</code></pre> 
+  <h5>Property setter</h5> 
+  <p>Now you know that you can customize the process of getting the property value. It is also possible to modify the process of changing the property value! Let's take a look at a simple example:</p> 
+  <pre><code class="language-kotlin">class Client {
+    var name = "Unknown" // default value
+}
+
+val client = Client()
+client.name = "Ann"      // name property now stores "Ann"</code></pre> 
+  <p>When you want to set the value of some property, you should call a special <code class="language-kotlin">set()</code> function called <strong>setter</strong>. This is what it looks like:</p> 
+  <pre><code class="language-kotlin">class Client {
+    var name = "Unknown"
+        set(value) {
+            field = value
+        }
+}</code></pre> 
+  <p>This function takes one argument (it is named <code class="language-kotlin">value</code> by convention, but you can use a different name) and returns nothing. As you know, <code class="language-kotlin">field</code> contains the current value of the property and you can change it by reassigning a different value.</p> 
+  <p>In this case, your setter will simply change the value of the <code class="language-kotlin">name</code> variable to the received value. This is the expected behavior and Kotlin generates this function for us, you don't need to write the setter yourself.</p> 
+  <h5>Custom setter</h5> 
+  <p>The <code class="language-kotlin">set()</code> function is a powerful instrument and it's possible to customize the logic of a setter. For example, let's print the customer's name every time we change the <code class="language-kotlin">name</code> property:</p> 
+  <pre><code class="language-kotlin">class Client {
+    var name = "Unknown"
+        set(value) {
+            println("The name is changing. Old value is $field. New value is $value.")
+            field = value
+        }
+}
+
+val client = Client()
+client.name = "Ann"   // The name is changing. Old value is Unknown. New value is Ann.</code></pre> 
+  <p>As you could notice, the setter is only called when you're trying to change the property, not when initializing it.</p> 
+  <p>Another way to use a custom setter is if you wanted to assign a different value. Let's add an <code class="language-kotlin">age</code> property that stores the age of the client. Of course, age cannot be negative. If you want to take it into account, you can add a custom setter:</p> 
+  <pre><code class="language-kotlin">class Client {
+    var name = "Unknown"
+    var age = 18
+        set(value) {                      
+            field = if (value &lt; 0) {
+                println("Age cannot be negative. Set to $defaultAge")
+                defaultAge
+            } else
+                value
+        }
+    val defaultAge = 18
+}
+
+val client = Client()
+client.age = -1      // Age cannot be negative. Set to 18.
+println(client.age)  // 18</code></pre> 
+  <h5>Additional features</h5> 
+  <p>You may implement both a setter and a getter for your property:</p> 
+  <pre><code class="language-kotlin">class Client {
+    var name = "Unknown"
+        get() {
+            println("Somebody wants to know $field name")
+            return field
+        }
+        set(value) {
+            println("The name is changing. Old value is $field. New value is $value.")
+            field = value
+        }
+}</code></pre> 
+  <p>If you want to add a getter and/or a setter to a property in a constructor, just "move" the property out. Remember that in this case, you need to use another variable, not the property from the constructor:</p> 
+  <pre><code class="language-kotlin">class Client(name: String, age: Int) {
+    var fullName: String = name
+        set(value) {
+            println("The name is changing. Old value is $field. New value is $value.")
+            field = value
+        }
+    var age: Int = age   // this is a new property, not a property from the constructor
+        set(value) {
+            println("The age is changing. Old value is $field. New value is $value.")
+            field = value
+        }
+}</code></pre> 
+  <p>Keep in mind that when initializing your property, the setter will not be called. This is also true for constructors since they initialize properties. Let's take a closer look: </p> 
+  <pre><code class="language-kotlin">class Client(name: String) {
+    var name: String = name
+        set(value) {
+            println("The name is changing. Old value is $field. New value is $value.")
+            field = value
+        }
+}
+
+val client = Client("Annie")  // without output
+client.name = "Ann"           // The name is changing. Old value is Annie. New value is Ann.</code></pre> 
+  <p>You cannot use a setter for <code class="language-kotlin">val</code> variables: the <code class="language-kotlin">set()</code> function reassigns the variable, which is not possible for <code class="language-kotlin">val</code>. Of course, you can change the internal state of the <code class="language-kotlin">val</code> property another way, for example, with its own setters.</p> 
+  <pre><code class="language-kotlin">class Passport(number: String) {
+    var number = number
+    set(value) {
+        println("Passport number has changed.")
+        field = value
+    }
+}
+
+class Client {
+    val passport = Passport("1234567")
+}
+
+val client = Client()
+println(client.passport.number)       // 1234567
+/*
+client.passport = Passport("2345678") // This will not work.
+*/
+client.passport.number = "2345678"    // This will change the passport number
+                                      // prints Passport number has changed
+println(client.passport.number)       // 2345678</code></pre> 
+  <h5>Conclusion</h5> 
+  <p>Kotlin properties are a really pragmatic way to work with class fields. Now you know about the default getter and setter methods and their customization. It is a really powerful tool that will help you in a lot of situations like logging and handling input.</p>
+ </body>
+</html>

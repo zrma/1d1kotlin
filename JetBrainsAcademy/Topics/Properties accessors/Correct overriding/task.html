@@ -1,0 +1,21 @@
+<h2>Correct overriding</h2>
+<html>
+ <head></head>
+ <body>
+  <p>Look at this snippet of code:</p> 
+  <pre><code class="language-kotlin">fun main() {
+    var five = highFive()
+}
+
+class Six(var six: Int) {
+    var seven: String = "seven"
+    var nine: Int = seven.length
+}
+
+fun highFive(): Int {
+   var eight: Int = 8
+   return 5
+}</code></pre> 
+  <p>For which of these variables can you write your own accessors?</p>
+ </body>
+</html>
