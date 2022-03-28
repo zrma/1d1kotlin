@@ -3,7 +3,7 @@
  <head></head>
  <body>
   <p>Kotlin provides many useful functions that can come in handy when you work with lists and modify their contents. In this topic, we'll look at various groups of commonly used functions and show you how to use them with examples.</p> 
-  <h5>Outputting a list</h5> 
+  <h5 id="outputting-a-list">Outputting a list</h5> 
   <p>The first function is <code class="language-kotlin">joinToString()</code>. It helps us output our list in different ways using the <code class="language-kotlin">separator</code> attribute.</p> 
   <p>Use <code class="language-kotlin">joinToString()</code> to see the resulting list and print its contents:</p> 
   <pre><code class="language-kotlin">val southernCross = mutableListOf("Acrux", "Gacrux", "Imai", "Mimosa")
@@ -11,7 +11,7 @@ println(southernCross.joinToString())   //  Acrux, Gacrux, Imai, Mimosa</code></
   <p>Remember that <code class="language-kotlin">joinToString()</code> takes elements from a mutable list in the order in which they are stored and presents them as a comma-delimited string line.</p> 
   <p>You can also use another delimiter to separate elements :</p> 
   <pre><code class="language-kotlin">println(southernCross.joinToString(" -&gt; "))   //  Acrux -&gt; Gacrux -&gt; Imai -&gt; Mimosa</code></pre> 
-  <h5>Working with multiple lists</h5> 
+  <h5 id="working-with-multiple-lists">Working with multiple lists</h5> 
   <p>Now, let’s look at a couple of things you might want to know about when working with several string lists. </p> 
   <ul> 
    <li>Mutable lists can be joined.</li> 
@@ -34,7 +34,7 @@ println(firstList == secondList)  //  true
 println(firstList == thirdList)   //  false
 println(secondList != thirdList)  //  true</code></pre> 
   <p>Note that <code class="language-kotlin">true</code> is returned only if the elements of the two lists match completely and are arranged in the same order.</p> 
-  <h5>Changing the list contents</h5> 
+  <h5 id="changing-the-list-contents">Changing the list contents</h5> 
   <p>The keywords <code class="language-kotlin">val</code> and <code class="language-kotlin">var</code> tell you how the value/reference of a variable should be handled.</p> 
   <p><strong>var</strong> – the value/reference assigned to a variable can be changed at any time.<br> <strong>val</strong> – the value/reference can be assigned to a variable only once and cannot be changed later during the execution.</p> 
   <p>No matter which keyword you're using, <code class="language-kotlin">val</code> or <code class="language-kotlin">var</code>, you can<strong> </strong>still edit the values of the existing elements through their index. This is possible because when we change the contents of a list, we do not create a new list (the link to the list is not changed):</p> 
@@ -83,7 +83,7 @@ intList1 += intList2
 
 println(vowels)   // [a, o, i, e, u, y]
 println(intList1) // [1, 2, 3, 4, 5, 5, 4, 3, 2, 1]</code></pre> 
-  <h5>Copy list content</h5> 
+  <h5 id="copy-list-content">Copy list content</h5> 
   <p>Kotlin doesn't have any functions to copy existing lists. However, you can do it using the <code class="language-kotlin">toMutableList()</code> function:</p> 
   <pre><code class="language-kotlin">val list = mutableListOf(1, 2, 3, 4, 5)
 val copyList = list.toMutableList()
@@ -95,7 +95,7 @@ val copyList = mutableListOf&lt;Int&gt;()
 copyList.addAll(list)
 
 print(copyList) // [1, 2, 3, 4, 5]</code></pre> 
-  <h5>Other useful functions</h5> 
+  <h5 id="other-useful-functions">Other useful functions</h5> 
   <p>There are some operations that can be really useful when you work with lists and their contents:</p> 
   <ul> 
    <li><code class="language-kotlin">list.isEmpty()</code> and <code class="language-kotlin">list.isNotEmpty()</code> – check whether the list is empty.</li> 
@@ -134,7 +134,7 @@ println(numbers.sum())      // 15
     
 println(vowels.sorted()) // [a, e, i, o, u, y]
 println(vowels.sortedDescending()) // [y, u, o, i, e, a]</code></pre> 
-  <h5>Conclusion</h5> 
+  <h5 id="conclusion">Conclusion</h5> 
   <p>Let's sum things up now! You've figured out how to use some familiar functions and techniques when working with string lists.</p> 
   <p>Now you can:</p> 
   <ul> 

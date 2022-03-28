@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/312105/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Fri, 25 Mar 2022 09:32:28 UTC
+update_date: Tue, 29 Mar 2022 14:57:04 UTC
 stages:
 - id: 550
   step: 9015
@@ -75,7 +75,7 @@ topics:
     theory_id: 4445
   - title: Type conversion
     theory_id: 4672
-  - title: Reading data with a readLine
+  - title: Reading data with a readln
     theory_id: 11224
   - title: String basics
     theory_id: 12553
