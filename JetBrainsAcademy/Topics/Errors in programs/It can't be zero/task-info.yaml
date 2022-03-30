@@ -1,0 +1,15 @@
+type: code
+custom_name: It can't be zero!
+files:
+- name: src/Main.kt
+  visible: true
+  text: "fun main() {\n    val line1 = readln()!!\n    val line2 = readln()!!\n\n\
+    \    val product = line1 * line1\n    if (product == 0) {\n        printn(\"It\
+    \ can't be zerO!\")\n    } else {\n        println(product) \n}"
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/18746#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Wed, 30 Mar 2022 07:18:47 UTC
+record: -1
