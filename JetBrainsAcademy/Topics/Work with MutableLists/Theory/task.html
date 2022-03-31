@@ -99,7 +99,7 @@ print(copyList) // [1, 2, 3, 4, 5]</code></pre>
   <p>There are some operations that can be really useful when you work with lists and their contents:</p> 
   <ul> 
    <li><code class="language-kotlin">list.isEmpty()</code> and <code class="language-kotlin">list.isNotEmpty()</code> – check whether the list is empty.</li> 
-   <li><code class="language-kotlin">list.sublist(from, to)</code> – creates a smaller list (sublist), which includes items of the original list with the following indexes: <code class="language-kotlin">from</code>, <code class="language-kotlin">from + 1</code>, ..., <code class="language-kotlin">to - 2</code>, <code class="language-kotlin">to - 1</code>. The element with the index <code class="language-kotlin">to</code> is not included.</li> 
+   <li><code class="language-kotlin">list.subList(from, to)</code> – creates a smaller list (sublist), which includes items of the original list with the following indexes: <code class="language-kotlin">from</code>, <code class="language-kotlin">from + 1</code>, ..., <code class="language-kotlin">to - 2</code>, <code class="language-kotlin">to - 1</code>. The element with the index <code class="language-kotlin">to</code> is not included.</li> 
   </ul> 
   <pre><code class="language-kotlin">val numbers = mutableListOf(1, 2, 3, 4, 5)
 val sublist = mutableListOf&lt;Int&gt;()

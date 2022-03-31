@@ -26,7 +26,7 @@
   <p>This function has several shortcomings. If you'd like to read several values from the same line one by one, you need to perform additional actions.</p> 
   <p>Since Kotlin 1.6 you can use another function way to input data:</p> 
   <pre><code class="language-kotlin">val line = readln()</code></pre> 
-  <p>This function is work like <code class="language-kotlin">readLine()!!</code> but looks shorter.</p> 
+  <p>This function works like <code class="language-kotlin">readLine()!!</code> but looks shorter.</p> 
   <p>If you need to get a number from the input, you can use this construction: <code class="language-kotlin">val number = readLine()!!.toInt()</code> or <code class="language-kotlin">val number = readln().toInt()</code>. </p> 
   <p>Often you need to read a few <strong>words </strong>in a line. A word is separated from other words by one or more delimiters, such as spaces or a new line character. In this way, you can do this:</p> 
   <pre><code class="language-kotlin">val (a, b) = readLine()!!.split(' ')    // for input "Hello world!" a is "Hello" and b is "world!"

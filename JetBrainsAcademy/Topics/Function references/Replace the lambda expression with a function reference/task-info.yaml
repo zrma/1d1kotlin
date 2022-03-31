@@ -1,12 +1,12 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: String::toUpperCase
-- text: s.toUpperCase
-- text: String::toUpperCase()
-- text: s::toUpperCase
 - text: String.toUpperCase
+- text: s.toUpperCase
 - text: s::toUpperCase()
+- text: s::toUpperCase
+- text: String::toUpperCase
+- text: String::toUpperCase()
 files:
 - name: src/Main.kt
   visible: true
