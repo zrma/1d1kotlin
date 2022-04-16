@@ -1,0 +1,12 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: "fun main() {\n    TODO()    \n}"
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10958#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sat, 16 Apr 2022 12:42:35 UTC
+record: -1
