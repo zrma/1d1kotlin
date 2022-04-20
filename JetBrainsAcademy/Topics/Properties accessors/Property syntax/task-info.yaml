@@ -1,11 +1,11 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: getter
-- text: propertyName
-- text: setter
 - text: propertyType
+- text: setter
+- text: propertyName
 - text: propertyScope
+- text: getter
 files:
 - name: src/Main.kt
   visible: true

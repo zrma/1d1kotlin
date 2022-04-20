@@ -1,8 +1,8 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: Red
 - text: "NULL"
+- text: Red
 - text: RED
 - text: IllegalArgumentException
 files:

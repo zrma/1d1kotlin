@@ -1,9 +1,9 @@
 type: choice
 is_multiple_choice: false
 options:
+- text: Via this keyword
 - text: Via field identifier
 - text: Directly via calling its name
-- text: Via this keyword
 files:
 - name: src/Main.kt
   visible: true

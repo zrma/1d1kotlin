@@ -1,9 +1,9 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: round(9.7)
 - text: ceil(9.7)
 - text: floor(9.7)
+- text: round(9.7)
 - text: abs(9.7)
 files:
 - name: src/Main.kt

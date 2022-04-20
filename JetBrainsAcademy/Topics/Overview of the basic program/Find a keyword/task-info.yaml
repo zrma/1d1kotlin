@@ -1,11 +1,11 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: println
 - text: ()
+- text: println
+- text: fun
 - text: '"Hello, World!"'
 - text: main
-- text: fun
 files:
 - name: src/Main.kt
   visible: true

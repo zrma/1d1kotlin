@@ -1,10 +1,10 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: val Int n = 100
 - text: val n = 100
-- text: 'val n: Int = 100'
 - text: Int n = 100
+- text: val Int n = 100
+- text: 'val n: Int = 100'
 files:
 - name: src/Main.kt
   visible: true

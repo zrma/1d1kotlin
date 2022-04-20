@@ -1,10 +1,10 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: var
 - text: constant
 - text: final
 - text: val
+- text: var
 files:
 - name: src/Main.kt
   visible: true

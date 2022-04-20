@@ -1,11 +1,11 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: ordinal
-- text: valueOf()
 - text: values()
-- text: name
 - text: value()
+- text: name
+- text: valueOf()
+- text: ordinal
 files:
 - name: src/Main.kt
   visible: true

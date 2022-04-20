@@ -1,12 +1,12 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: ceil, floor, round
+- text: average, median, mode
 - text: abs, pow, log, sqrt
 - text: min, max
 - text: integrate, differentiate
-- text: average, median, mode
 - text: sin, cos, tan
+- text: ceil, floor, round
 files:
 - name: src/Main.kt
   visible: true
