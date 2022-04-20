@@ -1,0 +1,19 @@
+<h2>Writing and appending</h2>
+<html>
+ <head></head>
+ <body>
+  <p></p>
+  <p>What will be contained in the file <code class="language-kotlin">MyFile.txt</code> after the execution of this program?</p> 
+  <pre><code class="language-kotlin">import java.io.File
+
+fun main() {
+    val fileName = "MyFile.txt"
+    val myFile = File(fileName)
+
+    myFile.writeText("1")
+    repeat(2) {
+        myFile.appendText("2")
+    }
+}</code></pre>
+ </body>
+</html>

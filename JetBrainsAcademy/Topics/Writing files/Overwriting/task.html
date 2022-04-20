@@ -1,0 +1,22 @@
+<h2>Overwriting</h2>
+<html>
+ <head></head>
+ <body>
+  <p><br> Suppose you have a file with the following content:</p> 
+  <p><code class="language-kotlin">1</code></p> 
+  <p>What will be in the file after executing the following code?</p> 
+  <pre><code class="language-kotlin">myFile.writeText("1\n")
+myFile.writeText("2")
+myFile.appendText("3")</code></pre> 
+  <p>a)</p> 
+  <pre><code class="language-kotlin">11
+23</code></pre> 
+  <p>b)</p> 
+  <pre><code class="language-kotlin">23</code></pre> 
+  <p>c)</p> 
+  <pre><code class="language-kotlin">1
+23</code></pre> 
+  <p>d)</p> 
+  <pre><code class="language-kotlin">1123</code></pre>
+ </body>
+</html>

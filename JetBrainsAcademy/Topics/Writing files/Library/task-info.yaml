@@ -1,0 +1,25 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: java.io.Reader
+- text: kotlin.io.FileReader
+- text: java.io.File
+- text: java.util.Files
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/9711#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Wed, 20 Apr 2022 12:36:46 UTC
+record: -1
+selected_options:
+- 2

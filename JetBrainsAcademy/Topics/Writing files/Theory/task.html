@@ -1,0 +1,66 @@
+<h2>Writing files</h2>
+<html>
+ <head></head>
+ <body>
+  <p>You can do a lot of interesting things with files: for example, you can read content from them or write something new. In this topic you will learn how to write files. There are different ways to write a file in Kotlin. We won't consider all of them here: let's start with the selected basics.</p> 
+  <h5>Writing files with writeText()</h5> 
+  <p>You may already know that the main class for working with files is <code class="language-kotlin">java.io.File</code>, and Kotlin library adds some features through the extension functions. An object of <code class="language-kotlin">File</code> type just provides a reference with the path to a file. First, you need to import this library:</p> 
+  <pre><code class="language-kotlin">import java.io.File</code></pre> 
+  <p>Suppose we want to create a text file called <code class="language-kotlin">MyFile</code> with the following text:</p> 
+  <p><code class="language-kotlin">"It is awfully hard work doing nothing!"</code></p> 
+  <p>To do that, we need to use the aforementioned library, create a <code class="language-kotlin">File(pathName: String)</code> object, and use the <code class="language-kotlin">writeText(text: String)</code> function which sets the text content of a file:</p> 
+  <pre><code class="language-kotlin">val myFile = File("MyFile.txt") //file name must be indicated in parentheses 
+myFile.writeText("It is awfully hard work doing nothing!")</code></pre> 
+  <p>Mission accomplished: the text is in the file! You can see it in the current project directory where it was saved by default. Notice, if you just create a File object, you will not create a file, it's just an object. </p> 
+  <p>Suppose we didn't write the file in the current directory but elsewhere. In that case, simply indicate the path to it like this:</p> 
+  <pre><code class="language-kotlin">val myFile = File("D://Users/myFile.txt")
+myFile.writeText("It is awfully hard work doing nothing!")</code></pre> 
+  <p>If you run the code, you can see that our file with the specified text was created on the corresponding disk following this path.</p> 
+  <p></p>
+  <div class="alert alert-primary">
+   If the file has access restrictions or has already been opened in another process, 
+   <code class="language-kotlin">AccessDeniedException</code> is thrown.
+  </div>
+  <p></p> 
+  <p>Last but not least, let’s talk about code style: the file name should be put into a separate string variable. You can also put the text into a variable. Take a look:</p> 
+  <pre><code class="language-kotlin">val fileName = "myFile.txt"
+val textToFile = "If we learn to process our code carefully, we’ll grow as programmers."
+File(fileName).writeText(textToFile)</code></pre> 
+  <p>This is considered good style, so it would be great if you make it a rule for yourself.</p> 
+  <h5>Formatting and processing</h5> 
+  <p>Sometimes we need to apply formatting to improve the layout of the text. For example, we may need to move the text to a new line. In this case, the <code class="language-kotlin">\n</code> comes in handy:</p> 
+  <pre><code class="language-kotlin">val fileName = "myFile.txt"
+File(fileName).writeText("Just \nlook\n at\n that!")</code></pre> 
+  <p>If you need to make an indented paragraph, use <code class="language-kotlin">\t</code>:</p> 
+  <pre><code class="language-kotlin">val fileName = "myFile.txt"
+File(fileName).writeText("\tThere’s a tab")</code></pre> 
+  <p>Feel free to experiment with this: the use of such tools is very easy yet effective. Even if the string with your text does not look very good, the text in the final file will look fabulous!</p> 
+  <h5>Overwriting and appending</h5> 
+  <p>You know how to create files with text content, but what if you need to overwrite an existing file? For this, you can use the same feature <code class="language-kotlin">writeText()</code> for <code class="language-kotlin">File()</code>, which specifies the path to the document we want to overwrite. Let's rewrite our text and use a different quote:</p> 
+  <pre><code class="language-kotlin">File(fileName).writeText("Beware of bugs in the above code; I have only proved it correct, not tried it")</code></pre> 
+  <p>You can open the file and make sure it worked!</p> 
+  <p>Logically, if the specified file did not exist on this path, it will be created.</p> 
+  <p>Okay, and what if you wanted to save the current content of the file and add something else to it? Then we’ll need the <code class="language-kotlin">appendText(text: String)</code> function:</p> 
+  <pre><code class="language-kotlin">val fileName = "myFile.txt"
+File(fileName).appendText(", Donald E. Knuth said.")</code></pre> 
+  <p>You can see that the text in our file now looks like this:</p> 
+  <p><code class="language-kotlin">Beware of bugs in the above code; I have only proved it correct, not tried it, Donald E. Knuth said.</code></p> 
+  <h5>Writing byte arrays</h5> 
+  <p>Sometimes you need to write <code class="language-kotlin">Bytes</code>, not <code class="language-kotlin">Strings</code>. Let's briefly consider two other options for file writing.</p> 
+  <p><code class="language-kotlin">writeBytes(array: ByteArray)</code> – with this function, we can write an array of bytes to this file.</p> 
+  <pre><code class="language-kotlin">val arrayOfBytes = byteArrayOf(1, 2, 3) // create an array
+// another way:
+// val arrayOfBytes = mutableListOf&lt;Byte&gt;(1, 2, 3).toByteArray() 
+
+File(fileName).writeBytes(arrayOfBytes)</code></pre> 
+  <ol> 
+  </ol> 
+  <p><code class="language-kotlin">appendBytes(array: ByteArray)</code> – this function is analogous to the <code class="language-kotlin">appendText()</code> method, only applied to an array of bytes: </p> 
+  <pre><code class="language-kotlin">val arrayOfBytes = byteArrayOf(0, 1, 2)
+File(fileName).appendBytes(arrayOfBytes)</code></pre> 
+  <p>Note, these functions work with <code class="language-kotlin">ByteArray</code>. The <code class="language-kotlin">Array</code> structure is similar to the <code class="language-kotlin">MutableList</code>, you cannot resize it, but you can modify elements. You can easily convert <code class="language-kotlin">MutableList</code> to <code class="language-kotlin">ByteArray</code> and vice versa with <code class="language-kotlin">toByteArray()</code> and <code class="language-kotlin">toMutableList()</code> functions.</p> 
+  <h5>Conclusion</h5> 
+  <p>We've looked at the <code class="language-kotlin">writeText()</code> function, which is used to write or overwrite a file, and <code class="language-kotlin">appendText()</code> used for adding something new. For a better view of the text, benefit from escape sequences, and for a better view of the code, take the path to the file into a separate variable.</p> 
+  <p>Now you know how to write and edit files: you are fully armed and ready to go!</p>
+ </body>
+</html>
