@@ -3,7 +3,7 @@
  <head></head>
  <body>
   <p>As you already know, each class in Kotlin has zero or more <strong>properties</strong>. You will be using properties in almost all of your classes. In this topic, we will take a closer look at how to work with properties such as changing them and getting their values.</p> 
-  <h5>Property getter</h5> 
+  <h5 id="property-getter">Property getter</h5> 
   <p>Suppose you have a simple class <code class="language-kotlin">Client</code> with one property <code class="language-kotlin">name</code>:</p> 
   <pre><code class="language-kotlin">class Client {
     val name = "Unknown"
@@ -28,7 +28,7 @@ class Client {
 }</code></pre> 
   <p>This function takes nothing (you only ask a value, nothing more) and returns one value. When you try to retrieve a value, you will get the result of the <code class="language-kotlin">get()</code> function. So, what is <code class="language-kotlin">field</code>? Every property in Kotlin has its own <strong>backing field</strong>, which contains a property value that can be accessed with the special keyword <code class="language-kotlin">field</code>.</p> 
   <p>In this case, your getter just returns the value of the <code class="language-kotlin">name</code> variable. This is the expected behavior, so Kotlin generates this function for us, and you don't need to write it. If you want to change the logic of the getter, you should write your own <code class="language-kotlin">get()</code> function.</p> 
-  <h5>Custom getter</h5> 
+  <h5 id="custom-getter">Custom getter</h5> 
   <p>Let's print the customer's name every time we access <code class="language-kotlin">name</code>:</p> 
   <pre><code class="language-kotlin">class Client {
     val name = "Unknown"
@@ -57,7 +57,7 @@ println(client.info) // name = Unknown, age = 18
 client.name = "Lester"
 client.age = 20
 println(client.info) // name = Lester, age = 20</code></pre> 
-  <h5>Property setter</h5> 
+  <h5 id="property-setter">Property setter</h5> 
   <p>Now you know that you can customize the process of getting the property value. It is also possible to modify the process of changing the property value! Let's take a look at a simple example:</p> 
   <pre><code class="language-kotlin">class Client {
     var name = "Unknown" // default value
@@ -74,7 +74,7 @@ client.name = "Ann"      // name property now stores "Ann"</code></pre>
 }</code></pre> 
   <p>This function takes one argument (it is named <code class="language-kotlin">value</code> by convention, but you can use a different name) and returns nothing. As you know, <code class="language-kotlin">field</code> contains the current value of the property and you can change it by reassigning a different value.</p> 
   <p>In this case, your setter will simply change the value of the <code class="language-kotlin">name</code> variable to the received value. This is the expected behavior and Kotlin generates this function for us, you don't need to write the setter yourself.</p> 
-  <h5>Custom setter</h5> 
+  <h5 id="custom-setter">Custom setter</h5> 
   <p>The <code class="language-kotlin">set()</code> function is a powerful instrument and it's possible to customize the logic of a setter. For example, let's print the customer's name every time we change the <code class="language-kotlin">name</code> property:</p> 
   <pre><code class="language-kotlin">class Client {
     var name = "Unknown"
@@ -104,7 +104,7 @@ client.name = "Ann"   // The name is changing. Old value is Unknown. New value i
 val client = Client()
 client.age = -1      // Age cannot be negative. Set to 18.
 println(client.age)  // 18</code></pre> 
-  <h5>Additional features</h5> 
+  <h5 id="additional-features">Additional features</h5> 
   <p>You may implement both a setter and a getter for your property:</p> 
   <pre><code class="language-kotlin">class Client {
     var name = "Unknown"
@@ -162,7 +162,7 @@ client.passport = Passport("2345678") // This will not work.
 client.passport.number = "2345678"    // This will change the passport number
                                       // prints Passport number has changed
 println(client.passport.number)       // 2345678</code></pre> 
-  <h5>Conclusion</h5> 
+  <h5 id="conclusion">Conclusion</h5> 
   <p>Kotlin properties are a really pragmatic way to work with class fields. Now you know about the default getter and setter methods and their customization. It is a really powerful tool that will help you in a lot of situations like logging and handling input.</p>
  </body>
 </html>

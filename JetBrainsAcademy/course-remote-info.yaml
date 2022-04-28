@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/312105/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Sat, 16 Apr 2022 12:30:02 UTC
+update_date: Wed, 20 Apr 2022 12:34:37 UTC
 stages:
 - id: 550
   step: 9015
@@ -35,7 +35,7 @@ topics:
     theory_id: 6865
   - title: IDE
     theory_id: 10996
-  - title: Introduction to operating systems
+  - title: Introduction to Operating systems
     theory_id: 9704
   - title: Files
     theory_id: 13025
@@ -158,7 +158,7 @@ topics:
     theory_id: 11477
   - title: Command line overview
     theory_id: 8977
-  - title: Parameters and options
+  - title: Parameters and Options
     theory_id: 9746
   - title: The main() function
     theory_id: 10484
