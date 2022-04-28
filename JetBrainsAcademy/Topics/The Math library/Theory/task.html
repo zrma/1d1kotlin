@@ -13,7 +13,7 @@
    <code class="language-kotlin">Long</code> types to use them!
   </div>
   <p></p> 
-  <h5 style="text-align: center;">Basic functions</h5> 
+  <h5 style="text-align: center;" id="basic-functions">Basic functions</h5> 
   <p>You will often need to do simple operations in your work: for example, determining the greater or smaller of two numbers. Luckily, you don't need to do it manually since you can use the Math library.</p> 
   <p>The following functions work with <code class="language-kotlin">Int</code>, <code class="language-kotlin">Long</code>, <code class="language-kotlin">Float</code>, and <code class="language-kotlin">Double</code> types (both <strong>a</strong> and <strong>b</strong> must be the same type):</p> 
   <ul> 
@@ -27,7 +27,7 @@ val dAbs = abs(-10.33) // 10.33
 
 val min = min(11, 81) // 11
 val max = max(20, 30) // 30</code></pre> 
-  <h5 style="text-align: center;">Power and exponential functions</h5> 
+  <h5 style="text-align: center;" id="power-and-exponential-functions">Power and exponential functions</h5> 
   <p>Another very common operation is taking a square root of some number or raising it to the n-th power. Math library provides separate functions for that:</p> 
   <ul> 
    <li><code class="language-kotlin">sqrt(x)</code> returns the square root of its argument (works with <code class="language-kotlin">Float</code> and <code class="language-kotlin">Double</code> types);</li> 
@@ -50,7 +50,7 @@ val e = E        // 2.718
 val ln = ln(e)   // 1
 val log = log(16.0, 4.0)  // 2
 val logSum = ln(exp(2.0) * exp(3.0))  // 5</code></pre> 
-  <h5 style="text-align: center;">Trigonometric functions</h5> 
+  <h5 style="text-align: center;" id="trigonometric-functions">Trigonometric functions</h5> 
   <p>If you need to calculate trigonometric functions such as finding a sine or cosine, the easiest way to do it is, as you may have guessed, Math library.</p> 
   <p>The following functions work with <code class="language-kotlin">Float</code><strong> </strong>and <code class="language-kotlin">Double</code><strong> </strong>types and accept angles in radians:</p> 
   <ul> 
@@ -70,7 +70,7 @@ val tan = tan(pi / 4) // 0.99999999... (an inaccurate result)</code></pre>
 val b = 4.toDouble()
 val c = hypot(a, b) // c is 5.0, function works with Double or Float</code></pre> 
   <p>The Math library has many other trigonometric functions: you may find arcus and hyperbolic functions on the <a target="_blank" href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.math/" rel="noopener noreferrer nofollow">kotlin.math</a> page.</p> 
-  <h5 style="text-align: center;">Rounding functions</h5> 
+  <h5 style="text-align: center;" id="rounding-functions">Rounding functions</h5> 
   <p>You will often need to round numbers. As you may know, there are several different ways to do this.</p> 
   <p>Rounding functions work with <code class="language-kotlin">Float</code> and <code class="language-kotlin">Double</code> types:</p> 
   <ul> 
@@ -90,7 +90,7 @@ val roundUp = (4.75).roundToInt() // 5, Int
 
 val roundDownToEven = round(2.5)  // 2.0
 val roundUpToEven = round(3.5)    // 4.0</code></pre> 
-  <h5 style="text-align: center;">Example</h5> 
+  <h5 style="text-align: center;" id="example">Example</h5> 
   <p>Now that you know the basic functions, let's try them on a real task.</p> 
   <p>As you know, the sides of an equilateral triangle are of the same length, and all angles are 60°. We will try to check it using the law of cosines: <span class="math-tex">\(c^2 = a^2 + b^2 - 2ab\cos(\gamma)\)</span> where <span class="math-tex">\(a\)</span> and <span class="math-tex">\(b\)</span> are the sides of the triangle and <span class="math-tex">\(\gamma\)</span> is the angle between them:</p> 
   <pre><code class="language-kotlin">val size1 = 6
@@ -103,7 +103,7 @@ val radianAngle = angle * PI / 180 // cos requires an angle in radians
 
 val c = sqrt(a.pow(2.0) + b.pow(2.0) - 2 * a * b * cos(radianAngle))
 print(c) // 5.999999999999999, inaccurate, but the correct result</code></pre> 
-  <h5 style="text-align: center;">Conclusion</h5> 
+  <h5 style="text-align: center;" id="conclusion">Conclusion</h5> 
   <p>As you can see, the <code class="language-kotlin">math</code> library provides a lot of helpful functions. With this library, you can perform calculations with numbers, solve trigonometry tasks, and round numbers. This is a kind of functionality that you'll definitely use in your future projects. We cannot cover all functions in one topic, so if we didn't cover a specific function here or you want to see the whole list, check the official page <a target="_blank" href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.math/" rel="noopener noreferrer nofollow">kotlin.math</a>. Good luck!</p>
  </body>
 </html>

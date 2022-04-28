@@ -1,10 +1,10 @@
 type: choice
 is_multiple_choice: false
 options:
+- text: "Yes"
+- text: Yes, but it won’t be editing, it will rather be re-creating a list
 - text: "No"
 - text: Only with var
-- text: Yes, but it won’t be editing, it will rather be re-creating a list
-- text: "Yes"
 files:
 - name: src/Main.kt
   visible: true

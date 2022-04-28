@@ -1,11 +1,11 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: '" aaabbcccdaa"'
-- text: '" abcda"'
 - text: '"aaabbcccdaa"'
 - text: '"aaabb"'
+- text: '" abcda"'
 - text: '"abcda "'
+- text: '" aaabbcccdaa"'
 files:
 - name: src/Main.kt
   visible: true

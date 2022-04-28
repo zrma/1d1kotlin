@@ -3,7 +3,7 @@
  <head></head>
  <body>
   <p>In any programming language, functions are really powerful instruments. Sometimes you don't need to use all the arguments of a function, as some of them may be stored as preselected values. In this topic, you will know how to do it.</p> 
-  <h5 style="text-align: center;">Functions with default arguments</h5> 
+  <h5 style="text-align: center;" id="functions-with-default-arguments">Functions with default arguments</h5> 
   <p>Kotlin can assign <strong>default values</strong> to function parameters in the function declaration. To invoke this function, you can omit the arguments with the default values, or you can invoke it in a usual way.</p> 
   <p>Here is a function named <code class="language-kotlin">printLine</code> with two parameters. The first parameter defines a line, the second parameter is a string that ends this line. Both parameters have default values: an empty line (<code class="language-kotlin">""</code>) and a new line (<code class="language-kotlin">"\n"</code>).</p> 
   <pre><code class="language-kotlin">fun printLine(line: String = "", end: String = "\n") = print("$line$end")</code></pre> 
@@ -24,7 +24,7 @@ fun main() {
    We cannot pass the second argument without the first one. Kotlin cannot understand that we want to assign a value to the second parameter only.
   </div>
   <p></p> 
-  <h5 style="text-align: center;">Mixing default and regular arguments</h5> 
+  <h5 style="text-align: center;" id="mixing-default-and-regular-arguments">Mixing default and regular arguments</h5> 
   <p>You can also mix default and regular parameters during declaration. For example, the function below finds the max of two integer arguments. It has a special parameter that determines whether it needs to compare numbers by their absolute values. The default value of this parameter is <code class="language-kotlin">false</code>.</p> 
   <pre><code class="language-kotlin">fun findMax(n1: Int, n2: Int, absolute: Boolean = false): Int {
     val v1: Int
@@ -50,12 +50,12 @@ fun main() {
   <p>In the body of the <code class="language-kotlin">findMax</code> function, we declare two temporary variables. They store absolute values or the same values of the arguments, depending on the value of absolute. The last line compares temporary variables and returns the value of the corresponding argument.</p> 
   <p>We call the <code class="language-kotlin">findMax</code> function in the body of <code class="language-kotlin">main</code> four times. The first call returns the max value (<code class="language-kotlin">15</code>), the second call returns the max value of positive numbers (<code class="language-kotlin">15</code>), the third call returns the max value of two negative numbers (<code class="language-kotlin">-4</code>), and the last call returns the max by the absolute value of two negative numbers.</p> 
   <p>Default arguments allow programmers to create <strong>optional</strong> or <strong>special-case</strong> behavior for their functions.</p> 
-  <h5>Idiom</h5> 
+  <h5 id="idiom">Idiom</h5> 
   <p>Default function arguments are a part of the <a target="_blank" href="https://kotlinlang.org/docs/idioms.html#default-values-for-function-parameters" rel="noopener noreferrer nofollow">Kotlin idioms</a>. It's a good practice to add default arguments, they are useful when you write complex functions.</p> 
   <pre><code class="language-kotlin">fun foo(a: Int = 0, b: String = "") { 
 
 }</code></pre> 
-  <h5>Conclusion</h5> 
+  <h5 id="conclusion">Conclusion</h5> 
   <p>Now you know how to simplify the function call. It can be useful when your function has a lot of arguments, or you need a multi-purpose function and want to set some parameters to a preselected value. </p>
  </body>
 </html>

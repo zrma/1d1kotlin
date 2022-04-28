@@ -1,10 +1,10 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: Can be created multiple times in one class
-- text: Can be called using the class name as a qualifier
-- text: Can be nested in another object
 - text: Can be nested in another class
+- text: Can be called using the class name as a qualifier
+- text: Can be created multiple times in one class
+- text: Can be nested in another object
 files:
 - name: src/Main.kt
   visible: true

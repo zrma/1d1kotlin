@@ -1,9 +1,9 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: Break fast
 - text: Run fast
 - text: Fail fast
+- text: Break fast
 - text: Ruin fast
 files:
 - name: src/Main.kt

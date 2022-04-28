@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/312105/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Wed, 20 Apr 2022 12:34:37 UTC
+update_date: Sun, 01 May 2022 13:06:19 UTC
 stages:
 - id: 550
   step: 9015
@@ -208,6 +208,8 @@ topics:
     theory_id: 16927
   - title: Pseudocode
     theory_id: 15090
+  - title: Pseudocode basics
+    theory_id: 19510
   - title: Queue
     theory_id: 5350
   - title: Priority queue
@@ -230,12 +232,12 @@ topics:
     theory_id: 5645
   - title: Shortest path problem
     theory_id: 15223
+  - title: Directed acyclic graph
+    theory_id: 5186
   - title: Breadth-first search
     theory_id: 7068
   - title: Dijkstra's algorithm
     theory_id: 5772
-  - title: Directed acyclic graph
-    theory_id: 5186
   4:
   - title: Operations with matrices
     theory_id: 7296

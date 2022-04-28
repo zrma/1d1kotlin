@@ -1,8 +1,8 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: Can be nested in another class
 - text: Can be called anywhere in a code
+- text: Can be nested in another class
 - text: Can be instantiated multiple times
 - text: Can be nested in another object declaration
 files:

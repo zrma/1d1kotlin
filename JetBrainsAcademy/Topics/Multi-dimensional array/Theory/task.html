@@ -3,13 +3,13 @@
  <head></head>
  <body>
   <p>You are already familiar with one-dimensional arrays. Now we’re going to look at multi-dimensional arrays with two or even more dimensions in Kotlin.</p> 
-  <h5 style="text-align: center;">An array of arrays</h5> 
+  <h5 style="text-align: center;" id="an-array-of-arrays">An array of arrays</h5> 
   <p>First, let's figure what we mean by a <strong>multi-dimensional array</strong>.</p> 
   <p>Basically, we can say that a multi-dimensional array is an array of arrays. That is, in order to create a multidimensional array, we need to present an array as an element of another array. Eventually, we get a multi-dimensional array.</p> 
   <p>It makes it very easy to represent things that have many dimensions: for example, 3D objects with length, height, and width. The universe we live in could be described with four measurements, time being the fourth dimension, so it is 4D. Higher levels like 5D and so forth are hard to imagine, but when you put it into practice, they turn out to be handy and not too hard!</p> 
   <p>Let's look at some more down-to-earth examples. A seat in the theater can be indicated with a 2D-array: one index for the row, and another for the number of the seat in that row. If you want to write a game that uses maps such as Sea Battle, two-dimensional arrays will be very helpful in setting coordinates on the map. In addition, some mathematical structures are conveniently represented as multi-dimensional arrays.</p> 
   <p>First, let’s take a look at a special case of a multi-dimensional array that is used quite often in practice: a <strong>two-dimensional array</strong>.</p> 
-  <h5 style="text-align: center;">Creating 2-dimensional arrays</h5> 
+  <h5 style="text-align: center;" id="creating-2-dimensional-arrays">Creating 2-dimensional arrays</h5> 
   <p>If a one-dimensional array can be represented as a single sequence of elements, then an intuitive way of representing a two-dimensional array is a <strong>matrix</strong> or a <strong>table</strong>. If you're working with matrices or tables in your program, it makes sense to present them in the form of two-dimensional arrays.</p> 
   <p>Let's create a two-dimensional array of <code class="language-kotlin">Int</code> with <span style="color: #000000;">3</span> rows and <span style="color: #000000;">4</span> columns where all elements are 0's (zeros). Here is what it looks like:</p> 
   <pre><code class="language-kotlin">val array2D = arrayOf(
@@ -54,7 +54,7 @@
   <p> And if you need to create an empty multidimensional array of <code class="language-kotlin">Int</code>, for example, you can do it like this:</p> 
   <pre><code class="language-kotlin">val empty2DInt = arrayOf&lt;Array&lt;Int&gt;&gt;()</code></pre> 
   <p>We'll look at this in more detail later.</p> 
-  <h5 style="text-align: center;"> Accessing elements</h5> 
+  <h5 style="text-align: center;" id="accessing-elements"> Accessing elements</h5> 
   <p>Let’s see how we can access an element of an array. The principle is exactly the same as for one-dimensional arrays. Only now we have to write <strong>two</strong> indices: first the index of the element of the main array, and then the index of the nested array.</p> 
   <p>Let's get back to our <code class="language-kotlin">array2D</code> for a moment. Suppose we need to access an element that is in the first row and the first column. How do we find this particular element? As you recall, a 2D array is an array of arrays. So, start by selecting one of the nested arrays by its index in the main array. The principle is similar to a 1D array.</p> 
   <p>First, go to the nested array and choose the inner array with its index:</p> 
@@ -112,7 +112,7 @@ print(array2D[0][2])  // 2
 print(array2D[1][0])  // 3
 print(array2D[1][1])  // 4
 print(array2D[1][2])  // 5</code></pre> 
-  <h5 style="text-align: center;">Creating 2D arrays of different types</h5> 
+  <h5 style="text-align: center;" id="creating-2d-arrays-of-different-types">Creating 2D arrays of different types</h5> 
   <p>Nested arrays don't need to be of the type <code class="language-kotlin">Int</code>: as you remember, Kotlin provides various types of arrays. For example, you can create an array of string arrays, as in the example below:</p> 
   <p>You also can clearly define the type of elements of nested arrays:</p> 
   <pre><code class="language-kotlin">val arrayOfString2D = arrayOf(
@@ -152,7 +152,7 @@ print(array2D[1][2])  // 5</code></pre>
    You can create nested arrays of different types in the same 2D array. 
   </div>
   <p></p> 
-  <h5 style="text-align: center;">Features of working with 2D arrays</h5> 
+  <h5 style="text-align: center;" id="features-of-working-with-2d-arrays">Features of working with 2D arrays</h5> 
   <p>Let’s look at some useful and interesting features of working with two-dimensional arrays. You remember that we can print all the elements of the array as a string using the <code class="language-kotlin">joinToString()</code> function. For nested arrays, it will also work. Only now you must specify the index of the nested array that you want to convert to a string:</p> 
   <pre><code class="language-kotlin">val arrayString = arrayOf(
     arrayOf("A", "R", "R", "A", "Y")
@@ -165,7 +165,7 @@ charArrayOf('o', 't'),
 charArrayOf('l', 'i', 'n'))
 
 println(arrayOfChar2D.contentDeepToString())	// [[k], [o, t], [l, i, n]]</code></pre> 
-  <h5 style="text-align: center;">Multi-dimensional arrays (&gt;2)</h5> 
+  <h5 style="text-align: center;" id="multi-dimensional-arrays-gt2">Multi-dimensional arrays (&gt;2)</h5> 
   <p>We are finally ready to deal with more complex concepts. There are arrays with more than two dimensions. Even though it is more difficult to understand what it looks like, don’t worry: you will get used to working with them.</p> 
   <p>You can imagine a three-dimensional array like this:</p> 
   <table border="1" cellpadding="1" cellspacing="1" style="width: 500px;"> 
@@ -194,7 +194,7 @@ println(array3D.contentDeepToString())  // [[[0, 1], [2, 3]], [[4, 5], [6, 7]]]<
 println(array3D[1][0][1])   // 5
 println(array3D[1][1][1])   // 7</code></pre> 
   <p>You can create arrays of other dimensions by analogy — 4, 5, 6, and so on — as you need. Just remember that an element of a multidimensional array has as many indices as dimensions of that array.</p> 
-  <h5 style="text-align: center;">Conclusion</h5> 
+  <h5 style="text-align: center;" id="conclusion">Conclusion</h5> 
   <p>Let's recap. You have figured out what multi-dimensional arrays are and how to create them in Kotlin. Here are the main points to take away:</p> 
   <ul> 
    <li>A multi-dimensional array is essentially an array of arrays.</li> 

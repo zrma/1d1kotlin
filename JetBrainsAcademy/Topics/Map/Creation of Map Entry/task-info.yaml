@@ -2,9 +2,9 @@ type: choice
 is_multiple_choice: false
 options:
 - text: pairOf
+- text: createPair
 - text: of
 - text: to
-- text: createPair
 files:
 - name: src/Main.kt
   visible: true

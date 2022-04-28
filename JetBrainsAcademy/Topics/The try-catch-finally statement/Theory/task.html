@@ -3,7 +3,7 @@
  <head></head>
  <body>
   <p>You’re already pretty good at catching exceptions. In this topic, we will go through a few more features that will help you with handling exceptions in Kotlin.</p> 
-  <h5 style="text-align: center;">The finally block</h5> 
+  <h5 style="text-align: center;" id="the-finally-block">The finally block</h5> 
   <p>As you already know, you can use the <code class="language-kotlin">try-catch</code> statement to handle exceptions in Kotlin. Actually, there is another possible block called <code class="language-kotlin">finally</code>. All the statements present in this block will always execute regardless of whether an exception occurs in the <code class="language-kotlin">try</code> block or not. </p> 
   <pre><code class="language-kotlin">try {
     // code that may throw an exception
@@ -15,7 +15,7 @@ finally {
     // code is always executed
 }</code></pre> 
   <p>In the example above, the <code class="language-kotlin">finally</code> block is executed after the <code class="language-kotlin">catch</code> block. You will find <code class="language-kotlin">finally</code> helpful in situations when you need to perform some finishing actions regardless of whether an exception is thrown. For example, an exception could occur when you're working with a file: then, in the <code class="language-kotlin">finally</code> statement, you can write the closing of this file.</p> 
-  <h5 style="text-align: center;">Three magic words</h5> 
+  <h5 style="text-align: center;" id="three-magic-words">Three magic words</h5> 
   <p>Take a careful look at the example below: it illustrates the order of execution of the <code class="language-kotlin">try-catch-finally</code> statement.</p> 
   <pre><code class="language-kotlin">try {
     println("Inside the try block")
@@ -56,7 +56,7 @@ After the try-catch-finally block</code></pre>
    <code class="language-kotlin">catch</code> block.
   </div>
   <p></p> 
-  <h5 style="text-align: center;">Omitting blocks</h5> 
+  <h5 style="text-align: center;" id="omitting-blocks">Omitting blocks</h5> 
   <p>It is also possible to write <code class="language-kotlin">try</code> and <code class="language-kotlin">finally</code> without a <code class="language-kotlin">catch</code> block:</p> 
   <pre><code class="language-kotlin">try {
     // code that may throw an exception
@@ -66,7 +66,7 @@ finally {
 }</code></pre> 
   <p>In this template, the <code class="language-kotlin">finally</code> block is executed right after the <code class="language-kotlin">try</code> block.</p> 
   <p>So, the code can contain any number of <code class="language-kotlin">catch</code> blocks or no such blocks at all, and <code class="language-kotlin">finally</code> blocks can be omitted. However, <strong>at least one</strong> <code class="language-kotlin">catch</code> or <code class="language-kotlin">finally</code> block must be present. This means that when you handle an exception with <code class="language-kotlin">try</code>, you should add at least one other block: <code class="language-kotlin">catch</code> or <code class="language-kotlin">finally</code>. Otherwise, the statement simply won't work. </p> 
-  <h5 style="text-align: center;">Try is an expression</h5> 
+  <h5 style="text-align: center;" id="try-is-an-expression">Try is an expression</h5> 
   <p>Unlike in Java and many other languages, <code class="language-kotlin">try</code> can be an expression in Kotlin. This means that it may have a return value:</p> 
   <pre><code class="language-kotlin">val number: Int = try { "abc".toInt() } catch (e: NumberFormatException) { 0 }
 println(number) // 0</code></pre> 
@@ -96,7 +96,7 @@ try {
 } catch (e: IllegalStateException) {
     ...
 }</code></pre> 
-  <h5 style="text-align: center;">Idiom</h5> 
+  <h5 style="text-align: center;" id="idiom">Idiom</h5> 
   <p>Using <code class="language-kotlin">try-catch</code> blocks as expressions is an <a target="_blank" href="https://kotlinlang.org/docs/idioms.html#try-catch-expression" rel="noopener noreferrer nofollow">idiomatic way</a> of working with exceptions in Kotlin. You get the result immediately, which is very convenient. Compare this method with a less direct one:</p> 
   <pre><code class="language-kotlin">val string = "abc"
 val number = try {
@@ -114,7 +114,7 @@ try {
 } catch (e: NumberFormatException) {
     number = -1
 }</code></pre> 
-  <h5 style="text-align: center;">Conclusion</h5> 
+  <h5 style="text-align: center;" id="conclusion">Conclusion</h5> 
   <p>Now you know how to use the full <code class="language-kotlin">try-catch-finally</code> statement by adding a <code class="language-kotlin">finally</code> block that executes no matter what the exception does. Remember that you can skip <code class="language-kotlin">catch</code> or <code class="language-kotlin">finally</code> when you handle an exception with <code class="language-kotlin">try</code>, but you can't omit both at the same time. You can also add syntactic sugar to your code as a <code class="language-kotlin">try-catch-finally</code> expression.</p>
  </body>
 </html>

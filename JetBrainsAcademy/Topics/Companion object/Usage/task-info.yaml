@@ -1,10 +1,10 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: You want to create some common object for the existing singleton.
 - text: You need one structure connected to a class rather than to its instances.
-- text: You want some properties to be the same for all instances of the class
 - text: You need a class that has only one instance.
+- text: You want to create some common object for the existing singleton.
+- text: You want some properties to be the same for all instances of the class
 files:
 - name: src/Main.kt
   visible: true

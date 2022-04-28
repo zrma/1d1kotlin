@@ -3,7 +3,7 @@
  <head></head>
  <body>
   <p>You already know how to create singletons associated with classes.<span style="color: #66cc66;"> </span>However, in many cases, you need only one singleton for a class, and using its full name may seem wordy. For example, you might need to store only one common property. In this case, you can use another Kotlin feature, <strong>the companion object</strong>.</p> 
-  <h5>Companion object</h5> 
+  <h5 id="companion-object">Companion object</h5> 
   <p>An object declaration inside a class can be marked with the <strong>companion</strong> keyword:</p> 
   <pre><code class="language-kotlin">class Player(val id: Int) {
     companion object Properties {
@@ -36,7 +36,7 @@ println(Player.defaultSpeed)</code></pre>
   <p>As you can see, if we omit the name of a companion object, we can still access it through the outer class declaration. If we want to somehow use it, we can define it manually. If a companion object doesn't have a name, we can also use the default name <span style="color: #66cc66;"><code class="language-kotlin">Companion</code></span>:</p> 
   <pre><code class="language-kotlin">/* prints 7 too */
 println(Player.Companion.defaultSpeed)</code></pre> 
-  <h5>Companion object and outer class</h5> 
+  <h5 id="companion-object-and-outer-class">Companion object and outer class</h5> 
   <p>A companion is really closely associated with the outer class. You may freely use properties and functions from the companion object in the outer class. For example:</p> 
   <pre><code class="language-kotlin">class Deck {
     companion object {
@@ -71,7 +71,7 @@ println(Player.Companion.defaultSpeed)</code></pre>
         val defaultSize = size // you cannot get this variable
     }
 }</code></pre> 
-  <h5>Limitations of companion objects</h5> 
+  <h5 id="limitations-of-companion-objects">Limitations of companion objects</h5> 
   <p>Only one companion object is available for each class. That means you can't create multiple companion objects for a class because Kotlin does not support this behavior, even if they have different names. If we try to do it, an error will occur:</p> 
   <pre><code class="language-kotlin">class BadClass {
     companion object Properties {
@@ -118,7 +118,7 @@ println(Player.Factory.create(13).id)</code></pre>
   
     }
 }</code></pre> 
-  <h5>Analogue in other languages</h5> 
+  <h5 id="analogue-in-other-languages">Analogue in other languages</h5> 
   <p>If you come from another programming language, you may be a little confused by companion objects. The closest concept to it is <code class="language-kotlin">static</code> members. The keyword <code class="language-kotlin">static</code> means that fields and methods with this modifier are common for all objects of the class and can be used without creating an instance of the class. You may encounter this keyword in several languages.</p> 
   <p>For example, in Java, the usage of <code class="language-kotlin">static</code> will look like this:</p> 
   <pre><code class="language-java">class Dog {
@@ -140,7 +140,7 @@ System.out.println(Dog.createSound());</code></pre>
 /*prints WUF-WUF*/
 println(Dog.createSound())</code></pre> 
   <p>As you can see, when you use a companion object you also don't need to create a class instance to get this function! Remember, a companion object is not equal to a Java <code class="language-kotlin">static</code> initializer. In Kotlin, it is a single nested object that wraps all methods and fields which are common for the whole class. </p> 
-  <h5>Conclusion</h5> 
+  <h5 id="conclusion">Conclusion</h5> 
   <p>Let's recap! Declaring a companion object is a good way to organize your data. It is like a nested object, but more closely related to the class. You can freely work with its properties from the outer class as if they are the companion's own properties. Use a companion object when you need one singleton associated with a class: it is preferable to<span style="color: #66cc66;"> </span>use a companion object rather than a nested class. Now, let's move on to practice!</p>
  </body>
 </html>

@@ -2,9 +2,9 @@ type: choice
 is_multiple_choice: false
 options:
 - text: will output 1
-- text: will output 2
-- text: will not compile
 - text: will end with an error
+- text: will not compile
+- text: will output 2
 files:
 - name: src/Main.kt
   visible: true

@@ -1,10 +1,10 @@
 type: choice
 is_multiple_choice: true
 options:
+- text: Throwable
+- text: IOException
 - text: RuntimeException
 - text: StackOverFlowError
-- text: IOException
-- text: Throwable
 files:
 - name: src/Main.kt
   visible: true

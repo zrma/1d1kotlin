@@ -1,11 +1,11 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: Nested arrays can be of different types in the same multi-dimensional array
-- text: A multi-dimensional array can be only two- or three-dimensional
 - text: A multi-dimensional array can be represented as an array of arrays
 - text: Nested arrays can have different numbers of elements in the same multi-dimensional
     array
+- text: Nested arrays can be of different types in the same multi-dimensional array
+- text: A multi-dimensional array can be only two- or three-dimensional
 files:
 - name: src/Main.kt
   visible: true

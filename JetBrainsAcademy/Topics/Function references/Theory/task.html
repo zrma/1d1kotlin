@@ -134,7 +134,7 @@ println(indexWithinWhatsGoingOnText("what's", 0, true))  // 0</code></pre>
   <p>Here is a reference to the constructor of this class:</p> 
   <pre><code class="language-kotlin">val personGenerator: (String) -&gt; Person = ::Person</code></pre> 
   <p>This function produces new <code class="language-kotlin">Person</code> objects based on their names.</p> 
-  <pre><code class="language-kotlin">val johnFoster:Person = personGenerator("John Foster")</code></pre> 
+  <pre><code class="language-kotlin">val johnFoster: Person = personGenerator("John Foster")</code></pre> 
   <p>Here is the corresponding lambda expression that does the same:</p> 
   <pre><code class="language-kotlin">val personGenerator: (String) -&gt; Person = {string -&gt; Person(string)}</code></pre> 
   <p>Further, we will use lambda expressions and function references together.</p> 

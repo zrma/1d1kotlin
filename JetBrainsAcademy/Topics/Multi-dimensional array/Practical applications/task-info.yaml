@@ -3,8 +3,8 @@ is_multiple_choice: true
 options:
 - text: Position of an object in 3D space
 - text: 'For some mathematical operations '
-- text: Creating matrices
 - text: Creating tables
+- text: Creating matrices
 files:
 - name: src/Main.kt
   visible: true

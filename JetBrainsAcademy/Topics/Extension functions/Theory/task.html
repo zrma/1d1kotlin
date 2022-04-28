@@ -3,13 +3,13 @@
  <head></head>
  <body>
   <p>Often a developer doesn't write everything from scratch but uses an already written code. It saves them some time. However, there are some downsides such as the inability to edit the used code, especially when the code comes from another developer. Let's look how to optimize your work!</p> 
-  <h5>Problem with existing classes</h5> 
+  <h5 id="problem-with-existing-classes">Problem with existing classes</h5> 
   <p>To work with classes that you can't modify, you can write a function that takes an object of that class as an argument:</p> 
   <pre><code class="language-kotlin">fun repeated(string: String): String = string + string
 
 repeated("ha")  // returns "haha"</code></pre> 
   <p>Do you see an issue here? In Kotlin, standard operations are available as member functions. For example, to get the first symbol of the <code class="language-kotlin">"ha"</code> string, you can write <code class="language-kotlin">"ha".first()</code>. It's more convenient to use a single syntax for all operations. So how can we add a member function to the uneditable <code class="language-kotlin">String</code> class?</p> 
-  <h5>Defining and calling extension functions</h5> 
+  <h5 id="defining-and-calling-extension-functions">Defining and calling extension functions</h5> 
   <p>Kotlin has just the right <strong>syntactic sugar</strong> for it: extension functions. Let's rewrite the <code class="language-kotlin">repeated</code> function as an extension one:</p> 
   <pre><code class="language-kotlin">fun String.repeated(): String = this + this</code></pre> 
   <p>Now to get the <code class="language-kotlin">"haha"</code> we can write</p> 
@@ -32,7 +32,7 @@ print(client.getInfo()) // client is the receiver object</code></pre>
   <p></p> 
   <p>So the issue is solved: Kotlin developers can add any functions to any classes they want.</p> 
   <p>We also need to mention that extension functions are used even in Kotlin standard library. For example, if you look at the <code class="language-kotlin">String</code> class definition, you will see only necessary member functions. Other functions such as <code class="language-kotlin">.first()</code> and <code class="language-kotlin">.toUpperCase()</code> are actually extension functions needed just to simplify the code of the class.</p> 
-  <h5>Extension function vs member function</h5> 
+  <h5 id="extension-function-vs-member-function">Extension function vs member function</h5> 
   <p>Let's assume we have the following class:</p> 
   <pre><code class="language-kotlin">class A {
     fun member() = println("hi from member")
@@ -45,12 +45,12 @@ fun A.extension() = println("hi from extension")</code></pre>
   <p>If we add <code class="language-kotlin">fun A.member() = println("bye from not member")</code>, the code will compile but calling <code class="language-kotlin">A().member()</code> will give us <code class="language-kotlin">"hi from member"</code>.</p> 
   <p>So <strong>member functions always win</strong>. It helps when somebody wants to change the object behavior intentionally or unintentionally.</p> 
   <p>If you want to give an extension function the name that already exists, you must change the signature of the function, for example, change its arguments. It won't break the already existing code.</p> 
-  <h5>Idiom</h5> 
+  <h5 id="idiom">Idiom</h5> 
   <p>The extension function is an idiomatic way to add some functionality to an existing class. It is simple to use and shows that your new function is closely related to the class. So use it, with community approval! This idiom is documented on <a target="_blank" href="https://kotlinlang.org/docs/idioms.html#extension-functions" rel="noopener noreferrer nofollow">kotlinlang.org</a>.</p> 
   <pre><code class="language-kotlin">fun String.spaceToCamelCase() { ... }
 
 "Convert this to camelcase".spaceToCamelCase()</code></pre> 
-  <h5>Conclusion</h5> 
+  <h5 id="conclusion">Conclusion</h5> 
   <p>The extension function is a useful instrument, that can help you work with the existing class. Sometimes you can't change this class. Other times you need to add some functionality and don't want to store it in your class, because it takes up a lot of space. The extension function is a good solution for all of this. Good luck with tasks!</p>
  </body>
 </html>

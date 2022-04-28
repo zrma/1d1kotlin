@@ -1,10 +1,10 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: AccessDeniedException will be thrown
 - text: The program will crash
 - text: A file with this name will just be created
 - text: Nothing
+- text: AccessDeniedException will be thrown
 files:
 - name: src/Main.kt
   visible: true

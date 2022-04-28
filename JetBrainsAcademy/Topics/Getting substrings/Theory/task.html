@@ -9,7 +9,7 @@
    <strong>immutable</strong>, therefore, functions that change a string return a new string.
   </div>
   <p></p> 
-  <h5 style="text-align: center;">Getting a part of a string</h5> 
+  <h5 style="text-align: center;" id="getting-a-part-of-a-string">Getting a part of a string</h5> 
   <p>Oftentimes, you need to get only a certain part of a string. Kotlin provides the <code class="language-kotlin">substring</code> function for this.</p> 
   <p>The <code class="language-kotlin">substring</code> function accepts <code class="language-kotlin">startIndex</code> (inclusive) and <code class="language-kotlin">lastIndex</code> (exclusive) as arguments and returns a string that starts at the <code class="language-kotlin">startIndex</code> and ends<strong> </strong>right<em> </em>before<strong> </strong> the <code class="language-kotlin">lastIndex</code>.</p> 
   <pre><code class="language-kotlin">val greeting = "Hello"
@@ -43,7 +43,7 @@ println(greeting.substringBefore('z')) // "Hello"</code></pre>
   <pre><code class="language-kotlin">// greeting = "Hello"
 println(greeting.substringAfterLast('l'))  // "o"
 println(greeting.substringBeforeLast('l')) // "Hel"</code></pre> 
-  <h5 style="text-align: center;">Replacing parts of a string</h5> 
+  <h5 style="text-align: center;" id="replacing-parts-of-a-string">Replacing parts of a string</h5> 
   <p>You've probably been in a situation when you need to replace just one word in a string. The <code class="language-kotlin">replace</code> function replaces all occurrences of the first argument in the string with the second argument.</p> 
   <pre><code class="language-kotlin">val example = "Good morning..."
 println(example.replace("morning", "bye")) // "Good bye..."
@@ -56,7 +56,7 @@ println(example)</code></pre>
   <p>If you need to replace only the <strong>first occurrence</strong> of an argument, use <code class="language-kotlin">replaceFirst</code>.</p> 
   <pre><code class="language-kotlin">val example = "one one two three"
 println(example.replaceFirst("one", "two")) // "two one two three"</code></pre> 
-  <h5 style="text-align: center;">Changing the case</h5> 
+  <h5 style="text-align: center;" id="changing-the-case">Changing the case</h5> 
   <p>What if you need to replace all capital letters in a word with lowercase letters? Try to imagine how you would do it with the <code class="language-kotlin">replace</code> function. Now, that's too much code, right? Fortunately, in Kotlin you can use the <code class="language-kotlin">lowercase</code> function:</p> 
   <pre><code class="language-kotlin">val example = "UPPERCASE String"
 println(example.lowercase()) // uppercase string</code></pre> 
@@ -64,7 +64,7 @@ println(example.lowercase()) // uppercase string</code></pre>
   <pre><code class="language-kotlin">val example = "Lowercase String"
 println(example.uppercase()) // LOWERCASE STRING</code></pre> 
   <p>If you work with the old version of the Kotin language (earlier than 1.5), you may use the functions <code class="language-kotlin">toLowerCase()</code> and <code class="language-kotlin">toUpperCase()</code>. However, since Kotlin 1.5, you should use the <code class="language-kotlin">lowercase()</code> and <code class="language-kotlin">uppercase()</code> functions. </p> 
-  <h5 style="text-align: center;">Conclusion </h5> 
+  <h5 style="text-align: center;" id="conclusion">Conclusion </h5> 
   <p>In this topic, we've considered a few functions that produce a new string from the original one:</p> 
   <ul> 
    <li>A substring from the original string;</li> 

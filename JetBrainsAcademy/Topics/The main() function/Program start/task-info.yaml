@@ -2,11 +2,11 @@ type: choice
 is_multiple_choice: false
 options:
 - text: main() function
-- text: the string specified in program arguments
-- text: start() function
-- text: a place marked with the /* start */ comment
 - text: Main() function
 - text: the start of file
+- text: the string specified in program arguments
+- text: a place marked with the /* start */ comment
+- text: start() function
 files:
 - name: src/Main.kt
   visible: true

@@ -2,9 +2,9 @@ type: choice
 is_multiple_choice: true
 options:
 - text: Holds elements as key-value pairs
-- text: Its size cannot be changed
-- text: Map is a generic type
 - text: It's a mutable collection
+- text: Map is a generic type
+- text: Its size cannot be changed
 files:
 - name: src/Main.kt
   visible: true

@@ -3,8 +3,8 @@ is_multiple_choice: false
 options:
 - text: a-b
 - text: c-d
-- text: none of them, they are all different
 - text: a-b, c-d
+- text: none of them, they are all different
 files:
 - name: src/Main.kt
   visible: true

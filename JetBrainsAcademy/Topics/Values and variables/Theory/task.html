@@ -2,10 +2,10 @@
 <html>
  <head></head>
  <body>
-  <h5 style="text-align: center;">What is a variable?</h5> 
+  <h5 style="text-align: center;" id="what-is-a-variable">What is a variable?</h5> 
   <p>A variable is a storage for a value, which can be a string, a number, or something else. Every variable has a <strong>name</strong> (or an <strong>identifier</strong>) to distinguish it from other variables. You can access a value by the name of the variable.</p> 
   <p>Variables are one of the most often used elements in programs; therefore, it is important to understand how to use them.</p> 
-  <h5 style="text-align: center;">Declaring variables</h5> 
+  <h5 style="text-align: center;" id="declaring-variables">Declaring variables</h5> 
   <p>Before you can start using a variable, you must declare it. To declare a variable, Kotlin provides two keywords:</p> 
   <ul> 
    <li><code class="language-kotlin">val</code> (for <em>value</em>) declares an <strong>immutable variable</strong> (just a <strong>named value</strong> or a <strong>constant</strong>), which cannot be changed after it has been initialized (this is actually not entirely true, we will discuss this issue in more detail later);</li> 
@@ -52,7 +52,7 @@ println(dayOfWeek) // prints Tuesday</code></pre>
   <pre><code class="language-kotlin">val cost = 3
 val costOfCoffee = cost
 println(costOfCoffee) // prints 3</code></pre> 
-  <h5 style="text-align: center;">Storing different types of values</h5> 
+  <h5 style="text-align: center;" id="storing-different-types-of-values">Storing different types of values</h5> 
   <p>We've already mentioned that variables can store different types of values: strings, numbers, characters, and other data types, which we will encounter later.</p> 
   <p>Let's declare three immutable variables to store a number, a string, and a character and then print their values.</p> 
   <pre><code class="language-kotlin">val ten = 10
@@ -67,7 +67,7 @@ println(firstLetter) // prints A</code></pre>
 number = 11 // ok
 number = "twelve" // an error here!</code></pre> 
   <p>Please remember this restriction!</p> 
-  <h5 style="text-align: center;">Conclusion</h5> 
+  <h5 style="text-align: center;" id="conclusion">Conclusion</h5> 
   <p>Now you know, there are two keywords that are used to declare variables. Actually, in many cases, it is better to use immutable variables (those declared with the keyword <code class="language-kotlin">val</code>). Before using <code class="language-kotlin">var</code>, you should make sure that <code class="language-kotlin">val</code> is not suitable in that case. If it really isn't, use <code class="language-kotlin">var</code>. Although, keep in mind that the more mutable variables in your code, the harder it is to read. Remember, immutable variables help write more readable code. So, please, use <code class="language-kotlin">val</code> whenever possible! You can easily replace it with <code class="language-kotlin">var</code> when you absolutely have to.</p>
  </body>
 </html>

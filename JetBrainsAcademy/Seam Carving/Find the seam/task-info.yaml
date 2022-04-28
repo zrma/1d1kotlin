@@ -1,15 +1,6 @@
 type: edu
 custom_name: stage4
 files:
-- name: src/seamcarving/Main.kt
-  visible: true
-  text: |
-    package seamcarving
-
-    fun main() {
-        print("Hello, World!")
-    }
-  learner_created: false
 - name: test/SeamCarvingTest.java
   visible: false
   text: |
@@ -272,6 +263,23 @@ files:
 - name: test/trees.png
   visible: false
   learner_created: false
+- name: src/seamcarving/Main.kt
+  visible: true
+  text: |
+    package seamcarving
+
+    fun main() {
+        print("Hello, World!")
+    }
+  learner_created: false
+- name: test/small-seam.png
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/9018#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: "Exception in test #1\n\njava.lang.NullPointerException\r\n\tat seamcarving.MainKt.findShortestPath(Main.kt:84)\r\
+    \n\tat seamcarving.MainKt.findTheSeam(Main.kt:45)\r\n\tat seamcarving.MainKt.main(Main.kt:23)\n\
+    \nArguments: -in test/small.png -out test/small-seam.png"
+  time: Fri, 08 Apr 2022 17:18:55 UTC
 record: -1

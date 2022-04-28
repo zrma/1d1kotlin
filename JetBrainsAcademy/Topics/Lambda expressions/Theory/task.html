@@ -3,7 +3,7 @@
  <head></head>
  <body>
   <p>We already know how to declare functions with fixed names. Now let's find out the last factor of being a first-class citizen: the opportunity to create a function at runtime and without a predefined name.</p> 
-  <h5>Functions without names</h5> 
+  <h5 id="functions-without-names">Functions without names</h5> 
   <p>To create a function that isn't bound to its name in Kotlin you can create an <strong>anonymous</strong> one or a <strong>lambda expression</strong>:</p> 
   <ul> 
    <li><code class="language-kotlin">fun(arguments): ReturnType { body }</code> – this one is commonly called an "anonymous function".</li> 
@@ -32,7 +32,7 @@ println(mul2(2, 3))  // prints "6" too</code></pre>
   <p>Finally, you can place parentheses with desired arguments right after the function definition to invoke it in place. However, that doesn't make much sense. So, mostly the three first described options are used.</p> 
   <p>The process of creating these two functions is quite similar, but lambdas have a more concise and convenient syntax. Therefore, almost always lambdas are used to create a function at runtime in real life. Moreover, there are programmers that don't listen to Kotlin official naming rules, so they can say "an anonymous function" instead of "a lambda". Despite the fact that everybody understands them, we suggest you to call them as they are.</p> 
   <p>For the same reason of convenience, now we will talk only about lambdas.</p> 
-  <h5>Lambdas and syntactic sugar</h5> 
+  <h5 id="lambdas-and-syntactic-sugar">Lambdas and syntactic sugar</h5> 
   <p>There are ways to make the code more readable for human beings without changing the code logic. If there is such a way in a programming language and it relates to syntax, its name is <strong>syntactic sugar</strong>. Kotlin promotes Functional Programming so there is syntactic sugar for it.</p> 
   <p>Let's recall this example of passing the function as an argument:</p> 
   <pre><code class="language-kotlin">fun isNotDot(c: Char): Boolean = c != '.'
@@ -51,7 +51,7 @@ val textWithoutDots = originalText.filter({ c: Char -&gt; c != '.' })</code></pr
   <pre><code class="language-kotlin">val originalText = "I don't know... what to say..."
 val textWithoutDots = originalText.filter { it != '.' }</code></pre> 
   <p>Pretty impressive, huh?</p> 
-  <h5>Complex lambdas</h5> 
+  <h5 id="complex-lambdas">Complex lambdas</h5> 
   <p>Sometimes, the code in a lambda isn't short enough to fit in one line, so you need to split the code into lines. In this case, the last line inside the lambda is treated as the lambda return value:</p> 
   <pre><code class="language-kotlin">val textWithoutSmallDigits = originalText.filter {
     val isNotDigit = !it.isDigit()
@@ -67,7 +67,7 @@ val textWithoutDots = originalText.filter { it != '.' }</code></pre>
         
     it.toString().toInt() &gt;= 5
 }</code></pre> 
-  <h5>Capturing variables</h5> 
+  <h5 id="capturing-variables">Capturing variables</h5> 
   <p>Now let's discuss the advantage of function creation at runtime. The point is that all the variables and values which are visible where the lambda is created are visible inside the lambda too. If a lambda uses a variable that is declared outside the lambda, then it's said that the lambda <strong>captures</strong> the variable.</p> 
   <p>This works intuitively. In case of a captured value, the lambda can just read it. If a variable is captured, the lambda and the outside code can change it, and these changes will be visible in the lambda and in the outside code.</p> 
   <p>Take a look at the example below:</p> 
@@ -100,7 +100,7 @@ println(increment(4))   // 5
 println(increment(40))  // 41
 println(triple(4))      // 12
 println(triple(40))     // 120</code></pre> 
-  <h5>Conclusion</h5> 
+  <h5 id="conclusion">Conclusion</h5> 
   <p>Now we can create functions at runtime. This is convenient when calling functions from <strong>Kotlin standard library</strong> such as processing data as it helps write less code. Also, sometimes you need to make custom Functional Programming-style functions, and this knowledge will help too. Finally, we've convinced you that functions are first-class citizens in the Kotlin language.</p>
  </body>
 </html>

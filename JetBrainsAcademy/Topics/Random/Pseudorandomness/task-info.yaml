@@ -1,9 +1,9 @@
 type: choice
 is_multiple_choice: false
 options:
+- text: The numbers are not totally unpredictable
 - text: Sometimes it doesn't generate anything
 - text: It doesn't generate numbers but reads them from the drive instead
-- text: The numbers are not totally unpredictable
 - text: Sometimes it may generate an object instead of a number
 files:
 - name: src/Main.kt

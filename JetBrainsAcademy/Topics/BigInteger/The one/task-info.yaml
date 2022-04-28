@@ -2,8 +2,8 @@ type: choice
 is_multiple_choice: true
 options:
 - text: 'val one: BigInteger = 1'
-- text: val one = BigInteger.ONE
 - text: val one = BigInteger(1)
+- text: val one = BigInteger.ONE
 - text: val one = BigInteger.valueOf(1)
 files:
 - name: src/Main.kt

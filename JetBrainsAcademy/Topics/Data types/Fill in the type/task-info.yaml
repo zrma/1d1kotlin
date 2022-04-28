@@ -1,13 +1,13 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: Int
+- text: String
 - text: We can remove the colon (:) and the blank line and let Kotlin figure out the
     type
-- text: String
+- text: Int
+- text: string
 - text: Char
 - text: var
-- text: string
 files:
 - name: src/Main.kt
   visible: true
