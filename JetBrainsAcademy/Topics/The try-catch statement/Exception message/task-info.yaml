@@ -1,0 +1,13 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: "// ...\ntry {\n    problemFunction()\n} catch (e: Exception) {\n    println()\n\
+    } \n// ..."
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10627#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Thu, 05 May 2022 12:45:37 UTC
+record: -1
