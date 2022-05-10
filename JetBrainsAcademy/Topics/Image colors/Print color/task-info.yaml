@@ -1,0 +1,16 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun printColor(myImage: BufferedImage) {
+        // Write your code here
+
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/14493#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Tue, 10 May 2022 13:25:52 UTC
+record: -1

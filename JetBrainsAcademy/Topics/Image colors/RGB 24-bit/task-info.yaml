@@ -1,0 +1,25 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: CMYK
+- text: True color
+- text: Technical color
+- text: 3 color mode
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/14485#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Tue, 10 May 2022 13:18:07 UTC
+record: -1
+selected_options:
+- 1
