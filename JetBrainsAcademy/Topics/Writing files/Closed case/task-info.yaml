@@ -1,0 +1,15 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    // Write your code here. Do not import any libraries
+    val myFile = File(...)
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/9719#comment
+status: Failed
+feedback:
+  message: |
+    Failed. Wrong answer
+  time: Wed, 11 May 2022 12:00:31 UTC
+record: -1
