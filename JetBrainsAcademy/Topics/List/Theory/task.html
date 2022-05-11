@@ -27,6 +27,12 @@ cars[0] = "Renault" // Error</code></pre>
   <p>If you need to initialize an empty list, you can use the method <code class="language-kotlin">emptyList</code>: </p> 
   <pre><code class="language-kotlin">val staff = emptyList&lt;String&gt;()
 println(staff) // output: []</code></pre> 
+  <p>Another way of creating a list is to call a builder function - <code class="language-kotlin">buildList()</code>. </p> 
+  <pre><code class="language-kotlin">val list = buildList {
+    add("Marta")
+    add("Kira")
+}
+println(list) // output: [Marta, Kira]</code></pre> 
   <h5 style="text-align: center;" id="methods-and-properties">Methods and properties</h5> 
   <p>Let's recap the properties and methods of <code class="language-kotlin">List</code>:</p> 
   <ul> 

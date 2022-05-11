@@ -1,10 +1,10 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: a-b
+- text: none of them, they are all different
 - text: c-d
 - text: a-b, c-d
-- text: none of them, they are all different
+- text: a-b
 files:
 - name: src/Main.kt
   visible: true

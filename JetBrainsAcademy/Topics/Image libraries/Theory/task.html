@@ -72,7 +72,7 @@ graphics.drawArc(200, 200, 100, 250, 45, 90)</code></pre>
   <h5 id="writing-and-reading-images">Writing and Reading Images</h5> 
   <p>Instead of programatically creating an image from scratch, the <code class="language-kotlin">javax.imageio.ImageIO</code> class offers many convenient methods for encoding (writing) and decoding (reading) images from files in the supported formats. </p> 
   <p>Format is the binary encoding of an image, and the following formats are supported out of the box: JPEG, PNG, BMP, WBMP, and GIF.</p> 
-  <p>In order to save this newly created image, we will use the <code class="language-kotlin">ImageIO.write(RenderedImage im, String formatName, File output)</code> method and save the image as a PNG file.</p> 
+  <p>In order to save this newly created image, we will use the <code class="language-kotlin">ImageIO.write(im: BufferedImage, formatName: String, output: File)</code> method and save the image as a PNG file.</p> 
   <pre><code class="language-kotlin">import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO

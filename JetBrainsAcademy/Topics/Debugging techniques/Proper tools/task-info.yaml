@@ -2,8 +2,8 @@ type: choice
 is_multiple_choice: true
 options:
 - text: Assertions help you enforce invariants in your application
-- text: Assertions help you detect bug conditions before the bug manifests itself
 - text: Assertions are used for logging
+- text: Assertions help you detect bug conditions before the bug manifests itself
 files:
 - name: src/Main.kt
   visible: true

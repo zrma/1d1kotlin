@@ -1,9 +1,9 @@
 type: choice
 is_multiple_choice: false
 options:
+- text: A number that a random generator uses to initiate random sequence
 - text: A number that a random generator always returns first
 - text: A package where Random class is located
-- text: A number that a random generator uses to initiate random sequence
 - text: A number that a random generator is not allowed to return
 files:
 - name: src/Main.kt

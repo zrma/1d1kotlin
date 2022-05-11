@@ -59,7 +59,7 @@ Random.nextDouble(0.0, 5.0)</code></pre>
 for (i in 0..5) {
     randomGenerator42.nextInt(100)
 }</code></pre> 
-  <p>In Kotlin 1.4, this code will always generate the same five numbers — <code class="language-kotlin">33, 40, 41, 2, 41, 32</code> — even on different machines. In contrast, the default generator will give us a new sequence every time.</p> 
+  <p>In Kotlin 1.4, this code will always generate the same six numbers — <code class="language-kotlin">33, 40, 41, 2, 41, 32</code> — even on different machines. In contrast, the default generator will give us a new sequence every time.</p> 
   <pre><code class="language-kotlin">// the same generator we use when we call Random.nextInt(), Random.nextFloat() etc.
 val defaultGenerator = Random.Default 
 for (i in 0..5) {                      
