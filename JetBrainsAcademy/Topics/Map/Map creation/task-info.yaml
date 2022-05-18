@@ -1,10 +1,10 @@
 type: choice
 is_multiple_choice: true
 options:
+- text: pairOf
+- text: emptyMap
 - text: mapOf
 - text: createMap
-- text: emptyMap
-- text: pairOf
 files:
 - name: src/Main.kt
   visible: true

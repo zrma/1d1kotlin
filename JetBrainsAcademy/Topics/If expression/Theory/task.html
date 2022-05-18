@@ -4,7 +4,7 @@
  <body>
   <p>The<strong> conditional expression (if expression</strong> for short<strong>)</strong><strong> </strong>is a construction that allows a program to perform different computations depending on the value of a boolean expression. If it is <code class="language-kotlin">true</code>, the program performs one action. If it is <code class="language-kotlin">false</code> , the program performs another action. Here you can see some examples of boolean expressions: <code class="language-kotlin">a &gt; b</code>, <code class="language-kotlin">i - j == 1</code> and so on.</p> 
   <p>The conditional expression has a number of forms. Let's take a look at them.</p> 
-  <h5 style="text-align: center;" id="the-single-if-case">The single if-case</h5> 
+  <h5 id="the-single-if-case" style="text-align: center;">The single if-case</h5> 
   <p>The simplest form consists of the keyword <code class="language-kotlin">if</code>, a boolean expression (condition), and a body enclosed in curly braces.</p> 
   <pre><code class="language-kotlin">if (expression) {
     // body: do something
@@ -29,7 +29,7 @@ if (b) { // or !b
     // do something
 }</code></pre> 
   <p>You can use this construction in any place in a program where using of a conditional statement is expected. You can even nest it inside another conditional statement to perform multistage checks.</p> 
-  <h5 style="text-align: center;" id="the-if-else-cases">The if-else-cases</h5> 
+  <h5 id="the-if-else-cases" style="text-align: center;">The if-else-cases</h5> 
   <p>The expression we've seen above can be extended with the keyword <code class="language-kotlin">else</code> and another body to do alternative actions when the expression is <code class="language-kotlin">false</code>.</p> 
   <pre><code class="language-kotlin">if (expression) {    
     // do something
@@ -46,7 +46,7 @@ if (num % 2 == 0) {
     println("It's an odd number")
 }</code></pre> 
   <p>Since a number can be either even or odd, only one message will be displayed. If <code class="language-kotlin">num</code> is 10, the program outputs <code class="language-kotlin">"It's an even number"</code>. If the value is 11, it outputs <code class="language-kotlin">"It's an odd number"</code>.</p> 
-  <h5 style="text-align: center;" id="the-if-else-if-cases">The if-else-if-cases</h5> 
+  <h5 id="the-if-else-if-cases" style="text-align: center;">The if-else-if-cases</h5> 
   <p>The most usual form of the conditional statement consists of several conditions and <code class="language-kotlin">else</code>-branches.</p> 
   <pre><code class="language-kotlin">if (expression0) {
     // do something
@@ -69,7 +69,7 @@ if (dollars &lt; 1000) {
     println("Buy a data center or a quantum computer")
 }</code></pre> 
   <p>This <strong>conditional expression</strong> has four branches: <code class="language-kotlin">dollars &lt; 1000</code>, <code class="language-kotlin">dollars &lt; 2000</code>, <code class="language-kotlin">dollars &lt; 100_000</code> and <code class="language-kotlin">dollars &gt;= 100_000</code>. If the value of dollars is <code class="language-kotlin">10_000</code>, it prints <code class="language-kotlin">"Buy a server"</code>.</p> 
-  <h5 style="text-align: center;" id="nested-ifs">Nested If's</h5> 
+  <h5 id="nested-ifs" style="text-align: center;">Nested If's</h5> 
   <p>As we said before, you can nest one <strong>if </strong><strong>expression</strong> into the body of another one. For example:</p> 
   <pre><code class="language-kotlin">if (n % 2 == 0) {
     if (n % 3 == 0) {
@@ -81,7 +81,7 @@ if (dollars &lt; 1000) {
     println("The number cannot be divided by 2")
 }</code></pre> 
   <p>This code tests if the value is divisible by 2 and, if it is <code class="language-kotlin">true</code>, tests if the value is divisible by 3. If it is also <code class="language-kotlin">true</code>, it means the value is divisible by 6.</p> 
-  <h5 style="text-align: center;" id="condition-is-an-expression">Condition is an expression</h5> 
+  <h5 id="condition-is-an-expression" style="text-align: center;">Condition is an expression</h5> 
   <p>Unlike other languages (such as Java, Python, C#), in Kotlin if is an expression, not a statement. As a regular expression, it can return a value (result) of computations. The result must be the last expression in a body.</p> 
   <p>This code finds the max of two integer numbers <code class="language-kotlin">a</code> and <code class="language-kotlin">b</code>. It prints the choice and stores the result to the <code class="language-kotlin">max</code> variable.</p> 
   <pre><code class="language-kotlin">val max = if (a &gt; b) {
@@ -113,7 +113,7 @@ if (dollars &lt; 1000) {
         "a is less than b"
     })
 }</code></pre> 
-  <h5 style="text-align: center;" id="idiom">Idiom</h5> 
+  <h5 id="idiom" style="text-align: center;">Idiom</h5> 
   <p>It's time for the next idiom! Now we draw your attention to the <a target="_blank" href="https://kotlinlang.org/docs/idioms.html#if-expression" rel="noopener noreferrer nofollow">expression-style if</a>. You should prefer to use this form when you need to get some results. Of course, you may work with <code class="language-kotlin">if</code> as a statement, but using <code class="language-kotlin">if</code> as an expression is a better way. For example:</p> 
   <pre><code class="language-kotlin">val max = if (a &gt; b) a else b // one line
 
@@ -122,7 +122,7 @@ if (dollars &lt; 1000) {
 var max = a // try to avoid var if possible
 if (b &gt; a) max = b</code></pre> 
   <p>The second snippet may cause some trouble, for example, you may accidentally alter the value of the <code class="language-kotlin">max</code> variable or forget to change it. So we suggest you use expression-style if in those cases.</p> 
-  <h5 style="text-align: center;" id="conclusion">Conclusion</h5> 
+  <h5 id="conclusion" style="text-align: center;">Conclusion</h5> 
   <p>To sum up, let's say once again, that an <strong>if expression</strong><strong> </strong>has a number of forms like <code class="language-kotlin">if</code>, <code class="language-kotlin">if-else</code> and <code class="language-kotlin">if-else-if</code>. You can nest a condition into the body of another condition. Kotlin also provides the possibility to return a value as a result. Now we are done with conditions.</p>
  </body>
 </html>

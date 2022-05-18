@@ -21,11 +21,11 @@ println(ch) // @</code></pre>
 println(ch.code)   // 97
 val num = 97
 println(num.toChar()) // a</code></pre> 
-  <h5 style="text-align: center;" id="how-to-read-characters">How to read characters</h5> 
+  <h5 id="how-to-read-characters" style="text-align: center;">How to read characters</h5> 
   <p>Kotlin does not provide a convenient function to read a <code class="language-kotlin">Char</code>. However, you can do it another way: if you need to read one <code class="language-kotlin">Char</code> in a whole line, use this construction:</p> 
   <pre><code class="language-kotlin">val ch: Char = readln().first()</code></pre> 
   <p>You just read a <code class="language-kotlin">String</code> and get its first element, which will be a <code class="language-kotlin">Char</code>. Strings are composed of characters, but we will discuss this in more detail a little later.</p> 
-  <h5 style="text-align: center;" id="retrieving-subsequent-characters">Retrieving subsequent characters</h5> 
+  <h5 id="retrieving-subsequent-characters" style="text-align: center;">Retrieving subsequent characters</h5> 
   <p>There are two operators for adding (<code class="language-kotlin">+</code>) and subtracting (<code class="language-kotlin">-</code>) integer numbers in order to get the next and previous characters according to the Unicode order:</p> 
   <pre><code class="language-kotlin">val ch1 = 'b'
 val ch2 = ch1 + 1 // 'c'
@@ -49,7 +49,7 @@ println(--ch) // 'L'</code></pre>
    <span style="background-color: transparent; color: #000000; font-size: 11pt; font-variant: normal;"></span>
   </div>
   <p></p> 
-  <h5 style="text-align: center;" id="escape-sequences">Escape sequences</h5> 
+  <h5 id="escape-sequences" style="text-align: center;">Escape sequences</h5> 
   <p>There are some special characters starting with a backslash <code class="language-kotlin">\</code>, which are known as <strong>escape</strong> or <strong>control sequences</strong>. Most of them do not have corresponding symbols, and you cannot find them on your keyboard. To represent such characters, we use a pair of regular symbols. In a program, this pair is considered as exactly one character with the appropriate code. </p> 
   <ul> 
    <li><code class="language-kotlin">'\n'</code> is the newline character;</li> 
@@ -74,7 +74,7 @@ c</code></pre>
    <span style="background-color: transparent; color: #000000; font-size: 11pt; font-variant: normal;"></span>
   </div>
   <p></p> 
-  <h5 style="text-align: center;" id="relational-operations-with-characters">Relational operations with characters</h5> 
+  <h5 id="relational-operations-with-characters" style="text-align: center;">Relational operations with characters</h5> 
   <p>You can compare characters using relational operations (<code class="language-kotlin">==</code>, <code class="language-kotlin">&lt;</code>, <code class="language-kotlin">&gt;</code>, <code class="language-kotlin">&lt;=</code>, <code class="language-kotlin">&gt;=</code>, and <code class="language-kotlin">!=</code>) according to their position in the Unicode table.</p> 
   <pre><code class="language-kotlin">println('a' &lt; 'c')  // true
 println('x' &gt;= 'z') // false
@@ -92,7 +92,7 @@ println('A' &lt; 'a')  // true because capital Latin letters are placed before s
     println(isDigit)
 }</code></pre> 
   <p>If the input is a digit <code class="language-kotlin">'0'</code>, <code class="language-kotlin">'1'</code>, <code class="language-kotlin">'2'</code>, ..., <code class="language-kotlin">'9'</code> (without quotes), the program prints <code class="language-kotlin">true</code>. Otherwise, it prints <code class="language-kotlin">false</code>. </p> 
-  <h5 style="text-align: center;" id="processing-characters">Processing characters</h5> 
+  <h5 id="processing-characters" style="text-align: center;">Processing characters</h5> 
   <p>There's a variety of useful functions to work with characters. You can use these functions instead of dealing with character codes.</p> 
   <ul> 
    <li><code class="language-kotlin">isDigit()</code> returns <code class="language-kotlin">true</code> if the given character represents a digit (<code class="language-kotlin">'1'</code>, <code class="language-kotlin">'2'</code>, etc); otherwise, <code class="language-kotlin">false</code>;</li> 

@@ -5,7 +5,7 @@
   <p>As you already know, an exception interrupts normal execution of a program. Normally, this is not what we want to happen. Good news is, it is possible to write code that will handle exceptions without stopping the whole program.</p> 
   <p>To do that, Kotlin has the <strong>exception handling</strong> mechanism. After a line of code throws an exception, Kotlin attempts to find a suitable handler for it. Such a handler can be located in the same method where the exception occurred or in the calling method. As soon as a suitable handler is found and executed, the exception is considered handled and the program runs normally.</p> 
   <p>In this topic, we will learn about two keywords for handling exceptions: <code class="language-kotlin">try</code> and <code class="language-kotlin">catch</code>.</p> 
-  <h5 style="text-align: center;" id="the-try-catch-statement">The try-catch statement</h5> 
+  <h5 id="the-try-catch-statement" style="text-align: center;">The try-catch statement</h5> 
   <p>Here is a simple <code class="language-kotlin">try-catch</code> template for handling exceptions:</p> 
   <pre><code class="language-kotlin">try {
     // code that may throw an exception
@@ -48,7 +48,7 @@ After the try-catch block</code></pre>
    <code class="language-kotlin">catch</code> expression, the program will fail despite all precautions.
   </div>
   <p></p> 
-  <h5 style="text-align: center;" id="getting-info-about-exceptions">Getting info about exceptions</h5> 
+  <h5 id="getting-info-about-exceptions" style="text-align: center;">Getting info about exceptions</h5> 
   <p>When an exception is caught by the <code class="language-kotlin">catch</code> block, it is possible to get some information on it. To do this, we use <code class="language-kotlin">message</code>:</p> 
   <pre><code class="language-kotlin">try {
     val d = (2 / 0).toDouble()
@@ -58,7 +58,7 @@ catch (e: Exception) {
 }</code></pre> 
   <p>This code prints:</p> 
   <pre><code class="language-kotlin">/ by zero</code></pre> 
-  <h5 style="text-align: center;" id="catching-multiple-exceptions">Catching multiple exceptions</h5> 
+  <h5 id="catching-multiple-exceptions" style="text-align: center;">Catching multiple exceptions</h5> 
   <p>It is always possible to use a single handler for all types of exceptions:</p> 
   <pre><code class="language-kotlin">try {
     // code that may throw exceptions
@@ -85,11 +85,11 @@ catch (e: Exception) {
    <code class="language-kotlin">Exception</code>). Otherwise, the block with the subtype will be ignored. 
   </div>
   <p></p> 
-  <h5 style="text-align: center;" id="where-and-how-to-handle-an-exception">Where and how to handle an exception</h5> 
+  <h5 id="where-and-how-to-handle-an-exception" style="text-align: center;">Where and how to handle an exception</h5> 
   <p>Technically, an exception can be handled in the method where it occurs or in the calling method. The best approach to handle an exception is to do it in a method that has sufficient information to make the correct decision based on this exception.</p> 
   <p>So, why should we throw out specific types of exceptions when there is a general <code class="language-kotlin">Exception</code> that includes all possible cases and is always appropriate? Well, keep in mind that your colleagues or maybe even yourself in a couple of weeks may not really know what’s going on in the code. It would be best for you to provide as much information as possible. This will make handling exceptions much easier.</p> 
   <p>Always try to find the exception type that fits best to your exceptional event, for instance, throw a <code class="language-kotlin">NumberFormatException</code> instead of just an <code class="language-kotlin">Exception</code>. </p> 
-  <h5 style="text-align: center;" id="conclusion">Conclusion</h5> 
+  <h5 id="conclusion" style="text-align: center;">Conclusion</h5> 
   <p>Let's recap: the <code class="language-kotlin">try-catch</code> statement is used for exception handling. The <code class="language-kotlin">try</code> block contains the actions that can potentially cause the exception. The <code class="language-kotlin">catch</code> block is executed if an exception occurs. Now, let's practice!</p>
  </body>
 </html>

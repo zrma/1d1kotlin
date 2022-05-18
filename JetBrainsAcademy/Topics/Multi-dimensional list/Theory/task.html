@@ -3,13 +3,13 @@
  <head></head>
  <body>
   <p>You are already familiar with one-dimensional lists. Now, we’re going to look at multi-dimensional lists with two or even more dimensions in Kotlin. You'll learn how to create such lists and how to manage their contents.</p> 
-  <h5 style="text-align: center;" id="a-list-of-lists">A list of lists</h5> 
+  <h5 id="a-list-of-lists" style="text-align: center;">A list of lists</h5> 
   <p>First, let's figure what we mean by a <strong>multi-dimensional list</strong>.</p> 
   <p>Basically, we can say that a multi-dimensional list is a list of lists. That is, in order to create a multi-dimensional list, we need to present a list as an element of another list. Eventually, we get a multi-dimensional list.</p> 
   <p>Such lists make it very easy to represent things that have many dimensions: for example, 3D objects with length, height, and width. The universe we live in could be described with four measurements, time being the fourth dimension, so it is 4D. Higher levels, like 5D and so forth, are hard to imagine, but when you put the concept into practice, they turn out to be handy and not too complicated!</p> 
   <p>Let's look at some more down-to-earth examples. A seat in the theater can be indicated with a 2D-list: one index for the row and another one for the number of the seat in that row. If you want to write a game that uses maps, such as Sea Battle, two-dimensional lists will be very helpful in setting coordinates on the map. In addition, some mathematical structures are conveniently represented as multi-dimensional lists.</p> 
   <p>First, let’s take a look at a special case of a multi-dimensional list that is used quite often in practice: a <strong>two-dimensional list</strong>.</p> 
-  <h5 style="text-align: center;" id="creating-2-dimensional-lists">Creating 2-dimensional lists</h5> 
+  <h5 id="creating-2-dimensional-lists" style="text-align: center;">Creating 2-dimensional lists</h5> 
   <p>While a one-dimensional list can be represented as a single sequence of elements, an intuitive way of representing a two-dimensional list is a <strong>matrix</strong> or a <strong>table</strong>. If you're working with matrices or tables in your program, it makes sense to present them in the form of a two-dimensional list.</p> 
   <p>Let's create a two-dimensional mutable list of <code class="language-kotlin">Int</code> with 3 rows and 4 columns where all elements are 0's (zeros). Here is what it looks like:</p> 
   <pre><code class="language-kotlin">val mutList2D = mutableListOf(
@@ -52,7 +52,7 @@
    You can create nested lists with different numbers of elements in the same 2D list.
   </div>
   <p></p> 
-  <h5 style="text-align: center;" id="accessing-elements"> Accessing elements</h5> 
+  <h5 id="accessing-elements" style="text-align: center;"> Accessing elements</h5> 
   <p>Let’s see how we can access an element of a list. The principle is exactly the same as for one-dimensional lists. Only now we have to write <strong>two</strong> indices: first, the index of the element of the main list and then, the index of the nested list.</p> 
   <p>Let's get back to our <code class="language-kotlin">mutList2D</code> for a moment. Suppose we need to access an element that is in the first row and the first column. How do we find this particular element? As you recall, <code class="language-kotlin">mutList2D</code> is a list of lists. So, start by selecting one of the nested lists by its index in the main list. The principle is similar to a 1D list.</p> 
   <p>First, go to the nested lists and choose the inner list with its index:</p> 
@@ -110,7 +110,7 @@ print(mutList2D[0][2])  // 2
 print(mutList2D[1][0])  // 3
 print(mutList2D[1][1])  // 4
 print(mutList2D[1][2])  // 5</code></pre> 
-  <h5 style="text-align: center;" id="creating-2d-lists-of-different-types">Creating 2D lists of different types</h5> 
+  <h5 id="creating-2d-lists-of-different-types" style="text-align: center;">Creating 2D lists of different types</h5> 
   <p>Nested lists don't need to be of type <code class="language-kotlin">Int</code>: as you remember, Kotlin provides various types of lists. For example, you can create a list of string lists as in the example below.</p> 
   <p>You can also clearly define the type of elements of nested lists:</p> 
   <pre><code class="language-kotlin">val mutListOfString2D = mutableListOf(
@@ -149,7 +149,7 @@ print(mutList2D[1][2])  // 5</code></pre>
    You can create nested lists of different types in the same 2D list. 
   </div>
   <p></p> 
-  <h5 style="text-align: center;" id="features-of-working-with-2d-lists">Features of working with 2D lists</h5> 
+  <h5 id="features-of-working-with-2d-lists" style="text-align: center;">Features of working with 2D lists</h5> 
   <p>Let’s look at some useful and interesting features of working with two-dimensional lists. You remember that we can print all the elements of a list as a string using the <code class="language-kotlin">joinToString()</code> function. For nested lists, it will also work. Only now you must specify the index of the nested list that you want to convert to a string:</p> 
   <pre><code class="language-kotlin">val mutListString = mutableListOf(
     mutableListOf&lt;String&gt;("A", "R", "R", "A", "Y")
@@ -162,7 +162,7 @@ mutableListOf&lt;Char&gt;('o', 't'),
 mutableListOf&lt;Char&gt;('l', 'i', 'n'))
 
 println(mutListOfChar2D)	// [[k], [o, t], [l, i, n]]</code></pre> 
-  <h5 style="text-align: center;" id="multi-dimensional-lists-gt2">Multi-dimensional lists (&gt;2)</h5> 
+  <h5 id="multi-dimensional-lists-2" style="text-align: center;">Multi-dimensional lists (&gt;2)</h5> 
   <p>We are finally ready to deal with more complex concepts. There are lists with more than two dimensions. Even though it is more difficult to understand what it looks like, don’t worry: you will get used to working with them.</p> 
   <p>You can imagine a three-dimensional list like this:</p> 
   <table border="1" cellpadding="1" cellspacing="1"> 
@@ -191,7 +191,7 @@ println(mutList3D)  // [[[0, 1], [2, 3]], [[4, 5], [6, 7]]]</code></pre>
 println(mutList3D[1][0][1])   // 5
 println(mutList3D[1][1][1])   // 7</code></pre> 
   <p>You can create lists with even more dimensions by analogy — 4, 5, 6 dimensions, and so on — as you need. Just remember that an element of a multidimensional list has as many indices as there are dimensions in that list.</p> 
-  <h5 style="text-align: center;" id="conclusion">Conclusion</h5> 
+  <h5 id="conclusion" style="text-align: center;">Conclusion</h5> 
   <p>Let's recap. You have figured out what multi-dimensional lists are and how to create them in Kotlin. Here are the main points to take away:</p> 
   <ul> 
    <li>A multi-dimensional list is essentially a list of lists.</li> 

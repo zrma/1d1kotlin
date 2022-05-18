@@ -3,7 +3,7 @@
  <head></head>
  <body>
   <p>In any programming language, functions are really powerful instruments. Sometimes you don't need to use all the arguments of a function, as some of them may be stored as preselected values. In this topic, you will know how to do it.</p> 
-  <h5 style="text-align: center;" id="functions-with-default-arguments">Functions with default arguments</h5> 
+  <h5 id="functions-with-default-arguments" style="text-align: center;">Functions with default arguments</h5> 
   <p>Kotlin can assign <strong>default values</strong> to function parameters in the function declaration. To invoke this function, you can omit the arguments with the default values, or you can invoke it in a usual way.</p> 
   <p>Here is a function named <code class="language-kotlin">printLine</code> with two parameters. The first parameter defines a line, the second parameter is a string that ends this line. Both parameters have default values: an empty line (<code class="language-kotlin">""</code>) and a new line (<code class="language-kotlin">"\n"</code>).</p> 
   <pre><code class="language-kotlin">fun printLine(line: String = "", end: String = "\n") = print("$line$end")</code></pre> 
@@ -24,7 +24,7 @@ fun main() {
    We cannot pass the second argument without the first one. Kotlin cannot understand that we want to assign a value to the second parameter only.
   </div>
   <p></p> 
-  <h5 style="text-align: center;" id="mixing-default-and-regular-arguments">Mixing default and regular arguments</h5> 
+  <h5 id="mixing-default-and-regular-arguments" style="text-align: center;">Mixing default and regular arguments</h5> 
   <p>You can also mix default and regular parameters during declaration. For example, the function below finds the max of two integer arguments. It has a special parameter that determines whether it needs to compare numbers by their absolute values. The default value of this parameter is <code class="language-kotlin">false</code>.</p> 
   <pre><code class="language-kotlin">fun findMax(n1: Int, n2: Int, absolute: Boolean = false): Int {
     val v1: Int

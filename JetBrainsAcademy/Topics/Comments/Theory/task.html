@@ -4,7 +4,7 @@
  <body>
   <p>Here comes a comet... Oh, sorry, a comment – brief but enlightening. So, what exactly are those comments and what do we need them for? Well, essentially, that's what we call a special text that will be ignored by the compiler. Comments allow you to clarify a piece of code or exclude it from the compilation process (that is, disable it). Throughout this course, we will use comments to explain how and why our code works.</p> 
   <p>There are three kinds of comments in Kotlin. Let's take a look at them.</p> 
-  <h5 style="text-align: center;" id="end-of-line-comments">End-of-line comments</h5> 
+  <h5 id="end-of-line-comments" style="text-align: center;">End-of-line comments</h5> 
   <p>The compiler ignores any text from the <code class="language-kotlin">//</code> sign to the end of the line.</p> 
   <pre><code class="language-kotlin">fun main() {
     // The line below will be ignored
@@ -20,7 +20,7 @@
    <code class="language-kotlin">cmd /</code>.
   </div>
   <p></p> 
-  <h5 style="text-align: center;" id="multi-line-comments">Multi-line comments</h5> 
+  <h5 id="multi-line-comments" style="text-align: center;">Multi-line comments</h5> 
   <p>The compiler ignores any text between the <code class="language-kotlin">/*</code> and <code class="language-kotlin">*/</code> symbols. You can use them for writing both single-line and multiple-line comments:</p> 
   <pre><code class="language-kotlin">fun main() {
     /* This is a single-line comment */
@@ -39,7 +39,7 @@
     System.out.println("Kotlin") /* print "Kotlin" */
     */
 }</code></pre> 
-  <h5 style="text-align: center;" id="documentation-comments-doc-comments">Documentation comments (doc comments)</h5> 
+  <h5 id="documentation-comments-doc-comments" style="text-align: center;">Documentation comments (doc comments)</h5> 
   <p>The compiler ignores any text between the <code class="language-kotlin">/**</code> and <code class="language-kotlin">*/</code> signs just like it ignores all text in multi-line comments. This kind of comments is called <strong>documentation comments </strong>(<strong>doc comments</strong>). Documentation is a text that helps others understand what your code does. You can use these kinds of comments to automatically generate documentation about your source code using a special tool.</p> 
   <p>Usually, these comments are placed above the declarations of respective program elements. Also, in this case, some special labels, such as <code class="language-kotlin">@param</code>, <code class="language-kotlin">@return</code>, and others are used for controlling the tool.</p> 
   <p>Let's take a look at the example below.</p> 

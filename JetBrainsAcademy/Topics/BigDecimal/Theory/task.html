@@ -2,11 +2,11 @@
 <html>
  <head></head>
  <body>
-  <h5 style="text-align: center;" id="large-numbers-in-kotlin">Large numbers in Kotlin</h5> 
+  <h5 id="large-numbers-in-kotlin" style="text-align: center;">Large numbers in Kotlin</h5> 
   <p>Sometimes programmers have to work with extremely large numbers. Since standard primitive types cannot store them, there are two special classes for this purpose: <strong>BigInteger</strong> for integer numbers and <strong>BigDecimal</strong> for floating-point numbers.</p> 
   <p>You're already familiar with <code class="language-kotlin">BigInteger</code>, and in this topic, we are going to look at <code class="language-kotlin">BigDecimal</code>.</p> 
   <p>Both classes are provided by Java Class Library. The size of numbers isn't really limited by anything but the physical memory of your computer. In the case of <code class="language-kotlin">BigDecimal</code>, you can have as many digits after the point as you want, which is important for accurate calculations. There are programs where the accuracy of computation is critical, for example, aircraft or medical software, or storing and processing sums of money, to name a few.</p> 
-  <h5 style="text-align: center;" id="creating-objects-of-bigdecimal">Creating objects of BigDecimal</h5> 
+  <h5 id="creating-objects-of-bigdecimal" style="text-align: center;">Creating objects of BigDecimal</h5> 
   <p>To create an instance of <code class="language-kotlin">BigDecimal</code>, the first thing you need to do is import this class from the <code class="language-kotlin">java.math</code> package using the following statement:</p> 
   <pre><code class="language-kotlin">import java.math.BigDecimal</code></pre> 
   <p>At this point, you have several different options to create a <code class="language-kotlin">BigDecimal</code>: let's look at a couple of them. The first way is creating it from the <code class="language-kotlin">String</code> object and specifying the desired number in double-quotes. And you can immediately convert the input string to <code class="language-kotlin">BigDecimal</code>:</p> 
@@ -22,7 +22,7 @@ val bigDecimal = number.toBigDecimal()</code></pre>
   <pre><code class="language-kotlin">val zero = BigDecimal.ZERO // 0
 val one = BigDecimal.ONE   // 1
 val ten = BigDecimal.TEN   // 10</code></pre> 
-  <h5 style="text-align: center;" id="arithmetic-operations">Arithmetic operations</h5> 
+  <h5 id="arithmetic-operations" style="text-align: center;">Arithmetic operations</h5> 
   <p>It is extremely important to keep in mind that <code class="language-kotlin">BigDecimal</code> is an <strong>immutable</strong> class. Immutability implies that you cannot change an existing instance of <code class="language-kotlin">BigDecimal</code>, even if it was declared with the <code class="language-kotlin">var</code> keyword. If you try to modify an existing object, it is created again.</p> 
   <p></p>
   <div class="alert alert-warning">
@@ -56,7 +56,7 @@ val module = first.abs()  //  0.2
 // raise to the power, works only with Int
 val power = first.pow(3)</code></pre> 
   <p>It is also possible to use increment (<code class="language-kotlin">++</code>) and decrement (<code class="language-kotlin">--</code>) operators in their postfix forms.</p> 
-  <h5 style="text-align: center;" id="rounding-control">Rounding control</h5> 
+  <h5 id="rounding-control" style="text-align: center;">Rounding control</h5> 
   <p>When we need to tweak the accuracy (the number of digits after the point), <code class="language-kotlin">setScale()</code> comes to the rescue. It allows us to adjust the precision of large fractional numbers:</p> 
   <pre><code class="language-kotlin">bigDecimal.setScale(newScale, RoundingMode)</code></pre> 
   <p>The first parameter is <code class="language-kotlin">newScale</code>. It sets the number of digits after the decimal point. You may receive the scale of your number this way:</p> 
@@ -67,7 +67,7 @@ println(fractionalNumber.scale()) // 4</code></pre>
   <p>The table below lists all the possible <code class="language-kotlin">BigDecimal</code> rounding modes along with their brief descriptions: </p> 
   <p><img alt="" src="https://ucarecdn.com/c1a3822c-c3aa-4b17-9584-60367e93069e/"></p> 
   <p>This might seem a little abstract, so let's look at some examples that will help sort things out.</p> 
-  <h5 style="text-align: center;" id="rounding-mode-examples">Rounding mode examples</h5> 
+  <h5 id="rounding-mode-examples" style="text-align: center;">Rounding mode examples</h5> 
   <p>So, you can adjust the accuracy of your large numbers and choose the rules by which they will be rounded. The following code snippet shows some examples of using <code class="language-kotlin">BigDecimal</code> rounding with a few different rounding modes: <span style="color: #66cc66;"> </span></p> 
   <pre><code class="language-kotlin">var bigDecimal = BigDecimal("100.5649")
 println(bigDecimal.setScale(3, RoundingMode.CEILING))   // 100.565
@@ -92,7 +92,7 @@ println(bigDecimal) // 1000000000000000000.000</code></pre>
    <code class="language-kotlin">setScale()</code>. But if you specify too few digits, an error will occur. 
   </div>
   <p></p> 
-  <h5 style="text-align: center;" id="rounding-in-arithmetic-operations">Rounding in arithmetic operations</h5> 
+  <h5 id="rounding-in-arithmetic-operations" style="text-align: center;">Rounding in arithmetic operations</h5> 
   <p>Finally, let's discuss something a little more advanced: at this point, you should have enough background knowledge for that.</p> 
   <p>Let's talk about determining the accuracy of the result of division. The scale of the result is the same as the scale of the dividend, and by default, <code class="language-kotlin">RoundingMode.HALF_EVEN</code> is used. However, you can specify the scale manually if necessary:</p> 
   <pre><code class="language-kotlin">val dividend = BigDecimal("0.9865745")
@@ -120,7 +120,7 @@ val multiplication = first * second // 25.66641; The result scale is 5 (sum of t
    <li><strong>Multiplication</strong>: the sum of the multiplier and multiplicand scales;</li> 
    <li><strong>Division</strong>: the scale of the dividend.</li> 
   </ul> 
-  <h5 style="text-align: center;" id="conclusion">Conclusion</h5> 
+  <h5 id="conclusion" style="text-align: center;">Conclusion</h5> 
   <p>The <code class="language-kotlin">BigDecimal</code> class is useful for storing large fractional numbers. Standard arithmetic operations are also available for <code class="language-kotlin">BigDecimal</code> numbers. You can manage the behavior of objects of this class when rounded with <code class="language-kotlin">setScale()</code>: indicate the desired number of digits as the first parameter and the rounding mode as the second parameter.</p>
  </body>
 </html>

@@ -1,10 +1,10 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: learning
 - text: teach
-- text: '.....'
+- text: learning
 - text: .ea..
+- text: '.....'
 - text: learn
 files:
 - name: src/Main.kt

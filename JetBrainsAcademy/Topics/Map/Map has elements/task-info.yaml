@@ -1,10 +1,10 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: hasElements()
 - text: isEmpty()
-- text: isEmptyMap()
+- text: hasElements()
 - text: mapIsEmpty()
+- text: isEmptyMap()
 files:
 - name: src/Main.kt
   visible: true
