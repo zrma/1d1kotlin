@@ -272,14 +272,18 @@ files:
         print("Hello, World!")
     }
   learner_created: false
+- name: test/blue-seam.png
+  visible: true
+  learner_created: true
+- name: test/trees-seam.png
+  visible: true
+  learner_created: true
 - name: test/small-seam.png
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/9018#comment
-status: Failed
+status: Solved
 feedback:
-  message: "Exception in test #1\n\njava.lang.NullPointerException\r\n\tat seamcarving.MainKt.findShortestPath(Main.kt:84)\r\
-    \n\tat seamcarving.MainKt.findTheSeam(Main.kt:45)\r\n\tat seamcarving.MainKt.main(Main.kt:23)\n\
-    \nArguments: -in test/small.png -out test/small-seam.png"
-  time: Fri, 08 Apr 2022 17:18:55 UTC
-record: -1
+  message: Congratulations!
+  time: Sat, 18 Jun 2022 08:33:10 UTC
+record: 2
