@@ -70,7 +70,7 @@ println(food.joinToString()) // Bread, Cheese, Meat, Apple, Banana, Grape, Mango
   <ul> 
    <li><code class="language-kotlin">add(element)</code> and <code class="language-kotlin">add(index, element)</code> insert new items at any position in the list. If you don't specify the index, the item will be added to the end of the list.</li> 
    <li><code class="language-kotlin">list1.addAll(list2)</code> adds all elements from <code class="language-kotlin">list2</code> to the end of the <code class="language-kotlin">list1</code>.</li> 
-   <li><code class="language-kotlin">remove(element)</code> and <code class="language-kotlin">removeAt(index)</code> delete an item from the list. The former function deletes a single instance of the specified element from the list (it returns <code class="language-kotlin">true</code> if item was successfully removed, otherwise it returns <code class="language-kotlin">false</code>). The latter function deletes the element at the specified position and returns the element that has been removed.</li> 
+   <li><code class="language-kotlin">remove(element)</code> and <code class="language-kotlin">removeAt(index)</code> delete an item from the list. The former function deletes a single instance of the specified element from the list (it returns <code class="language-kotlin">true</code> if the item was successfully removed, otherwise it returns <code class="language-kotlin">false</code>). The latter function deletes the element at the specified position and returns the element that has been removed.</li> 
    <li><code class="language-kotlin">clear()</code> deletes all elements from the list.</li> 
   </ul> 
   <p>Also, you can use <code class="language-kotlin">+=</code> to add new elements to the list:</p> 
@@ -102,7 +102,7 @@ print(copyList) // [1, 2, 3, 4, 5]</code></pre>
    <li><code class="language-kotlin">list.subList(from, to)</code> – creates a smaller list (sublist), which includes items of the original list with the following indexes: <code class="language-kotlin">from</code>, <code class="language-kotlin">from + 1</code>, ..., <code class="language-kotlin">to - 2</code>, <code class="language-kotlin">to - 1</code>. The element with the index <code class="language-kotlin">to</code> is not included.</li> 
   </ul> 
   <pre><code class="language-kotlin">val numbers = mutableListOf(1, 2, 3, 4, 5)
-val sublist = mutableListOf&lt;Int&gt;()
+var sublist = mutableListOf&lt;Int&gt;()
 if (numbers.isNotEmpty() &amp;&amp; numbers.size &gt;= 4) {
      sublist = numbers.subList(1, 4)
 }
@@ -135,7 +135,7 @@ println(numbers.sum())      // 15
 println(vowels.sorted()) // [a, e, i, o, u, y]
 println(vowels.sortedDescending()) // [y, u, o, i, e, a]</code></pre> 
   <h5 id="conclusion">Conclusion</h5> 
-  <p>Let's sum things up now! You've figured out how to use some familiar functions and techniques when working with string lists.</p> 
+  <p>Let's sum things up now! You've figured out how to use some familiar functions and techniques when working with mutable lists.</p> 
   <p>Now you can:</p> 
   <ul> 
    <li>use <code class="language-kotlin">joinToString()</code> to create a single string from the list and output it;</li> 
@@ -147,6 +147,5 @@ println(vowels.sortedDescending()) // [y, u, o, i, e, a]</code></pre>
   <div class="alert alert-primary">
     This is a lot of material! Good news for you: you can work with mutable lists of any type in the same way. Good luck! 
   </div>
-  <p></p>
  </body>
 </html>

@@ -69,8 +69,7 @@ print(matchResult.value) // +1-234-567-89-01</code></pre>
    <code class="language-kotlin">find()</code> is 
    <code class="language-kotlin">String?</code> so you should use the 
    <code class="language-kotlin">!!</code> operator or the Elvis operator. 
-  </div>
-  <p></p> 
+  </div> 
   <p>The <code class="language-kotlin">findAll</code> function is required if you want to find <strong>all matches</strong>. It returns all suitable substrings at once:</p> 
   <pre><code class="language-kotlin">val regex = """\d{4}-\d{2}-\d{2}""".toRegex() // date template in format YYYY-MM-DD 
 val matchResult =

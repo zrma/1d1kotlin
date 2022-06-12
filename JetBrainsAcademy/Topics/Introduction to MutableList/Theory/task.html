@@ -5,7 +5,7 @@
   <p>In previous topics, you learned how to declare variables to store and manipulate data. But what can we do if we want to save and process not one single value but multiple data of the same type? In such cases, we resort to using a list, which allows us to process multiple values of the same type as a single unit. In this topic, we will see what <code class="language-kotlin">MutableList</code> is and how we can use it to store and manipulate data. It is convenient in cases when you don't know exactly how many elements the program will process during its runtime.</p> 
   <h5 id="introduction-to-mutablelist" style="text-align: center;">Introduction to MutableList</h5> 
   <p>The Kotlin Standard Library provides many ways to organize data and to group multiple values. Now we will consider one of them – the <strong>Mutable List</strong>.</p> 
-  <p><a target="_blank" href="https://kotlinlang-org.translate.goog/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html?_x_tr_sl=en&amp;_x_tr_tl=ru&amp;_x_tr_hl=ru&amp;_x_tr_pto=ajax,op,sc,elem" rel="noopener noreferrer nofollow"><code class="language-kotlin">MutableList</code></a> is an ordered set of variables of the same type. You can access the list items by their indexes.</p> 
+  <p><a href="https://kotlinlang-org.translate.goog/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html?_x_tr_sl=en&amp;_x_tr_tl=ru&amp;_x_tr_hl=ru&amp;_x_tr_pto=ajax,op,sc,elem" rel="noopener noreferrer nofollow" target="_blank"><code class="language-kotlin">MutableList</code></a> is an ordered list of variables of the same type. You can access the list items by their indexes.</p> 
   <pre><code class="language-kotlin">val numbers = mutableListOf(10.8, 14.3, 13.5, 12.1, 9.7) 
 
 println(numbers) // [10.8, 14.3, 13.5, 12.1, 9.7]</code></pre> 
@@ -67,13 +67,13 @@ println(numbers) // [1, 2, 3, 4, 5]</code></pre>
 
 val numbers = readln().split(" ").map { it.toInt() }.toMutableList()
 println(numbers) // [1, 2, 3, 4, 5]</code></pre> 
-  <p>Let’s have a look at this code snippet. We read a string from input and then use <code class="language-kotlin">split()</code>. We divide our string into smaller ones by space, then we use the map function to convert every element to <code class="language-kotlin">Int</code>, and then we convert the result to <code class="language-kotlin">MutableList</code>. <a target="_blank" href="https://kotlinlang.org/docs/collection-transformations.html#map" rel="noopener noreferrer nofollow">Here</a> you can read more about mapping transformation.</p> 
+  <p>Let’s have a look at this code snippet. We read a string from input and then use <code class="language-kotlin">split()</code>. We divide our string into smaller ones by space, then we use the map function to convert every element to <code class="language-kotlin">Int</code>, and then we convert the result to <code class="language-kotlin">MutableList</code>. <a href="https://kotlinlang.org/docs/collection-transformations.html#map" rel="noopener noreferrer nofollow" target="_blank">Here</a> you can read more about mapping transformation.</p> 
   <p>There is also a way that allows you to ignore line breaks and extra spaces in the input string. You can do this with the help of regular expressions, which are often used in text searching and editing.</p> 
   <pre><code class="language-kotlin">val regex = "\\s+".toRegex()  // 1 or more whitespace character (space, tabs etc.)
 val str = "1 2\t\t3  4\t5  6"
 val nums = str.split(regex).map { it.toInt() }.toMutableList()
 println(nums.joinToString()) // 1, 2, 3, 4, 5, 6</code></pre> 
-  <p>With this regular expression, you can ignore spaces and tabs in the input string. You can learn more about regular expressions in our <a target="_blank" href="https://hyperskill.org/knowledge-map/1505" rel="noopener noreferrer nofollow">topics</a>.</p> 
+  <p>With this regular expression, you can ignore spaces and tabs in the input string. You can learn more about regular expressions in our <a href="https://hyperskill.org/knowledge-map/1505" rel="noopener noreferrer nofollow" target="_blank">topics</a>.</p> 
   <h5 id="accessing-elements" style="text-align: center;">Accessing elements</h5> 
   <p>You can change the values of mutable list elements. Use index to set a value in the list.</p> 
   <p>Setting the value of an element using the element's index:</p> 

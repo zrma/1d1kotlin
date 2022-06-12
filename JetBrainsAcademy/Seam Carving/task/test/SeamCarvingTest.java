@@ -2,18 +2,19 @@ import org.apache.commons.codec.binary.Hex;
 import org.hyperskill.hstest.testcase.TestCase;
 import org.hyperskill.hstest.stage.StageTest;
 import org.hyperskill.hstest.testcase.CheckResult;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 
 class CheckFailException extends Exception {
     public CheckFailException(String s) {
@@ -64,22 +65,22 @@ class Image {
         return Math.sqrt((double)dx2(x, y) + (double)dy2(x, y));
     }
 
-    public List<Integer> findVerticalSeam() throws CheckFailException {
+    public List<Integer> findHorizontalSeam() throws CheckFailException {
         ArrayList<Integer> result = new ArrayList<Integer>();
-        for (int y = 0; y < image.getHeight(); y++) {
+        for (int x = 0; x < image.getWidth(); x++) {
             boolean found = false;
 
-            for (int x = 0; x < image.getWidth(); x++) {
+            for (int y = 0; y < image.getHeight(); y++) {
                 Color c = new Color(image.getRGB(x, y));
                 if (c.equals(Color.RED)) {
-                    result.add(x);
+                    result.add(y);
                     found = true;
                     break;
                 }
             }
 
             if (!found)
-                throw new CheckFailException(String.format("Could not find seam pixel in row (%d)", y));
+                throw new CheckFailException(String.format("Could not find seam pixel in column (%d)", x));
         }
         return result;
     }
@@ -111,9 +112,9 @@ class OutFile {
             Image output = new Image(outFilename);
 
             double actualSum = 0;
-            List<Integer> seam = output.findVerticalSeam();
-            for (int y = 0; y < seam.size(); y++) {
-                int x = seam.get(y);
+            List<Integer> seam = output.findHorizontalSeam();
+            for (int x = 0; x < seam.size(); x++) {
+                int y = seam.get(x);
                 actualSum += input.pixelEnergy(x, y);
             }
 
@@ -214,22 +215,22 @@ public class SeamCarvingTest extends StageTest<OutFile> {
 
         return Arrays.asList(
             new TestCase<OutFile>()
-                .addArguments("-in", "test/small.png", "-out", "test/small-seam.png")
-                .setAttach(new OutFile("test/small.png", "test/small-seam.png",
+                .addArguments("-in", "test/small.png", "-out", "test/small-seam-hor.png")
+                .setAttach(new OutFile("test/small.png", "test/small-seam-hor.png",
                     15, 10,
-                    "831b2b94d6ca3ae71a8aacec4e5b5e23", 466.371057)).setTimeLimit(-1),
+                    "91d48b32789908d7826a32e1304a4ddc", 1136.850201)),
 
             new TestCase<OutFile>()
-                .addArguments("-in", "test/blue.png", "-out", "test/blue-seam.png")
-                .setAttach(new OutFile("test/blue.png", "test/blue-seam.png",
+                .addArguments("-in", "test/blue.png", "-out", "test/blue-seam-hor.png")
+                .setAttach(new OutFile("test/blue.png", "test/blue-seam-hor.png",
                     500, 334,
-                    "bfde19c2d97092e104b14fd07f2cf5f3", 1146.092943)),
+                    "b9070275c8a22db340162d2419fa13fe", 327.257757)),
 
             new TestCase<OutFile>()
-                .addArguments("-in", "test/trees.png", "-out", "test/trees-seam.png")
-                .setAttach(new OutFile("test/trees.png", "test/trees-seam.png",
+                .addArguments("-in", "test/trees.png", "-out", "test/trees-seam-hor.png")
+                .setAttach(new OutFile("test/trees.png", "test/trees-seam-hor.png",
                     600, 429,
-                    "9298d037e2defc97a1b35e8abddafb02", 1788.013453))
+                    "69ed6abd2487d46df650cbe46d577dc7", 115.903883))
         );
     }
 

@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/312105/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Wed, 18 May 2022 12:20:13 UTC
+update_date: Sun, 12 Jun 2022 09:46:22 UTC
 stages:
 - id: 550
   step: 9015
@@ -29,8 +29,6 @@ topics:
     theory_id: 13114
   - title: Binary numbers
     theory_id: 5544
-  - title: Hexadecimal numbers
-    theory_id: 8788
   - title: Units of information
     theory_id: 6865
   - title: IDE
@@ -131,14 +129,14 @@ topics:
     theory_id: 6216
   - title: Multi-dimensional list
     theory_id: 15127
+  - title: Libraries
+    theory_id: 8504
   - title: Reading files
     theory_id: 6351
   - title: Writing files
     theory_id: 9710
   - title: IntelliJ IDEA
     theory_id: 3801
-  - title: Libraries
-    theory_id: 8504
   - title: RGB
     theory_id: 8819
   - title: Image colors
@@ -150,16 +148,16 @@ topics:
   - title: What is an exception
     theory_id: 7243
   1:
+  - title: Command line overview
+    theory_id: 8977
+  - title: Parameters and Options
+    theory_id: 9746
   - title: Working with strings
     theory_id: 12561
   - title: Arrays
     theory_id: 4564
   - title: String arrays
     theory_id: 11477
-  - title: Command line overview
-    theory_id: 8977
-  - title: Parameters and Options
-    theory_id: 9746
   - title: The main() function
     theory_id: 10484
   - title: IntelliJ Run Configurations
