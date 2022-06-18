@@ -272,15 +272,6 @@ files:
         print("Hello, World!")
     }
   learner_created: false
-- name: test/blue-seam.png
-  visible: true
-  learner_created: true
-- name: test/trees-seam.png
-  visible: true
-  learner_created: true
-- name: test/small-seam.png
-  visible: true
-  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/9018#comment
 status: Solved
 feedback:

@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/312105/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Mon, 13 Jun 2022 13:11:45 UTC
+update_date: Mon, 27 Jun 2022 13:13:23 UTC
 stages:
 - id: 550
   step: 9015
@@ -29,6 +29,8 @@ topics:
     theory_id: 13114
   - title: Binary numbers
     theory_id: 5544
+  - title: Hexadecimal numbers
+    theory_id: 8788
   - title: Units of information
     theory_id: 6865
   - title: IDE
@@ -202,6 +204,8 @@ topics:
     theory_id: 16547
   - title: The big O notation
     theory_id: 16699
+  - title: Best, average and worst cases
+    theory_id: 20084
   - title: Data structures
     theory_id: 16927
   - title: Pseudocode

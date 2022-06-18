@@ -50,8 +50,7 @@
   <p></p>
   <div class="alert alert-primary">
    You can create nested lists with different numbers of elements in the same 2D list.
-  </div>
-  <p></p> 
+  </div> 
   <h5 id="accessing-elements" style="text-align: center;"> Accessing elements</h5> 
   <p>Let’s see how we can access an element of a list. The principle is exactly the same as for one-dimensional lists. Only now we have to write <strong>two</strong> indices: first, the index of the element of the main list and then, the index of the nested list.</p> 
   <p>Let's get back to our <code class="language-kotlin">mutList2D</code> for a moment. Suppose we need to access an element that is in the first row and the first column. How do we find this particular element? As you recall, <code class="language-kotlin">mutList2D</code> is a list of lists. So, start by selecting one of the nested lists by its index in the main list. The principle is similar to a 1D list.</p> 
@@ -101,8 +100,7 @@ println(mutList2D[0][0])	// 0</code></pre>
   <p></p>
   <div class="alert alert-warning">
     Remember that in all lists indexing starts with 0! 
-  </div>
-  <p></p> 
+  </div> 
   <p>The following code will show all the elements of the two-dimensional list <code class="language-kotlin">mutList2D</code>:</p> 
   <pre><code class="language-kotlin">print(mutList2D[0][0])  // 0
 print(mutList2D[0][1])  // 1
@@ -147,8 +145,7 @@ print(mutList2D[1][2])  // 5</code></pre>
   <p></p>
   <div class="alert alert-primary">
    You can create nested lists of different types in the same 2D list. 
-  </div>
-  <p></p> 
+  </div> 
   <h5 id="features-of-working-with-2d-lists" style="text-align: center;">Features of working with 2D lists</h5> 
   <p>Let’s look at some useful and interesting features of working with two-dimensional lists. You remember that we can print all the elements of a list as a string using the <code class="language-kotlin">joinToString()</code> function. For nested lists, it will also work. Only now you must specify the index of the nested list that you want to convert to a string:</p> 
   <pre><code class="language-kotlin">val mutListString = mutableListOf(
