@@ -1,0 +1,65 @@
+<h2>Inheritance</h2>
+<html>
+ <head></head>
+ <body>
+  <p>Even though Kotlin has a rich functional style, it's primarily an Object-Oriented Programming (OOP) language, so you can use OOP principles when designing and writing your Kotlin programs. If you're familiar with the OOP principles, then you've probably heard of inheritance. How does Kotlin handle it? Let's find out!</p> 
+  <h5 id="open-it" style="text-align: center;">Open it</h5> 
+  <p>Here's how you usually create a class in Kotlin:</p> 
+  <pre><code class="language-kotlin">class Book(val pages: Int, val author: String)</code></pre> 
+  <p>If your code looks like this, you're creating a final class. It means that this class won't be available for inheritance in the future. You just prohibit it. However, don't worry, it's totally OK in Kotlin, as all classes are closed for inheritance by default. As famous software engineer <a href="https://en.wikipedia.org/wiki/Joshua_Bloch" rel="noopener noreferrer nofollow" target="_blank">Joshua Bloch</a> once said, "<em>Design and document for inheritance or else prohibit it</em>."</p> 
+  <p>So, if you're really sure that you need to extend your <code class="language-kotlin">Book</code> class (parent class), here's an easy way to do it:</p> 
+  <pre><code class="language-kotlin">open class Book(val pages: Int, val author: String)</code></pre> 
+  <p>As you can see we just added the <code class="language-kotlin">open</code> keyword, and now our class is ready for extending. First, let's modify it:</p> 
+  <pre><code class="language-kotlin">open class Book(val pages: Int, val author: String, var cost: Float = 0F) {
+    fun getFullInfo(): String {
+        return "$pages pages, $author author, $$cost cost"
+    }
+}</code></pre> 
+  <p>And then extend it:</p> 
+  <pre><code class="language-kotlin">class Comics(pages: Int, author: String, cost: Float) : Book(pages, author, cost)</code></pre> 
+  <p>As you can see, we've created a new <code class="language-kotlin">Comics</code> class (child class) as an extension of our <code class="language-kotlin">Book</code> class. We haven't added any additional logic here yet, we've just passed all of its parameters right into the <code class="language-kotlin">Book</code> main constructor. Let's try it on a real example:</p> 
+  <pre><code class="language-kotlin">fun main() {
+    val spidermanBook = Comics(60, "The Universe", 8.99F)
+    print(spidermanBook.getFullInfo())
+}
+// output: 60 pages, The Universe author, $8.99 cost</code></pre> 
+  <p>What a great comic book we've created!</p> 
+  <h5 id="extend-it" style="text-align: center;">Extend it</h5> 
+  <p>We can also add more functions to the child classes:</p> 
+  <pre><code class="language-kotlin">class Booklet(pages: Int, cost: Float) : Book(pages, "", cost) {
+    fun getUSDCost(): String {
+        return "$$cost cost"
+    }
+
+    fun getEuroCost(): String {
+        return "€$cost cost"
+    }
+}</code></pre> 
+  <p>And use them:</p> 
+  <pre><code class="language-kotlin">fun main() {
+    val centralBooklet = Booklet(5, 0.14F)
+    print(centralBooklet.getUSDCost())
+}
+// output: $0.14 cost</code></pre> 
+  <p>Thus, our inheritance hierarchy will look like this:</p> 
+  <p style="text-align: center;"><img alt="" height="140" src="https://ucarecdn.com/c4aa31bd-4ecc-438e-be21-d5478c558377/" width="328"></p> 
+  <p>Of course, with such a powerful approach we can make it even more complex:</p> 
+  <p style="text-align: center;"><img alt="" height="223" src="https://ucarecdn.com/ec6381dc-74e0-4658-8e76-d45672c718c8/" width="486"></p> 
+  <h5 id="reuse-it" style="text-align: center;">Reuse it</h5> 
+  <p>You can do even more with the child classes. Let's create a function which defines whether your book is long enough:</p> 
+  <pre><code class="language-kotlin">fun isBigBook(book: Book): Boolean {
+    return book.pages &gt;= 100
+}</code></pre> 
+  <p>Note that you can use this function for both parent and child classes:</p> 
+  <pre><code class="language-kotlin">fun main() {
+    val spidermanBook = Comics(113, "The Universe", 8.99F)
+    val centralBooklet = Booklet(5, 0.14F)
+    println(isBigBook(spidermanBook))
+    println(isBigBook(centralBooklet))
+}
+// output: true false</code></pre> 
+  <p>As you can see, inheritance has a powerful mechanism. We can pass any child of the <code class="language-kotlin">Book</code> instance to the <code class="language-kotlin">isBigBook()</code> function.</p> 
+  <h5 id="conclusion" style="text-align: center;">Conclusion</h5> 
+  <p>It's totally up to you how to inherit classes, but the parent logic will always be available to children if you marked your parents as <code class="language-kotlin">open</code>. You can also add any number of functions to children. One important thing though: don't open all of your classes, only those which you need to extend.</p>
+ </body>
+</html>
