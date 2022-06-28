@@ -1,0 +1,13 @@
+<h2>Crash your app</h2>
+<html>
+ <head></head>
+ <body>
+  <p>Select all the lines that would crash your app:</p> 
+  <pre><code class="language-kotlin">val example = "Example"
+example.substring(3)     // 1
+example.substring(0, 7)  // 2
+example.substring(-1, 0) // 3
+example.substring(0, 0)  // 4
+example.substring(0, 8)  // 5</code></pre>
+ </body>
+</html>

@@ -1,0 +1,27 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: <code>a.lowercase()</code>
+- text: <code>a.substringBefore('o') + "OO" + a.substringAfter('o')</code>
+- text: <code>a.uppercase()</code>
+- text: <code>a.replace("o", "O")</code>
+- text: <code>a.replaceFirst('o', 'O')</code>
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/8542#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Tue, 28 Jun 2022 12:57:40 UTC
+record: -1
+selected_options:
+- 2
+- 3

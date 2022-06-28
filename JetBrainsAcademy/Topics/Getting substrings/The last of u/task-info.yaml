@@ -1,0 +1,13 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun main() {
+        val string = readln()
+        // write here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/20480#comment
+status: Solved
+record: -1
