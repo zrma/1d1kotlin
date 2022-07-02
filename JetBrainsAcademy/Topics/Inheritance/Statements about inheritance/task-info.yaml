@@ -1,0 +1,26 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: An inherited class can be only an open one
+- text: Kotlin supports multi-inheritance
+- text: An inherited class has access to the constructor's parameters of the parent
+    class
+- text: An open modifier allows to inherit from an object
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/20489#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sat, 02 Jul 2022 09:19:33 UTC
+record: -1
+selected_options:
+- 3
