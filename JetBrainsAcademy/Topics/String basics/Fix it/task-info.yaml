@@ -1,0 +1,13 @@
+type: code
+custom_name: Fix it!
+files:
+- name: src/Main.kt
+  visible: true
+  text: val name = 10 + "years' + "ago" we were "s in London"
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/20627#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Mon, 04 Jul 2022 10:28:25 UTC
+record: -1

@@ -1,0 +1,25 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: .length()
+- text: .size()
+- text: .length
+- text: .size
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/12555#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Mon, 04 Jul 2022 10:26:01 UTC
+record: -1
+selected_options:
+- 2
