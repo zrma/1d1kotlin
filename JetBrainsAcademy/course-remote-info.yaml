@@ -150,12 +150,12 @@ topics:
   - title: What is an exception
     theory_id: 7243
   1:
+  - title: Working with strings
+    theory_id: 12561
   - title: Command line overview
     theory_id: 8977
   - title: Parameters and Options
     theory_id: 9746
-  - title: Working with strings
-    theory_id: 12561
   - title: Arrays
     theory_id: 4564
   - title: String arrays
@@ -195,7 +195,7 @@ topics:
     theory_id: 12532
   - title: Encapsulation
     theory_id: 8519
-  - title: Properties accessors
+  - title: Property accessors
     theory_id: 10511
   - title: What is a bug
     theory_id: 5504
@@ -213,7 +213,7 @@ topics:
   - title: Pseudocode basics
     theory_id: 19510
   - title: Queue
-    theory_id: 5350
+    theory_id: 20716
   - title: Priority queue
     theory_id: 7384
   - title: Recursion basics
