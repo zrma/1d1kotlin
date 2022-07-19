@@ -212,6 +212,8 @@ topics:
     theory_id: 15090
   - title: Pseudocode basics
     theory_id: 19510
+  - title: Complex constructions in pseudocode
+    theory_id: 20922
   - title: Queue
     theory_id: 20716
   - title: Priority queue
