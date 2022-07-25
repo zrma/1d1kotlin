@@ -12,14 +12,14 @@
 
     // This prints the string "Hello, Kotlin"
     println("Hello, Kotlin")  // Here can be any comment
+    /// Valid multiline comment
 }</code></pre> 
   <p></p>
   <div class="alert alert-primary">
    <strong>Did you know?</strong> In most code editors, a line can be commented by placing the caret on the line and pressing 
    <code class="language-kotlin">Ctrl /</code> or 
    <code class="language-kotlin">cmd /</code>.
-  </div>
-  <p></p> 
+  </div> 
   <h5 id="multi-line-comments" style="text-align: center;">Multi-line comments</h5> 
   <p>The compiler ignores any text between the <code class="language-kotlin">/*</code> and <code class="language-kotlin">*/</code> symbols. You can use them for writing both single-line and multiple-line comments:</p> 
   <pre><code class="language-kotlin">fun main() {
@@ -27,10 +27,10 @@
     /*  This is an example of
         a multi-line comment */
 
-    /* All lines below will be ignored
+    /*** Valid multiline comment
         println("Hello")
         println("World")
-    */
+    **/
 }</code></pre> 
   <p>You can also put comments inside other comments. When writing nested multi-line comments, make sure the opening <code class="language-kotlin">/*</code> and the closing <code class="language-kotlin">*/</code> signs make pairs.</p> 
   <pre><code class="language-kotlin">fun main() {
