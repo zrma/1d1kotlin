@@ -1,0 +1,26 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: s1 * 5
+- text: s1 == s2
+- text: s1 - s2
+- text: s1 + s2
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/4543#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sat, 23 Jul 2022 10:03:33 UTC
+record: -1
+selected_options:
+- 1
+- 3
