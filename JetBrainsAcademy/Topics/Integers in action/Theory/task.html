@@ -1,93 +1,77 @@
 <h2>Integers in action</h2>
-<html>
- <head></head>
- <body>
-  <h5 id="int-and-long-integer-types" style="text-align: center;">Int and long integer types</h5> 
-  <p>Programmers often use integer numbers with their programs. As you may recall, Kotlin has several integer types. The most popular are <code class="language-kotlin">Int</code> (32 bits) and <code class="language-kotlin">Long</code> (64 bits). You can perform all types of arithmetic operations (<code class="language-kotlin">+</code>, <code class="language-kotlin">-</code>, <code class="language-kotlin">*</code>, <code class="language-kotlin">/</code>, <code class="language-kotlin">%</code>) with variables of these types. Let's take a look at several examples.</p> 
-  <pre><code class="language-kotlin">val two = 2  // Int
+<html><body><h5 id="int-and-long-integer-types" style="text-align: center;">Int and long integer types</h5>
+<p>Programmers often use integer numbers with their programs. As you may recall, Kotlin has several integer types. The most popular are <code class="language-kotlin">Int</code> (32 bits) and <code class="language-kotlin">Long</code> (64 bits). You can perform all types of arithmetic operations (<code class="language-kotlin">+</code>, <code class="language-kotlin">-</code>, <code class="language-kotlin">*</code>, <code class="language-kotlin">/</code>, <code class="language-kotlin">%</code>) with variables of these types. Let's take a look at several examples.</p>
+<pre><code class="language-kotlin">val two = 2  // Int
 val ten = 10 // Int
 
 val twelve = two + ten // 12
 val eight = ten - two  // 8
 val twenty = two * ten // 20
 val five = ten / two   // 5
-val zero = ten % two   // 0, no remainder</code></pre> 
-  <p>You know what these operations do. <code class="language-kotlin">Long</code> type integers support all these operations as well. To declare a variable of the <code class="language-kotlin">Long</code> type, you may choose one of these ways:</p> 
-  <pre><code class="language-kotlin">val longNumber1 = 1_000_000_000_000_000
+val zero = ten % two   // 0, no remainder </code></pre>
+<p>You know what these operations do. <code class="language-kotlin">Long</code> type integers support all these operations as well. To declare a variable of the <code class="language-kotlin">Long</code> type, you may choose one of these ways:</p>
+<pre><code class="language-kotlin">val longNumber1 = 1_000_000_000_000_000
 val longNumber2: Long = 1_000_000
 val longNumber3 = 1000L
 
 val result = longNumber1 + longNumber2 - longNumber3
-println(result) // 1000000000999000</code></pre> 
-  <p>The <code class="language-kotlin">longNumber1</code> value is of the <code class="language-kotlin">Long</code> type because it is greater than the possible value of the <code class="language-kotlin">Int</code> type. The <code class="language-kotlin">longNumber2</code> value is also <code class="language-kotlin">Long</code> because we have specified the type. The <code class="language-kotlin">longNumber3</code> value is <code class="language-kotlin">Long</code> because we have tagged the value with the suffix <code class="language-kotlin">L</code> (<code class="language-kotlin">Long</code>). The <code class="language-kotlin">result</code> is <code class="language-kotlin">Long</code>, as it is the sum of three <code class="language-kotlin">Long</code> integers.</p> 
-  <p><button class="btn-sm btn-outline-secondary" onclick="getElementById('hint-1677').style.display='inline'"> Hint </button> </p>
-  <div id="hint-1677" style="display:none;">
-   Use 
-   <code class="language-kotlin">Long</code> integers only when it is absolutely necessary (for example, to process large values).
-  </div>
-  <p></p> 
-  <p></p>
-  <div class="alert alert-primary">
-   See the underscores 
-   <code class="language-kotlin">_</code> in the example above? In Kotlin, you can use underscores to simplify the readability of a number. We can group digits with them. Underscores can't be placed before or after a digit, but they can be placed inside a number, even in a row.
-  </div>
-  <p></p> 
-  <h5 id="reading-numbers-from-the-standard-input" style="text-align: center;">Reading numbers from the standard input</h5> 
-  <p>To solve a problem, you generally need to read data from the input, process it, and output the result. For example, this program reads two numbers from the standard input, performs addition, and outputs the sum.</p> 
-  <pre><code class="language-kotlin">fun main() {
+println(result) // 1000000000999000</code></pre>
+<p>The <code class="language-kotlin">longNumber1</code> value is of the <code class="language-kotlin">Long</code> type because it is greater than the possible value of the <code class="language-kotlin">Int</code> type. The <code class="language-kotlin">longNumber2</code> value is also <code class="language-kotlin">Long</code> because we have specified the type. The <code class="language-kotlin">longNumber3</code> value is <code class="language-kotlin">Long</code> because we have tagged the value with the suffix <code class="language-kotlin">L</code> (<code class="language-kotlin">Long</code>). The <code class="language-kotlin">result</code> is <code class="language-kotlin">Long</code>, as it is the sum of three <code class="language-kotlin">Long</code> integers.</p>
+<p><button class="btn-sm btn-outline-secondary" onclick="getElementById('hint-1645').style.display='inline'">
+        Hint
+      </button>
+</p><div id="hint-1645" style="display:none;">Use <code class="language-kotlin">Long</code> integers only when it is absolutely necessary (for example, to process large values).</div>
+<p></p><div class="alert alert-primary">See the underscores <code class="language-kotlin">_</code> in the example above? In Kotlin, you can use underscores to simplify the readability of a number. We can group digits with them. Underscores can't be placed before or after a digit, but they can be placed inside a number, even in a row.</div><p></p>
+<h5 id="reading-numbers-from-the-standard-input" style="text-align: center;">Reading numbers from the standard input</h5>
+<p>To solve a problem, you generally need to read data from the input, process it, and output the result. For example, this program reads two numbers from the standard input, performs addition, and outputs the sum.</p>
+<pre><code class="language-kotlin">fun main() {
     val a = readln().toInt()
     val b = readln().toInt()
 
     val sum = a + b
 
     println(sum)
-}</code></pre> 
-  <p>The <span style="color: #000000;"><code class="language-kotlin">readln()</code> part is responsible </span>for reading data. It works for positive, negative, and zero numbers because the <code class="language-kotlin">Int</code> type supports all of them.</p> 
-  <p>If we know that input numbers can be large, we can read <code class="language-kotlin">Longs</code> instead of <code class="language-kotlin">Ints</code>:</p> 
-  <pre><code class="language-kotlin">val a = readln().toLong()
-val b = readln().toLong()</code></pre> 
-  <p>After that, we don't need to change anything.</p> 
-  <h5 id="unsigned-integers" style="text-align: center;">Unsigned integers</h5> 
-  <p>We already know that all integer types in Kotlin — <code class="language-kotlin">Int</code>, <code class="language-kotlin">Long</code>, <code class="language-kotlin">Byte</code>, and <code class="language-kotlin">Short</code> can be both positive and negative. In addition to all these integer types, Kotlin provides the ability to create <strong>unsigned</strong> integers – integers that can contain only non-negative values.</p> 
-  <p>Kotlin provides the following unsigned types:</p> 
-  <table border="1" cellpadding="1" cellspacing="1"> 
-   <tbody> 
-    <tr> 
-     <td><strong>Type</strong></td> 
-     <td><strong>Description</strong></td> 
-    </tr> 
-    <tr> 
-     <td><code class="language-kotlin">UByte</code></td> 
-     <td>an unsigned 8-bit integer, ranges from 0 to 255</td> 
-    </tr> 
-    <tr> 
-     <td><code class="language-kotlin">UShort</code></td> 
-     <td>an unsigned 16-bit integer, ranges from 0 to 65535</td> 
-    </tr> 
-    <tr> 
-     <td><code class="language-kotlin">UInt</code></td> 
-     <td>an unsigned 32-bit integer, ranges from 0 to 4 294 967 295 (2^32-1)</td> 
-    </tr> 
-    <tr> 
-     <td><code class="language-kotlin">ULong</code></td> 
-     <td>an unsigned 64-bit integer, ranges from 0 to 18 446 744 073 709 551 615 (2^64-1)</td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <p>Unsigned numbers are created in the same way as any others. In order to indicate that you are creating an unsigned number, you need to add the suffix "<code class="language-kotlin">u</code>" or "<code class="language-kotlin">U</code>" to it.</p> 
-  <pre><code class="language-kotlin">val uByte: UByte = 5u
-val uShort: UShort = 10U</code></pre> 
-  <p>In this example, we create variables of specified types. But, if you don't indicate the type directly, then the compiler will use <code class="language-kotlin">UInt</code> or <code class="language-kotlin">ULong</code> depending on the size of the literal:</p> 
-  <pre><code class="language-kotlin">val smallSize = 100u // UInt by default
-val bigSize = 5_000_000_000u // ULong because the number doesn't fit in UInt</code></pre> 
-  <p>There is also a special suffix "<code class="language-kotlin">uL</code>" (or "<code class="language-kotlin">UL</code>"). If you tag a number with this suffix, then an <code class="language-kotlin">ULong</code> will be created regardless of the size of the number:</p> 
-  <pre><code class="language-kotlin">val smallLong = 10uL // ULong because it is marked with "uL"</code></pre> 
-  <p></p>
-  <div class="alert alert-primary">
-   All arithmetic operations for signed types are possible with their unsigned counterparts, except for the unary minus operation.
-  </div>
-  <p></p> 
-  <h5 id="conclusion" style="text-align: center;">Conclusion</h5> 
-  <p>In this topic, we have covered two basic Kotlin integer types — <code class="language-kotlin">Long</code> and <code class="language-kotlin">Int</code>, and learned how to read data from the input. We've also learned what unsigned integer types are. Now you have enough skills to write programs that process data. You may use the template above to solve the code problems in this topic. Remember to give meaningful names to your variables, as it really helps.</p>
- </body>
-</html>
+}</code></pre>
+<p>The <span style="color: #000000;"><code class="language-kotlin">readln()</code> part is responsible </span>for reading data. It works for positive, negative, and zero numbers because the <code class="language-kotlin">Int</code> type supports all of them.</p>
+<p>If we know that input numbers can be large, we can read <code class="language-kotlin">Longs</code> instead of <code class="language-kotlin">Ints</code>:</p>
+<pre><code class="language-kotlin">val a = readln().toLong()
+val b = readln().toLong()</code></pre>
+<p>After that, we don't need to change anything.</p>
+<h5 id="unsigned-integers" style="text-align: center;">Unsigned integers</h5>
+<p>We already know that all integer types in Kotlin — <code class="language-kotlin">Int</code>, <code class="language-kotlin">Long</code>, <code class="language-kotlin">Byte</code>, and <code class="language-kotlin">Short</code> can be both positive and negative. In addition to all these integer types, Kotlin provides the ability to create <strong>unsigned</strong> integers – integers that can contain only non-negative values.</p>
+<p>Kotlin provides the following unsigned types:</p>
+<table border="1" cellpadding="1" cellspacing="1">
+<tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr>
+<td><code class="language-kotlin">UByte</code></td>
+<td>an unsigned 8-bit integer, ranges from 0 to 255</td>
+</tr>
+<tr>
+<td><code class="language-kotlin">UShort</code></td>
+<td>an unsigned 16-bit integer, ranges from 0 to 65535</td>
+</tr>
+<tr>
+<td><code class="language-kotlin">UInt</code></td>
+<td>an unsigned 32-bit integer, ranges from 0 to 4 294 967 295 (2^32-1)</td>
+</tr>
+<tr>
+<td><code class="language-kotlin">ULong</code></td>
+<td>an unsigned 64-bit integer, ranges from 0 to 18 446 744 073 709 551 615 (2^64-1)</td>
+</tr>
+</tbody>
+</table>
+<p>Unsigned numbers are created in the same way as any others. In order to indicate that you are creating an unsigned number, you need to add the suffix "<code class="language-kotlin">u</code>" or "<code class="language-kotlin">U</code>" to it.</p>
+<pre><code class="language-kotlin">val uByte: UByte = 5u
+val uShort: UShort = 10U</code></pre>
+<p>In this example, we create variables of specified types. But, if you don't indicate the type directly, then the compiler will use <code class="language-kotlin">UInt</code> or <code class="language-kotlin">ULong</code> depending on the size of the literal:</p>
+<pre><code class="language-kotlin">val smallSize = 100u // UInt by default
+val bigSize = 5_000_000_000u // ULong because the number doesn't fit in UInt</code></pre>
+<p>There is also a special suffix "<code class="language-kotlin">uL</code>" (or "<code class="language-kotlin">UL</code>"). If you tag a number with this suffix, then an <code class="language-kotlin">ULong</code> will be created regardless of the size of the number:</p>
+<pre><code class="language-kotlin">val smallLong = 10uL // ULong because it is marked with "uL"</code></pre>
+<p></p><div class="alert alert-primary">All arithmetic operations for signed types are possible with their unsigned counterparts, except for the unary minus operation.</div><p></p>
+<h5 id="conclusion" style="text-align: center;">Conclusion</h5>
+<p>In this topic, we have covered two basic Kotlin integer types — <code class="language-kotlin">Long</code> and <code class="language-kotlin">Int</code>, and learned how to read data from the input. We've also learned what unsigned integer types are. Now you have enough skills to write programs that process data. You may use the template above to solve the code problems in this topic. Remember to give meaningful names to your variables, as it really helps.</p></body></html>

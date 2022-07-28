@@ -27,3 +27,4 @@ feedback:
 record: -1
 selected_options:
 - 5
+local_check: false

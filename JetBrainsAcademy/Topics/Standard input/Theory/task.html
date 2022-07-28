@@ -1,75 +1,61 @@
 <h2>Standard input</h2>
-<html>
- <head></head>
- <body>
-  <p><strong>Standard input</strong> is a stream of data that is fed to a program. By default, standard input gets data from the keyboard, but it is also possible to get it from a file.</p> 
-  <p>Not every program requires standard input. But we will refer to it quite often. Before we start writing programs that do something useful, you need to understand how to read data from the standard input.</p> 
-  <h5 id="kotlin-functions" style="text-align: center;">Kotlin functions</h5> 
-  <p>Kotlin has a useful function to read data from the standard input. It is <code class="language-kotlin">readLine</code>. It reads the whole line <strong>as a string</strong>:</p> 
-  <pre><code class="language-kotlin">val line = readLine()!!</code></pre> 
-  <p>The line variable is of the String type because the <code class="language-kotlin">readLine()!!</code> expression returns a value of this type.</p> 
-  <p></p>
-  <div class="alert alert-primary">
-   Why exclamation marks? We will discuss this later. For now, just memorize it as a special type of construction. You may read about it in JetBrains Academy's 
-   <a target="_blank" href="https://hyperskill.org/learn/step/7619" rel="noopener noreferrer nofollow">Null Safety</a> topic.
-  </div>
-  <p></p> 
-  <p>Here is a program that reads a line from the standard input and sends it to the standard output:</p> 
-  <pre><code class="language-kotlin">fun main() {
+<html><body><p><strong>Standard input</strong> is a stream of data that is fed to a program. By default, standard input gets data from the keyboard, but it is also possible to get it from a file.</p>
+<p>Not every program requires standard input. But we will refer to it quite often. Before we start writing programs that do something useful, you need to understand how to read data from the standard input.</p>
+<h5 id="kotlin-functions" style="text-align: center;">Kotlin functions</h5>
+<p>Kotlin has a useful function to read data from the standard input. It is <code class="language-kotlin">readLine</code>. It reads the whole line <strong>as a string</strong>:</p>
+<pre><code class="language-kotlin">val line = readLine()!!</code></pre>
+<p>The line variable is of the String type because the <code class="language-kotlin">readLine()!!</code> expression returns a value of this type.</p>
+<p></p><div class="alert alert-primary">Why exclamation marks? We will discuss this later. For now, just memorize it as a special type of construction. You may read about it in JetBrains Academy's  <a href="https://hyperskill.org/learn/step/7619" rel="noopener noreferrer nofollow" target="_blank">Null Safety</a> topic.</div><p></p>
+<p>Here is a program that reads a line from the standard input and sends it to the standard output:</p>
+<pre><code class="language-kotlin">fun main() {
     val line = readLine()!!
     println(line)
-}</code></pre> 
-  <p>Here is an example of valid input data:</p> 
-  <pre><code class="language-kotlin">Hello, Kotlin</code></pre> 
-  <p>The output is:</p> 
-  <pre><code class="language-kotlin">Hello, Kotlin</code></pre> 
-  <p>This function has several shortcomings. If you'd like to read several values from the same line one by one, you need to perform additional actions.</p> 
-  <p>Since Kotlin 1.6, you can use another function to input data:</p> 
-  <pre><code class="language-kotlin">val line = readln()</code></pre> 
-  <p>This function works like <code class="language-kotlin">readLine()!!</code> but looks shorter.</p> 
-  <p>If you need to get a number from the input, you can use this construction: <code class="language-kotlin">val number = readLine()!!.toInt()</code> or <code class="language-kotlin">val number = readln().toInt()</code>. </p> 
-  <p>Often you need to read a few <strong>words </strong>in a line. A word is separated from other words by one or more delimiters, such as spaces or a new line character. In this way, you can do this:</p> 
-  <pre><code class="language-kotlin">val (a, b) = readLine()!!.split(' ')    // for input "Hello world!" a is "Hello" and b is "world!"
+}</code></pre>
+<p>Here is an example of valid input data:</p>
+<pre><code class="language-kotlin">Hello, Kotlin</code></pre>
+<p>The output is:</p>
+<pre><code class="language-kotlin">Hello, Kotlin</code></pre>
+<p>This function has several shortcomings. If you'd like to read several values from the same line one by one, you need to perform additional actions.</p>
+<p>Since Kotlin 1.6, you can use another function to input data:</p>
+<pre><code class="language-kotlin">val line = readln()</code></pre>
+<p>This function works like <code class="language-kotlin">readLine()!!</code> but looks shorter.</p>
+<p>If you need to get a number from the input, you can use this construction: <code class="language-kotlin">val number = readLine()!!.toInt()</code> or <code class="language-kotlin">val number = readln().toInt()</code>. </p>
+<p>Often you need to read a few <strong>words </strong>in a line. A word is separated from other words by one or more delimiters, such as spaces or a new line character. In this way, you can do this:</p>
+<pre><code class="language-kotlin">val (a, b) = readLine()!!.split(' ')    // for input "Hello world!" a is "Hello" and b is "world!"
 val (c, d, e) = readLine()!!.split(' ') // can read, for example "Go for it"
 
 // or since Kotlin 1.6
 
 val (a, b) = readln().split(' ')
-val (c, d, e) = readln().split(' ')</code></pre> 
-  <p>We will discuss it in more detail later.</p> 
-  <h5 id="java-scanner" style="text-align: center;">Java Scanner</h5> 
-  <p>Another way to obtain data from the standard input is to use the Java <code class="language-kotlin">Scanner</code>. You can access it directly from Kotlin because it is interoperable with other Java libraries. <code class="language-kotlin">Scanner</code> allows a program to read values of <strong>different types </strong>(strings, numbers, etc) from the standard input.</p> 
-  <p>To use this type, you need to add this import statement to the top of your file with the source code:</p> 
-  <pre><code class="language-kotlin">import java.util.Scanner</code></pre> 
-  <p>or</p> 
-  <pre><code class="language-kotlin">import java.util.*</code></pre> 
-  <p>You can use any method to add <code class="language-kotlin">Scanner</code> to your program. We will discuss importing in a more detailed way later.</p> 
-  <p>Let's create a variable initialized by <code class="language-kotlin">Scanner</code>:</p> 
-  <pre><code class="language-kotlin">val scanner = Scanner(System.`in`)</code></pre> 
-  <p>In this line, <code class="language-kotlin">System.`in`</code> is an object that represents <strong>the standard input stream</strong>. The <code class="language-kotlin">scanner</code> wraps it as an internal data source and provides a set of convenient methods to work with it.</p> 
-  <p>Now we can read data from the standard input:</p> 
-  <pre><code class="language-kotlin">val line = scanner.nextLine() // read a whole line, i.e. "Hello, Kotlin"
+val (c, d, e) = readln().split(' ')</code></pre>
+<p>We will discuss it in more detail later.</p>
+<h5 id="java-scanner" style="text-align: center;">Java Scanner</h5>
+<p>Another way to obtain data from the standard input is to use the Java <code class="language-kotlin">Scanner</code>. You can access it directly from Kotlin because it is interoperable with other Java libraries. <code class="language-kotlin">Scanner</code> allows a program to read values of <strong>different types </strong>(strings, numbers, etc) from the standard input.</p>
+<p>To use this type, you need to add this import statement to the top of your file with the source code:</p>
+<pre><code class="language-kotlin">import java.util.Scanner
+</code></pre>
+<p>or</p>
+<pre><code class="language-kotlin">import java.util.*</code></pre>
+<p>You can use any method to add <code class="language-kotlin">Scanner</code> to your program. We will discuss importing in a more detailed way later.</p>
+<p>Let's create a variable initialized by <code class="language-kotlin">Scanner</code>:</p>
+<pre><code class="language-kotlin">val scanner = Scanner(System.`in`)</code></pre>
+<p>In this line, <code class="language-kotlin">System.`in`</code> is an object that represents <strong>the standard input stream</strong>. The <code class="language-kotlin">scanner</code> wraps it as an internal data source and provides a set of convenient methods to work with it.</p>
+<p>Now we can read data from the standard input:</p>
+<pre><code class="language-kotlin">val line = scanner.nextLine() // read a whole line, i.e. "Hello, Kotlin"
 val num = scanner.nextInt()   // read a number, i.e. 123
-val string = scanner.next()   // read a string, i.e. "Hello"</code></pre> 
-  <p></p>
-  <div class="alert alert-warning">
-   <code class="language-kotlin">Scanner.next()</code> reads only 
-   <strong>one word</strong>, not a line. If the user enters 
-   <code class="language-kotlin">Hello, Kotlin</code>, it will read 
-   <code class="language-kotlin">Hello,</code>.
-  </div>
-  <p></p> 
-  <p>After you call <code class="language-kotlin">scanner.nextLine()</code> or <code class="language-kotlin">scanner.nextInt()</code> or something else, the program will anticipate input data. Here is an example of correct input data:</p> 
-  <pre><code class="language-java">Hello, Kotlin
-123 Hello</code></pre> 
-  <p>The input example below is also valid:</p> 
-  <pre><code class="language-java">Hello, Kotlin
+val string = scanner.next()   // read a string, i.e. "Hello"</code></pre>
+<p></p><div class="alert alert-warning"><code class="language-kotlin">Scanner.next()</code> reads only <strong>one word</strong>, not a line. If the user enters <code class="language-kotlin">Hello, Kotlin</code>, it will read <code class="language-kotlin">Hello,</code>.</div><p></p>
+<p>After you call <code class="language-kotlin">scanner.nextLine()</code> or <code class="language-kotlin">scanner.nextInt()</code> or something else, the program will anticipate input data. Here is an example of correct input data:</p>
+<pre><code class="language-java">Hello, Kotlin
+123 Hello</code></pre>
+<p>The input example below is also valid:</p>
+<pre><code class="language-java">Hello, Kotlin
 123
-Hello</code></pre> 
-  <p>It's possible to read a number as a string using <code class="language-kotlin">scanner.next()</code> or <code class="language-kotlin">scanner.nextLine()</code> if the number is on a new line.</p> 
-  <p>Also, the <code class="language-kotlin">Scanner</code> type provides several methods (functions) for reading values of other types. Refer to the <a target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html" rel="nofollow noopener noreferrer">Class Scanner</a> documentation for more details.</p> 
-  <p>The program below reads two numbers and outputs them in reverse order on two different lines:</p> 
-  <pre><code class="language-kotlin">import java.util.Scanner // a class (type) from the Java standard library
+Hello</code></pre>
+<p>It's possible to read a number as a string using <code class="language-kotlin">scanner.next()</code> or <code class="language-kotlin">scanner.nextLine()</code> if the number is on a new line.</p>
+<p>Also, the <code class="language-kotlin">Scanner</code> type provides several methods (functions) for reading values of other types. Refer to the <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html" rel="nofollow noopener noreferrer" target="_blank">Class Scanner</a> documentation for more details.</p>
+<p>The program below reads two numbers and outputs them in reverse order on two different lines:</p>
+<pre><code class="language-kotlin">import java.util.Scanner // a class (type) from the Java standard library
 
 fun main() {
     val scanner = Scanner(System.`in`) // reads data
@@ -79,8 +65,7 @@ fun main() {
 
     println(num2) // prints the second number
     println(num1) // prints the first number
-}</code></pre> 
-  <h5 id="conclusion">Conclusion</h5> 
-  <p>In this topic, we have discussed two options to read standard input: the <code class="language-kotlin">readLine()</code> function and <code class="language-kotlin">Scanner</code>. We recommend that you use them when solving programming problems in this course. Why them? They are the simplest ways to get values from the standard input.</p>
- </body>
-</html>
+}
+</code></pre>
+<h5 id="conclusion">Conclusion</h5>
+<p>In this topic, we have discussed two options to read standard input: the <code class="language-kotlin">readLine()</code> function and <code class="language-kotlin">Scanner</code>. We recommend that you use them when solving programming problems in this course. Why them? They are the simplest ways to get values from the standard input.</p></body></html>
