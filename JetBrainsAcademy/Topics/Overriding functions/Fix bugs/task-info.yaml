@@ -1,0 +1,19 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    private class Me {
+        open fun returnName(name: String): String = "My name is $name"
+    }
+
+    open class ActuallyMe : Me() {
+        fun returnName(name: String): String = "Actually, my name is $name"
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/20485#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Thu, 28 Jul 2022 12:36:56 UTC
+record: -1

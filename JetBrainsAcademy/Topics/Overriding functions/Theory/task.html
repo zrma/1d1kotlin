@@ -1,0 +1,81 @@
+<h2>Overriding functions</h2>
+<p>Like any other <strong>OOP</strong> language, Kotlin has <strong>Inheritance</strong>. It's implemented in a really useful feature: <strong>overriding functions</strong>. Wondering what does it do? Let's find out!</p>
+
+<h5 id="override-it" style="text-align: center;">Override it</h5>
+
+<p>Of course, we need a good example of a class. Let's create the <code class="language-kotlin">Transport</code> class with its <code class="language-kotlin">cost</code> property:</p>
+
+<pre><code class="language-kotlin">open class Transport(val cost: Int) {
+    fun getFullInfo(): String {
+        return "$$cost cost"
+    }
+}</code></pre>
+
+<p>Pretty typical class ready for extending, right? Keep in mind that it's <code class="language-kotlin">open</code>. But now we're going to mark our <code class="language-kotlin">getFullInfo()</code> function as <code class="language-kotlin">open</code> too and add one more function without the <code class="language-kotlin">open</code> modifier:</p>
+
+<pre><code class="language-kotlin">open class Transport(val cost: Int) {
+    open fun getFullInfo(): String {
+        return "$$cost cost"
+    }
+
+    fun getTax(): String {
+        return "$${(cost * 0.25).roundToInt()} tax"
+    }
+}</code></pre>
+
+<p>Now we are ready to extend the <code class="language-kotlin">Transport</code> class with its own <code class="language-kotlin">getFullInfo()</code> function:</p>
+
+<pre><code class="language-kotlin">open class Ship(cost: Int, val color: String) : Transport(cost) {
+    override fun getFullInfo(): String {
+        return super.getFullInfo() + ", $color color"
+    }
+}</code></pre>
+
+<p>By default any overridden function in Kotlin is <strong>open</strong>. It means that you can override functions in sub-child classes too. Also, if you want to call a parent function, you can use <code class="language-kotlin">super</code>, as we did it in the example above. Two more things:</p>
+
+<ol>
+	<li> If you forget about <code class="language-kotlin">override</code> keyword, the compiler will warn you because there cannot be two functions <code class="language-kotlin">getFullInfo()</code> with the same parameters.</li>
+	<li>You also cannot override the <code class="language-kotlin">getTax()</code> function because it's not <code class="language-kotlin">open</code>.</li>
+</ol>
+
+<p>In both cases, the source code wouldn't compile at all. Let's check our freshly created classes in the next example:</p>
+
+<pre><code class="language-kotlin">fun main() {
+    val transport = Transport(1000)
+    val ship = Ship(2000, "marine")
+    println(transport.getFullInfo())
+    println(ship.getFullInfo())
+}</code></pre>
+
+<p>The output should be the following:</p>
+
+<pre><code class="language-kotlin">$1000 cost
+$2000 cost, marine color</code></pre>
+
+<h5 id="reuse-it" style="text-align: center;">Reuse it</h5>
+
+<p>There is one more useful feature regarding <code class="language-kotlin">open</code> functions. We will observe it through the following function:</p>
+
+<pre><code class="language-kotlin">fun getTransportInfo(transport: Transport): String {
+    return "transport info: " + transport.getFullInfo()
+}</code></pre>
+
+<p>As you can see it handles the <code class="language-kotlin">Transport</code> class. What is more, it can process easily any child of this class too:</p>
+
+<pre><code class="language-kotlin">fun main() {
+    val transport = Transport(1000)
+    val ship = Ship(2000, "marine")
+    println(getTransportInfo(transport))
+    println(getTransportInfo(ship))
+}</code></pre>
+
+<p>And it outputs this:</p>
+
+<pre><code class="language-kotlin">transport info: $1000 cost
+transport info: $2000 cost, marine color</code></pre>
+
+<p>Voila! The <code class="language-kotlin">getTransportInfo()</code> function works well with any open function of the <code class="language-kotlin">Transport</code> class and its child. Behold the real virtual power of Kotlin inheritance!</p>
+
+<h5 id="conclusion" style="text-align: center;">Conclusion</h5>
+
+<p>Now you know about one more concept of Inheritance in Kotlin. It lets us build a more flexible hierarchy of classes. You can control when to use the functions of the base class and when to create your own. Let's move on to practice and start to use <strong>overriding functions</strong>.</p>
