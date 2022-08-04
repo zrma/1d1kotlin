@@ -1,0 +1,17 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    import kotlin.random.Random
+
+    fun sumInts(): Int {
+        // write here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/20618#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Thu, 04 Aug 2022 11:21:21 UTC
+record: -1
