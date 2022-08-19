@@ -131,12 +131,12 @@ topics:
     theory_id: 6216
   - title: Multi-dimensional list
     theory_id: 15127
-  - title: Libraries
-    theory_id: 8504
   - title: Reading files
     theory_id: 6351
   - title: Writing files
     theory_id: 9710
+  - title: Libraries
+    theory_id: 8504
   - title: IntelliJ IDEA
     theory_id: 3801
   - title: RGB
