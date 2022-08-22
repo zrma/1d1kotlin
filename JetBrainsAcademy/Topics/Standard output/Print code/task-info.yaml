@@ -1,0 +1,15 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun main() {
+        // only println are needed here...
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/15362#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Mon, 22 Aug 2022 10:41:44 UTC
+record: -1
