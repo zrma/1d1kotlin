@@ -129,14 +129,14 @@ topics:
     theory_id: 11032
   - title: External resources
     theory_id: 6216
+  - title: Libraries
+    theory_id: 8504
   - title: Multi-dimensional list
     theory_id: 15127
   - title: Reading files
     theory_id: 6351
   - title: Writing files
     theory_id: 9710
-  - title: Libraries
-    theory_id: 8504
   - title: IntelliJ IDEA
     theory_id: 3801
   - title: RGB
@@ -150,12 +150,12 @@ topics:
   - title: What is an exception
     theory_id: 7243
   1:
-  - title: Working with strings
-    theory_id: 12561
   - title: Command line overview
     theory_id: 8977
   - title: Parameters and Options
     theory_id: 9746
+  - title: Working with strings
+    theory_id: 12561
   - title: Arrays
     theory_id: 4564
   - title: String arrays
@@ -189,6 +189,8 @@ topics:
     theory_id: 6364
   - title: Secondary constructor
     theory_id: 10746
+  - title: What is a bug
+    theory_id: 5504
   - title: Floating-point types
     theory_id: 4502
   - title: The Math library
@@ -197,8 +199,6 @@ topics:
     theory_id: 8519
   - title: Property accessors
     theory_id: 10511
-  - title: What is a bug
-    theory_id: 5504
   3:
   - title: Computer algorithms
     theory_id: 16547
