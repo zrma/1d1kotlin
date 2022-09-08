@@ -1,0 +1,24 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: 'fun String.replace(oldValue: String, newValue: String): String'
+- text: 'fun CharSequence.split(regex: Regex, limit: Int = 0): List'
+- text: 'fun String.replace(oldValue: String, newValue: String, ignoreCase: Boolean
+    = false): String'
+- text: 'fun CharSequence.split(regex: Regex, limit): List'
+- text: 'fun String.find(input: CharSequence, startIndex: Int = 0): MatchResult?'
+- text: 'fun String.find(input: CharSequence, startIndex: Int = 0): String'
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/19672#comment
+status: Solved
+record: -1
+local_check: false

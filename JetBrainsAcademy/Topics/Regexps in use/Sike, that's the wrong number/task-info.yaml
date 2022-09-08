@@ -1,0 +1,17 @@
+type: code
+custom_name: Sike, that's the wrong number!
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun main() {
+        val number = readln()
+        // write your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/19671#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Thu, 08 Sep 2022 08:09:02 UTC
+record: -1
