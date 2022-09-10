@@ -17,17 +17,27 @@ fun main(args: Array<String>) {
     val outputFile = File(args[3])
 
     // read image
-    val image = ImageIO.read(inputFile)
+    var image = ImageIO.read(inputFile)
 
-    val energyInfo = dualGradientEnergy(image)
-    val normalized = normalize(image, energyInfo)
+    image = image.transpose()
 
-    val seam = findSeam(normalized, energyInfo.first)
-
+    val seam = findSeam(image)
     applySeam(image, seam)
+
+    image = image.transpose()
 
     // save reversed image
     ImageIO.write(image, "png", outputFile)
+}
+
+fun BufferedImage.transpose(): BufferedImage {
+    val transposedImage = BufferedImage(this.height, this.width, this.type)
+    for (x in 0 until this.width) {
+        for (y in 0 until this.height) {
+            transposedImage.setRGB(y, x, this.getRGB(x, y))
+        }
+    }
+    return transposedImage
 }
 
 fun applySeam(image: BufferedImage, seam: List<Pair<Int, Int>>) {
@@ -36,15 +46,18 @@ fun applySeam(image: BufferedImage, seam: List<Pair<Int, Int>>) {
     }
 }
 
-fun findSeam(image: BufferedImage, energies: Array<Array<Double>>): List<Pair<Int, Int>> {
+fun findSeam(image: BufferedImage): List<Pair<Int, Int>> {
+    val energyInfo = dualGradientEnergy(image)
+    val normalized = normalize(image, energyInfo)
+    return findMinSumEnergyPath(normalized, energyInfo.first)
+}
+
+fun findMinSumEnergyPath(image: BufferedImage, energies: Array<Array<Double>>): List<Pair<Int, Int>> {
     val width = image.width
     val height = image.height
 
     val sumMatrix = Array(height) { Array(width) { 0.0 } }
 
-    // fill sumMatrix from top to bottom
-    // each cell is sum of its energy and minimum energy of three neighbors in row above (up left,
-    // left, up right)
     // https://en.m.wikipedia.org/wiki/Seam_carving#Dynamic_programming
     for (y in 0 until height) {
         for (x in 0 until width) {
@@ -80,8 +93,6 @@ fun findSeam(image: BufferedImage, energies: Array<Array<Double>>): List<Pair<In
     return seam
 }
 
-// get energy of three fields above field (w/h)
-// returns array with three values of top left, top, top right
 private fun getNextMin(sumMatrix: Array<Array<Double>>, x: Int, y: Int): Pair<Double, Int> {
     val rightBorder = sumMatrix.first().size
     return arrayOf(
