@@ -8,26 +8,28 @@ import kotlin.math.pow
 import kotlin.math.sqrt
 
 fun main(args: Array<String>) {
-    // use -in and -out to specify input and output files
-    if (args.size < 4) {
-        println("Usage: java Main -in input.png -out output.png")
-        return
+    val (inputFileName, outputFileName, width, height) = parseArgs(args)
+
+    var image = ImageIO.read(File(inputFileName))
+    image = reduceImageVertical(image, width)
+    image = reduceImageHorizontal(image, height)
+
+    ImageIO.write(image, "png", File(outputFileName))
+}
+
+fun reduceImageVertical(image: BufferedImage, count: Int): BufferedImage {
+    var result = image
+    repeat(count) {
+        val seam = findSeamVertical(result)
+        result = removeSeamVertical(result, seam)
     }
-    val inputFile = File(args[1])
-    val outputFile = File(args[3])
+    return result
+}
 
-    // read image
-    var image = ImageIO.read(inputFile)
-
-    image = image.transpose()
-
-    val seam = findSeam(image)
-    applySeam(image, seam)
-
-    image = image.transpose()
-
-    // save reversed image
-    ImageIO.write(image, "png", outputFile)
+fun reduceImageHorizontal(image: BufferedImage, count: Int): BufferedImage {
+    var result = image.transpose()
+    result = reduceImageVertical(result, count)
+    return result.transpose()
 }
 
 fun BufferedImage.transpose(): BufferedImage {
@@ -40,19 +42,20 @@ fun BufferedImage.transpose(): BufferedImage {
     return transposedImage
 }
 
-fun applySeam(image: BufferedImage, seam: List<Pair<Int, Int>>) {
-    for ((y, x) in seam) {
-        image.setRGB(x, y, Color.RED.rgb)
+fun removeSeamVertical(image: BufferedImage, seam: List<Pair<Int, Int>>): BufferedImage {
+    val newImage = BufferedImage(image.width - 1, image.height, image.type)
+    for (y in 0 until image.height) {
+        val seamX = seam.find { it.first == y }!!.second
+        for (x in 0 until image.width - 1) {
+            val xOld = if (x < seamX) x else x + 1
+            newImage.setRGB(x, y, image.getRGB(xOld, y))
+        }
     }
+    return newImage
 }
 
-fun findSeam(image: BufferedImage): List<Pair<Int, Int>> {
-    val energyInfo = dualGradientEnergy(image)
-    val normalized = normalize(image, energyInfo)
-    return findMinSumEnergyPath(normalized, energyInfo.first)
-}
-
-fun findMinSumEnergyPath(image: BufferedImage, energies: Array<Array<Double>>): List<Pair<Int, Int>> {
+fun findSeamVertical(image: BufferedImage): List<Pair<Int, Int>> {
+    val energyTable = dualGradientEnergyTable(image)
     val width = image.width
     val height = image.height
 
@@ -63,9 +66,9 @@ fun findMinSumEnergyPath(image: BufferedImage, energies: Array<Array<Double>>): 
         for (x in 0 until width) {
             if (y == 0) {
                 // top row has no row above it, so will be initialized with energy data
-                sumMatrix[y][x] = energies[y][x]
+                sumMatrix[y][x] = energyTable[y][x]
             } else {
-                sumMatrix[y][x] = energies[y][x] + getNextMin(sumMatrix, x, y).first
+                sumMatrix[y][x] = energyTable[y][x] + getNextMin(sumMatrix, x, y).first
             }
         }
     }
@@ -102,60 +105,66 @@ private fun getNextMin(sumMatrix: Array<Array<Double>>, x: Int, y: Int): Pair<Do
     ).minOfWith(compareBy { it.first }) { it }
 }
 
-fun normalize(image: BufferedImage, energyInfo: Pair<Array<Array<Double>>, Double>): BufferedImage {
-    val width = image.width
-    val height = image.height
-    val newImage = BufferedImage(width, height, BufferedImage.TYPE_INT_RGB)
-    val (energyTable, maxEnergyValue) = energyInfo
-
-    for (y in 0 until height) {
-        for (x in 0 until width) {
-            val energy = energyTable[y][x]
-            val intensity = (255.0 * energy / maxEnergyValue).toInt()
-            newImage.setRGB(x, y, Color(intensity, intensity, intensity).rgb)
-        }
-    }
-    return newImage
-}
-
-fun dualGradientEnergy(image: BufferedImage): Pair<Array<Array<Double>>, Double> {
+fun dualGradientEnergyTable(image: BufferedImage): Array<Array<Double>> {
     val width = image.width
     val height = image.height
     val res = Array(height) { Array(width) { 0.0 } }
 
-    var maxEnergyValue = 0.0
-
     for (y in 0 until height) {
         for (x in 0 until width) {
-            val posX =
-                when (x) {
-                    0 -> 1
-                    width - 1 -> width - 2
-                    else -> x
-                }
-            val posY =
-                when (y) {
-                    0 -> 1
-                    height - 1 -> height - 2
-                    else -> y
-                }
+            val posX = when (x) {
+                0 -> 1
+                width - 1 -> width - 2
+                else -> x
+            }
+            val posY = when (y) {
+                0 -> 1
+                height - 1 -> height - 2
+                else -> y
+            }
             val left = Color(image.getRGB(posX - 1, y))
             val right = Color(image.getRGB(posX + 1, y))
             val up = Color(image.getRGB(x, posY - 1))
             val down = Color(image.getRGB(x, posY + 1))
-            val dX =
-                (left.red.toDouble() - right.red.toDouble()).pow(2.0) +
-                        (left.green.toDouble() - right.green.toDouble()).pow(2.0) +
-                        (left.blue.toDouble() - right.blue.toDouble()).pow(2.0)
 
-            val dY =
-                (up.red.toDouble() - down.red.toDouble()).pow(2.0) +
-                        (up.green.toDouble() - down.green.toDouble()).pow(2.0) +
-                        (up.blue.toDouble() - down.blue.toDouble()).pow(2.0)
+            val dX = colorDiffPow(left, right)
+            val dY = colorDiffPow(up, down)
+
             val energy = sqrt(dX + dY)
-            maxEnergyValue = maxOf(maxEnergyValue, energy)
             res[y][x] = energy
         }
     }
-    return res to maxEnergyValue
+    return res
 }
+
+fun colorDiffPow(c1: Color, c2: Color): Double {
+    return (c1.red - c2.red).toDouble().pow(2.0) + (c1.green - c2.green).toDouble()
+        .pow(2.0) + (c1.blue - c2.blue).toDouble().pow(2.0)
+}
+
+fun parseArgs(args: Array<String>): Arguments {
+    if (args.size !in listOf(2, 4, 6, 8)) {
+        throw Exception("usage: -in <input image> -out <output image> -width <width> -height <height>")
+    }
+
+    var inputFilename = ""
+    var outputFilename = ""
+    var width = 0
+    var height = 0
+
+    args.asList().chunked(2).forEach { arg ->
+        val (k, v) = arg
+        when (k) {
+            "-in" -> inputFilename = v
+            "-out" -> outputFilename = v
+            "-width" -> width = v.toInt()
+            "-height" -> height = v.toInt()
+        }
+    }
+
+    return Arguments(inputFilename, outputFilename, width, height)
+}
+
+data class Arguments(
+    val inputFilename: String, val outputFilename: String, val width: Int, val height: Int
+)

@@ -12,7 +12,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,120 +21,24 @@ class CheckFailException extends Exception {
     }
 }
 
-class Image {
-    private BufferedImage image;
-
-    Image(String filename) throws IOException {
-        image = ImageIO.read(new File(filename));
-    }
-
-    private int dx2(int x, int y) {
-        if (x == 0) {
-            return dx2(x + 1, y);
-        }
-        else if (x == image.getWidth() - 1) {
-            return dx2(x - 1, y);
-        }
-        else {
-            Color l = new Color(image.getRGB(x - 1, y));
-            Color r = new Color(image.getRGB(x + 1, y));
-            return (l.getRed() - r.getRed()) * (l.getRed() - r.getRed()) +
-                (l.getGreen() - r.getGreen()) * (l.getGreen() - r.getGreen()) +
-                (l.getBlue() - r.getBlue()) * (l.getBlue() - r.getBlue());
-        }
-    }
-
-    private int dy2(int x, int y) {
-        if (y == 0) {
-            return dy2(x, y + 1);
-        }
-        else if (y == image.getHeight() - 1) {
-            return dy2(x, y - 1);
-        }
-        else {
-            Color t = new Color(image.getRGB(x, y - 1));
-            Color b = new Color(image.getRGB(x, y + 1));
-            return (t.getRed() - b.getRed()) * (t.getRed() - b.getRed()) +
-                (t.getGreen() - b.getGreen()) * (t.getGreen() - b.getGreen()) +
-                (t.getBlue() - b.getBlue()) * (t.getBlue() - b.getBlue());
-        }
-    }
-
-    public double pixelEnergy(int x, int y) {
-        return Math.sqrt((double)dx2(x, y) + (double)dy2(x, y));
-    }
-
-    public List<Integer> findHorizontalSeam() throws CheckFailException {
-        ArrayList<Integer> result = new ArrayList<Integer>();
-        for (int x = 0; x < image.getWidth(); x++) {
-            boolean found = false;
-
-            for (int y = 0; y < image.getHeight(); y++) {
-                Color c = new Color(image.getRGB(x, y));
-                if (c.equals(Color.RED)) {
-                    result.add(y);
-                    found = true;
-                    break;
-                }
-            }
-
-            if (!found)
-                throw new CheckFailException(String.format("Could not find seam pixel in column (%d)", x));
-        }
-        return result;
-    }
-}
-
 class OutFile {
     String hash;
-    String inFileName;
-    String outFilename;
+    String filename;
     int width;
     int height;
+    String goodImgPath;
 
-    Double seamSum;
-
-    OutFile(String inFileName, String outFilename, int width, int height, String hash, Double sum) {
-        this.inFileName = inFileName;
-        this.outFilename = outFilename;
+    OutFile(String filename, int width, int height, String hash, String goodImgPath) {
+        this.filename = filename;
         this.width = width;
         this.height = height;
         this.hash = hash;
-        this.seamSum = sum;
-    }
-
-    public void checkSum() throws CheckFailException {
-        try {
-            double delta = 0.00001;
-
-            Image input = new Image(inFileName);
-            Image output = new Image(outFilename);
-
-            double actualSum = 0;
-            List<Integer> seam = output.findHorizontalSeam();
-            for (int x = 0; x < seam.size(); x++) {
-                int y = seam.get(x);
-                actualSum += input.pixelEnergy(x, y);
-            }
-
-            if (actualSum < seamSum - delta || actualSum > seamSum + delta) {
-                throw new CheckFailException(
-                    String.format(
-                        "Total energy of your seam (%f) does not match expected value (%f +/- %f)",
-                        actualSum, seamSum, delta));
-            }
-
-        } catch (IOException e) {
-            throw new CheckFailException(
-                String.format(
-                    "Could not read output file '%s'. Please check you produce output file",
-                    outFilename));
-        }
+        this.goodImgPath = goodImgPath;
     }
 
     public boolean compareWithActualMD5() throws CheckFailException {
         try {
-            File imgPath = new File(outFilename);
+            File imgPath = new File(filename);
             BufferedImage sourceImage = ImageIO.read(imgPath);
 
             BufferedImage rgbImage =
@@ -163,7 +66,7 @@ class OutFile {
             throw new CheckFailException(
                 String.format(
                     "Could not read output file '%s'. Please check you produce output file",
-                    outFilename));
+                    filename));
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
             throw new CheckFailException("Internal test error. please report to Hyperskill team");
@@ -172,15 +75,80 @@ class OutFile {
         return true;
     }
 
+    public boolean comparePixels() throws CheckFailException{
+        try {
+            File imgPath = new File(filename);
+            BufferedImage sourceImage = ImageIO.read(imgPath);
+
+            File goodImgFilePath = new File(goodImgPath);
+            BufferedImage goodImage = ImageIO.read(goodImgFilePath);
+
+            final double maxDiff = 20.0; //Experimentally determined; larger for looser match
+            int windowSize = 20; // Window for color averaging
+            for (int x = 0; x < sourceImage.getWidth() - windowSize; x+=windowSize){
+                for (int y = 0; y < sourceImage.getHeight() - windowSize; y+=windowSize){
+
+                    long sourceColorSumRed, sourceColorSumGreen, sourceColorSumBlue;
+                    sourceColorSumRed = sourceColorSumGreen = sourceColorSumBlue = 0;
+                    long goodColorSumRed, goodColorSumGreen, goodColorSumBlue;
+                    goodColorSumRed = goodColorSumGreen = goodColorSumBlue = 0;
+                    for (int i = x; i < x + windowSize; i++){
+                        for (int j = y; j < y + windowSize; j++){
+                            Color sourceColor = new Color(sourceImage.getRGB(i, j));
+                            Color goodColor = new Color(goodImage.getRGB(i, j));
+
+                            sourceColorSumRed += sourceColor.getRed();
+                            sourceColorSumGreen += sourceColor.getGreen();
+                            sourceColorSumBlue += sourceColor.getBlue();
+
+                            goodColorSumRed += goodColor.getRed();
+                            goodColorSumGreen += goodColor.getGreen();
+                            goodColorSumBlue += goodColor.getBlue();
+                        }
+                    }
+                    float sampleSize = (float)windowSize * windowSize;
+
+                    //Find average colors for the zone
+                    Color sourceColor = new Color((int)(sourceColorSumRed / sampleSize), (int)(sourceColorSumGreen / sampleSize), (int)(sourceColorSumBlue / sampleSize));
+                    Color goodColor = new Color((int)(goodColorSumRed / sampleSize), (int)(goodColorSumGreen / sampleSize), (int)(goodColorSumBlue / sampleSize));
+
+                    //See how far apart colors are in color-space
+                    double colorDistance = Math.sqrt(Math.pow(sourceColor.getRed() - goodColor.getRed(), 2.0) +
+                            Math.pow(sourceColor.getBlue() - goodColor.getBlue(), 2.0) +
+                            Math.pow(sourceColor.getGreen() - goodColor.getGreen(), 2.0));
+
+
+                    if (colorDistance > maxDiff){
+                        throw new CheckFailException(
+                                String.format(
+                                        "Average pixel color of the zone (%d, %d)-(%d, %d) in your image does not match expected value." +
+                                                " Color space difference: %f. \n" +
+                                                "Output: (%d, %d, %d) vs Reference: (%d, %d, %d)",
+                                        x, y, x + windowSize, y + windowSize, colorDistance, sourceColor.getRed(), sourceColor.getGreen(), sourceColor.getBlue(),
+                                        goodColor.getRed(),goodColor.getGreen(),goodColor.getBlue()));
+                    }
+                }
+            }
+
+        } catch (IOException e) {
+            throw new CheckFailException(
+                    String.format(
+                            "Could not read output file '%s'. Please check you produce output file",
+                            filename));
+        }
+
+        return true;
+    }
+
     public boolean compareActualDimensions() throws CheckFailException {
         try {
-            BufferedImage image = ImageIO.read(new File(outFilename));
+            BufferedImage image = ImageIO.read(new File(filename));
 
             if (image == null) {
                 throw new CheckFailException(
                     String.format(
                         "File format error. Looks like your output '%s' is not a valid image file.",
-                        outFilename));
+                        filename));
             }
 
             if (image.getWidth() != width) {
@@ -201,7 +169,7 @@ class OutFile {
             throw new CheckFailException(
                 String.format(
                     "Could not read output file '%s'. Please check you produce output file",
-                    outFilename));
+                    filename));
         }
 
         return true;
@@ -215,22 +183,37 @@ public class SeamCarvingTest extends StageTest<OutFile> {
 
         return Arrays.asList(
             new TestCase<OutFile>()
-                .addArguments("-in", "test/small.png", "-out", "test/small-seam-hor.png")
-                .setAttach(new OutFile("test/small.png", "test/small-seam-hor.png",
-                    15, 10,
-                    "91d48b32789908d7826a32e1304a4ddc", 1136.850201)),
+                .addArguments(
+                    "-in", "test/small.png",
+                    "-out", "test/small-reduced.png",
+                    "-width", "1",
+                    "-height", "1")
+                .setAttach(new OutFile(
+                    "test/small-reduced.png", 14, 9,
+                    "3e0266a991347682591a4955c9b2dd8e", "test/small-pass.png"))
+                .setTimeLimit(2 * 60 * 1000),
 
             new TestCase<OutFile>()
-                .addArguments("-in", "test/blue.png", "-out", "test/blue-seam-hor.png")
-                .setAttach(new OutFile("test/blue.png", "test/blue-seam-hor.png",
-                    500, 334,
-                    "b9070275c8a22db340162d2419fa13fe", 327.257757)),
+                .addArguments(
+                    "-in", "test/blue.png",
+                    "-out", "test/blue-reduced.png",
+                    "-width", "125",
+                    "-height", "50")
+                .setAttach(new OutFile(
+                    "test/blue-reduced.png", 375, 284,
+                    "e73c04ad79d30ebef82b27f35b71dd92", "test/blue-pass.png"))
+                .setTimeLimit(2 * 60 * 1000),
 
             new TestCase<OutFile>()
-                .addArguments("-in", "test/trees.png", "-out", "test/trees-seam-hor.png")
-                .setAttach(new OutFile("test/trees.png", "test/trees-seam-hor.png",
-                    600, 429,
-                    "69ed6abd2487d46df650cbe46d577dc7", 115.903883))
+                .addArguments(
+                    "-in", "test/trees.png",
+                    "-out", "test/trees-reduced.png",
+                    "-width", "100",
+                    "-height", "30")
+                .setAttach(new OutFile(
+                    "test/trees-reduced.png", 500, 399,
+                    "65603cba81d3ee6dedeeb5777d6665c5", "test/trees-pass.png"))
+                .setTimeLimit(2 * 60 * 1000)
         );
     }
 
@@ -239,7 +222,7 @@ public class SeamCarvingTest extends StageTest<OutFile> {
         try {
             expectedFile.compareActualDimensions();
             //expectedFile.compareWithActualMD5();
-            expectedFile.checkSum();
+            expectedFile.comparePixels();
         } catch (CheckFailException e) {
             return CheckResult.wrong(e.getMessage());
         }
