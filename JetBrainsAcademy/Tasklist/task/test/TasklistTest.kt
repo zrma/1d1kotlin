@@ -5,119 +5,164 @@ import org.hyperskill.hstest.testing.TestedProgram
 
 class TasklistTest : StageTest<Any>() {
 
+    // Wrong task input
     @DynamicTest(order = 1)
-    fun tasklistTest01(): CheckResult {
+    fun tasklistTest05(): CheckResult {
+        val inputStrings = listOf("input", "task", "",  "123", " ")
         val co = CheckOutput()
-        if ( !co.start("Input the tasks (enter a blank line to end):") )
-            return CheckResult(false, "Your output should contain \"Input the tasks (enter a blank line to end):\"")
+        if ( !co.start("Input an action (add, print, end):") )
+            return CheckResult(false, "Your output should contain \"Input an action (add, print, end):\"")
+        for (s in inputStrings) {
+            if (!co.input(s, "The input action is invalid"))
+                return CheckResult(false, "Your output should contain \"The input action is invalid\"")
+            if (!co.inputNext("Input an action (add, print, end):"))
+                return CheckResult(false, "Your output should contain \"Input an action (add, print, end):\"")
+        }
 
-        val inputTasks = """
-            Task #1
-            task 2 
-            task &3
-            Task   4
-            task  5
-            
-            
-        """.trimIndent()
-        val outputTasksArray = """
-            1  Task #1
-            2  task 2
-            3  task &3
-            4  Task   4
-            5  task  5
-        """.trimIndent().lines().toTypedArray()
-        if (!co.input(inputTasks, *outputTasksArray))
-            return CheckResult(false, "Your output should contain the sequenced task list")
+        if (!co.input("end", "Tasklist exiting!"))
+            return CheckResult(false, "Your output should contain \"Tasklist exiting!\"")
+
         if (!co.programIsFinished() )
             return CheckResult(false, "The application didn't exit.")
         return CheckResult.correct()
     }
 
+    // Blank task and print without tasks
     @DynamicTest(order = 2)
-    fun tasklistTest02(): CheckResult {
+    fun tasklistTest06(): CheckResult {
         val co = CheckOutput()
-        if ( !co.start("Input the tasks (enter a blank line to end):") )
-            return CheckResult(false, "Your output should contain \"Input the tasks (enter a blank line to end):\"")
+        if ( !co.start("Input an action (add, print, end):") )
+            return CheckResult(false, "Your output should contain \"Input an action (add, print, end):\"")
+        if (!co.input("print", "No tasks have been input"))
+            return CheckResult(false, "Your output should contain \"No tasks have been input\"")
+        if (!co.inputNext("Input an action (add, print, end):"))
+            return CheckResult(false, "Your output should contain \"Input an action (add, print, end):\"")
 
-        val inputTasks = """
-            Change colors at site
-            Dentist on 15/1
-            Present for friend birthday
-            Supermarket. Milk, eggs, butter.
-            Fix the printer.
-            Cinema: get tickets
-            Buy book
-            Check new software
-            Finish hyperskill project
-            Pay phone bill
-            Pay water bill
-            
-            
-        """.trimIndent()
-        val outputTasksArray = """
-            1  Change colors at site
-            2  Dentist on 15/1
-            3  Present for friend birthday
-            4  Supermarket. Milk, eggs, butter.
-            5  Fix the printer.
-            6  Cinema: get tickets
-            7  Buy book
-            8  Check new software
-            9  Finish hyperskill project
-            10 Pay phone bill
-            11 Pay water bill
-        """.trimIndent().lines().toTypedArray()
-        if (!co.input(inputTasks, *outputTasksArray))
-            return CheckResult(false, "Your output should contain the sequenced task list")
+        if (!co.input("add", "Input a new task (enter a blank line to end):"))
+            return CheckResult(false, "Your output should contain \"Input a new task (enter a blank line to end):\"")
+        if (!co.input("   ", "The task is blank"))
+            return CheckResult(false, "Your output should contain \"The task is blank\"")
+        if (!co.inputNext("Input an action (add, print, end):"))
+            return CheckResult(false, "Your output should contain \"Input an action (add, print, end):\"")
+
+        if (!co.input("print", "No tasks have been input"))
+            return CheckResult(false, "Your output should contain \"No tasks have been input\"")
+        if (!co.inputNext("Input an action (add, print, end):"))
+            return CheckResult(false, "Your output should contain \"Input an action (add, print, end):\"")
+
+        if (!co.input("end", "Tasklist exiting!"))
+            return CheckResult(false, "Your output should contain \"Tasklist exiting!\"")
+
         if (!co.programIsFinished() )
             return CheckResult(false, "The application didn't exit.")
         return CheckResult.correct()
     }
 
+    // Normal execution
     @DynamicTest(order = 3)
-    fun tasklistTest03(): CheckResult {
-        val co = CheckOutput()
-        if ( !co.start("Input the tasks (enter a blank line to end):") )
-            return CheckResult(false, "Your output should contain \"Input the tasks (enter a blank line to end):\"")
+    fun tasklistTest07(): CheckResult {
+        val inputStrings = listOf(
+            "See my dentist on 14/1/22\n\n",
+            "Supermarket\nChocolates\nflour\noranges\n\n",
+            "Change site\nUse Christmas theme\n\n",
+            "Buy book\n\n",
+            "Fix printer\n\n",
+            "Cinema: get tickets\nCheck movie reviews\n\n",
+            "Present for friend birthday\n\n",
+            "Check new software\n\n",
+            "Pay phone bill\n\n",
+            "Fill car tank\n\n",
+            "Buy flowers\n\n",
+            "Pay water bill\n\n"
+        )
+        val outputStrings = arrayOf(
+            arrayOf("1  See my dentist on 14/1/22"),
+            arrayOf("2  Supermarket", "   Chocolates", "   flour", "   oranges"),
+            arrayOf("3  Change site", "   Use Christmas theme"),
+            arrayOf("4  Buy book"),
+            arrayOf("5  Fix printer"),
+            arrayOf("6  Cinema: get tickets", "   Check movie reviews"),
+            arrayOf("7  Present for friend birthday"),
+            arrayOf("8  Check new software"),
+            arrayOf("9  Pay phone bill"),
+            arrayOf("10 Fill car tank"),
+            arrayOf("11 Buy flowers"),
+            arrayOf("12 Pay water bill")
+        )
 
-        val inputTasks = """
-Change colors at site
-        Dentist on 15/1
-         Present for friend birthday
-               Supermarket. Milk, eggs, butter.
-               Fix the printer.
-                 Cinema: get tickets
-            
-            
-        """.trimIndent()
-        val outputTasksArray = """
-            1  Change colors at site
-            2  Dentist on 15/1
-            3  Present for friend birthday
-            4  Supermarket. Milk, eggs, butter.
-            5  Fix the printer.
-            6  Cinema: get tickets
-        """.trimIndent().lines().toTypedArray()
-        if (!co.input(inputTasks, *outputTasksArray))
-            return CheckResult(false, "Your output should contain the sequenced task list; input lines should be trimmed")
+        val co = CheckOutput()
+        if ( !co.start("Input an action (add, print, end):") )
+            return CheckResult(false, "Your output should contain \"Input an action (add, print, end):\"")
+
+        for (s in inputStrings) {
+            if (!co.input("add", "Input a new task (enter a blank line to end):"))
+                return CheckResult(false, "Your output should contain \"Input a new task (enter a blank line to end):\"")
+            if (!co.input(s, "Input an action (add, print, end):"))
+                return CheckResult(false, "Your output should contain \"Input an action (add, print, end):\"")
+        }
+
+        co.getNextOutput("print")
+        for (s in outputStrings) {
+            if (!co.inputNext(*s)) {
+                val str = StringBuilder()
+                s.forEach { str.appendLine(it) }
+                return CheckResult(false, "Your output should contain \"${str.toString()}\"")
+            }
+            if (!co.inputNext("\n\n"))
+                return CheckResult(false, "Each task printout should be followed by a blank line")
+        }
+
+        if (!co.input("end", "Tasklist exiting!"))
+            return CheckResult(false, "Your output should contain \"Tasklist exiting!\"")
+
         if (!co.programIsFinished() )
             return CheckResult(false, "The application didn't exit.")
         return CheckResult.correct()
     }
 
+    // Input lines are trimmed
     @DynamicTest(order = 4)
-    fun tasklistTest04(): CheckResult {
+    fun tasklistTest08(): CheckResult {
+        val inputStrings = listOf("     Fix printer  \n\n",
+            "\tCinema: get tickets\n\tCheck movie reviews\n\n",
+            "      Present for friend birthday\n\n",
+            "  \t  Check new software\n\n"
+        )
+        val outputStrings = arrayOf(arrayOf("1  Fix printer"),
+            arrayOf("2  Cinema: get tickets", "   Check movie reviews"),
+            arrayOf("3  Present for friend birthday"),
+            arrayOf("4  Check new software")
+        )
+
         val co = CheckOutput()
-        if ( !co.start("Input the tasks (enter a blank line to end):") )
-            return CheckResult(false, "Your output should contain \"Input the tasks (enter a blank line to end):\"")
-        if (!co.input("", "No tasks have been input"))
-            return CheckResult(false, "Your output should contain  \"No tasks have been input\"")
+        if ( !co.start("Input an action (add, print, end):") )
+            return CheckResult(false, "Your output should contain \"Input an action (add, print, end):\"")
+
+        for (s in inputStrings) {
+            if (!co.input("add", "Input a new task (enter a blank line to end):"))
+                return CheckResult(false, "Your output should contain \"Input a new task (enter a blank line to end):\"")
+            if (!co.input(s, "Input an action (add, print, end):"))
+                return CheckResult(false, "Your output should contain \"Input an action (add, print, end):\"")
+        }
+
+        co.getNextOutput("print")
+        for (s in outputStrings) {
+            if (!co.inputNext(*s)) {
+                val str = StringBuilder()
+                s.forEach { str.appendLine(it) }
+                return CheckResult(false, "The input lines should be trimmed; your output should contain  \"${str.toString()}\"")
+            }
+            if (!co.inputNext("\n\n"))
+                return CheckResult(false, "Each task printout should be followed by a blank line")
+        }
+
+        if (!co.input("end", "Tasklist exiting!"))
+            return CheckResult(false, "Your output should contain \"Tasklist exiting!\"")
+
         if (!co.programIsFinished() )
             return CheckResult(false, "The application didn't exit.")
         return CheckResult.correct()
     }
-
 }
 
 class CheckOutput {

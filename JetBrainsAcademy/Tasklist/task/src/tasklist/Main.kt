@@ -1,34 +1,77 @@
 package tasklist
 
-fun main() {
-    val todo = ToDoList()
+import java.util.*
 
-    print("Input the tasks (enter a blank line to end):")
+fun main() {
+    val todo = TaskList()
+
     while (true) {
+        print("Input an action (add, print, end):")
         val input = readLine()!!.trim()
+        when (input) {
+            "add" -> {
+                print("Input a new task (enter a blank line to end):")
+                val lines = readLines()
+                if (lines.isEmpty() || lines.size == 1 && lines[0].isEmpty()) {
+                    println("The task is blank")
+                } else {
+                    todo.add(Task(lines))
+                }
+            }
+
+            "print" -> todo.printAll()
+
+            "end" -> {
+                @Suppress("SpellCheckingInspection")
+                println("Tasklist exiting!")
+                break
+            }
+
+            else -> println("The input action is invalid")
+        }
+    }
+}
+
+fun readLines(): List<String> {
+    val res = mutableListOf<String>()
+    val scanner = Scanner(System.`in`)
+    while (scanner.hasNextLine()) {
+        val input = scanner.nextLine().trim()
         if (input.isEmpty()) {
             break
         }
-        todo.add(input)
+        res.add(input)
     }
-
-    todo.printAll()
+    return res
 }
 
-class ToDoList {
+class TaskList {
     fun printAll() {
-        if (items.isEmpty()) {
+        if (tasks.isEmpty()) {
             println("No tasks have been input")
         } else {
-            items.forEachIndexed() { index, item ->
-                println(String.format("%-2d %s", index + 1, item))
+            tasks.forEachIndexed() { index, item ->
+                item.print(index + 1)
+                println()
             }
         }
     }
 
-    fun add(input: String) {
-        items.add(input)
+    fun add(task: Task) {
+        tasks.add(task)
     }
 
-    private val items = mutableListOf<String>()
+    private val tasks = mutableListOf<Task>()
+}
+
+data class Task(val description: List<String>) {
+    fun print(idx: Int) {
+        description.forEachIndexed() { index, item ->
+            if (index == 0) {
+                println(String.format("%-2d %s", idx, item))
+            } else {
+                println(String.format("%-2s %s", "", item))
+            }
+        }
+    }
 }
