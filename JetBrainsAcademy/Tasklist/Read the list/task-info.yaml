@@ -1,0 +1,112 @@
+type: edu
+files:
+- name: test/TasklistTest.kt
+  visible: false
+  text: "import org.hyperskill.hstest.dynamic.DynamicTest\nimport org.hyperskill.hstest.stage.StageTest\n\
+    import org.hyperskill.hstest.testcase.CheckResult\nimport org.hyperskill.hstest.testing.TestedProgram\n\
+    \nclass TasklistTest : StageTest<Any>() {\n\n    @DynamicTest(order = 1)\n   \
+    \ fun tasklistTest01(): CheckResult {\n        val co = CheckOutput()\n      \
+    \  if ( !co.start(\"Input the tasks (enter a blank line to end):\") )\n      \
+    \      return CheckResult(false, \"Your output should contain \\\"Input the tasks\
+    \ (enter a blank line to end):\\\"\")\n\n        val inputTasks = \"\"\"\n   \
+    \         Task #1\n            task 2 \n            task &3\n            Task\
+    \   4\n            task  5\n            \n            \n        \"\"\".trimIndent()\n\
+    \        val outputTasksArray = \"\"\"\n            1  Task #1\n            2\
+    \  task 2\n            3  task &3\n            4  Task   4\n            5  task\
+    \  5\n        \"\"\".trimIndent().lines().toTypedArray()\n        if (!co.input(inputTasks,\
+    \ *outputTasksArray))\n            return CheckResult(false, \"Your output should\
+    \ contain the sequenced task list\")\n        if (!co.programIsFinished() )\n\
+    \            return CheckResult(false, \"The application didn't exit.\")\n   \
+    \     return CheckResult.correct()\n    }\n\n    @DynamicTest(order = 2)\n   \
+    \ fun tasklistTest02(): CheckResult {\n        val co = CheckOutput()\n      \
+    \  if ( !co.start(\"Input the tasks (enter a blank line to end):\") )\n      \
+    \      return CheckResult(false, \"Your output should contain \\\"Input the tasks\
+    \ (enter a blank line to end):\\\"\")\n\n        val inputTasks = \"\"\"\n   \
+    \         Change colors at site\n            Dentist on 15/1\n            Present\
+    \ for friend birthday\n            Supermarket. Milk, eggs, butter.\n        \
+    \    Fix the printer.\n            Cinema: get tickets\n            Buy book\n\
+    \            Check new software\n            Finish hyperskill project\n     \
+    \       Pay phone bill\n            Pay water bill\n            \n           \
+    \ \n        \"\"\".trimIndent()\n        val outputTasksArray = \"\"\"\n     \
+    \       1  Change colors at site\n            2  Dentist on 15/1\n           \
+    \ 3  Present for friend birthday\n            4  Supermarket. Milk, eggs, butter.\n\
+    \            5  Fix the printer.\n            6  Cinema: get tickets\n       \
+    \     7  Buy book\n            8  Check new software\n            9  Finish hyperskill\
+    \ project\n            10 Pay phone bill\n            11 Pay water bill\n    \
+    \    \"\"\".trimIndent().lines().toTypedArray()\n        if (!co.input(inputTasks,\
+    \ *outputTasksArray))\n            return CheckResult(false, \"Your output should\
+    \ contain the sequenced task list\")\n        if (!co.programIsFinished() )\n\
+    \            return CheckResult(false, \"The application didn't exit.\")\n   \
+    \     return CheckResult.correct()\n    }\n\n    @DynamicTest(order = 3)\n   \
+    \ fun tasklistTest03(): CheckResult {\n        val co = CheckOutput()\n      \
+    \  if ( !co.start(\"Input the tasks (enter a blank line to end):\") )\n      \
+    \      return CheckResult(false, \"Your output should contain \\\"Input the tasks\
+    \ (enter a blank line to end):\\\"\")\n\n        val inputTasks = \"\"\"\nChange\
+    \ colors at site\n        Dentist on 15/1\n         Present for friend birthday\n\
+    \               Supermarket. Milk, eggs, butter.\n               Fix the printer.\n\
+    \                 Cinema: get tickets\n            \n            \n        \"\"\
+    \".trimIndent()\n        val outputTasksArray = \"\"\"\n            1  Change\
+    \ colors at site\n            2  Dentist on 15/1\n            3  Present for friend\
+    \ birthday\n            4  Supermarket. Milk, eggs, butter.\n            5  Fix\
+    \ the printer.\n            6  Cinema: get tickets\n        \"\"\".trimIndent().lines().toTypedArray()\n\
+    \        if (!co.input(inputTasks, *outputTasksArray))\n            return CheckResult(false,\
+    \ \"Your output should contain the sequenced task list; input lines should be\
+    \ trimmed\")\n        if (!co.programIsFinished() )\n            return CheckResult(false,\
+    \ \"The application didn't exit.\")\n        return CheckResult.correct()\n  \
+    \  }\n\n    @DynamicTest(order = 4)\n    fun tasklistTest04(): CheckResult {\n\
+    \        val co = CheckOutput()\n        if ( !co.start(\"Input the tasks (enter\
+    \ a blank line to end):\") )\n            return CheckResult(false, \"Your output\
+    \ should contain \\\"Input the tasks (enter a blank line to end):\\\"\")\n   \
+    \     if (!co.input(\"\", \"No tasks have been input\"))\n            return CheckResult(false,\
+    \ \"Your output should contain  \\\"No tasks have been input\\\"\")\n        if\
+    \ (!co.programIsFinished() )\n            return CheckResult(false, \"The application\
+    \ didn't exit.\")\n        return CheckResult.correct()\n    }\n\n}\n\nclass CheckOutput\
+    \ {\n    private var main: TestedProgram = TestedProgram()\n    var position =\
+    \ 0\n    private var caseInsensitive = true\n    private var trimOutput = true\n\
+    \    private val arguments= mutableListOf<String>()\n    private var isStarted\
+    \ = false\n    private var lastOutput = \"\"\n\n    private fun checkOutput(outputString:\
+    \ String, vararg checkStr: String): Boolean {\n        var searchPosition = position\n\
+    \        for (cStr in checkStr) {\n            val str = if (caseInsensitive)\
+    \ cStr.lowercase() else cStr\n            val findPosition = outputString.indexOf(str,\
+    \ searchPosition)\n            if (findPosition == -1) return false\n        \
+    \    if ( outputString.substring(searchPosition until findPosition).isNotBlank()\
+    \ ) return false\n            searchPosition = findPosition + str.length\n   \
+    \     }\n        position = searchPosition\n        return true\n    }\n\n   \
+    \ fun start(vararg checkStr: String): Boolean {\n        return if (!isStarted)\
+    \ {\n            var outputString = main.start(*arguments.toTypedArray())\n  \
+    \          lastOutput = outputString\n            if (trimOutput) outputString\
+    \ = outputString.trim()\n            if (caseInsensitive) outputString = outputString.lowercase()\n\
+    \            isStarted = true\n            checkOutput(outputString, *checkStr)\n\
+    \        } else false\n    }\n\n    fun stop() {\n        main.stop()\n    }\n\
+    \n    fun input(input: String, vararg checkStr: String): Boolean {\n        if\
+    \ (main.isFinished) return false\n        var outputString = main.execute(input)\n\
+    \        lastOutput = outputString\n        if (trimOutput) outputString = outputString.trim()\n\
+    \        if (caseInsensitive) outputString = outputString.lowercase()\n      \
+    \  position = 0\n        return checkOutput(outputString, *checkStr)\n    }\n\n\
+    \    fun inputNext(vararg checkStr: String): Boolean {\n        var outputString\
+    \ = lastOutput\n        if (trimOutput) outputString = outputString.trim()\n \
+    \       if (caseInsensitive) outputString = outputString.lowercase()\n       \
+    \ return checkOutput(outputString, *checkStr)\n    }\n\n    fun getNextOutput(input:\
+    \ String): String {\n        if (main.isFinished) return \"\"\n        val outputString\
+    \ = main.execute(input)\n        lastOutput = outputString\n        position =\
+    \ 0\n        return  outputString\n    }\n\n    fun getLastOutput(): String {\
+    \ return lastOutput }\n    fun programIsFinished(): Boolean  = main.isFinished\n\
+    \    fun setArguments(vararg args: String) { arguments.addAll(args.toMutableList())\
+    \ }\n    fun setCaseSensitivity(caseInsensitive: Boolean) { this.caseInsensitive\
+    \ = caseInsensitive }\n    fun setOutputTrim(trimOutput: Boolean) { this.trimOutput\
+    \ = trimOutput}\n}\n\n\n"
+  learner_created: false
+- name: src/tasklist/Main.kt
+  visible: true
+  text: |+
+    package tasklist
+
+    fun main() {
+        // write your code here
+    }
+
+
+  learner_created: false
+feedback_link: https://hyperskill.org/projects/237/stages/1188/implement#comment
+status: Unchecked
+record: -1

@@ -1,0 +1,239 @@
+<html><body><h5 id="description">Description</h5>
+<p>In this stage, we will implement the ability to delete or edit a task. In addition, we will also add a tag that signifies whether a task date is due or past.</p>
+<p>The process of removing a task is based on the tasks sequence numbers. After deletion, the sequence numbers change.</p>
+<p>Editing a task requires the change of priority, date,<strong> </strong>time, or task description. Due to IntelliJ run terminal limitations, editing can not be done over the data from the old task. That is, printing the old data and then editing them is not possible. So, for each of the fields above, you need to make another one and replace the old.</p>
+<p>A due tag will point out whether a task is overdue or not. This is just one letter — <code class="language-kotlin">I</code>, <code class="language-kotlin">T</code>, or <code class="language-kotlin">O</code> (case-insensitive). They stand for In time, Today, and Overdue. To define the due tag, we will compare the current day with the task date.</p>
+<p>Following is an example of how to calculate the days from the current date until a certain date using the <code class="language-kotlin">daysUntil</code> function from the KotlinX <code class="language-kotlin">datetime</code> that applies to a <code class="language-kotlin">LocalDate</code> instance:</p>
+<pre><code class="language-kotlin">val taskDate = LocalDate(2022, 1, 9)
+val currentDate = Clock.System.now().toLocalDateTime(TimeZone.of("UTC+0")).date
+val numberOfDays = currentDate.daysUntil(taskDate)</code></pre>
+<p>The <code class="language-kotlin">daysUntil</code> function returns:</p>
+<ul>
+<li><code class="language-kotlin">0</code> if the <code class="language-kotlin">taskDate</code> is the same as the <code class="language-kotlin">currentDate</code> (due tag <code class="language-kotlin">T</code>)</li>
+<li>a positive integer, if the <code class="language-kotlin">taskDate</code> is past the <code class="language-kotlin">currentDate</code> (due tag <code class="language-kotlin">I</code>)</li>
+<li>a negative integer, if the <code class="language-kotlin">taskDate</code> is before the <code class="language-kotlin">currentDate</code> (due tag <code class="language-kotlin">O</code>)</li>
+</ul>
+<h5 id="objectives">Objectives</h5>
+<p>Change the introduction line to <code class="language-kotlin">Input an action (add, print, edit, delete, end):</code>.</p>
+<p>If users inputs <code class="language-kotlin">delete</code>, print the task list in the new format (see below) and then:</p>
+<ul>
+<li>If there are no tasks, print the message: <code class="language-kotlin">No tasks have been input</code>;</li>
+<li>Otherwise, ask users for a task number with the <code class="language-kotlin">Input the task number (1-&lt;Maximum task number&gt;):</code> message; if the task number is outside the range or it isn't a valid natural number, print <code class="language-kotlin">Invalid task number</code> and ask again for the task number;</li>
+<li>When the task is deleted, print <code class="language-kotlin">The task is deleted</code>.</li>
+</ul>
+<p>If users inputs <code class="language-kotlin">edit</code>, print the task list in the new format (see below) and then:</p>
+<ul>
+<li>If there are no tasks, print <code class="language-kotlin">No tasks have been input</code>;</li>
+<li>Otherwise, ask users for a task number with the <code class="language-kotlin">Input the task number (1-&lt;Maximum task number&gt;):</code> message; if the task number is outside the range or it isn't a valid natural number, print <code class="language-kotlin">Invalid task number</code> and ask again for the task number;</li>
+<li>Ask users which part of a task should be edited with the <code class="language-kotlin">Input a field to edit (priority, date, time, task):</code> message; Users should provide one of <code class="language-kotlin">priority</code>, <code class="language-kotlin">date</code>, <code class="language-kotlin">time</code>, <code class="language-kotlin">task</code>. If anything else, print <code class="language-kotlin">Invalid field</code> and ask for a field once again;</li>
+<li>When users input a valid field, ask for data in that field in the same way as in the previous stage; after success, print <code class="language-kotlin">The task is changed</code></li>
+</ul>
+<p>If users input <code class="language-kotlin">print</code>, print the task list in the new format that includes the due tag at the end of the first line of each task. The due tag is separated by a single space. The new format is provided below:</p>
+<pre><code class="language-no-highlight">1  Date1 Time1 Priority1 DueTag1
+   Task1-line1
+   Task1-line2
+
+2  Date2 Time2 Priority2 DueTag2
+   Task2-line1</code></pre>
+<h5 id="examples">Examples</h5>
+<p>The greater-than symbol followed by a space (<code class="language-kotlin">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+<p><strong>Example 1:</strong> <em>normal execution (current day — 2022-1-8)</em></p>
+<pre><code class="language-no-highlight">Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; h
+Input the date (yyyy-mm-dd):
+&gt; 2021-12-25
+Input the time (hh:mm):
+&gt; 14:00
+Input a new task (enter a blank line to end):
+&gt; Christmas meal
+&gt;
+Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; N
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-8
+Input the time (hh:mm):
+&gt; 19:15
+Input a new task (enter a blank line to end):
+&gt; Dentist
+&gt;
+Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; L
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-10
+Input the time (hh:mm):
+&gt; 19:00
+Input a new task (enter a blank line to end):
+&gt; Supermarket
+&gt; -----------
+&gt; Pasta
+&gt; Butter
+&gt; Cheese
+&gt;
+Input an action (add, print, edit, delete, end):
+&gt; print
+1  2021-12-25 14:00 H O
+   Christmas meal
+
+2  2022-01-08 19:15 N T
+   Dentist
+
+3  2022-01-10 19:00 L I
+   Supermarket
+   -----------
+   Pasta
+   Butter
+   Cheese
+
+Input an action (add, print, edit, delete, end):
+&gt; end
+Tasklist exiting!</code></pre>
+<p><strong>Example 2:</strong> <em>deleting a task</em></p>
+<pre><code class="language-no-highlight">Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; n
+Input the date (yyyy-mm-dd):
+&gt; 2021-12-25
+Input the time (hh:mm):
+&gt; 14:00
+Input a new task (enter a blank line to end):
+&gt; Christmas meal
+&gt;
+Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; L
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-8
+Input the time (hh:mm):
+&gt; 19:15
+Input a new task (enter a blank line to end):
+&gt; Dentist
+&gt;
+Input an action (add, print, edit, delete, end):
+&gt; print
+1  2021-12-25 14:00 N O
+   Christmas meal
+
+2  2022-01-08 19:15 L T
+   Dentist
+
+Input an action (add, print, edit, delete, end):
+&gt; delete
+1  2021-12-25 14:00 N O
+   Christmas meal
+
+2  2022-01-08 19:15 L T
+   Dentist
+
+Input the task number (1-2):
+&gt; 3
+Invalid task number
+Input the task number (1-2):
+&gt; 1
+The task is deleted
+Input an action (add, print, edit, delete, end):
+&gt; print
+1  2022-01-08 19:15 L T
+   Dentist
+
+Input an action (add, print, edit, delete, end):
+&gt; end
+Tasklist exiting!</code></pre>
+<p><strong>Example 3:</strong> <em>editing task fields</em></p>
+<pre><code class="language-no-highlight">Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; N
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-7
+Input the time (hh:mm):
+&gt; 15:00
+Input a new task (enter a blank line to end):
+&gt; Supermarket
+&gt;
+Input an action (add, print, edit, delete, end):
+&gt; edit
+1  2022-01-07 15:00 N O
+   Supermarket
+
+Input the task number (1-1):
+&gt; 2
+Invalid task number
+Input the task number (1-1):
+&gt; 1
+Input a field to edit (priority, date, time, task):
+&gt; tag
+Invalid field
+Input a field to edit (priority, date, time, task):
+&gt; field
+Invalid field
+Input a field to edit (priority, date, time, task):
+&gt; priority
+Input the task priority (C, H, N, L):
+&gt; L
+The task is changed
+Input an action (add, print, edit, delete, end):
+&gt; edit
+1  2022-01-07 15:00 L O
+   Supermarket
+
+Input the task number (1-1):
+&gt; 1
+Input a field to edit (priority, date, time, task):
+&gt; date
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-11
+The task is changed
+Input an action (add, print, edit, delete, end):
+&gt; edit
+1  2022-01-11 15:00 L I
+   Supermarket
+
+Input the task number (1-1):
+&gt; 1
+Input a field to edit (priority, date, time, task):
+&gt; time
+Input the time (hh:mm):
+&gt; 19:00
+The task is changed
+Input an action (add, print, edit, delete, end):
+&gt; edit
+1  2022-01-11 19:00 L I
+   Supermarket
+
+Input the task number (1-1):
+&gt; 1
+Input a field to edit (priority, date, time, task):
+&gt; task
+Input a new task (enter a blank line to end):
+&gt; Supermarket: Salt, milk
+&gt;
+The task is changed
+Input an action (add, print, edit, delete, end):
+&gt; print
+1  2022-01-11 19:00 L I
+   Supermarket: Salt, milk
+
+Input an action (add, print, edit, delete, end):
+&gt; end
+Tasklist exiting!</code></pre>
+<p><strong>Example 4:</strong> <em>no tasks</em></p>
+<pre><code class="language-no-highlight">Input an action (add, print, edit, delete, end):
+&gt; print
+No tasks have been input
+Input an action (add, print, edit, delete, end):
+&gt; edit
+No tasks have been input
+Input an action (add, print, edit, delete, end):
+&gt; delete
+No tasks have been input
+Input an action (add, print, edit, delete, end):
+&gt; end
+Tasklist exiting!</code></pre></body></html>

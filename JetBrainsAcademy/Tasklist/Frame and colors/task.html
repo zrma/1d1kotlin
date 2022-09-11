@@ -1,0 +1,119 @@
+<html><body><h5 id="description">Description</h5>
+<p>In this stage, we will work on the format of the tasklist printout. Let's change it and add some colors! Following is an example of the new tasks list output:</p>
+<p style="text-align: center;"><img alt="" height="196" name="p01.png" src="https://ucarecdn.com/8db5b662-07df-4e6d-ae39-d0b4d585a7ed/" width="654"/></p>
+<p>The table format as text:</p>
+<pre><code class="language-no-highlight">+----+------------+-------+---+---+--------------------------------------------+
+| N  |    Date    | Time  | P | D |                   Task                     |
++----+------------+-------+---+---+--------------------------------------------+
+| 1  | yyyy-MM-dd | hh:mm |   |   |                                            |
+|    |            |       |   |   |                                            |
+|    |            |       |   |   |                                            |
++----+------------+-------+---+---+--------------------------------------------+</code></pre>
+<p>If the task index reaches a double-digit number, then it Should consume a space to the right.</p>
+<p>Please, mind the spaces! Each <code class="language-kotlin">Task</code> line contains 44 characters. If the text is bigger, write the first 44 characters and continue to the next line even if a word is split, as in the following example:</p>
+<p style="text-align: center;"><img alt="" height="197" name="p02.png" src="https://ucarecdn.com/221cf1bb-367b-42d4-9513-ff6704df8084/" width="652"/></p>
+<p>Colors can't be seen in the snippets, so we use images, as in the Examples section.</p>
+<p>In the header, <code class="language-kotlin">P</code> stands for Priority and <code class="language-kotlin">D</code> for Due tag. They contain 3 spaces each and are denoted by specific colors in the middle space of the first line of each task (see the image above).</p>
+<p>Colors can be used in terminals when they support the ANSI escape sequences standard. More on this can be found in the <a href="https://en.wikipedia.org/wiki/ANSI_escape_code" rel="noopener noreferrer nofollow" target="_blank">ANSI escape code</a> article on Wikipedia.</p>
+<p>Most Linux, Unix, and BSD terminals support it. Windows 10 cmd supports it by default, but you have to enable it manually. Intellij IDEA supports it natively.</p>
+<p>The text foreground and background colors can be defined with certain sequences of characters and digits. To distinguish them from normal text, they are preceded by the nonprintable ASCII escape characters (ASCII character code — 27). To include them in the Kotlin <code class="language-kotlin">println()</code> printout, you should use its Unicode code, that is <code class="language-kotlin">\u001B</code>.</p>
+<p>There are different color schemes, we will use the 4-bit one. To set a foreground or background color, you need to print <code class="language-kotlin">\u001B[&lt;Color Code&gt;m</code>, where <code class="language-kotlin">&lt;Color Code&gt;</code> is an integer that denotes the color. To reset the colors, print <code class="language-kotlin">u001B[0m</code>.</p>
+<p>As an example:</p>
+<pre><code class="language-kotlin">println("\u001B[101m \u001B[0m")</code></pre>
+<p>Sets the background color to red, prints a space (which is red), and then resets the colors to default (<code class="language-kotlin">101</code> is the number for the bright red background color). One space with certain background color denotes each tag.</p>
+<p>Priority colors:</p>
+<p><img alt="" height="119" name="p03.png" src="https://ucarecdn.com/84c14e02-6328-4ec9-a68d-f01bb18426d1/" width="307"/></p>
+<p>Due tag colors:</p>
+<p><img alt="" height="95" name="p04.png" src="https://ucarecdn.com/807f1b95-824c-43d3-b13a-e714e5553e94/" width="296"/></p>
+<h5 id="objectives">Objectives</h5>
+<ul>
+<li>When users input one of the <code class="language-kotlin">print</code>, <code class="language-kotlin">edit</code> or <code class="language-kotlin">delete</code>, then print the tasklist as described above.</li>
+</ul>
+<p></p><div class="alert alert-warning">Mind that when a test fails, the respective error message will not display colors.</div><p></p>
+<h5 id="examples">Examples</h5>
+<p>The greater-than symbol followed by a space (<code class="language-kotlin">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+<p><em>We use images where color cannot be shown.</em></p>
+<p><strong>Example 1:</strong> <em>normal execution (current day 2022-1-14)</em></p>
+<pre><code class="language-no-highlight">Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; N
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-14
+Input the time (hh:mm):
+&gt; 19:00
+Input a new task (enter a blank line to end):
+&gt; Supermarket
+&gt; milk
+&gt; cookies
+&gt; butter
+&gt;
+Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; C
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-20
+Input the time (hh:mm):
+&gt; 20:15
+Input a new task (enter a blank line to end):
+&gt; Dentist
+&gt;
+Input an action (add, print, edit, delete, end):
+&gt; add
+&gt; Input the task priority (C, H, N, L):
+L
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-10
+Input the time (hh:mm):
+&gt; 12:00
+Input a new task (enter a blank line to end):
+&gt; Buy book
+&gt;
+Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; H
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-15
+Input the time (hh:mm):
+&gt; 00:00
+Input a new task (enter a blank line to end):
+&gt; Pay bills
+&gt;
+Input an action (add, print, edit, delete, end):
+&gt; print</code></pre>
+<p><img alt="" height="312" name="p05.png" src="https://ucarecdn.com/bdfd0224-bfaa-4ac7-97dd-0419879197ed/" width="660"/></p>
+<pre><code class="language-no-highlight">Input an action (add, print, edit, delete, end):
+&gt; end
+Tasklist exiting!</code></pre>
+<p><strong>Example 2:</strong> <em>normal execution, longer tasks (current day 2022-1-14)</em></p>
+<pre><code class="language-no-highlight">Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; N
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-25
+Input the time (hh:mm):
+&gt; 12:00
+Input a new task (enter a blank line to end):
+&gt; Remember to review the code for the Tasklist project.
+&gt;
+Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; N
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-25
+Input the time (hh:mm):
+&gt; 12:00
+Input a new task (enter a blank line to end):
+&gt; Find resources about Ansi colors and cursor movement.
+&gt; Don't forget to look into the stage 6 links about it.
+&gt;
+Input an action (add, print, edit, delete, end):
+&gt; print</code></pre>
+<p><img alt="" height="240" name="p06.png" src="https://ucarecdn.com/d0ae8438-8afb-4c0b-a933-fa47e67abccf/" width="653"/></p>
+<pre><code class="language-no-highlight">Input an action (add, print, edit, delete, end):
+&gt; end
+Tasklist exiting!</code></pre></body></html>

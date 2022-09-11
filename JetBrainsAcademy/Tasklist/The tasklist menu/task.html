@@ -1,0 +1,230 @@
+<html><body><h5 id="description">Description</h5>
+<p>In this stage, we will implement a new menu that will prompt users to either enter a task or print all tasks. Since each task is added individually, it is possible to enter a multiple-line task.</p>
+<p>Each task input should end when users input a blank line (or just spaces and tabs).</p>
+<h5 id="objectives">Objectives</h5>
+<p>Change the welcoming line to <code class="java">Input an action (add, print, end):</code>. If users input:</p>
+<ol>
+<li>Anything else than <code class="java">add</code>, <code class="java">print</code>, or <code class="java">end</code> (case-insensitive), print <code class="java">The input action is invalid</code> and ask again for the input;</li>
+<li><code class="java">End</code> — print <code class="java">Tasklist exiting!</code> and terminate;</li>
+<li><code class="java">Add</code> — ask users to add a task with the <code class="java">Input a new task (enter a blank line to end):</code> line. Input is terminated by a blank line. When a task is added, remove any leading or trailing spaces or tabs in the tasks;</li>
+<li><code class="java">Print</code> — print the tasks as explained below. If there're no tasks, print <code class="java">No tasks have been input</code>.</li>
+</ol>
+<p>If a blank line (or some spaces and tabs) is input as a task, print <code class="java">The task is blank</code>. Don't save this task. The tasks should be printed in the following format:</p>
+<pre><code class="language-no-highlight">1  Task1-line1
+   Task1-line2
+   Task1-line3
+
+2  Task2-line1
+
+3  Task3-line1
+
+4  Task4-line1
+   Task4-line2
+
+5  Task5-line1
+
+6  Task6-line1
+
+7  Task7-line1
+   Task7-line2
+   Task7-line3
+
+8  Task8-line1
+
+9  Task9-line1
+
+10 Task10-line1
+
+11 Task11-line1</code></pre>
+<p>The first line of each task is prefixed by a sequence number (starting from <code class="java">1</code>).</p>
+<p>Each task line starts at the 4th column.</p>
+<p>Divide the tasks with a blank line.</p>
+<h5 id="examples">Examples</h5>
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+<p><strong>Example 1:</strong> <em>normal execution</em></p>
+<pre><code class="language-no-highlight">Input an action (add, print, end):
+&gt; add
+Input a new task (enter a blank line to end):
+&gt; Supermarket
+&gt; -----------
+&gt; butter
+&gt; milk
+&gt; meat
+&gt;
+Input an action (add, print, end):
+&gt; add
+Input a new task (enter a blank line to end):
+&gt; See my dentist on 14/1/22
+&gt;
+Input an action (add, print, end):
+&gt; add
+Input a new task (enter a blank line to end):
+&gt; Check my report
+&gt; a) Grammar errors
+&gt; b) Verify numbers
+&gt; c) Check citations
+&gt;
+Input an action (add, print, end):
+&gt; print
+1  Supermarket
+   -----------
+   butter
+   milk
+   meat
+
+2  See my dentist on 14/1/22
+
+3  Check my report
+   a) Grammar errors
+   b) Verify numbers
+   c) Check citations
+
+Input an action (add, print, end):
+&gt; end
+Tasklist exiting!</code></pre>
+<p><strong>Example 2:</strong> <em>normal execution with 10 or more tasks</em></p>
+<pre><code class="language-no-highlight">Input an action (add, print, end):
+&gt; add
+Input a new task (enter a blank line to end):
+&gt; See my dentist on 14/1/22
+&gt;
+Input an action (add, print, end):
+&gt; add
+Input a new task (enter a blank line to end):
+&gt; Supermarket
+&gt; Chocolates, flour, oranges
+&gt;
+Input an action (add, print, end):
+&gt; add
+Input a new task (enter a blank line to end):
+&gt; Buy book
+&gt;
+Input an action (add, print, end):
+&gt; add
+Input a new task (enter a blank line to end):
+&gt; Change colors at site
+&gt; Use Christmas theme
+&gt;
+Input an action (add, print, end):
+&gt; add
+Input a new task (enter a blank line to end):
+&gt; Pay phone bill
+&gt;
+Input an action (add, print, end):
+&gt; add
+Input a new task (enter a blank line to end):
+&gt; Pay water bill
+&gt;
+Input an action (add, print, end):
+add
+Input a new task (enter a blank line to end):
+&gt; Fix my printer
+&gt;
+Input an action (add, print, end):
+&gt; add
+Input a new task (enter a blank line to end):
+&gt; Dentist on 15/1
+&gt;
+Input an action (add, print, end):
+&gt; add
+Input a new task (enter a blank line to end):
+&gt; Cinema: get tickets
+&gt; Check movie reviews
+&gt;
+Input an action (add, print, end):
+&gt; add
+Input a new task (enter a blank line to end):
+&gt; Present for friend birthday
+&gt;
+Input an action (add, print, end):
+&gt; add
+Input a new task (enter a blank line to end):
+&gt; Check new software
+&gt;
+Input an action (add, print, end):
+&gt; print
+1  See my dentist on 14/1/22
+
+2  Supermarket
+   Chocolates, flour, oranges
+
+3  Buy book
+
+4  Change colors at site
+   Use Christmas theme
+
+5  Pay phone bill
+
+6  Pay water bill
+
+7  Fix my printer
+
+8  Dentist on 15/1
+
+9  Cinema: get tickets
+   Check movie reviews
+
+10 Present for friend birthday
+
+11 Check new software
+
+Input an action (add, print, end):
+&gt; end
+Tasklist exiting!</code></pre>
+<p><strong>Example 3:</strong> <em>no tasks</em></p>
+<pre><code class="language-no-highlight">Input an action (add, print, end):
+&gt; print
+No tasks have been input
+Input an action (add, print, end):
+&gt; end
+Tasklist exiting!</code></pre>
+<p><strong>Example 4:</strong><em> a blank task</em></p>
+<pre><code class="language-no-highlight">Input an action (add, print, end):
+&gt; add
+Input a new task (enter a blank line to end):
+&gt;
+The task is blank
+Input an action (add, print, end):
+&gt; print
+No tasks have been input
+Input an action (add, print, end):
+&gt; end
+Tasklist exiting!</code></pre>
+<p><strong>Example 5:</strong> <em>unnecessary parts removed</em></p>
+<pre><code class="language-no-highlight">Input an action (add, print, end):
+&gt; add
+Input a new task (enter a blank line to end):
+&gt; Supermarket
+&gt; 		butter
+&gt; 	  milk
+&gt;    flour
+&gt;     chocolates
+&gt;
+Input an action (add, print, end):
+&gt; add
+Input a new task (enter a blank line to end):
+&gt;    Fix my printer
+&gt;
+Input an action (add, print, end):
+&gt; print
+1  Supermarket
+   butter
+   milk
+   flour
+   chocolates
+
+2  Fix my printer
+
+Input an action (add, print, end):
+&gt; end
+Tasklist exiting!</code></pre>
+<p> <strong>Example 6:</strong> <em>Invalid actions</em></p>
+<pre><code class="language-no-highlight">Input an action (add, print, end):
+&gt; task
+The input action is invalid
+Input an action (add, print, end):
+&gt; input
+The input action is invalid
+Input an action (add, print, end):
+&gt; end
+Tasklist exiting!</code></pre></body></html>

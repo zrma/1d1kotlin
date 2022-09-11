@@ -1,0 +1,73 @@
+<html><body><h5 id="description">Description</h5>
+<p>Applications that keep track of our tasks are very practical and handy. In this project, we're going to create one such tool.</p>
+<p>We will start with little things. Your program should obtain the tasks from the input, one per line, and then print them. The tasks should contain an index number.</p>
+<h5 id="objectives">Objectives</h5>
+<ul>
+<li>Ask for input, by printing <code class="java">Input the tasks (enter a blank line to end):</code>. Read each task, one per line. Get rid of any leading or trailing spaces and tabs;</li>
+<li>The tasks input should end when the user inputs a blank line. That is, a line without any text. If a user inputs a line that contains only spaces and tabs, consider it as a blank line.</li>
+<li>Print the tasks in the following format:</li>
+</ul>
+<pre><code class="language-no-highlight">1  Task1
+2  Task2
+3  Task3
+4  Task4
+5  Task5
+6  Task6
+7  Task7
+8  Task8
+9  Task9
+10 Task10
+11 Task11</code></pre>
+<ul>
+<li>The listing of tasks starts with <code class="java">1</code>. The first nine tasks<strong> </strong>contain 2 spaces between the number and the task. Starting from task 10, leave only one space (see the Examples section);</li>
+<li>If users don't input any tasks (a blank line), print <code class="java">No tasks have been input</code>.</li>
+</ul>
+<h5 id="examples">Examples</h5>
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+<p><strong>Example 1:</strong> <em>normal execution</em></p>
+<pre><code class="language-no-highlight">Input the tasks (enter a blank line to end):
+&gt; Dentist on 15/1
+&gt; Present for friend birthday
+&gt; Supermarket. Milk, eggs, butter.
+&gt;
+1  Dentist on 15/1
+2  Present for friend birtday
+3  Supermarket. Milk, eggs, butter.</code></pre>
+<p><strong>Example 2:</strong> <em>normal execution with 10 or more tasks</em></p>
+<pre><code class="language-no-highlight">Input the tasks (enter a blank line to end):
+&gt; Dentist on 15/1
+&gt; Present for friend birthday
+&gt; Supermarket. Milk, eggs, butter.
+&gt; Cinema: get tickets
+&gt; Buy book
+&gt; Check new software
+&gt; Finish hyperskill project
+&gt; Change colors at site
+&gt; Pay phone bill
+&gt; Pay water bill
+&gt; Fix the printer.
+&gt;
+1  Dentist on 15/1
+2  Present for friend birthday
+3  Supermarket. Milk, eggs, butter.
+4  Cinema: get tickets
+5  Buy book
+6  Check new software
+7  Finish hyperskill project
+8  Change colors at site
+9  Pay phone bill
+10 Pay water bill
+11 Fix the printer.</code></pre>
+<p><strong>Example 3:</strong> <em>extra parts are removed</em></p>
+<pre><code class="language-no-highlight">Input the tasks (enter a blank line to end):
+&gt;         Dentist on 15/1
+&gt;    Buy book
+&gt;     Change colors at site
+&gt;
+1  Dentist on 15/1
+2  Buy book
+3  Change colors at site</code></pre>
+<p><strong>Example 4:</strong> <em>no input</em></p>
+<pre><code class="language-no-highlight">Input the tasks (enter a blank line to end):
+&gt;
+No tasks have been input</code></pre></body></html>

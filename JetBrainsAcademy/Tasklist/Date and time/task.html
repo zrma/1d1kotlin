@@ -1,0 +1,208 @@
+<html><body><h5 id="description">Description</h5>
+<p>In this stage, we will add on another useful feature — the ability to indicate a deadline for a particular task. We will also work on a priority tag feature.</p>
+<p>Of course, a task may come without a deadline. However, to keep things simple, a deadline is required for each task in this stage.</p>
+<p>When users add a task, also ask them to input a date, time, and a priority tag. The latter is just one letter: <code class="language-kotlin">C</code>, <code class="language-kotlin">H</code>, <code class="language-kotlin">N</code>, <code class="language-kotlin">L</code> (case-insensitive) per task that stands for Critical, High, Normal, and Low, respectively.</p>
+<p>Dates and time can be handled in many ways. However, in this project, we recommend using the Kotlinx <code class="language-kotlin">datetime</code> library. Kotlinx consists of valuable libraries that aren't a part of the standard library. To access the Kotlinx <code class="language-kotlin">datetime</code> library, it should be added to your project dependencies, but this has already been done for you. In order to use it, you should just import it to your program with:</p>
+<pre><code class="language-kotlin">import kotlinx.datetime.*</code></pre>
+<p>Following are some examples of how to use the <code class="language-kotlin">datetime</code> library:</p>
+<pre><code class="language-kotlin">// Create a LocalDate instance for 2017-4-29
+val date = LocalDate(2017, 4, 29)
+
+//Create a LocalDateTime instance for 2021-12-21 16:57
+val dateTime = LocalDateTime(2021, 12, 31, 16, 57)
+val year = dateTime.year         // Get year as an integer
+val month = dateTime.monthNumber // Get month as an integer
+val day = dateTime.dayOfMonth    // Get day as an integer
+val hour = dateTime.hour         // Get hour as an integer
+val minutes = dateTime.minute    // Get minutes as an integer
+
+// Create a LocalDateTime instance for the current date and time for UTC+0 timezone
+val dateTimeCurrent = Clock.System.now().toLocalDateTime(TimeZone.of("UTC+0"))
+// Create a LocalDate instance for the current date and time for UTC+0 timezone
+val dateCurrent = dateTimeCurrent.date
+
+// Get the date and time as string
+val dateTimeString = dateTime.toString()
+// Print the string above
+println(dateTimeString)  // Output 2021-12-31T16:57
+
+// Same result as the above
+println(dateTime)        // Output 2021-12-31T16:57</code></pre>
+<p>As can be seen, the <code class="language-kotlin">LocalDateTime</code> output string divides the date from the time with the character <code class="language-kotlin">T</code>.</p>
+<p>Both <code class="language-kotlin">LocalDate</code> and <code class="language-kotlin">LocalDateTime</code> throw an <code class="language-kotlin">IllegalArgumentException</code> exception if the provided date or time data are invalid. They can be used for checking if a provided date is valid (based on leap years, number of days per month, etc.).</p>
+<p></p><div class="alert alert-warning">You can refer to the <a href="https://github.com/Kotlin/kotlinx-datetime" rel="noopener noreferrer nofollow" target="_blank">GitHub overview</a> for more info on Kotlin/kotlinx-datetime. Note that the library is compatible with the Kotlin Standard Library starting from 1.5.0. So, better update Kotlin in your IntelliJ IDE to the latest version.</div><p></p>
+<p>Finally, a word of caution. In stage 6, the task list data will be saved in a file in JSON format with the <code class="language-kotlin">Moshi</code> library. While the <code class="language-kotlin">datetime</code> library objects are serializable, to use them with <code class="language-kotlin">Moshi</code>, you need to register an explicit adapter. It is better to use the <code class="language-kotlin">datetime</code> library for date validation but keep the date and time data (in lists, classes, and so on.) as <strong>strings</strong> or <strong>integers</strong>.</p>
+<h5 id="objectives">Objectives</h5>
+<p>The program menu remains the same.</p>
+<p>When users input <code class="language-kotlin">add</code>, do the following:</p>
+<ol>
+<li>Ask users for the task priority with <code class="language-kotlin">Input the task priority (C, H, N, L):</code> </li>
+<li>If users fail to provide any of the <code class="language-kotlin">C</code>, <code class="language-kotlin">H</code>, <code class="language-kotlin">N</code>, <code class="language-kotlin">L</code> priorities, ask them again (case-insensitive);</li>
+<li>Ask for a date with <code class="language-kotlin">Input the date (yyyy-mm-dd):</code></li>
+<li>If users don't input a valid date, print <code class="language-kotlin">The input date is invalid</code> and ask again;</li>
+<li>Ask the time with <code class="language-kotlin">Input the time (hh:mm):</code> </li>
+<li>If users fail to provide a valid time, print <code class="language-kotlin">The input time is invalid</code> and ask again;</li>
+<li>Ask users to input a task with <code class="language-kotlin">Input a new task (enter a blank line to end):</code> as in the previous task;</li>
+<li>If one blank line is provided, print <code class="language-kotlin">The task is blank</code> and don't save the task.</li>
+</ol>
+<p>Note that the date should be a real date in the following format:</p>
+<pre><code class="language-kotlin">&lt;year (4 digits)&gt;-&lt;number of month&gt;-&lt;number of day in the month&gt;</code></pre>
+<p>Time should be in the following format:</p>
+<pre><code class="language-kotlin">&lt;hour (0 - 23)&gt;:&lt;minutes (0 - 59)&gt;</code></pre>
+<p>When the user inputs <code class="language-kotlin">print</code>, print the tasks as in the previous stage but with one difference — add the date, time, and priority to the first line for each task:</p>
+<pre><code class="language-no-highlight">1  Date1 Time1 Priority1
+   Task1-line1
+   Task1-line2
+
+2  Date2 Time2 Priority2
+   Task2-line1
+
+3  Date3 Time3 Priority3
+   Task3-line1
+
+4  Date4 Time4 Priority4
+   Task4-line1
+   Task4-line2</code></pre>
+<p>Separate the date, time, and priority by a single space.</p>
+<p>If the number of months, number of days in the month,<strong> </strong>hour, or minutes is only one digit, they must be preceded by a leading zero. In this way, each of them is always be printed as a<strong> </strong>two-digit number.</p>
+<p>Print a year as a four-digit number.</p>
+<h5 id="examples">Examples</h5>
+<p>The greater-than symbol followed by a space (<code class="language-kotlin">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+<p><strong>Example 1:</strong> <em>normal execution</em></p>
+<pre><code class="language-no-highlight">Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; H
+Input the date (yyyy-mm-dd):
+&gt; 2021-12-25
+Input the time (hh:mm):
+&gt; 14:00
+Input a new task (enter a blank line to end):
+&gt; Christmas meal
+&gt;
+Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; n
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-12
+Input the time (hh:mm):
+&gt; 19:15
+Input a new task (enter a blank line to end):
+&gt; Dentist
+&gt;
+Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; L
+Input the date (yyyy-mm-dd):
+&gt; 2021-12-23
+Input the time (hh:mm):
+&gt; 9:0
+Input a new task (enter a blank line to end):
+&gt; Supermarket
+&gt; -----------
+&gt; Pasta
+&gt; Butter
+&gt; Cheese
+&gt;
+Input an action (add, print, end):
+&gt; print
+1  2021-12-25 14:00 H
+   Christmas meal
+
+2  2022-01-12 19:15 N
+   Dentist
+
+3  2021-12-23 09:00 L
+   Supermarket
+   -----------
+   Pasta
+   Butter
+   Cheese
+
+Input an action (add, print, end):
+&gt; end
+Tasklist exiting!</code></pre>
+<p><strong>Example 2:</strong> <em>wrong priority</em></p>
+<pre><code class="language-no-highlight">Input an action (add, print, end):
+&gt; add
+&gt; Input the task priority (C, H, N, L):
+Critical
+Input the task priority (C, H, N, L):
+&gt; normal
+Input the task priority (C, H, N, L):
+&gt; n
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-1
+Input the time (hh:mm):
+&gt; 12:00
+Input a new task (enter a blank line to end):
+&gt; Call friends for new year greetings
+&gt;
+Input an action (add, print, end):
+&gt; end
+Tasklist exiting!</code></pre>
+<p><strong>Example 3:</strong> <em>wrong date</em></p>
+<pre><code class="language-no-highlight">Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; N
+Input the date (yyyy-mm-dd):
+&gt; 2021-2-29
+The input date is invalid
+Input the date (yyyy-mm-dd):
+&gt; 2021-13-1
+The input date is invalid
+Input the date (yyyy-mm-dd):
+&gt; 2021-12-32
+The input date is invalid
+Input the date (yyyy-mm-dd):
+&gt; 2021-12-31
+Input the time (hh:mm):
+&gt; 12:00
+Input a new task (enter a blank line to end):
+&gt; Supermarket
+&gt;
+Input an action (add, print, end):
+&gt; end
+Tasklist exiting!</code></pre>
+<p><strong>Example 4:</strong> <em>wrong time</em></p>
+<pre><code class="language-no-highlight">Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; n
+Input the date (yyyy-mm-dd):
+&gt; 2021-12-23
+Input the time (hh:mm):
+&gt; 24:00
+The input time is invalid
+Input the time (hh:mm):
+&gt; 17:60
+The input time is invalid
+Input the time (hh:mm):
+&gt; 9:15
+Input a new task (enter a blank line to end):
+&gt; Supermarket
+&gt;
+Input an action (add, print, end):
+&gt; end
+Tasklist exiting!</code></pre>
+<p><strong>Example 5:</strong> <em>blank task</em></p>
+<pre><code class="language-no-highlight">Input an action (add, print, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; H
+Input the date (yyyy-mm-dd):
+&gt; 2021-11-11
+Input the time (hh:mm):
+&gt; 9:15
+Input a new task (enter a blank line to end):
+&gt;
+The task is blank
+Input an action (add, print, end):
+&gt; print
+No tasks have been input
+Input an action (add, print, end):
+&gt; end
+Tasklist exiting!</code></pre></body></html>

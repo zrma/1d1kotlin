@@ -1,0 +1,54 @@
+<html><body><h5 id="description">Description</h5>
+<p>A task listing program is meaningless if each time you terminate it, the list of tasks is erased. We need a method of keeping tasks when the program isn't running. There are a good number of solutions: a database, several files, or even a cloud. In this stage, we are going to save the tasklist data locally into a file.</p>
+<p>Saving data into a file can also take many forms. You can save data in XML, JSON, or any other custom format. For this project, we will opt for JSON with the help of the JSON <code class="language-kotlin">Moshi</code> library. If you're striving to learn more about it, take a look at <a href="https://github.com/square/moshi" rel="noopener noreferrer nofollow" target="_blank">Github Moshi</a>.</p>
+<p>To access the <code class="language-kotlin">Moshi</code> library, it should be added to your project dependencies, but this has already been done for you. In order to use it, you should just import it to your program with:</p>
+<pre><code class="language-kotlin">import com.squareup.moshi.*</code></pre>
+<p>The tasklist data should be saved into a file named <code class="language-kotlin">tasklist.json</code> without using any paths:</p>
+<pre><code class="language-kotlin">val jsonFile = File("tasklist.json")</code></pre>
+<p>As mentioned in stage 3, <code class="language-kotlin">LocalDate</code> and <code class="language-kotlin">LocalDateTime</code> classes need to be adapted for registration with Moshi. It is easier if you don't try to serialize them right away but use strings and integers for the date and time and only then serialize the tasklist data.</p>
+<h5 id="objectives">Objectives</h5>
+<ul>
+<li>Before you terminate the program, it should create a file named <code class="language-kotlin">tasklist.json</code> and write all data relating to tasks in the JSON format.</li>
+<li>When your program starts, it should check whether the <code class="language-kotlin">tasklist.json</code> file exists. If it does, read the JSON data with tasks.</li>
+</ul>
+<h5 id="example">Example</h5>
+<p>The greater-than symbol followed by a space (<code class="language-kotlin">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+<p><em>We will use images instead of snippets where colors can't be shown</em></p>
+<p><strong>Example 1:</strong> <em>data is saved and loaded after a restart</em></p>
+<pre><code class="language-no-highlight">Input an action (add, print, edit, delete, end):
+&gt; print
+No tasks have been input
+Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; N
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-21
+Input the time (hh:mm):
+&gt; 12:00
+Input a new task (enter a blank line to end):
+&gt; Pay bills
+&gt;
+Input an action (add, print, edit, delete, end):
+&gt; add
+Input the task priority (C, H, N, L):
+&gt; L
+Input the date (yyyy-mm-dd):
+&gt; 2022-1-12
+Input the time (hh:mm):
+&gt; 20:00
+Input a new task (enter a blank line to end):
+&gt; Buy new book
+&gt;
+Input an action (add, print, edit, delete, end):
+&gt; print</code></pre>
+<p><img alt="" height="149" name="p07.png" src="https://ucarecdn.com/163917e2-6f25-4adc-b92b-5d5a49c83756/" width="657"/></p>
+<pre><code class="language-no-highlight">Input an action (add, print, edit, delete, end):
+&gt; end
+Tasklist exiting!</code></pre>
+<pre><code class="language-no-highlight">Input an action (add, print, edit, delete, end):
+&gt; print</code></pre>
+<p><img alt="" height="149" name="p07.png" src="https://ucarecdn.com/6ae4d2d1-81a3-4a8f-a11b-9070aa3d614f/" width="657"/></p>
+<pre><code class="language-no-highlight">Input an action (add, print, edit, delete, end):
+&gt; end
+Tasklist exiting!</code></pre></body></html>

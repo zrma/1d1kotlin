@@ -1,0 +1,9 @@
+type: framework
+content:
+- Read the list
+- The tasklist menu
+- Date and time
+- Edit the list
+- Frame and colors
+- Save the list
+current_task: 0
