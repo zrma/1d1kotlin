@@ -24,3 +24,4 @@ record: -1
 selected_options:
 - 2
 custom_name: What is the result?
+local_check: true

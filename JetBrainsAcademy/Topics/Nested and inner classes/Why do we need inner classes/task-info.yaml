@@ -26,3 +26,4 @@ selected_options:
 - 2
 - 3
 custom_name: Why do we need inner classes?
+local_check: true

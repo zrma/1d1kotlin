@@ -26,3 +26,4 @@ selected_options:
 - 1
 - 2
 custom_name: The truth is...
+local_check: true

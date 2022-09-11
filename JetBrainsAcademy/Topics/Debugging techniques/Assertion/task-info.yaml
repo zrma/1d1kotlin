@@ -25,3 +25,4 @@ feedback:
 record: -1
 selected_options:
 - 3
+local_check: true

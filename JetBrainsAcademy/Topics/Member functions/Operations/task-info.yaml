@@ -26,3 +26,4 @@ record: -1
 selected_options:
 - 1
 - 4
+local_check: true

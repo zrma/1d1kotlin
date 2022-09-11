@@ -27,3 +27,4 @@ selected_options:
 - 2
 - 3
 custom_name: What is the scope?
+local_check: true
