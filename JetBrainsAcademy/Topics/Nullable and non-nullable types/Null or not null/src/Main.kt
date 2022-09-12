@@ -1,0 +1,1 @@
+fun nullOrNotNull(n: Int?): Int = n ?: -1

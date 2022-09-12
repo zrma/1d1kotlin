@@ -1,0 +1,37 @@
+<h2>Nullable and non-nullable types</h2>
+<html><body><p>If you're familiar with Java, you've probably heard something like <strong>NullPointerException </strong>(<strong>NPE</strong>). If you are reading about it for the first time, you're a lucky person, because <strong>NPE </strong>is the most frequent exception which will make you so unhappy. Moreover, there isn't any convenient way to prevent such an exception in Java. Lucky you, Kotlin has a real remedy for <strong>NPE</strong>. Though, first, we need to learn about a special type of references.</p>
+<h5 id="nullability" style="text-align: center;">Nullability</h5>
+<p>There are just a few ways how <strong>NPE</strong> may occur in Kotlin:</p>
+<ol>
+<li>explicit call of <code class="language-kotlin">throw NullPointerException()</code> ;</li>
+<li><code class="language-kotlin">!!</code> syntax;</li>
+<li>bad initializations, such as constructors and superclass constructors.</li>
+</ol>
+<p>If you don't know anything about these things, it's just fine. You will learn about them later. For now, just remember that you don't have to pay as much attention to <strong>NPE </strong>as in Java and that you can concentrate on real tasks. Don't forget that Kotlin is a pragmatic language. So, what do we have?</p>
+<p>First of all, every reference in Kotlin can be either nullable or not. Let's say we want to define a String variable, but we are not sure what it might be initially:</p>
+<pre><code class="language-kotlin">var name: String = null</code></pre>
+<p>So, what is <code class="language-kotlin">null</code> above? It just means that the <code class="language-kotlin">name</code> variable doesn't have a certain value. This code won't compile, because we declared a non-null variable. How can we fix it? Pretty easy:</p>
+<pre><code class="language-kotlin">var name: String? = null</code></pre>
+<p>As you can see, we just added a <code class="language-kotlin">?</code> sign right after the type of our variable. We marked our <code class="language-kotlin">name</code> variable as nullable. We can also do the same with other types, like <code class="language-kotlin">Int</code> or <code class="language-kotlin">Long</code>:</p>
+<pre><code class="language-kotlin">var age: Int? = null</code></pre>
+<p>So, without a <code class="language-kotlin">?</code> sign in the type you can't assign <code class="language-kotlin">null</code> to a variable.</p>
+<h5 id="accessing-nullable-variables" style="text-align: center;">Accessing nullable variables</h5>
+<p>Now try to guess what happens if you try to access this variable property:</p>
+<pre><code class="language-kotlin">var name: String? = null
+print(name.length)</code></pre>
+<p>If you think, there will be an error, you're right! This code won't even compile. What can we do, then? Of course, we can add a common check for <code class="language-kotlin">null</code> like this:</p>
+<pre><code class="language-kotlin">if (name != null) {
+    print(name.length)
+}</code></pre>
+<p>If the <code class="language-kotlin">name</code> is null, the <code class="language-kotlin">print</code> won't be called.</p>
+<p>Or we can access the length this way:</p>
+<pre><code class="language-kotlin">print(name?.length)</code></pre>
+<p>Here <code class="language-kotlin">null</code> is printed.</p>
+<p>This <code class="language-kotlin">?.</code> pair of symbols is called a <strong>safe call</strong> in Kotlin. We will dig into this concept in a special topic. Right now there is enough information for you to practice.</p>
+<h5 id="billion-dollar-mistake" style="text-align: center;">Billion-dollar mistake</h5>
+<p>So, Kotlin introduces nullable types that differ from non-nullable ones. In old languages like Java there is no difference because every type is nullable. Therefore, in many languages it's not required to check a nullable variable against <code class="language-kotlin">null</code> before accessing it. This can cause lots of program crashes, and in 2009, Tony Hoare, a British Computer Scientist who invented the concept of <code class="language-kotlin">null</code> reference, described it as "<strong>billion-dollar mistake</strong>":</p>
+<p> </p>
+<p>I call it my billion-dollar mistake. It was the invention of the null reference in 1965. At that time, I was designing the first comprehensive type system for references in an object-oriented language (<a href="https://en.wikipedia.org/wiki/ALGOL_W" rel="noopener noreferrer nofollow" target="_blank" title="ALGOL W">ALGOL W</a>). My goal was to ensure that all use of references should be absolutely safe, with checking performed automatically by the compiler. But I couldn't resist the temptation to put in a null reference, simply because it was so easy to implement. This has led to innumerable errors, vulnerabilities, and system crashes, which have probably caused a billion dollars of pain and damage in the last forty years.</p>
+<p> </p>
+<h5 id="conclusion" style="text-align: center;">Conclusion</h5>
+<p>There are two different types of references in Kotlin. Obviously, with non-null types you don't have to pay as much attention as with nullable ones. Be careful with your references and try to define a type that is appropriate in that particular case. However, don't worry too much for in most situations the compiler will point at your mistakes.</p></body></html>
