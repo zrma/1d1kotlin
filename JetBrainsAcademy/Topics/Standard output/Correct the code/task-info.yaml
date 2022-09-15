@@ -1,0 +1,19 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun main() {
+        System.out.printf(1, 2, 3...)
+        printLine("Line print here ")
+        lnPrint(42)
+        printLn("Pay attention to")
+        println("syntax")
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/15360#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Thu, 15 Sep 2022 11:09:28 UTC
+record: -1
