@@ -97,10 +97,10 @@ topics:
     theory_id: 4680
   - title: Ranges
     theory_id: 4633
-  - title: For loop and ranges
-    theory_id: 4652
   - title: Introduction to MutableList
     theory_id: 14879
+  - title: For loop and ranges
+    theory_id: 4652
   - title: Work with MutableLists
     theory_id: 14902
   - title: For loop and lists

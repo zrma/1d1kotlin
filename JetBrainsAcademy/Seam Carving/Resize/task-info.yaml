@@ -282,7 +282,7 @@ files:
 - name: test/trees-reduced.png
   visible: true
   learner_created: true
-feedback_link: https://hyperskill.org/learn/step/9020#comment
+feedback_link: https://hyperskill.org/learn/step/18599#comment
 status: Solved
 feedback:
   message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">JetBrains
