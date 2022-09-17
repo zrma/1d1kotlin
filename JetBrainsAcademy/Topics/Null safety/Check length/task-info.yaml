@@ -1,0 +1,27 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun main() {
+        val argument = readLine()!!
+        println(check(argument).length)
+    }
+
+    // do not change function below
+
+    fun check(name: String): String? {
+        return if (name.length > 5) null else name
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/7625#comment
+status: Solved
+feedback:
+  message: |-
+    <html>[+] Test #1. OK
+    [+] Test #2. OK
+    [+] Test #3. OK
+
+    3 of 3 test(s) passed.</html>
+  time: Sat, 17 Sep 2022 02:20:56 UTC
+record: -1

@@ -76,3 +76,4 @@ content:
 - Overriding functions
 - Quantifiers
 - Nullable and non-nullable types
+- Null safety
