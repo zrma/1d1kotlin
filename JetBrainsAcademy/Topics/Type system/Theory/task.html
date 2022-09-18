@@ -1,0 +1,144 @@
+<h2>Type system</h2>
+<p>One of the most important parts of Kotlin is the type system, a mechanism for detecting and preventing illegal program States. It imposes structure on our program. Without structure, programs are wildly complex, ready to "do damage" at the slightest mistake of the programmer. With the help of types, we can describe and give meaning to the relationships between components in our program, making it concise and readable.</p>
+
+<h5 id="subtype-and-supertype" style="text-align: center;">Subtype and supertype</h5>
+
+<p>Types in Kotlin are organized into a hierarchy of subtype-supertype relationships. So what are the subtype and supertype? Let's find it out by looking at an example.</p>
+
+<p>Do you like coffee or tea? Well, both are drinks. We can state the fact that coffee and tea are related to a specific type: drinks. In other words, coffee and tea are <strong>subtypes</strong> of drink, while drink is the <strong>supertype</strong> for these two types:</p>
+
+<p style="text-align: center;"><img alt="" height="186" name="Объяснение (3).svg" src="https://ucarecdn.com/41c926d0-f108-40d0-9ee7-73eced7c11de/" width="231"></p>
+
+<p>So, the <strong>subtype</strong><em> </em>is a datatype that is related to another datatype (<em>supertype</em>) and shares common characteristics and rules of behavior with it. Note that the rules of behavior of different <em>subtypes </em>may vary, just like all kinds of drinks have some sort of color, but it's different for coffee and tea.</p>
+
+<p>Logically, <strong>supertype</strong> is a type that specifies the characteristics and rules of behavior that every subtype<em> </em>will follow.</p>
+
+<p>For example, <code class="language-kotlin">Number</code> is a supertype<em> </em>for all types that represent numeric value; <code class="language-kotlin">Int </code> and <code class="language-kotlin">Double</code> are subtypes<em> </em>of <code class="language-kotlin">Number</code> type.</p>
+
+<p style="text-align: center;"><img alt="" height="188" src="https://ucarecdn.com/2347dcf1-ea0f-44bb-bfe8-8665aee5f5c1/" width="230"></p>
+
+<h5 id="type-checking" style="text-align: center;">Type checking</h5>
+
+<p>Kotlin type checker enforces subtype-supertype relationships. For example, to the function that's waiting for <code class="language-kotlin">Number</code><em>,</em> you can pass its subtype, <code class="language-kotlin">Int</code>:</p>
+
+<pre><code class="language-kotlin">fun calculate(number: Number) {}
+
+val number: Int = 1
+calculate(number)</code></pre>
+
+<p>However, you cannot do it the other way around:</p>
+
+<pre><code class="language-kotlin">fun calculate(number: Int) {}
+
+val number: Number = 1
+calculate(number) // Error: Type mismatch: inferred type is Number but Int was expected </code></pre>
+
+<p>If you pass a <code class="language-kotlin">Number</code> to the <code class="language-kotlin">calculate</code> function, you will get an error. Now let's see what type is a <strong>supertype</strong> for <code class="language-kotlin">Number,</code> <code class="language-kotlin">Drink,</code> and other types that can't be <code class="language-kotlin">null.</code></p>
+
+<h5 id="root-type-any" style="text-align: center;">Root type <em>Any</em></h5>
+
+<p>In the previous topics, you got familiar with the concept of nullable and non-nullable types. Now it's time to look deeper and understand what represents these types in Kotlin. </p>
+
+<p>In Kotlin, type <em>Any</em> is a supertype<strong> </strong>for all types that don't support null. This means that any non-nullable type is a subtype<em> </em>of <em>Any. </em>For example, you can assign non-null <code class="language-kotlin">String</code> to <em>Any </em>type:</p>
+
+<pre><code class="language-kotlin">val message: Any = "Important message"</code></pre>
+
+<p>However, you cannot assign a null value to the <em>Any </em>type:</p>
+
+<pre><code class="language-kotlin">val message: Any = null  // Error: Null can not be a value of a non-null type Any</code></pre>
+
+<p>Type <em>Any</em><strong> </strong>is also a supertype for primitives such as <em>Boolean</em>:</p>
+
+<pre><code class="language-kotlin">val isNull: Any = false</code></pre>
+
+<p>Type <em>Any</em> is at the top of the Kotlin type hierarchy for types that cannot be null. For example, the type <code class="language-kotlin">Number</code> is a subtype<em> </em>of type <em>Any</em>:</p>
+
+<p style="text-align: center;"><img alt="" height="163" src="https://ucarecdn.com/4dd59f84-7aa1-4c41-825d-b326a7c0aa7c/" width="91"></p>
+
+<p>Note that type <em>Any </em>does not support <em>null</em>. When we talk about a type as a subtype of <em>Any</em>, we can be sure that when we try to access this type, we will not get a NullPointerException. In other words, Kotlin guarantees that the subtype of type Any can never be null, which means that null checks become useless when we're dealing with type Any. </p>
+
+<p>Let's consider an example:</p>
+
+<pre><code class="language-kotlin">fun stringify(any: Any) {
+    any?.toString()  // '?' can be omitted
+    any!!.toString() // '!!' can be omitted
+}</code></pre>
+
+<h5 id="root-type-any" style="text-align: center;">Root type <em>Any?</em></h5>
+
+<p>If you want a variable to store any value including null, use type <em>Any?</em>. </p>
+
+<p>As you can see, to access a nullable variable you need to use a special suffix '?', otherwise, an error will occur. Also, the suffix '?' is used when declaring a variable that can be null. Note that you can't assign null to non-null variables. Let's see an example:</p>
+
+<pre><code class="language-kotlin">val number1: Number = null // Error: Null can not be a value of a non-null type Number</code></pre>
+
+<pre><code class="language-kotlin">val number2: Number? = null // OK</code></pre>
+
+<p>While type <em>Any</em><strong> </strong>is a supertype for all types that do not support null, <em>Any?</em> is a supertype for types that can be either null or not.<br>
+From this fact, it follows that type <em>Any?</em> is a supertype for type <em>Any</em>:</p>
+
+<p style="text-align: center;"><img alt="" height="160" src="https://ucarecdn.com/841f6033-0d40-4ce9-85d0-301f4c4ca66e/" width="89"></p>
+
+<p>Non-null type is a subtype of its nullable equivalents, for example, type <em>Number</em> is a subtype of type<em> Number?</em>, and type<em> Int</em> is a subtype of type <em>Int?</em>. Let's see what it looks like:</p>
+
+<p style="text-align: center;"><img alt="" height="256" src="https://ucarecdn.com/81310c7f-1f48-4048-a5e8-bf2e50a57600/" width="244"></p>
+
+<p>This is why you can store a non-null <em>Number</em> value in a nullable <em>Number?</em> variable,  but you cannot store a nullable <em>Number?</em> value in a non-null <em>Number</em> variable.</p>
+
+<h5 id="unit" style="text-align: center;">Unit</h5>
+
+<p>Unit type can be used as the return type of a function that does not return any meaningful value:</p>
+
+<pre><code class="language-kotlin">fun logCurrentState(): Unit { 
+    println("Current state of a program: $state")
+}</code></pre>
+
+<p>If you write a function and the return type is not specified, the compiler will treat it as a <em>Unit</em> function:</p>
+
+<pre><code class="language-kotlin">fun updateState(state: State) { 
+    logCurrentState()
+    this.state = state
+    logCurrentState()
+}
+
+val result: Unit = logCurrentState()</code></pre>
+
+<p>Like any other type, <em>Unit</em> is a subtype of <em>Any</em>. It can also be a nullable <em>Unit?</em>, which is a subtype of<em> Any?</em>.</p>
+
+<p><em>Unit?</em> is a type that can be two values: the <em>Unit</em> value and <em>null</em>.</p>
+
+<p style="text-align: center;"><img alt="" height="173" src="https://ucarecdn.com/cb5017d1-be80-4e66-a98b-20ddf0b3a52b/" width="260"></p>
+
+<h5 id="nothing" style="text-align: center;">Nothing</h5>
+
+<p>At the very bottom of the Kotlin type hierarchy is the type <strong>Nothing</strong>.</p>
+
+<p><em>Nothing</em> is a type that has no instances. For some functions in Kotlin, the concept of a return value doesn't make sense, since they never return controls. This means that any code following an expression of type Nothing is unreachable.</p>
+
+<p>Sometimes it is useful to know that some function does not return control: for example, the <code class="language-kotlin">fail</code> function that returns an error:</p>
+
+<pre><code class="language-kotlin">fun fail(): Nothing {
+    throw Exception("Fail!")
+}</code></pre>
+
+<p>Therefore, a throw is an expression of type <em>Nothing</em>.</p>
+
+<p>With the <em>Nothing</em> type, which can be a subtype of <em>Any</em> type, the type system allows any expression to fail while doing some work:</p>
+
+<pre><code class="language-kotlin">fun throwIfNull(name: String?) {
+    if (name == null){
+      throw Exception("Name can't be null!")
+    }
+}</code></pre>
+
+<p>Like any other type, <em>Nothing</em> can be nullable with the help of a question mark suffix. <em>Nothing?</em> can only contain one value, <em>null</em>:</p>
+
+<p style="text-align: center;"><img alt="" height="262" src="https://ucarecdn.com/359a6f89-32ea-40c8-85ae-feaf2fcf7e78/" width="92"></p>
+
+<h5 id="conclusion" style="text-align: center;">Conclusion</h5>
+
+<p>Everything we got to know from this topic can be summarized as a neat type system tree:</p>
+
+<p style="text-align: center;"><img alt="" height="689" src="https://ucarecdn.com/d365efa2-c7bb-42cc-82ca-9be2ea2e6e90/" width="915"></p>
+
+<p>Hopefully, now you feel at ease with Kotlin type system and can describe the relationships between the components in your programs. Remember: the type system in Kotlin is an important part of the language that can help you a lot in solving your problems.</p>
