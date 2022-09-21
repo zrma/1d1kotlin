@@ -1,0 +1,24 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: Your program can obtain a value in the future, but there is no reasonable
+    value now
+- text: 'Your program doesn''t need a value: if the value isn''t present, there is
+    a way around'
+- text: Your program needs three possible values for a variable, maybe use nullable
+    Boolean?
+- text: Your program needs a value and can't work without one
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/7833#comment
+status: Solved
+record: -1
+local_check: false

@@ -1,0 +1,18 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun main() {
+        val line: String? = readLine()
+        // write your code here. Do not change line above
+        println(line.length)// need a fix
+
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/7832#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Wed, 21 Sep 2022 10:16:43 UTC
+record: -1

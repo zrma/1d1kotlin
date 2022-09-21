@@ -1,0 +1,8 @@
+<h2>Mixed nullable</h2>
+<html><body><p>What is the output of this snippet:</p>
+<pre><code class="language-kotlin">fun main() {
+    val name: String? = null
+    val age: Int? = name?.length
+    val result: Int? = age?.plus(3)
+    print(result)
+}</code></pre></body></html>

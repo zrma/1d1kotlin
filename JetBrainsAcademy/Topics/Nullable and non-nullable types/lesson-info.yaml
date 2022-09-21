@@ -2,3 +2,6 @@ content:
 - Theory
 - Declare null
 - Null or not null
+- Mixed nullable
+- Nullable variables
+- Line length
