@@ -1,0 +1,15 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: "// don't change the code below      \nfun totalLembas(first: String, second:\
+    \ String) = print(first.toInt() + second.toInt())\n\nfun main() {\n    val breadFromFrodo\
+    \ = readln()\n    val breadFromSam = readln()\n\n    // write your code here\n\
+    \n}"
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/19913#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Wed, 05 Oct 2022 10:41:22 UTC
+record: -1

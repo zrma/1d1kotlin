@@ -1,0 +1,32 @@
+<h2>Invoking functions</h2>
+<html><body><p>As you remember, we have discussed functions before. What is a function, though? How can we use them? A function is <strong>a sequence of instructions</strong>, we can invoke it<strong> </strong>from a program by calling its name. Functions represent subprograms, and they perform some actions, for example, printing data to the standard output, calculating a square root, and so on.</p>
+<p>The picture below shows how functions work. Basically, it is just a box that processes input arguments (<strong>input data</strong>) and produces either a useful result or nothing.</p>
+<p style="text-align: center;"><img alt="" height="169px" src="https://ucarecdn.com/8d498b2d-f6d1-4ead-965b-a2141ca20715/" width="667px"/></p>
+<h5 id="functions-arguments" style="text-align: center;">Functions arguments</h5>
+<p>When we want to use a function, we can invoke (or call) it using its name followed by parentheses. If a function takes one or more arguments (input data), they should be passed in the parentheses.</p>
+<p>In the example below, we invoke the <code class="language-kotlin">println</code> function with a single-string argument:</p>
+<pre><code class="language-kotlin">val text = "Hello"
+println(text)</code></pre>
+<p>This function can also take no arguments at all to print a new line:</p>
+<pre><code class="language-kotlin">println()</code></pre>
+<p>So, in its general form, a function can be invoked like this:</p>
+<pre><code class="language-kotlin">function1() // invokes function1 without an argument
+function2(arg1) // invokes function2 while passing an argument
+function3(arg1, arg2) // invokes function3 while passing two arguments
+// ... and so on</code></pre>
+<p>Where <code class="language-kotlin">function</code> is the name of a function.</p>
+<h5 id="producing-a-result" style="text-align: center;">Producing a result</h5>
+<p>Some functions not only take arguments but also produce (return) some results. You can also assign it to a variable:</p>
+<pre><code class="language-kotlin">val result = function(arg)</code></pre>
+<p>Functions that take arguments and produce a result look like regular math functions.</p>
+<p>For example, let's take a look at a math function that returns the absolute value of a number:</p>
+<pre><code class="language-kotlin">val number = -10
+val nonNegNumber = Math.abs(number) // it takes -10 and returns 10</code></pre>
+<p>A benefit of using functions is that you don't need to implement anything, just invoke a function and it will work.</p>
+<p>The name of the <code class="language-kotlin">abs</code> function is written after the dot symbol. The reason is that <code class="language-kotlin">Math</code> groups multiple functions, and we should write the name of the group to invoke one of them. We won't go into detail right now, just keep in mind that you will see something like that in our examples and practice problems.</p>
+<p>All functions <strong>return</strong> a result, even the <code class="language-kotlin">println</code> function.</p>
+<pre><code class="language-kotlin">val result = println("text")
+println(result) // kotlin.Unit</code></pre>
+<p>The result is a special value called <code class="language-kotlin">Unit</code>, which practically means <code class="language-kotlin">no result</code>. When your function returns nothing, it means it returns <code class="language-kotlin">Unit</code>, that's all you need to understand for now. If you're coming from another language like C or Java, you can think of it as <code class="language-kotlin">Void</code>.</p>
+<h5 id="conclusion" style="text-align: center;">Conclusion</h5>
+<p>In this topic, we have discussed what a function is and how to invoke standard functions in Kotlin. In the next topic, you'll find out how to declare your own functions and how to use functions written by other programmers.</p></body></html>

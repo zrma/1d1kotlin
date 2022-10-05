@@ -78,3 +78,4 @@ content:
 - Nullable and non-nullable types
 - Null safety
 - Type system
+- Invoking functions

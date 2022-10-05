@@ -1,0 +1,22 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: The value of <code>result</code> is <code>text</code>
+- text: The value of <code>result</code> is empty.
+- text: The value of <code>result</code> is Unit.
+- text: It does not work because the <code>println</code> function cannot produce
+    a result.
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/4578#comment
+status: Solved
+record: -1
+local_check: false
