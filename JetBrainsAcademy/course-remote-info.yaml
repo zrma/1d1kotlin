@@ -79,10 +79,10 @@ topics:
     theory_id: 4488
   - title: Relational operators
     theory_id: 4525
-  - title: If expression
-    theory_id: 4625
   - title: Declaring functions
     theory_id: 4580
+  - title: If expression
+    theory_id: 4625
   - title: Repeating blocks
     theory_id: 4643
   - title: While loops
@@ -223,10 +223,10 @@ topics:
     theory_id: 13264
   - title: Taming exceptions
     theory_id: 7601
-  - title: The try-catch statement
-    theory_id: 10622
   - title: Null safety
     theory_id: 7619
+  - title: The try-catch statement
+    theory_id: 10622
   - title: The try-catch-finally statement
     theory_id: 11809
   3:
