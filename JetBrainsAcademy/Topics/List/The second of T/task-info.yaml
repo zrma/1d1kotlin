@@ -1,0 +1,15 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun solution(names: List<String>): Int {
+        // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/20606#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Sat, 15 Oct 2022 12:43:26 UTC
+record: -1
