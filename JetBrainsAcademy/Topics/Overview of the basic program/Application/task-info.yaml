@@ -1,0 +1,12 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: "fun main() { \n    println(2 + 2 = 4) // fix this line\n}"
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/23011#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Wed, 19 Oct 2022 12:32:32 UTC
+record: -1
