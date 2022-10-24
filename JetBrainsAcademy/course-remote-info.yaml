@@ -163,6 +163,8 @@ topics:
     theory_id: 16927
   - title: Date and time standards
     theory_id: 19467
+  - title: Errors in programs
+    theory_id: 11559
   - title: Nullable and non-nullable types
     theory_id: 7613
   - title: Type system
@@ -215,8 +217,6 @@ topics:
     theory_id: 8526
   - title: Kotlinx datetime library
     theory_id: 19456
-  - title: Errors in programs
-    theory_id: 11559
   - title: What is an exception
     theory_id: 7243
   - title: Hierarchy of exceptions
