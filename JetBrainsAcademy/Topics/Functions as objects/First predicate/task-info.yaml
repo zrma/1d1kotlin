@@ -2,11 +2,11 @@ type: code
 files:
 - name: src/Main.kt
   visible: true
-  text: '// TODO: provide isEven function here'
+  text: "// TODO: provide isEven function here"
   learner_created: false
 feedback_link: https://hyperskill.org/learn/step/5998#comment
 status: Solved
 feedback:
   message: <html>Correct solution</html>
-  time: Thu, 27 Jan 2022 14:26:32 UTC
+  time: "Thu, 27 Jan 2022 14:26:32 UTC"
 record: -1

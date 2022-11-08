@@ -1,5 +1,5 @@
 type: code
-custom_name: 'Board game basics: Game'
+custom_name: "Board game basics: Game"
 files:
 - name: src/Main.kt
   visible: true
@@ -16,5 +16,5 @@ feedback_link: https://hyperskill.org/learn/step/10702#comment
 status: Solved
 feedback:
   message: <html>Correct solution</html>
-  time: Sat, 08 Jan 2022 08:00:59 UTC
+  time: "Sat, 08 Jan 2022 08:00:59 UTC"
 record: -1

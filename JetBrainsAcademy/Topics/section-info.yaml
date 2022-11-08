@@ -79,3 +79,4 @@ content:
 - Null safety
 - Type system
 - Invoking functions
+- toString()

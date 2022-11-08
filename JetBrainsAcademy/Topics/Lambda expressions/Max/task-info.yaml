@@ -2,11 +2,11 @@ type: code
 files:
 - name: src/Main.kt
   visible: true
-  text: 'val lambda: (Int, Int) -> Int = TODO("Provide implementation")'
+  text: "val lambda: (Int, Int) -> Int = TODO(\"Provide implementation\")"
   learner_created: false
 feedback_link: https://hyperskill.org/learn/step/6160#comment
 status: Solved
 feedback:
   message: <html>Correct solution</html>
-  time: Thu, 03 Feb 2022 12:01:02 UTC
+  time: "Thu, 03 Feb 2022 12:01:02 UTC"
 record: -1

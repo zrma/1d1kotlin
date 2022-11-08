@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/670908/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Thu, 01 Jan 1970 00:00:00 UTC
+update_date: "Thu, 01 Jan 1970 00:00:00 UTC"
 stages:
 - id: 1188
   step: 18594
@@ -147,9 +147,9 @@ topics:
   - title: Property accessors
     theory_id: 10511
   2:
-  - title: Write, compile, and run
+  - title: "Write, compile, and run"
     theory_id: 3739
-  - title: JVM, JRE, and JDK
+  - title: "JVM, JRE, and JDK"
     theory_id: 3499
   - title: Introduction to Operating systems
     theory_id: 9704
@@ -157,7 +157,7 @@ topics:
     theory_id: 16547
   - title: The big O notation
     theory_id: 16699
-  - title: Best, average and worst cases
+  - title: "Best, average and worst cases"
     theory_id: 20084
   - title: Data structures
     theory_id: 16927
