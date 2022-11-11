@@ -1,13 +1,13 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: 'val age: Int = 42'
+- text: "val age: Int = 42"
 - text: Int age = 42
-- text: 'val age = “42”: String'
+- text: "val age = “42”: String"
 - text: String age = “42”
 - text: var age = 42
-- text: 'val age: String = “42”'
-- text: 'val age: Char = ‘42’'
+- text: "val age: String = “42”"
+- text: "val age: Char = ‘42’"
 files:
 - name: src/Main.kt
   visible: true
@@ -29,7 +29,7 @@ feedback:
     var age = 42  // var is used here not val, and age is of type Int, not a String
     val age: String = “42”  // correct syntax, although not mandatory we can explicitly declare the type
     val age: Char = ‘42’  // '42' is not Char type, in fact, it is not a valid type Kotlin knows about</html>
-  time: Thu, 24 Feb 2022 15:22:55 UTC
+  time: "Thu, 24 Feb 2022 15:22:55 UTC"
 record: -1
 selected_options:
 - 5

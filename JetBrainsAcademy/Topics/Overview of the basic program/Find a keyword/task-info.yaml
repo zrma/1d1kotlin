@@ -4,7 +4,7 @@ options:
 - text: ()
 - text: println
 - text: fun
-- text: '"Hello, World!"'
+- text: "\"Hello, World!\""
 - text: main
 files:
 - name: src/Main.kt
@@ -20,7 +20,7 @@ feedback_link: https://hyperskill.org/learn/step/4363#comment
 status: Solved
 feedback:
   message: <html>Have you noticed that keywords are colored specially? :)</html>
-  time: Wed, 23 Mar 2022 13:03:05 UTC
+  time: "Wed, 23 Mar 2022 13:03:05 UTC"
 record: -1
 selected_options:
 - 4

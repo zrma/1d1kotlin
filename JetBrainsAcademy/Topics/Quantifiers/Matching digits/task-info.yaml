@@ -1,11 +1,11 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: '*[0-9]'
-- text: '[0-9]{1, 10}'
-- text: +[0-9]
-- text: '[0-9]+'
-- text: '[0-9]*'
+- text: "*[0-9]"
+- text: "[0-9]{1, 10}"
+- text: "+[0-9]"
+- text: "[0-9]+"
+- text: "[0-9]*"
 files:
 - name: src/Main.kt
   visible: true

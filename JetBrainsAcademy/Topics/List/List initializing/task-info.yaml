@@ -1,9 +1,9 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: val list = listOf(&quot;Day&quot;, &quot;and&quot;, &quot;night&quot;)
-- text: val list = List(1, 2, 3, 4, 5)
-- text: val list = listOf&lt;String&gt;(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;)
+- text: "val list = listOf(&quot;Day&quot;, &quot;and&quot;, &quot;night&quot;)"
+- text: "val list = List(1, 2, 3, 4, 5)"
+- text: "val list = listOf&lt;String&gt;(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;)"
 - text: val list = emptyList()
 files:
 - name: src/Main.kt
@@ -19,7 +19,7 @@ feedback_link: https://hyperskill.org/learn/step/10732#comment
 status: Solved
 feedback:
   message: <html>Correct solution</html>
-  time: Sun, 06 Feb 2022 09:20:33 UTC
+  time: "Sun, 06 Feb 2022 09:20:33 UTC"
 record: -1
 selected_options:
 - 1

@@ -1,7 +1,7 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: foo[arg]
+- text: "foo[arg]"
 - text: foo
 - text: arg.foo
 - text: foo(arg)

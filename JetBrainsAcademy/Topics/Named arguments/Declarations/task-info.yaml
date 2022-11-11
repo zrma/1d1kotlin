@@ -1,11 +1,11 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: 'fun foo(a: Int, b: Int = c, c: Int = b) = ...'
-- text: 'fun foo(a: Int = a, b: Int = b, c: Int) = ...'
-- text: 'fun foo(a: Int = c, b: Int = c, c: Int) = ...'
-- text: 'fun foo(a: Int, b: Int = a, c: Int = a) = ...'
-- text: 'fun foo(a: Int, b: Int = a, c: Int = b) = ...'
+- text: "fun foo(a: Int, b: Int = c, c: Int = b) = ..."
+- text: "fun foo(a: Int = a, b: Int = b, c: Int) = ..."
+- text: "fun foo(a: Int = c, b: Int = c, c: Int) = ..."
+- text: "fun foo(a: Int, b: Int = a, c: Int = a) = ..."
+- text: "fun foo(a: Int, b: Int = a, c: Int = b) = ..."
 files:
 - name: src/Main.kt
   visible: true

@@ -5,10 +5,10 @@ options:
 - text: (String -&gt; Int)
 - text: (String) =&gt; Int
 - text: (String =&gt; Int)
-- text: (Short, Short) -&gt; Int, Int
-- text: (Short, Short -&gt; Int, Int)
-- text: (Short, Short) =&gt; Int, Int
-- text: (Short, Short =&gt; Int, Int)
+- text: "(Short, Short) -&gt; Int, Int"
+- text: "(Short, Short -&gt; Int, Int)"
+- text: "(Short, Short) =&gt; Int, Int"
+- text: "(Short, Short =&gt; Int, Int)"
 files:
 - name: src/Main.kt
   visible: true
@@ -23,7 +23,7 @@ feedback_link: https://hyperskill.org/learn/step/5994#comment
 status: Solved
 feedback:
   message: <html>Correct solution</html>
-  time: Tue, 25 Jan 2022 13:17:01 UTC
+  time: "Tue, 25 Jan 2022 13:17:01 UTC"
 record: -1
 selected_options:
 - 0

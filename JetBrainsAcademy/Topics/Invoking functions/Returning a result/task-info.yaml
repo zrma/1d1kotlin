@@ -1,9 +1,9 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: A function does not return a useful result, only a special value.
-- text: A function returns multiple results at the same time, one of these results
-    is a special value.
+- text: "A function does not return a useful result, only a special value."
+- text: "A function returns multiple results at the same time, one of these results\
+    \ is a special value."
 - text: A function always returns a useful result or a special value.
 - text: A function does not return anything.
 files:

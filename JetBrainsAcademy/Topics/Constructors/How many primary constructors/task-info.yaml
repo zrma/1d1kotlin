@@ -17,9 +17,9 @@ files:
 feedback_link: https://hyperskill.org/learn/step/10876#comment
 status: Solved
 feedback:
-  message: <html>Classes always have at least one constructor (the default one, if
-    no others provided), but the primary constructor may be absent.</html>
-  time: Fri, 24 Dec 2021 07:02:29 UTC
+  message: "<html>Classes always have at least one constructor (the default one, if\
+    \ no others provided), but the primary constructor may be absent.</html>"
+  time: "Fri, 24 Dec 2021 07:02:29 UTC"
 record: -1
 selected_options:
 - 2

@@ -3,7 +3,7 @@ is_multiple_choice: false
 options:
 - text: A function always take at least one argument.
 - text: A function takes exactly one argument.
-- text: A function can take zero, one, or more arguments.
+- text: "A function can take zero, one, or more arguments."
 - text: A function can only take zero or one argument.
 files:
 - name: src/Main.kt

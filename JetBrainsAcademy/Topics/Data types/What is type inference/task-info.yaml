@@ -1,10 +1,10 @@
 type: choice
 is_multiple_choice: false
 options:
-- text: It is a case, when a value cannot be assigned to a variable.
-- text: It is a case, when Kotlin determines type of a variable automatically.
-- text: It is a case, when you have multiple variables of the same type.
-- text: It is a case, when you specify the type of a variable.
+- text: "It is a case, when a value cannot be assigned to a variable."
+- text: "It is a case, when Kotlin determines type of a variable automatically."
+- text: "It is a case, when you have multiple variables of the same type."
+- text: "It is a case, when you specify the type of a variable."
 files:
 - name: src/Main.kt
   visible: true
@@ -19,7 +19,7 @@ feedback_link: https://hyperskill.org/learn/step/4421#comment
 status: Solved
 feedback:
   message: <html>Correct solution</html>
-  time: Thu, 24 Feb 2022 15:28:18 UTC
+  time: "Thu, 24 Feb 2022 15:28:18 UTC"
 record: -1
 selected_options:
 - 2

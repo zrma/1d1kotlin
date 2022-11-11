@@ -1,5 +1,5 @@
 <h2>Integers in action</h2>
-<html><body><h5 id="int-and-long-integer-types" style="text-align: center;">Int and long integer types</h5>
+<h5 id="int-and-long-integer-types" style="text-align: center;">Int and long integer types</h5>
 <p>Programmers often use integer numbers with their programs. As you may recall, Kotlin has several integer types. The most popular are <code class="language-kotlin">Int</code> (32 bits) and <code class="language-kotlin">Long</code> (64 bits). You can perform all types of arithmetic operations (<code class="language-kotlin">+</code>, <code class="language-kotlin">-</code>, <code class="language-kotlin">*</code>, <code class="language-kotlin">/</code>, <code class="language-kotlin">%</code>) with variables of these types. Let's take a look at several examples.</p>
 <pre><code class="language-kotlin">val two = 2  // Int
 val ten = 10 // Int
@@ -96,8 +96,8 @@ println(c.toInt())</code></pre>
 <p>In this example, we tried to put the <code class="language-kotlin">Long</code> variable in <code class="language-kotlin">Int</code>. A cut occurred, the lower bits of the number remained and the higher bits were lost, the result is again unpredictable. Look at how this happens:</p>
 <p style="text-align: center;"><img alt="" height="99" name="50.png" src="https://ucarecdn.com/653efe3f-d247-4795-a1f2-9651bd5ac265/" width="488"/></p>
 <p>It is important to remember the following points:<br/>
-- data type overflow errors is a programmer errors;<br/>
-- program behavior in case of data type overflow is unpredictable;<br/>
+- data type overflow errors are the programmer's errors;<br/>
+- program behavior in the case of data type overflow is unpredictable;<br/>
 - the compiler will not say that a type overflow is possible, so you need to correctly select data types for variables, as well as carefully monitor the transformation of data types.</p>
 <h5 id="conclusion" style="text-align: center;">Conclusion</h5>
-<p>In this topic, we have covered two basic Kotlin integer types — <code class="language-kotlin">Long</code> and <code class="language-kotlin">Int</code>, and learned how to read data from the input. We've also learned what unsigned integer types are. Now you have enough skills to write programs that process data. You may use the template above to solve the code problems in this topic. Remember to give meaningful names to your variables, as it really helps.</p></body></html>
+<p>In this topic, we have covered two basic Kotlin integer types — <code class="language-kotlin">Long</code> and <code class="language-kotlin">Int</code>, and learned how to read data from the input. We've also learned what unsigned integer types are. Now you have enough skills to write programs that process data. You may use the template above to solve the code problems in this topic. Remember to give meaningful names to your variables, as it really helps.</p>

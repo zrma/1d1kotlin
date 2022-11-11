@@ -3,7 +3,7 @@ is_multiple_choice: true
 options:
 - text: The keyword continue only works together with the if expression.
 - text: It cannot be used with break and return expressions in the same loop.
-- text: With a label, it provides a possibility to exit from the inner loop.
+- text: "With a label, it provides a possibility to exit from the inner loop."
 - text: It lets us skip the current iteration of the loop using a condition.
 - text: The keyword continue only works together with labels.
 files:
@@ -20,7 +20,7 @@ feedback_link: https://hyperskill.org/learn/step/6168#comment
 status: Solved
 feedback:
   message: <html>Correct solution</html>
-  time: Sun, 23 Jan 2022 10:46:52 UTC
+  time: "Sun, 23 Jan 2022 10:46:52 UTC"
 record: -1
 selected_options:
 - 1

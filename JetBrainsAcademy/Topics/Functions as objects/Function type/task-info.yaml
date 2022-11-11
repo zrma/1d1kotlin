@@ -3,10 +3,10 @@ is_multiple_choice: false
 options:
 - text: (Int) -&gt; Unit
 - text: (Int) -&gt; Double
-- text: (String, Int) -&gt; Unit
-- text: (String, Int) -&gt; Double
-- text: (String, (Int) -&gt; Double) -&gt; Unit
-- text: (String, (Int) -&gt; Double) -&gt; Double
+- text: "(String, Int) -&gt; Unit"
+- text: "(String, Int) -&gt; Double"
+- text: "(String, (Int) -&gt; Double) -&gt; Unit"
+- text: "(String, (Int) -&gt; Double) -&gt; Double"
 files:
 - name: src/Main.kt
   visible: true
@@ -21,7 +21,7 @@ feedback_link: https://hyperskill.org/learn/step/5996#comment
 status: Solved
 feedback:
   message: <html>Correct solution</html>
-  time: Thu, 27 Jan 2022 14:16:10 UTC
+  time: "Thu, 27 Jan 2022 14:16:10 UTC"
 record: -1
 selected_options:
 - 4

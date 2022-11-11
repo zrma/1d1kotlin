@@ -1,5 +1,16 @@
 type: edu
 files:
+- name: src/tasklist/Main.kt
+  visible: true
+  text: |+
+    package tasklist
+
+    fun main() {
+        // write your code here
+    }
+
+
+  learner_created: false
 - name: test/TasklistTest.kt
   visible: false
   text: "import org.hyperskill.hstest.dynamic.DynamicTest\nimport org.hyperskill.hstest.stage.StageTest\n\
@@ -96,20 +107,6 @@ files:
     \ = caseInsensitive }\n    fun setOutputTrim(trimOutput: Boolean) { this.trimOutput\
     \ = trimOutput}\n}\n\n\n"
   learner_created: false
-- name: src/tasklist/Main.kt
-  visible: true
-  text: |+
-    package tasklist
-
-    fun main() {
-        // write your code here
-    }
-
-
-  learner_created: false
 feedback_link: https://hyperskill.org/projects/237/stages/1188/implement#comment
 status: Solved
-feedback:
-  message: Congratulations!
-  time: Sun, 11 Sep 2022 13:31:15 UTC
-record: 1
+record: 2

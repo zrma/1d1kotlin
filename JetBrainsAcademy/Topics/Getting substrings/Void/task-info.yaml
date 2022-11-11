@@ -2,11 +2,11 @@ type: choice
 is_multiple_choice: true
 options:
 - text: <code>"content".substringBefore("c")</code>
-- text: <code>"content".substring(0,0)</code>
-- text: <code>"content".substring(-1,-1)</code>
+- text: "<code>\"content\".substring(0,0)</code>"
+- text: "<code>\"content\".substring(-1,-1)</code>"
 - text: <code>"content".substringAfter("t")</code>
-- text: <code>"content".substring(1,1)</code>
-- text: <code>"content".substring(0,1)</code>
+- text: "<code>\"content\".substring(1,1)</code>"
+- text: "<code>\"content\".substring(0,1)</code>"
 files:
 - name: src/Main.kt
   visible: true
@@ -21,7 +21,7 @@ feedback_link: https://hyperskill.org/learn/step/8540#comment
 status: Solved
 feedback:
   message: <html>Correct solution</html>
-  time: Tue, 28 Jun 2022 13:11:03 UTC
+  time: "Tue, 28 Jun 2022 13:11:03 UTC"
 record: -1
 selected_options:
 - 0

@@ -2,7 +2,7 @@ type: choice
 is_multiple_choice: true
 options:
 - text: logicaly separate any group of digits inside a number.
-- text: mark numbers, that are greater than 1000.
+- text: "mark numbers, that are greater than 1000."
 - text: separate digits of <code>Int</code> numbers only.
 - text: separate digits of <code>Long</code> numbers only.
 files:

@@ -2,7 +2,7 @@ type: choice
 is_multiple_choice: true
 options:
 - text: MyClass
-- text: Number (Int, Short, ...)
+- text: "Number (Int, Short, ...)"
 - text: String
 files:
 - name: src/Main.kt

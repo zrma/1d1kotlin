@@ -1,13 +1,13 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: 'fun String.replace(oldValue: String, newValue: String): String'
-- text: 'fun CharSequence.split(regex: Regex, limit: Int = 0): List'
-- text: 'fun String.replace(oldValue: String, newValue: String, ignoreCase: Boolean
-    = false): String'
-- text: 'fun CharSequence.split(regex: Regex, limit): List'
-- text: 'fun String.find(input: CharSequence, startIndex: Int = 0): MatchResult?'
-- text: 'fun String.find(input: CharSequence, startIndex: Int = 0): String'
+- text: "fun String.replace(oldValue: String, newValue: String): String"
+- text: "fun CharSequence.split(regex: Regex, limit: Int = 0): List"
+- text: "fun String.replace(oldValue: String, newValue: String, ignoreCase: Boolean\
+    \ = false): String"
+- text: "fun CharSequence.split(regex: Regex, limit): List"
+- text: "fun String.find(input: CharSequence, startIndex: Int = 0): MatchResult?"
+- text: "fun String.find(input: CharSequence, startIndex: Int = 0): String"
 files:
 - name: src/Main.kt
   visible: true
