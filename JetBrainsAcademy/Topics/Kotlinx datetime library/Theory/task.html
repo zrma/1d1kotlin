@@ -1,0 +1,137 @@
+<h2>Kotlinx datetime library</h2>
+<html><body><p><code class="language-kotlin">Kotlinx</code> is a collection of projects that aren't part of the standard library but are useful extensions. One of the most useful projects is the <code class="language-kotlin">kotlinx-datetime</code> library, which is a multiplatform Kotlin library for handling date and time data.</p>
+<h5 id="how-to-use-the-library-in-a-project">How to use the library in a project</h5>
+<p>In your Gradle project, add the Maven Central repository with:</p>
+<pre><code class="language-no-highlight">repositories {
+    mavenCentral()
+}</code></pre>
+<p>Then add to the dependencies block (for example, for version 0.3.2 here):</p>
+<pre><code class="language-no-highlight">dependencies {
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
+}</code></pre>
+<p>In your Maven project, add the dependency:</p>
+<pre><code class="language-kotlin">&lt;dependency&gt;
+    &lt;groupId&gt;org.jetbrains.kotlinx&lt;/groupId&gt;
+    &lt;artifactId&gt;kotlinx-datetime-jvm&lt;/artifactId&gt;
+    &lt;version&gt;0.3.2&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+<p>The latest <code class="language-kotlin">kotlinx-datetime</code> version can be found in the <a href="https://search.maven.org/search?q=g:%22org.jetbrains.kotlinx%22%20AND%20a:%22kotlinx-datetime%22" rel="noopener noreferrer nofollow" target="_blank">Maven Central depository</a>.</p>
+<p>In all source files, add the following import line:</p>
+<pre><code class="language-kotlin">import kotlinx.datetime.*</code></pre>
+<h5 id="instant-and-clock-classes">Instant and Clock classes</h5>
+<p>The <code class="language-kotlin">Instant</code> class is used to represent a specific moment in time with greater accuracy; it complies with the UTC-SLS and ISO 8601 standards.</p>
+<p>An <code class="language-kotlin">Instant</code> of a specific moment can be created from an ISO 8601 string either with the use of the <code class="language-kotlin">Instant.parse()</code> function</p>
+<pre><code class="language-kotlin">val instant1 = Instant.parse("2022-02-01T22:10:01.324Z")
+println(instant1)  // 2022-02-01T22:10:01.324Z</code></pre>
+<p>or use of the <code class="language-kotlin">String</code> extension function <code class="language-kotlin">toInstant()</code> as in the following examples:</p>
+<pre><code class="language-kotlin">val instant2 = "2022-02-01T22:10:01.324Z".toInstant()
+println(instant2)  // 2022-02-01T22:10:01.324Z
+
+val instant3 = "2022-02-01T09:10:01.324+10:00".toInstant()
+println(instant3)  // 2022-01-31T23:10:01.324Z</code></pre>
+<p>As you can see from the last example (<code class="language-kotlin">instant3</code>), a non-UTC date-time input is correctly converted to UTC.</p>
+<p>In case the provided string isn't a valid ISO 8601 string, a Kotlinx datetime <code class="language-kotlin">DateTimeFormatException</code> exception is thrown caused by a java.time.format <code class="language-kotlin">DateTimeParseException</code> exception. The same occurs even if the provided string is valid but the represented date isn't a real date, as in the following example:</p>
+<pre><code class="language-kotlin">// The following line throws a DateTimeParseException
+// because Feb 29, 2001 isn't a real date
+val instant = Instant.parse("2001-02-29T00:00:00Z")</code></pre>
+<p>Note that due to the current Kotlinx datetime library design this exception can't be directly caught. Instead the <code class="language-kotlin">RuntimeException</code> should be caught.</p>
+<p>In order to create an <code class="language-kotlin">Instant</code> of the current date and time, we can use the <code class="language-kotlin">Clock</code> class as a time provider:</p>
+<pre><code class="language-kotlin">val currentInstant = Clock.System.now()</code></pre>
+<h5 id="timezone-classes">TimeZone classes</h5>
+<p>The <code class="language-kotlin">TimeZone</code> class is used to keep time zone information. It can be initialized in many ways.</p>
+<p>The <code class="language-kotlin">currentSystemDefault()</code> member function provides the computer system time zone, while <code class="language-kotlin">UTC</code> sets the time zone to UTC (denoted as Z in ISO 8601), as in the following example:</p>
+<pre><code class="language-kotlin">val tz1 = TimeZone.currentSystemDefault()  // The computer system time zone
+
+val tz2 = TimeZone.UTC                     // UTC time zone
+println(tz2)                               // Z</code></pre>
+<p>Any other time zone is set with the help of the <code class="language-kotlin">of()</code> member function, which takes a string as a parameter. It can be either the UTC offset (e.g., <code class="language-kotlin">"UTC-3"</code> or <code class="language-kotlin">"UTC-03:00"</code>) or the time zone name (e.g., <code class="language-kotlin">"Europe/Rome"</code>). You can find the valid time zone names in the <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" rel="noopener noreferrer nofollow" target="_blank">tz database</a>. For example:</p>
+<pre><code class="language-kotlin">val tz3 = TimeZone.of("Europe/Paris")      // Paris, France time zone
+println(tz3)                               // Europe/Paris
+
+val tz4 = TimeZone.of("UTC+2")             // UTC + 2 hours time zone
+println(tz4)                               // UTC+02:00</code></pre>
+<p>In case the provided parameter of the <code class="language-kotlin">of()</code> function isn't valid, the <code class="language-kotlin">IllegalTimeZoneException</code> is thrown.</p>
+<h5 id="basic-instant-operations">Basic instant operations</h5>
+<p>In order to get the time difference between 2 instants, we can use the <code class="language-kotlin">until(other: Instant, unit: DateTimeUnit, timezone: TimeZone)</code> member function, where <code class="language-kotlin">instant</code> is an instant to compare with, <code class="language-kotlin">unit</code> of <code class="language-kotlin">DateTimeUnit</code> class is explained below, and  <code class="language-kotlin">timezone</code> is a time zone.</p>
+<p>This function returns the difference as a <strong>whole number</strong> in the specified time or date units. The returned value is:</p>
+<ul>
+<li>positive or zero if <code class="language-kotlin">instant1</code> occurs earlier than <code class="language-kotlin">instant2</code>,</li>
+<li>negative or zero if <code class="language-kotlin">instant1</code> occurs later than <code class="language-kotlin">instant2</code>,</li>
+<li>zero if  <code class="language-kotlin">instant1</code> is equal to <code class="language-kotlin">instant2</code>.</li>
+</ul>
+<p>The <code class="language-kotlin">DateTimeUnit</code> class can be used to specify the time or date unit: <code class="language-kotlin">CENTURY</code>, <code class="language-kotlin">YEAR</code>, <code class="language-kotlin">QUARTER</code>, <code class="language-kotlin">MONTH</code>, <code class="language-kotlin">WEEK</code>, <code class="language-kotlin">DAY</code>, <code class="language-kotlin">HOUR</code>, <code class="language-kotlin">MINUTE</code>, <code class="language-kotlin">SECOND</code>, <code class="language-kotlin">MILLISECOND</code>, <code class="language-kotlin">MICROSECOND</code>, and <code class="language-kotlin">NANOSECOND</code>. The time zone parameter of the <code class="language-kotlin">until()</code> function can be omitted if the <code class="language-kotlin">DateTimeUnit</code> is smaller than <code class="language-kotlin">DAY</code>.</p>
+<p>For example, check out the following code:</p>
+<pre><code class="language-kotlin">val instant1 = Instant.parse("2022-01-01T00:00:00Z")
+val instant2 = Instant.parse("2022-02-03T04:05:06Z")
+
+// instant2 - instant1
+println(instant1.until(instant2, DateTimeUnit.WEEK, TimeZone.UTC))    // 4
+println(instant1.until(instant2, DateTimeUnit.DAY, TimeZone.UTC))     // 33
+println(instant1.until(instant2, DateTimeUnit.HOUR, TimeZone.UTC))    // 796
+println(instant1.until(instant2, DateTimeUnit.HOUR))                  // 796
+println(instant1.until(instant2, DateTimeUnit.SECOND, TimeZone.UTC))  // 2865906
+println(instant1.until(instant2, DateTimeUnit.SECOND))                // 2865906
+
+// instant1 - instant2
+println(instant2.until(instant1, DateTimeUnit.WEEK, TimeZone.UTC))    // -4</code></pre>
+<p>Subtracting two <code class="language-kotlin">Instant</code> objects creates a Kotlin <code class="language-kotlin">Duration</code> class object. The latter class of the <code class="language-kotlin">kotlin.time</code> package is used for keeping the time difference between two instants. For example:</p>
+<pre><code class="language-kotlin">val instant1 = Instant.parse("2000-01-01T20:00:00Z")
+val instant2 = Instant.parse("2012-10-14T05:20:30Z")
+
+val duration: Duration = instant2 - instant1
+println(duration)
+// 8124d 16h 29m 37.716s</code></pre>
+<p>Two different <code class="language-kotlin">Instant</code> objects can be directly compared by using common logic operators, as in the following example:</p>
+<pre><code class="language-kotlin">val instant1 = Instant.parse("2022-01-01T00:00:00Z")
+val instant2 = Instant.parse("2022-02-03T04:05:06Z")
+
+if (instant1 &gt; instant2) 
+    println(instant1) 
+else 
+    println(instant2)
+
+// Prints 2022-02-03T04:05:06Z</code></pre>
+<h5 id="datetimeperiod-class">DateTimePeriod class</h5>
+<p>The <code class="language-kotlin">DateTimePeriod</code> class is used for keeping the difference between two <code class="language-kotlin">Instant</code> objects split into date and time components. These can be accessed from the relevant properties named <code class="language-kotlin">years</code>, <code class="language-kotlin">months</code>, <code class="language-kotlin">days</code>, <code class="language-kotlin">hours</code>, <code class="language-kotlin">minutes</code>, <code class="language-kotlin">seconds</code>, and <code class="language-kotlin">nanoseconds</code>. Printing a <code class="language-kotlin">DateTimePeriod</code> object gives the difference as an ISO 8601 duration representation.</p>
+<p>A difference between two <code class="language-kotlin">Instant</code> objects can be acquired with the use of the <code class="language-kotlin">periodUntil(other: Instant, timeZone: TimeZone)</code> member function, where <code class="language-kotlin">other</code> is another <code class="language-kotlin">Instant</code> and <code class="language-kotlin">timezone</code> is a time zone. For example:</p>
+<pre><code class="language-kotlin">val instant1 = Instant.parse("2000-01-01T20:00:00Z")
+val instant2 = Instant.parse("2000-10-14T00:00:00Z")
+
+val period: DateTimePeriod = instant1.periodUntil(instant2, TimeZone.UTC)
+
+println(period)
+// P9M12DT4H
+
+println("Months: ${period.months} Days: ${period.days} Hours: ${period.hours}")
+// Months: 9 Days: 12 Hours: 4</code></pre>
+<p>An important use of the <code class="language-kotlin">DateTimePeriod</code> class is to apply a time offset to an <code class="language-kotlin">Instant</code> with the <code class="language-kotlin">Instant.plus()</code> function, which adds an amount of time to an <code class="language-kotlin">Instant</code>, and the <code class="language-kotlin">Instant.minus()</code> function, which subtracts an amount of time from an <code class="language-kotlin">Instant</code>.</p>
+<pre><code class="language-kotlin">val instant = Instant.parse("2000-01-01T00:00:00Z")
+println(instant)
+// 2000-01-01T00:00:00Z
+
+val period: DateTimePeriod = DateTimePeriod(years = 1, months = 1, days = 1, hours = 1, minutes = 1, seconds = 1, nanoseconds = 123456789L)
+println(period)
+// P1Y1M1DT1H1M1.123456789S
+
+val after = instant.plus(period, TimeZone.UTC)
+
+println(after)
+// 2001-02-02T01:01:01.123456789Z
+
+val before = instant.minus(period, TimeZone.UTC)
+
+println(before)
+// 1998-11-29T22:58:58.876543211Z</code></pre>
+<p>Following are some examples to depict the differences between the <code class="language-kotlin">Duration</code> (kotlin.time package) and the <code class="language-kotlin">DateTimePeriod</code> (kotlinx) classes:</p>
+<pre><code class="language-kotlin">val instant1 = Instant.parse("2100-01-01T00:00:00Z")
+val instant2 = Instant.parse("2105-07-09T15:23:40Z")
+
+val duration: Duration = instant2 - instant1
+println(duration)                                             // 2015d 15h 23m 40s
+println(duration.inWholeDays)                                 // 2015
+println(duration.inWholeHours)                                // 48375
+
+println( instant1.periodUntil(instant2, TimeZone.UTC) )       // P5Y6M8DT15H23M40S
+println( instant1.periodUntil(instant2, TimeZone.UTC).days )  // 8</code></pre>
+<h5 id="conclusion">Conclusion</h5>
+<p>In this introduction to the kotlinx-datetime library, we've covered the issues of creating and handling time instants. However, there is much more to this library, and among other things, it offers time and date localization, as you will find out soon .</p></body></html>

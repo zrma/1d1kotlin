@@ -1,0 +1,29 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: val tz = TimeZone.of("UTC+02:00")
+- text: val tz = TimeZone.of("Asia/Seoul")
+- text: val tz = TimeZone.of("Europe/UTC")
+- text: val tz = TimeZone.of("London")
+- text: val tz = TimeZone.currentSystemDefault()
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/19460#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Fri, 11 Nov 2022 12:26:30 UTC"
+record: -1
+selected_options:
+- 0
+- 1
+- 4
+local_check: false

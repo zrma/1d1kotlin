@@ -1,0 +1,26 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    import kotlinx.datetime.*
+
+    fun howManyDays(year1: Int, month1: Int, day1: Int, year2: Int, month2: Int, day2: Int): Int {
+        // Write your code here
+
+        //
+    }
+
+    fun main() {
+        val (year1, month1, day1) = readln().split(" ").map { it.toInt() }
+        val (year2, month2, day2) = readln().split(" ").map { it.toInt() }
+
+        println(howManyDays(year1, month1, day1, year2, month2, day2))
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/19464#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Fri, 11 Nov 2022 12:29:36 UTC"
+record: -1
