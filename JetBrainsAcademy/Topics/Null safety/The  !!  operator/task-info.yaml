@@ -1,0 +1,22 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: It will return <code>null</code> in some cases.
+- text: It will omit the thrown exception.
+- text: It may produce a NullPointerException.
+- text: It has an additional check which will decrease the performance of a program.
+files:
+- name: src/Main.kt
+  visible: true
+  text: |
+    // You can experiment here, it won’t be checked
+
+    fun main(args: Array<String>) {
+      // put your code here
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/7622#comment
+status: Solved
+record: -1
+custom_name: The "!!" operator
+local_check: false
