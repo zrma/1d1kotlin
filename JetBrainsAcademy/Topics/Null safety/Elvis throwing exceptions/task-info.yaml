@@ -1,0 +1,15 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun main() {
+        readLine() // you need to add something
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/7627#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Fri, 18 Nov 2022 13:07:56 UTC"
+record: -1
