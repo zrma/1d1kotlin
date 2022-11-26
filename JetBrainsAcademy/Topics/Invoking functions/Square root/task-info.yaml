@@ -1,0 +1,13 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: "fun main() {\n    // do not change this code\n    val number = readln().toDouble()\n\
+    \n    // write your code below\n    TODO()    \n}"
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/19915#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Sat, 26 Nov 2022 05:31:25 UTC"
+record: -1
