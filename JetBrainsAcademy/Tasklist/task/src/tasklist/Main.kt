@@ -1,13 +1,29 @@
 package tasklist
 
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.datetime.*
 import kotlinx.datetime.TimeZone
+import java.io.File
+import java.lang.reflect.ParameterizedType
 import java.time.DateTimeException
 import java.time.LocalTime
 import java.util.*
 
 fun main() {
     val todo = TaskList()
+
+    val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+    val type: ParameterizedType = Types.newParameterizedType(List::class.java, Task::class.java)
+    val taskListAdapter: JsonAdapter<List<Task>> = moshi.adapter(type)
+
+
+    @Suppress("SpellCheckingInspection") val jsonFile = File("tasklist.json")
+    if (jsonFile.exists()) {
+        taskListAdapter.fromJson(jsonFile.readText())?.let { todo.tasks = it.toMutableList() }
+    }
 
     while (true) {
         print("Input an action (add, print, edit, delete, end):")
@@ -47,26 +63,25 @@ fun main() {
 
             else -> println("The input action is invalid")
         }
+
+        taskListAdapter.toJson(todo.tasks.toList())?.let { jsonFile.writeText(it) }
     }
 }
 
 fun initSampleTodo(todo: TaskList) {
     todo.add(
         Task(
-            "N", LocalDate(2022, 11, 20), LocalTime.of(19, 0), listOf("Supermarket", "milk", "cookies", "butter")
+            "N", "2022-11-20", "19: 00", listOf("Supermarket", "milk", "cookies", "butter")
         )
     )
     todo.add(
         Task(
-            "N",
-            LocalDate(2022, 11, 21),
-            LocalTime.of(19, 0),
-            listOf("Remember to review the code for the Tasklist", " project.")
+            "N", "2022-11-21", "19:0", listOf("Remember to review the code for the TaskList", " project.")
         )
     )
     todo.add(
         Task(
-            "N", LocalDate(2022, 11, 22), LocalTime.of(19, 0), listOf(
+            "N", "2022-11-22", "19: 00", listOf(
                 "Find resources about Ansi colors and cursor ",
                 "movement.",
                 "Don't forget to look into the stage 6 links ",
@@ -88,7 +103,7 @@ fun readPriority(): String {
     }
 }
 
-fun readDate(): LocalDate {
+fun readDate(): String {
     while (true) {
         print("Input the date (yyyy-mm-dd):")
         val date = readLine()!!.trim()
@@ -99,7 +114,7 @@ fun readDate(): LocalDate {
         }
         date.split("-").let {
             try {
-                return LocalDate(it[0].toInt(), it[1].toInt(), it[2].toInt())
+                return LocalDate(it[0].toInt(), it[1].toInt(), it[2].toInt()).toString()
             } catch (e: IllegalArgumentException) {
                 println("The input date is invalid")
             } catch (e: DateTimeException) {
@@ -109,7 +124,7 @@ fun readDate(): LocalDate {
     }
 }
 
-fun readTime(): LocalTime {
+fun readTime(): String {
     while (true) {
         print("Input the time (hh:mm):")
         val time = readLine()!!.trim()
@@ -120,7 +135,7 @@ fun readTime(): LocalTime {
         }
         time.split(":").let {
             try {
-                return LocalTime.of(it[0].toInt(), it[1].toInt())
+                return LocalTime.of(it[0].toInt(), it[1].toInt()).toString()
             } catch (e: IllegalArgumentException) {
                 println("The input time is invalid")
             } catch (e: DateTimeException) {
@@ -240,11 +255,17 @@ class TaskList {
         }
     }
 
-    private val tasks = mutableListOf<Task>()
+    var tasks = mutableListOf<Task>()
 }
 
-data class Task(var priority: String, var date: LocalDate, var time: LocalTime, var description: List<String>) {
+data class Task(var priority: String, var date: String, var time: String, var description: List<String>) {
     fun print(idx: Int) {
+        val date = date.split("-").let {
+            LocalDate(it[0].toInt(), it[1].toInt(), it[2].toInt())
+        }
+        val time = time.split(":").let {
+            LocalTime.of(it[0].toInt(), it[1].toInt())
+        }
         println(
             String.format(
                 "| %-2d | %s | %s | %s | %s |%-44s|",
@@ -263,7 +284,9 @@ data class Task(var priority: String, var date: LocalDate, var time: LocalTime, 
 
     private fun overdue(): String {
         val currentDate = Clock.System.now().toLocalDateTime(TimeZone.of("UTC+0")).date
-        val numberOfDays = currentDate.daysUntil(date)
+        val numberOfDays = currentDate.daysUntil(date.split("-").let {
+            LocalDate(it[0].toInt(), it[1].toInt(), it[2].toInt())
+        })
         return when {
             numberOfDays < 0 -> "O"
             numberOfDays == 0 -> "T"
