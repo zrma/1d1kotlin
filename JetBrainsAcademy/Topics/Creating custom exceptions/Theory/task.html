@@ -1,0 +1,120 @@
+<h2>Creating custom exceptions</h2>
+<p>The most valuable error handling mechanism in Kotlin is exceptions. However, there are numerous cases when we need to implement a more precise error handling technique than the built-in exception classes provide. Here, custom exceptions come into play.</p>
+<h5 id="throwing-an-exception">Throwing an exception</h5>
+<p>As you are aware, an exception can be raised with the help of the <code class="language-kotlin">throw</code> keyword followed by an exception object, that is, either the <code class="language-kotlin">Exception</code> object itself or any of its subtypes. This can take various forms depending on the programming needs as the following examples illustrate.</p>
+<ul>
+<li>Throwing an exception without any parameters. This isn't a really useful case because there is no information about the error here.</li>
+</ul>
+<pre><code class="language-kotlin">throw Exception()</code></pre>
+<ul>
+<li>Throwing an exception with a message.</li>
+</ul>
+<pre><code class="language-kotlin">throw Exception("My error message")</code></pre>
+<ul>
+<li>Throwing an exception with a message and a <strong>cause</strong>, which usually is another exception.</li>
+</ul>
+<pre><code class="language-kotlin">throw Exception("My error message", cause)</code></pre>
+<p>In the example, <code class="language-kotlin">ArithmeticException</code> is thrown with the message "/ by zero". We capture this exception and throw a new one with a different message and with the <code class="language-kotlin">ArithmeticException</code> instance as the cause parameter.</p>
+<pre><code class="language-kotlin">fun testFunction(a: Int, b: Int): Int {
+    return a / b
+}
+
+fun main() {
+    try {
+        testFunction(1, 0)
+    } catch (e: Exception) {
+        throw Exception("testFunction() failed", e)
+    }
+}</code></pre>
+<p>The cause information is also printed in the exception stack trace output as you can see in the following output of the above program (after <code class="language-kotlin">Caused by:</code>).</p>
+<pre><code class="language-no-highlight">Exception in thread "main" java.lang.Exception: testFunction() failed
+    at ExceptionTestKt.main(ExceptionTest.kt:9)
+    at ExceptionTestKt.main(ExceptionTest.kt)
+Caused by: java.lang.ArithmeticException: / by zero
+    at ExceptionTestKt.testFunction(ExceptionTest.kt:2)
+    at ExceptionTestKt.main(ExceptionTest.kt:7)
+    ... 1 more</code></pre>
+<ul>
+<li>Throwing an exception with the cause parameter only.</li>
+</ul>
+<pre><code class="language-kotlin">throw Exception(e)  // where e is another exception</code></pre>
+<ul>
+<li>Throwing a subtype of the exception object. In the following example, we throw <code class="language-kotlin">NullPointerException</code> with our custom message.</li>
+</ul>
+<pre><code class="language-kotlin">throw NullPointerException("NPE at Alpha point")</code></pre>
+<p>A subtype of the Exception has a subtype specific cause parameter.</p>
+<h5 id="creating-custom-exceptions">Creating custom Exceptions</h5>
+<p>We can create our own exception classes as mere subclasses of the <code class="language-kotlin">Exception</code> class. In the following example, we create 2 custom exceptions named <code class="language-kotlin">LessThanZero</code> and <code class="language-kotlin">GreaterThanTen</code>.</p>
+<pre><code class="language-kotlin">class LessThanZero: Exception("Parameter less than zero")
+
+class GreaterThanTen: Exception("Parameter greater than ten")
+
+
+fun myFunction(par: Int) {
+    if (par &lt; 0) throw LessThanZero()
+    else if (par &gt; 10) throw GreaterThanTen()
+    ...
+    ...
+}
+
+fun main() {
+    myFunction(-3)
+}</code></pre>
+<p>The function named <code class="language-kotlin">myFunction()</code> takes one parameter. Based on the parameter value, it might throw a custom exception: either <code class="language-kotlin">LessThanZero</code> or <code class="language-kotlin">GreaterThanTen</code>. The stack trace output of the above example is the following:</p>
+<pre><code class="language-no-highlight">Exception in thread "main" LessThanZero: Parameter less than zero
+    at ExceptionTestKt.myFunction(ExceptionTest.kt:6)
+    at ExceptionTestKt.main(ExceptionTest.kt:11)
+    at ExceptionTestKt.main(ExceptionTest.kt)</code></pre>
+<p>Note that a custom exception can be a subclass of any preexistent exception subclass, like in the following example.</p>
+<pre><code class="language-kotlin">class MyException: ArithmeticException("My message")</code></pre>
+<p>Also, if we want to be able to create subclasses of our custom exception, then it should be defined as open, as in the following example:</p>
+<pre><code class="language-kotlin">open class MyException: ArithmeticException("My message")
+class MySubclassException: MyException()</code></pre>
+<h5 id="catching-custom-exceptions">Catching custom Exceptions</h5>
+<p>Custom exceptions are handled in exactly the same way as normal exceptions. In the following example, 2 custom exceptions are created and a try-catch statement is used for handling them.</p>
+<pre><code class="language-kotlin">class BetweenOneAndFive: Exception("Value between 1 and 5")
+class BetweenSixAndTen: Exception("Value between 6 and 10")
+
+fun myFunction() {
+    val randomInteger = (1..10).shuffled().first()  // Get a random integer between 1 and 10
+    if (randomInteger &lt;= 5) throw BetweenOneAndFive()
+    else throw BetweenSixAndTen()
+}
+
+fun main() {
+    try {
+        myFunction()
+    } catch (e: BetweenOneAndFive) {
+        println("BetweenOneAndFive was thrown")
+    } catch (e: BetweenSixAndTen) {
+        println("BetweenSixAndTen was thrown")
+    }
+}</code></pre>
+<p>The function <code class="language-kotlin">myFunction()</code> creates a random integer within the range 1 to 10 using:</p>
+<pre><code class="language-kotlin">val randomInteger = (1..10).shuffled().first()</code></pre>
+<p>This is an easy way to get a random integer number. Integers in the range 1..10 are shuffled, and then we take the first one.</p>
+<p>Based on its value, the function throws one of the 2 custom exceptions. The try-catch statement catches the relevant exception and prints the appropriate message.</p>
+<h5 id="multiple-constructors">Multiple constructors</h5>
+<p>In the previous sections we created custom exceptions by implementing subclasses of an exception class. In all those cases we only used the class constructor with a message parameter. However, the Exception class has 4 different constructors, while other exception subclasses may have at least two. If we aim to create exception subclasses for a library, then we may want them to have multiple constructors.</p>
+<p>In the following example, we implement multiple constructors by using the keyword <code class="language-kotlin">super</code>. This calls the constructor of the base type. In order to use this method, the derived exception should not have any primary constructor. For each constructor, the relevant base exception constructor is initialized (or delegated to the new constructor). The syntax for each secondary constructor is illustrated in the following example code. The new constructor is followed by <code class="language-kotlin">:</code> and then by the <code class="language-kotlin">super</code> keyword with the appropriate parameters. Note that <code class="language-kotlin">Throwable</code> is the base class for all errors and exceptions.</p>
+<pre><code class="language-kotlin">class MyCustomException: Exception {
+    constructor() : super()  // No parameters
+    constructor(message: String?) : super(message)  // Only the String parameter
+    constructor(message: String?, cause: Throwable?) : super(message, cause) // Both parameters
+    constructor(cause: Throwable?) : super(cause)  // Only the exception parameter
+}</code></pre>
+<p>Our new exception has 4 constructors and can be thrown in the following ways:</p>
+<pre><code class="language-kotlin">throw MyCustomException()
+
+throw MyCustomException("My exception message")
+
+throw MyCustomException("My exception message", otherException)
+
+throw MyCustomException(otherException)</code></pre>
+<p>In the following example, we create a custom exception derived from <code class="language-kotlin">ArithmeticException</code>. It has only 2 constructors:</p>
+<pre><code class="language-kotlin">class MyArithmeticException: ArithmeticException {
+    constructor() : super()
+    constructor(message: String?) : super(message)
+}</code></pre>
+<h5 id="conclusion">Conclusion</h5>
+<p>The custom exception feature greatly enhances the error handling mechanism. This is accomplished by the use of more appropriate or relevant exceptions. Customizing your own exceptions, you will significantly improve your programs and libraries.</p>
