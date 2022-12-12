@@ -13,7 +13,7 @@ stages:
   is_completed: true
 - id: 482
   step: 7788
-  is_completed: false
+  is_completed: true
 - id: 483
   step: 7789
   is_completed: false
@@ -45,16 +45,18 @@ topics:
     theory_id: 16927
   - title: "Vectors, matrices, scalars"
     theory_id: 16969
-  - title: Introduction to matrices
-    theory_id: 7112
   - title: The concept of patterns
     theory_id: 3611
+  - title: Introduction to matrices
+    theory_id: 7112
   - title: Types of matrices
     theory_id: 17812
   - title: Operations with matrices
     theory_id: 7296
   - title: Computer programming
     theory_id: 8739
+  - title: Paradigms
+    theory_id: 15860
   - title: Introduction to Kotlin
     theory_id: 4350
   - title: Basic literals
@@ -183,12 +185,6 @@ topics:
     theory_id: 5834
   - title: Introduction to software architecture
     theory_id: 15368
-  - title: Design principles
-    theory_id: 8956
-  - title: Single Responsibility Principle
-    theory_id: 8963
-  - title: Object declarations
-    theory_id: 10698
   - title: Introduction to logging
     theory_id: 5538
   - title: Debugging techniques
@@ -197,6 +193,12 @@ topics:
     theory_id: 14368
   - title: Debugging simple constructs
     theory_id: 15503
+  - title: Design principles
+    theory_id: 8956
+  - title: Single Responsibility Principle
+    theory_id: 8963
+  - title: Object declarations
+    theory_id: 10698
   - title: Advanced debugger features
     theory_id: 16028
   - title: Self-documenting code

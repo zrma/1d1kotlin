@@ -29,6 +29,8 @@ println(f) // false</code></pre>
 <p style="text-align: center;"><img alt="" src="https://ucarecdn.com/50cbf6b2-6d44-44d6-b5ef-b1426bdde305/"/></p>
 <h5 id="reading-boolean-values">Reading Boolean values</h5>
 <p>Since Kotlin 1.4, you can read a Boolean value like this:</p>
+<pre><code class="language-kotlin">val b: Boolean = readLine().toBoolean()</code></pre>
+<p>and since Kotlin 1.6,  you can read a Boolean value like this:</p>
 <pre><code class="language-kotlin">val b: Boolean = readln().toBoolean()</code></pre>
 <p><code class="language-kotlin">toBoolean()</code> returns <code class="language-kotlin">true</code> if the input is "true", case insensitive. If otherwise, it will return <code class="language-kotlin">false</code>.</p>
 <p>So, suppose you have the following input:</p>
