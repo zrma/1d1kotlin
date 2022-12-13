@@ -3,7 +3,6 @@ import org.hyperskill.hstest.stage.StageTest;
 import org.hyperskill.hstest.testcase.CheckResult;
 import org.hyperskill.hstest.testcase.TestCase;
 
-
 import java.util.*;
 import static java.lang.Math.abs;
 
@@ -224,6 +223,112 @@ public class NumericMatrixProcessorTest extends StageTest<TestClue> {
                         "6 0\n" +
                         "0 9\n" +
                         "7 7\n" +
+                        "0"),
+
+            new TestCase<TestClue>()
+                .setAttach(new TestClue(
+                    "Checking if diagonal transposition algorithm is correct",
+                    new Double[]{
+                        1d, 6d, 4d,
+                        7d, 6d, 2d,
+                        7d, 4d, 1d,
+                    }))
+                .setInput(
+                    "4\n" +
+                        "1\n" +
+                        "3 3\n" +
+                        "1 7 7\n" +
+                        "6 6 4\n" +
+                        "4 2 1\n" +
+                        "0"),
+
+            new TestCase<TestClue>()
+                .setAttach(new TestClue(
+                    "Checking if diagonal transposition algorithm is correct",
+                    new Double[]{
+                        1d, 6d, 4d,
+                        7d, 6d, 5d,
+                        7d, 4d, 1d,
+                    }))
+                .setInput(
+                    "4\n" +
+                        "1\n" +
+                        "3 3\n" +
+                        "1 7 7\n" +
+                        "6 6 4\n" +
+                        "4 5 1\n" +
+                        "0"),
+
+            new TestCase<TestClue>()
+                .setAttach(new TestClue(
+                    "Checking if diagonal transposition algorithm is correct",
+                    new Double[]{
+                        1d, 6d, 4d,
+                        7d, 6d, 2d,
+                        7d, 4d, 1d,
+                    }))
+                .setInput(
+                    "4\n" +
+                        "2\n" +
+                        "3 3\n" +
+                        "1 2 4\n" +
+                        "4 6 6\n" +
+                        "7 7 1\n" +
+                        "0"),
+
+            new TestCase<TestClue>()
+                .setAttach(new TestClue(
+                    "Checking if diagonal transposition algorithm is correct",
+                    new Double[]{
+                        1d, 6d, 4d,
+                        7d, 6d, 5d,
+                        7d, 4d, 1d,
+                    }))
+                .setInput(
+                    "4\n" +
+                        "2\n" +
+                        "3 3\n" +
+                        "1 5 4\n" +
+                        "4 6 6\n" +
+                        "7 7 1.0\n" +
+                        "0"),
+
+            new TestCase<TestClue>()
+                .setAttach(new TestClue(
+                    "Checking if transposition algorithm is correct",
+                    new Double[]{
+                        2d, 4d, 5d, 6d,
+                        6d, 6d, 7d, 8d,
+                        5d, 0d, 0d, 1d,
+                        8d, 8d, 2d, 9d
+                    }))
+                .setInput(
+                    "4\n" +
+                        "3\n" +
+                        "4 4\n" +
+                        "6 5 4 2\n" +
+                        "8 7 6 6\n" +
+                        "1 0 0 5.0\n" +
+                        "9 2 8 8\n" +
+                        "0"),
+
+            new TestCase<TestClue>()
+                .setAttach(new TestClue(
+                    "Checking if transposition algorithm is correct",
+                    new Double[]{
+                        2d, 4d, 5d, 6d,
+                        6d, 6d, 7d, 8d,
+                        5d, 0d, 0d, 1d,
+                        8d, 8d, 2d, 9d
+                    }))
+                .setInput(
+                    "4\n" +
+                        "4\n" +
+                        "4 4\n" +
+                        "8 8 2 9\n" +
+                        "5 0 0 1\n" +
+                        "6 6 7 8.0\n" +
+                        "2 4 5 6\n" +
                         "0")
         );
     }
@@ -233,6 +338,7 @@ public class NumericMatrixProcessorTest extends StageTest<TestClue> {
     public CheckResult check(String reply, TestClue clue) {
 
         try {
+
             String[] strNumbers =
                 Arrays.stream(reply.trim().split("\n"))
                 .filter(line -> {
