@@ -3,7 +3,10 @@ import org.hyperskill.hstest.stage.StageTest;
 import org.hyperskill.hstest.testcase.CheckResult;
 import org.hyperskill.hstest.testcase.TestCase;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static java.lang.Math.abs;
 
 
@@ -329,6 +332,35 @@ public class NumericMatrixProcessorTest extends StageTest<TestClue> {
                         "5 0 0 1\n" +
                         "6 6 7 8.0\n" +
                         "2 4 5 6\n" +
+                        "0"),
+
+            new TestCase<TestClue>()
+                .setAttach(new TestClue(
+                    "Checking if determinant algorithm is correct",
+                    new Double[]{
+                        31d
+                    }))
+                .setInput(
+                    "5\n" +
+                        "3 3\n" +
+                        "1 2 3\n" +
+                        "4 5 7\n" +
+                        "10 22 23\n" +
+                        "0"),
+
+            new TestCase<TestClue>()
+                .setAttach(new TestClue(
+                    "Checking if determinant algorithm is correct",
+                    new Double[]{
+                        45.2197d
+                    }))
+                .setInput(
+                    "5\n" +
+                        "4 4\n" +
+                        "2.65 3.54 3.88 8.99\n" +
+                        "3.12 5.45 7.77 5.56\n" +
+                        "5.31 2.23 2.33 9.81\n" +
+                        "1.67 1.67 1.01 9.99\n" +
                         "0")
         );
     }

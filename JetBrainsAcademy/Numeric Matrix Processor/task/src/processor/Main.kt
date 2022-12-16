@@ -6,7 +6,7 @@ fun main() {
         println("2. Multiply matrix by a constant")
         println("3. Multiply matrices")
         println("4. Transpose matrix")
-//        println("5. Calculate a determinant")
+        println("5. Calculate a determinant")
 //        println("6. Inverse matrix")
         println("0. Exit")
         print("Your choice: ")
@@ -15,7 +15,7 @@ fun main() {
             2 -> multiplyMatrixByConstant()
             3 -> multiplyMatrices()
             4 -> transposeMatrix()
-//            5 -> calculateDeterminant()
+            5 -> calculateDeterminant()
 //            6 -> inverseMatrix()
             0 -> return
         }
@@ -74,6 +74,13 @@ fun transposeMatrix() {
         else -> throw Exception("Invalid choice")
     }
     mat1.print()
+}
+
+fun calculateDeterminant() {
+    val mat0 = newMatrix()
+    val det = mat0.determinant()
+    println("The result is:")
+    println(det)
 }
 
 fun newMatrix(seq: String = ""): Matrix {
@@ -193,5 +200,39 @@ class Matrix(private val rows: Int, private val columns: Int) {
             }
         }
         return result
+    }
+
+    fun determinant(): Double {
+        if (rows != columns) {
+            throw IllegalArgumentException("The operation cannot be performed.")
+        }
+        if (rows == 1) {
+            return get(0, 0)
+        }
+        var det = 0.0
+        for (i in 0 until columns) {
+            det += get(0, i) * cofactor(0, i)
+        }
+        return det
+    }
+
+    private fun cofactor(row: Int, col: Int): Double {
+        val minor = Matrix(rows - 1, columns - 1)
+        var r = 0
+        for (i in 0 until rows) {
+            if (i == row) {
+                continue
+            }
+            var c = 0
+            for (j in 0 until columns) {
+                if (j == col) {
+                    continue
+                }
+                minor.set(r, c, get(i, j))
+                c++
+            }
+            r++
+        }
+        return minor.determinant() * if ((row + col) % 2 == 0) 1 else -1
     }
 }
