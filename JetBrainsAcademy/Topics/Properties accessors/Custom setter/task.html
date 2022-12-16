@@ -1,9 +1,7 @@
 <h2>Custom setter</h2>
-<html>
- <head></head>
- <body>
-  <p>What will be the output of the following snippet?</p> 
-  <pre><code class="language-kotlin">fun main() {
+<p>What will be the output of the following snippet?</p>
+
+<pre><code class="language-kotlin">fun main() {
     val movieOne = Movie("Anna Gotter")
     movieOne.length = -24
     val movieTwo = Movie("Sky Wars")
@@ -17,5 +15,3 @@ class Movie(val name: String) {
             field = if (value &lt; 0) value else -value
         }
 }</code></pre>
- </body>
-</html>

@@ -1,19 +1,16 @@
 <h2>Object declarations</h2>
-<html>
- <head></head>
- <body>
-  <p>In Kotlin, a class describes a general structure that can be instantiated multiple times and in multiple ways. Sometimes we need only a single instance, no more, no less. It can help you organize your codebase and gather similar methods together. In this topic, you will learn how this can be achieved in Kotlin using object declaration.</p> 
-  <h5 id="singleton">Singleton</h5> 
-  <p><strong>Singleton </strong>is a design pattern that ensures that a class has only one instance with global access to it. This means we can get an instance of a singleton class anywhere in the code. Consider a simple analogy: when playing a board game, all players act within the field of the game. This is a specific single field where the global state of the game is stored.</p> 
-  <p>Before we move forward, let's quickly remind ourselves of the main singleton features:</p> 
-  <ul> 
-   <li>Singleton class has only a single instance.</li> 
-   <li>Singleton class provides a global access point.</li> 
-  </ul> 
-  <h5 id="object-declaration">Object declaration</h5> 
-  <p>Singleton is a really useful pattern, and Kotlin provides a specific structure to declare singletons: <strong>object declaration</strong>. This is a special class with an <strong>object </strong>keyword that creates a singleton. This keyword hides all complicated steps so you don't have to think about the ways to implement this pattern: just use <strong>object declaration</strong>.</p> 
-  <p>Let's take a look at this example:</p> 
-  <pre><code class="language-kotlin">object PlayingField {
+<html><body><p>In Kotlin, a class describes a general structure that can be instantiated multiple times and in multiple ways. Sometimes we need only a single instance, no more, no less. It can help you organize your codebase and gather similar methods together. In this topic, you will learn how this can be achieved in Kotlin using object declaration.</p>
+<h5 id="singleton">Singleton</h5>
+<p><strong>Singleton </strong>is a design pattern that ensures that a class has only one instance with global access to it. This means we can get an instance of a singleton class anywhere in the code. Consider a simple analogy: when playing a board game, all players act within the field of the game. This is a specific single field where the global state of the game is stored.</p>
+<p>Before we move forward, let's quickly remind ourselves of the main singleton features:</p>
+<ul>
+<li>Singleton class has only a single instance.</li>
+<li>Singleton class provides a global access point.</li>
+</ul>
+<h5 id="object-declaration">Object declaration</h5>
+<p>Singleton is a really useful pattern, and Kotlin provides a specific structure to declare singletons: <strong>object declaration</strong>. This is a special class with an <strong>object </strong>keyword that creates a singleton. This keyword hides all complicated steps so you don't have to think about the ways to implement this pattern: just use <strong>object declaration</strong>.</p>
+<p>Let's take a look at this example:</p>
+<pre><code class="language-kotlin">object PlayingField {
 
     fun getAllPlayers(): Array&lt;Player&gt; {
         /* ... */
@@ -23,9 +20,9 @@
         /* ... */
     }
 
-}</code></pre> 
-  <p>When you use object declaration, the constructor is not available because Kotlin does it itself. To get an instance of our playing field, use <code class="language-kotlin">PlayingField</code> declaration. We can use it anywhere and it will return the same object every time.</p> 
-  <pre><code class="language-kotlin">fun startNewGameTurn() {
+}</code></pre>
+<p>When you use object declaration, the constructor is not available because Kotlin does it itself. To get an instance of our playing field, use <code class="language-kotlin">PlayingField</code> declaration. We can use it anywhere and it will return the same object every time.</p>
+<pre><code class="language-kotlin">fun startNewGameTurn() {
     val players = PlayingField.getAllPlayers()
     if (players.length &lt; 2) {
         return println("The game cannot be continued without players")
@@ -40,28 +37,28 @@ fun nextPlayerTurn(player: Player) {
         return println("Current player lost. Next...")
     }
     /* Player actions here */
-}</code></pre> 
-  <h5 id="nested-object">Nested object</h5> 
-  <p>Often you need to create a singleton that is somehow related to another class. For example, you create a <code class="language-kotlin">Player</code> class to store information about different characters in the game. All these characters can share some characteristics, for example, speed. How would we store such information?</p> 
-  <p>Of course, you may use an object declaration and create something like that:</p> 
-  <pre><code class="language-kotlin">object PlayerProperties {
+}</code></pre>
+<h5 id="nested-object">Nested object</h5>
+<p>Often you need to create a singleton that is somehow related to another class. For example, you create a <code class="language-kotlin">Player</code> class to store information about different characters in the game. All these characters can share some characteristics, for example, speed. How would we store such information?</p>
+<p>Of course, you may use an object declaration and create something like that:</p>
+<pre><code class="language-kotlin">object PlayerProperties {
     /* Default player speed in playing field – 7 cells per turn */
     val defaultSpeed = 7
 
     fun calcMovePenalty(cell: Int): Int {
         /* calc move speed penalty */
     }
-}</code></pre> 
-  <p>However, there can be many classes and related singletons, which makes the code confusing and difficult to read. Another way to store this information is by using a <strong>nested object</strong>.</p> 
-  <p>Object declaration can be nested in a class declaration. A <strong>nested class</strong> is created inside another class; it cannot be accessed without an outer class declaration.</p> 
-  <pre><code class="language-kotlin">class OuterClass {  
+}</code></pre>
+<p>However, there can be many classes and related singletons, which makes the code confusing and difficult to read. Another way to store this information is by using a <strong>nested object</strong>.</p>
+<p>Object declaration can be nested in a class declaration. A <strong>nested class</strong> is created inside another class; it cannot be accessed without an outer class declaration.</p>
+<pre><code class="language-kotlin">class OuterClass {  
    //outer class code  
     class NestedClass {  
       //nested class code  
     }  
-}</code></pre> 
-  <p>Now, let's take a closer look at a nested object construction:</p> 
-  <pre><code class="language-kotlin">class Player(val id: Int) {
+}  </code></pre>
+<p>Now, let's take a closer look at a nested object construction:</p>
+<pre><code class="language-kotlin">class Player(val id: Int) {
     object Properties {
         /* Default player speed in playing field – 7 cells per turn */
         val defaultSpeed = 7
@@ -73,41 +70,41 @@ fun nextPlayerTurn(player: Player) {
 }
 
 /* prints 7 */
-println(Player.Properties.defaultSpeed)</code></pre> 
-  <p>The object <code class="language-kotlin">Properties</code> has the scope <code class="language-kotlin">Player</code>, which means we can access it only through <code class="language-kotlin">Player.Properties</code>. That's how you can create a singleton connected to a special class.</p> 
-  <p>You can also use properties and functions from a nested object in the outer class. This can be useful for storing some data common to all instances of a class and for initializing variables. For example: </p> 
-  <pre><code class="language-kotlin">class Player(val id: Int) {
+println(Player.Properties.defaultSpeed)</code></pre>
+<p>The object <code class="language-kotlin">Properties</code> has the scope <code class="language-kotlin">Player</code>, which means we can access it only through <code class="language-kotlin">Player.Properties</code>. That's how you can create a singleton connected to a special class.</p>
+<p>You can also use properties and functions from a nested object in the outer class. This can be useful for storing some data common to all instances of a class and for initializing variables. For example: </p>
+<pre><code class="language-kotlin">class Player(val id: Int) {
     object Properties {
         val defaultSpeed = 7
     }
     
     val superSpeed = Properties.defaultSpeed * 2 // 14
-}</code></pre> 
-  <p>The opposite is not true. You cannot use the properties and the functions of the outer class in the inner. For example, you cannot do something like that:</p> 
-  <pre><code class="language-kotlin">class Player(val id: Int) {    
+}</code></pre>
+<p>The opposite is not true. You cannot use the properties and the functions of the outer class in the inner. For example, you cannot do something like that:</p>
+<pre><code class="language-kotlin">class Player(val id: Int) {    
     val speed = 7
     object Properties {
         val defaultSpeed = speed // you cannot get this variable
     }
-}</code></pre> 
-  <p>As you can see, it's similar to <strong>static</strong> in the other languages. Kotlin doesn't provide static members by default, but you may use nested objects if you need something related to the class.</p> 
-  <h5 id="compile-time-constants">Compile-time constants</h5> 
-  <p>As you know, sometimes it is necessary to use in your code values that will never change. We call them <strong>constant values</strong>. So, if you know that some read-only property that belongs to your object is a constant, you can declare it as <code class="language-kotlin">const</code>:</p> 
-  <pre><code class="language-kotlin">object Languages {
+}</code></pre>
+<p>As you can see, it's similar to <strong>static</strong> in the other languages. Kotlin doesn't provide static members by default, but you may use nested objects if you need something related to the class.</p>
+<h5 id="compile-time-constants">Compile-time constants</h5>
+<p>As you know, sometimes it is necessary to use in your code values that will never change. We call them <strong>constant values</strong>. So, if you know that some read-only property that belongs to your object is a constant,  you can declare it as <code class="language-kotlin">const</code>:</p>
+<pre><code class="language-kotlin">object Languages {
     const val FAVORITE_LANGUAGE = "Kotlin"
 
     // ...
-}</code></pre> 
-  <p>The values of such constants are already known at compile time, so they are called <strong>compile-time constants</strong>. Note that the constant must meet the following requirements: firstly, it must be initialized with a value of type <code class="language-kotlin">String</code> or a basic type (<code class="language-kotlin">Int</code>, <code class="language-kotlin">Double</code>, etc.). Also, it cannot be a <a target="_blank" href="https://hyperskill.org/learn/step/10511" rel="noopener noreferrer nofollow">custom getter</a>. And remember that constants should be named using the SCREAMING_SNAKE_CASE.</p> 
-  <p>By the way, if we know that the <code class="language-kotlin">defaultSpeed</code> property in the game is a constant, then we can make changes to the examples above as follows:</p> 
-  <pre><code class="language-kotlin">object Properties {
+}</code></pre>
+<p>The values of such constants are already known at compile time, so they are called <strong>compile-time constants</strong>. Note that the constant must meet the following requirements: firstly, it must be initialized with a value of type <code class="language-kotlin">String</code> or a basic type (<code class="language-kotlin">Int</code>, <code class="language-kotlin">Double</code>, etc.). Also, it cannot be a <a href="https://hyperskill.org/learn/step/10511" rel="noopener noreferrer nofollow" target="_blank">custom getter</a>. And remember that constants should be named using the SCREAMING_SNAKE_CASE.</p>
+<p>By the way, if we know that the <code class="language-kotlin">defaultSpeed</code> property in the game is a constant, then we can make changes to the examples above as follows:</p>
+<pre><code class="language-kotlin">object Properties {
     /* Constant default player speed */
     const val DEFAULT_SPEED = 7
 
     // ...
-}</code></pre> 
-  <p>You can access this property from outside the object like this:</p> 
-  <pre><code class="language-kotlin">object Properties {
+}</code></pre>
+<p>You can access this property from outside the object like this:</p>
+<pre><code class="language-kotlin">object Properties {
     /* Constant default player speed */
     const val DEFAULT_SPEED = 7
 
@@ -118,17 +115,13 @@ fun main() {
     println(Properties.DEFAULT_SPEED) // 7
     
     // ...
-}</code></pre> 
-  <p>You might wonder: why not just declare all constants as top-level? Why do we need to declare them in an object?</p> 
-  <p>Generally speaking, both approaches may make sense depending on the situation. The fact is that careless use of top-level properties reduces the readability and organization of the code and, as a result, leads to unpleasant errors. If you declare all the constants at the top of the file, then eventually, you may realize that in one place you have hundreds of declarations that are not related to each other. Therefore, if a constant refers to a specific object, it is better to declare it in that object. </p> 
-  <p></p>
-  <div class="alert alert-primary">
-    It is better to declare constants in the object to which they relate. 
-  </div>
-  <p></p> 
-  <h5 id="objects-and-nested-objects">Objects and nested objects</h5> 
-  <p>Let's discuss additional features. Sometimes you want to create more than one singleton associated with a class. You can declare any number of objects inside another class:</p> 
-  <pre><code class="language-kotlin">class Player(val id: Int) {
+}</code></pre>
+<p>You might wonder: why not just declare all constants as top-level? Why do we need to declare them in an object?</p>
+<p>Generally speaking, both approaches may make sense depending on the situation. The fact is that careless use of top-level properties reduces the readability and organization of the code and, as a result, leads to unpleasant errors. If you declare all the constants at the top of the file, then eventually, you may realize that in one place you have hundreds of declarations that are not related to each other. Therefore, if a constant refers to a specific object, it is better to declare it in that object. </p>
+<p></p><div class="alert alert-primary"> It is better to declare constants in the object to which they relate. </div><p></p>
+<h5 id="objects-and-nested-objects">Objects and nested objects</h5>
+<p>Let's discuss additional features. Sometimes you want to create more than one singleton associated with a class. You can declare any number of objects inside another class:</p>
+<pre><code class="language-kotlin">class Player(val id: Int) {
     object Properties {
         /* Default player speed in playing field – 7 cells per turn */
         val defaultSpeed = 7
@@ -151,10 +144,10 @@ println(Player.Properties.defaultSpeed)
 
 
 /* prints 13 */
-println(Player.Factory.create(13).id)</code></pre> 
-  <p>In this example, we've created an additional singleton that can create a new instance of the class. This pattern is called <strong>Factory </strong>and can be really useful for complex cases. You can read about this pattern <a target="_blank" href="https://hyperskill.org/learn/step/17108" rel="noopener noreferrer nofollow">here</a>. The usual way to use this pattern is through nested objects.</p> 
-  <p>Another useful feature of nested objects is that you can declare any number of objects inside another object.</p> 
-  <pre><code class="language-kotlin">object Game {
+println(Player.Factory.create(13).id)</code></pre>
+<p>In this example, we've created an additional singleton that can create a new instance of the class. This pattern is called <strong>Factory </strong>and can be really useful for complex cases. You can read about this pattern <a href="https://hyperskill.org/learn/step/17108" rel="noopener noreferrer nofollow" target="_blank">here</a>. The usual way to use this pattern is through nested objects.</p>
+<p>Another useful feature of nested objects is that you can declare any number of objects inside another object.</p>
+<pre><code class="language-kotlin">object Game {
     object Properties {
         val maxPlayersCount = 13
         val maxGameDurationInSec = 2400
@@ -163,14 +156,12 @@ println(Player.Factory.create(13).id)</code></pre>
     object Info {
         val name = "My super game"
     }
-}</code></pre> 
-  <p>This is helpful for organizing the data in the singletons.</p> 
-  <h5 id="idiom">Idiom</h5> 
-  <p>As you can see, the singleton is a powerful tool. In many languages, you would have to write such a class yourself, but Kotlin recommends using <a target="_blank" href="https://kotlinlang.org/docs/idioms.html#create-a-singleton" rel="noopener noreferrer nofollow">object declaration</a> as a standard solution.</p> 
-  <pre><code class="language-kotlin">object Resource {
+}</code></pre>
+<p>This is helpful for organizing the data in the singletons.</p>
+<h5 id="idiom">Idiom</h5>
+<p>As you can see, the singleton is a powerful tool. In many languages, you would have to write such a class yourself, but Kotlin recommends using <a href="https://kotlinlang.org/docs/idioms.html#create-a-singleton" rel="noopener noreferrer nofollow" target="_blank">object declaration</a> as a standard solution.</p>
+<pre><code class="language-kotlin">object Resource {
     val name = "Name"
-}</code></pre> 
-  <h5 id="summary">Summary</h5> 
-  <p>Object declaration is a useful feature. Mainly, we can use <code class="language-kotlin">object</code> keyword to create singletons. Another use of object declaration is nested objects. It is an easy way to create a structure that is associated with the entire class rather than a single instance. If you use it wisely and correctly, you can improve your programming experience and make your code more readable.</p>
- </body>
-</html>
+}</code></pre>
+<h5 id="summary">Summary</h5>
+<p>Object declaration is a useful feature. Mainly, we can use <code class="language-kotlin">object</code> keyword to create singletons. Another use of object declaration is nested objects. It is an easy way to create a structure that is associated with the entire class rather than a single instance. If you use it wisely and correctly, you can improve your programming experience and make your code more readable.</p></body></html>

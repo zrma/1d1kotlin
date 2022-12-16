@@ -1,10 +1,10 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: 1
-- text: 2
-- text: 3
-- text: 4
+- text: println("99" + "" + "99")
+- text: println("9"*4)
+- text: println("" + 9999)
+- text: println("9".repeat(4))
 files:
 - name: src/Main.kt
   visible: true

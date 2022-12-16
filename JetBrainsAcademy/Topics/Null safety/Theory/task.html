@@ -1,5 +1,5 @@
 <h2>Null safety</h2>
-<html><body><p>As you may know, there are two types of references in Kotlin: nullable and non-nullable. What you don't really know is how to use them properly and what benefits they may give you, so let's take a closer look at these types.</p>
+<p>As you may know, there are two types of references in Kotlin: nullable and non-nullable. What you don't really know is how to use them properly and what benefits they may give you, so let's take a closer look at these types.</p>
 <h5 id="safe-calls" style="text-align: center;">Safe Calls</h5>
 <p>Let's start with an example: there is a <code class="language-kotlin">city</code> object with plenty of nested objects. We want to access the name of a building from this city like this:</p>
 <pre><code class="language-kotlin">if (city != null &amp;&amp;
@@ -24,7 +24,7 @@
 <pre><code class="language-kotlin">var name: String? = "Kotlin"
 val length: Int? = name?.length
 print(if (length != null) length else 0)</code></pre>
-<p>Now we have our own <code class="language-kotlin">length</code> variable. As you see, it will be <code class="language-kotlin">null</code> in case of <code class="language-kotlin">null</code> in the <code class="language-kotlin">name</code> variable. However, we can simplify the code with the<strong> Elvis operator</strong>:</p>
+<p>Now we have our own <code class="language-kotlin">length</code> variable. As you see, it will be <code class="language-kotlin">0</code> in the case of <code class="language-kotlin">null</code> in the <code class="language-kotlin">name</code> variable. However, we can simplify the code with the<strong> Elvis operator</strong>:</p>
 <pre><code class="language-kotlin">var name: String? = "Kotlin"
 val length: Int? = name?.length
 print(length ?: 0)</code></pre>
@@ -34,7 +34,7 @@ print(length ?: 0)</code></pre>
 <p>You may ask, but why is it called Elvis? Look: there he is!</p>
 <p><img alt="" src="https://ucarecdn.com/70a56aca-5d34-4852-ae94-eeadf39527c7/"/></p>
 <h5 id="the-operator" style="text-align: center;">The <code class="language-kotlin">!!</code> Operator</h5>
-<p>There is an easy way to invoke an NPE: the <code class="language-kotlin">!!</code> operator. The code won't crash only if you're a 100% sure that your variable won't be <code class="language-kotlin">null</code>:</p>
+<p>There is an easy way to invoke an NPE: the <code class="language-kotlin">!!</code> operator. The code won't crash only if you're 100% sure that your variable won't be <code class="language-kotlin">null</code>:</p>
 <pre><code class="language-kotlin">var name: String? = "Kotlin"
 print(name!!.length)</code></pre>
 <p>The code above looks like it's screaming, trying to scare the compiler. The piece of code above is almost equal to the one below:</p>
@@ -70,10 +70,10 @@ println(emptyString?.length)   // 0</code></pre>
 println(nullString?.length ?: -1)   // -1
 val emptyString: String? = ""
 println(emptyString?.length ?: -1)  // 0</code></pre>
-<p>The <a href="https://kotlinlang.org/docs/idioms.html#execute-a-statement-if-null" rel="noopener noreferrer nofollow" target="_blank">third idiom</a> is the ability to throw exceptions with the Elvis operator. Take the opportunity to try it in your project. Just use the following code in place of <code class="language-kotlin">readln()</code>. If a program can't read a line, instead of an NPE you will get a more specific exception. You can test this by typing <code class="language-kotlin">Ctrl+D</code> in Intellij IDEA. When debugging, it's nice to know what's going on in your programs rather than pulling your hair out over NPE's.</p>
+<p>The <a href="https://kotlinlang.org/docs/idioms.html#execute-a-statement-if-null" rel="noopener noreferrer nofollow" target="_blank">third idiom</a> is the ability to throw exceptions with the Elvis operator. Take the opportunity to try it in your project. Just use the following code in place of <code class="language-kotlin">readln()</code>. If a program can't read a line, instead of an NPE you will get a more specific exception. You can test this by typing <code class="language-kotlin">Ctrl+D</code> in IntelliJ IDEA. When debugging, it's nice to know what's going on in your programs rather than pulling your hair out over NPE's.</p>
 <pre><code class="language-kotlin">readlnOrNull() ?: error("No lines read")
 </code></pre>
-<p>The <a href="https://kotlinlang.org/docs/idioms.html#nullable-boolean" rel="noopener noreferrer nofollow" target="_blank">last idiom</a> is working with nullable Boolean. This is how it works:</p>
+<p>The <a href="https://kotlinlang.org/docs/idioms.html#nullable-boolean" rel="noopener noreferrer nofollow" target="_blank">last idiom</a> works with nullable Boolean. This is how it works:</p>
 <pre><code class="language-kotlin">val b: Boolean? = ...
 if (b == true) {
     ...
@@ -83,9 +83,9 @@ if (b == true) {
 <p>Seems easy, right? Now, let's discuss a more difficult case. Suppose you want to create an expression that tries to test something in a nullable variable and returns <code class="language-kotlin">false</code> if the variable is <code class="language-kotlin">null</code>.  Otherwise, it returns the result of checking like normal. It's easy to do this with an Elvis operator:</p>
 <pre><code class="language-kotlin">val nullString: String? = null
 println(nullString?.isNotEmpty() ?: false) // false</code></pre>
-<p>What if we try it without the Elvis operator? This way is still possible, but harder to understand:</p>
+<p>What if we try it without the Elvis operator? This way is still possible but harder to understand:</p>
 <pre><code class="language-kotlin">val nullString: String? = null
 print(nullString?.isNotEmpty() == true) // false</code></pre>
 <p>In this example, <code class="language-kotlin">nullString?.isNotEmpty()</code> gives you a nullable <code class="language-kotlin">Boolean</code>. So, when you check <code class="language-kotlin">== true</code>, a result of <code class="language-kotlin"><span style="color: #000000;">false</span></code> means either that the expression is <code class="language-kotlin">false</code> or that the variable is <code class="language-kotlin">null</code>, which is exactly what we want. You won't need to write in this form; this is just an example so you can recognize it if you come across this structure in the future.</p>
 <h5 id="conclusion" style="text-align: center;">Conclusion</h5>
-<p><strong>NPEs</strong> often pose a problem, but with Kotlin's safe calls and Elvis operator, it's not as bad as in Java. Now that you know some basics about null safety in Kotlin, you can write safe code without any problems. Don't forget to use the <code class="language-kotlin">!!</code> operator carefully!!</p></body></html>
+<p><strong>NPEs</strong> often pose a problem, but with Kotlin's safe calls and Elvis operator, it's not as bad as in Java. Now that you know some basics about null safety in Kotlin, you can write safe code without any problems. Don't forget to use the <code class="language-kotlin">!!</code> operator carefully!!</p>

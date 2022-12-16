@@ -1,137 +1,126 @@
 <h2>Arrays</h2>
-<html>
- <head></head>
- <body>
-  <h5 id="introduction-to-arrays" style="text-align: center;">Introduction to arrays</h5> 
-  <p><strong>Arrays </strong>are useful when you need to process multiple values of the same type. You can save and process them together in an array as <strong>a single unit</strong>. It is convenient if you don't know how many elements the program will process during its runtime.</p> 
-  <p>You may consider an array as <strong>a collection of elements </strong>of <strong>one type</strong>. All elements are stored in the memory sequentially.</p> 
-  <p>The collection provides one name for all elements. Once an array is created, <strong>it cannot be changed</strong>. However, you can modify a stored element at any time.</p> 
-  <p>The picture below illustrates an array of five floating-point numbers. Each element has an integer index (<code class="language-kotlin">0-4</code>), so you can access it. The first element always has the index of <code class="language-kotlin">0</code>, the last element has the index that equals <strong>array size - 1</strong>.</p> 
-  <div style="text-align: center;"> 
-   <figure class="image" style="">
-    <img alt="" height="159px" src="https://ucarecdn.com/9e6fb36e-293b-4fce-99e5-430e520d0783/" width="520px"> 
-    <figcaption>
-     <strong>An array of five floating-point elements</strong>
-    </figcaption> 
-   </figure> 
-  </div> 
-  <p>We hope you got the general idea of what arrays are. Now, let's see, how we can use them in Kotlin.</p> 
-  <h5 id="creating-an-array-with-specified-elements" style="text-align: center;">Creating an array with specified elements</h5> 
-  <p>Kotlin can handle many types of arrays: <code class="language-kotlin">IntArray</code>, <code class="language-kotlin">LongArray</code>, <code class="language-kotlin">DoubleArray</code>, <code class="language-kotlin">FloatArray</code>, <code class="language-kotlin">CharArray</code>, <code class="language-kotlin">ShortArray</code>, <code class="language-kotlin">ByteArray</code>, <code class="language-kotlin">BooleanArray</code>. Each array stores elements of the corresponding type (<code class="language-kotlin">Int</code>, <code class="language-kotlin">Long</code>, <code class="language-kotlin">Double</code>, and so on). Note that Kotlin doesn't have default <code class="language-kotlin">StringArray</code> type. You can store <code class="language-kotlin">String</code> in the array, but we talk about it on another <a target="_blank" href="https://hyperskill.org/learn/step/11477" rel="noopener noreferrer nofollow">topic</a>.</p> 
-  <p>To create an array of a specified type, we need to invoke a special function and pass all elements to store them together:</p> 
-  <ul> 
-   <li><code class="language-kotlin">intArrayOf</code> creates <code class="language-kotlin">IntArray</code>;</li> 
-   <li><code class="language-kotlin">charArrayOf</code> creates <code class="language-kotlin">CharArray</code>;</li> 
-   <li><code class="language-kotlin">doubleArrayOf</code> creates <code class="language-kotlin">DoubleArray</code>;</li> 
-   <li>and so on.</li> 
-  </ul> 
-  <p>For example, let's create three arrays:</p> 
-  <pre><code class="language-kotlin">val numbers = intArrayOf(1, 2, 3, 4, 5) // It stores 5 elements of the Int type
+<html><body><h5 id="introduction-to-arrays" style="text-align: center;">Introduction to arrays</h5>
+<p><strong>Arrays </strong>are useful when you need to process multiple values of the same type. You can save and process them together in an array as <strong>a single unit</strong>. It is convenient if you don't know how many elements the program will process during its runtime.</p>
+<p>You may consider an array as <strong>a collection of elements </strong>of <strong>one type</strong>. All elements are stored in the memory sequentially.</p>
+<p>The collection provides one name for all elements. Once an array is created, <strong>it cannot be changed</strong>. However, you can modify a stored element at any time.</p>
+<p>The picture below illustrates an array of five floating-point numbers. Each element has an integer index (<code class="language-kotlin">0-4</code>), so you can access it. The first element always has the index of <code class="language-kotlin">0</code>, the last element has the index that equals <strong>array size - 1</strong>.</p>
+<div style="text-align: center;">
+<figure class="image" style=""><img alt="" height="159px" src="https://ucarecdn.com/9e6fb36e-293b-4fce-99e5-430e520d0783/" width="520px"/>
+<figcaption><strong>An array of five floating-point elements</strong></figcaption>
+</figure>
+</div>
+<p>We hope you got the general idea of what arrays are. Now, let's see, how we can use them in Kotlin.</p>
+<h5 id="creating-an-array-with-specified-elements" style="text-align: center;">Creating an array with specified elements</h5>
+<p>Kotlin can handle many types of arrays: <code class="language-kotlin">IntArray</code>, <code class="language-kotlin">LongArray</code>, <code class="language-kotlin">DoubleArray</code>, <code class="language-kotlin">FloatArray</code>, <code class="language-kotlin">CharArray</code>, <code class="language-kotlin">ShortArray</code>, <code class="language-kotlin">ByteArray</code>, <code class="language-kotlin">BooleanArray</code>. Each array stores elements of the corresponding type (<code class="language-kotlin">Int</code>, <code class="language-kotlin">Long</code>, <code class="language-kotlin">Double</code>, and so on). Note that Kotlin doesn't have default <code class="language-kotlin">StringArray</code> type. You can store <code class="language-kotlin">String</code> in the array, but we talk about it on another <a href="https://hyperskill.org/learn/step/11477" rel="noopener noreferrer nofollow" target="_blank">topic</a>.</p>
+<p>To create an array of a specified type, we need to invoke a special function and pass all elements to store them together:</p>
+<ul>
+<li><code class="language-kotlin">intArrayOf</code> creates <code class="language-kotlin">IntArray</code>;</li>
+<li><code class="language-kotlin">charArrayOf</code> creates <code class="language-kotlin">CharArray</code>;</li>
+<li><code class="language-kotlin">doubleArrayOf</code> creates <code class="language-kotlin">DoubleArray</code>;</li>
+<li>and so on.</li>
+</ul>
+<p>For example, let's create three arrays:</p>
+<pre><code class="language-kotlin">val numbers = intArrayOf(1, 2, 3, 4, 5) // It stores 5 elements of the Int type
 println(numbers.joinToString()) // 1, 2, 3, 4, 5
 
 val characters = charArrayOf('K', 't', 'l') // It stores 3 elements of the Char type
 println(characters.joinToString()) // K, t, l
 
 val doubles = doubleArrayOf(1.25, 0.17, 0.4) // It stores 3 elements of the Double type
-println(doubles.joinToString()) // 1.15, 0.17, 0.4</code></pre> 
-  <p>This code snippet above prints three arrays:</p> 
-  <pre><code class="language-kotlin">1, 2, 3, 4, 5
+println(doubles.joinToString()) // 1.15, 0.17, 0.4</code></pre>
+<p>This code snippet above prints three arrays:</p>
+<pre><code class="language-kotlin">1, 2, 3, 4, 5
 K, t, l
-1.25, 0.17, 0.4</code></pre> 
-  <p>The <code class="language-kotlin">joinToString()</code> function converts an array into a string.</p> 
-  <p>When you initialize an array (or anything else) with a sequence of arguments, you can add a trailing comma. It can be useful if you want to add or change some values:</p> 
-  <pre><code class="language-kotlin">val array = intArrayOf(1, 2, 3, 4,) // works since Kotlin 1.4</code></pre> 
-  <h5 id="creating-an-array-of-a-specified-size" style="text-align: center;">Creating an array of a specified size</h5> 
-  <p>To create an array of a certain size, we need to write its type and pass it after the type name in round brackets (<strong>the constructor</strong>):</p> 
-  <pre><code class="language-kotlin">val numbers = IntArray(5) // an array of 5 integer numbers
+1.25, 0.17, 0.4</code></pre>
+<p>The <code class="language-kotlin">joinToString()</code> function converts an array into a string.</p>
+<p>When you initialize an array (or anything else) with a sequence of arguments, you can add a trailing comma. It can be useful if you want to add or change some values:</p>
+<pre><code class="language-kotlin">val array = intArrayOf(1, 2, 3, 4,) // works since Kotlin 1.4</code></pre>
+<h5 id="creating-an-array-of-a-specified-size" style="text-align: center;">Creating an array of a specified size</h5>
+<p>To create an array of a certain size, we need to write its type and pass it after the type name in round brackets (<strong>the constructor</strong>):</p>
+<pre><code class="language-kotlin">val numbers = IntArray(5) // an array of 5 integer numbers
 println(numbers.joinToString())
 
 val doubles = DoubleArray(7) // an array of 7 doubles
-println(doubles.joinToString())</code></pre> 
-  <p>These arrays are going to have a predefined size. They are filled by the default values of the corresponding types (<code class="language-kotlin">0</code> for numeric types):</p> 
-  <pre><code class="language-kotlin">0, 0, 0, 0, 0
-0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0</code></pre> 
-  <p>You cannot change the size of an array, but you can modify the elements.</p> 
-  <h5 id="reading-array-from-input" style="text-align: center;">Reading array from input</h5> 
-  <p>You don't need to figure out all the snippets right now, just use them as a template in your projects!</p> 
-  <p>To read an array of a certain size from the console, we first need to create an array of some type with a known size. Inside the parentheses, we should place <code class="language-kotlin">readln()</code>, with the help of which we can read input from the console. The <code class="language-kotlin">readln()</code> function returns a string, so don’t forget to convert the input string into the type of the created array.</p> 
-  <pre><code class="language-kotlin">val numbers = IntArray(5) { readln().toInt() } // on each line single numbers from 1 to 5
-println(numbers.joinToString()) // 1, 2, 3, 4, 5</code></pre> 
-  <p>This code allows you to read 5 numbers, each number on a separate line.</p> 
-  <p>If you want to read an array in a single line, use the following approach. You can read the array with the readln() function. You’ll get a string, which you should split.</p> 
-  <pre><code class="language-kotlin">// here we have an input string "1 2 3 4 5"
+println(doubles.joinToString())
+</code></pre>
+<p>These arrays are going to have a predefined size. They are filled by the default values of the corresponding types (<code class="language-kotlin">0</code> for numeric types):</p>
+<pre><code class="language-kotlin">0, 0, 0, 0, 0
+0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0</code></pre>
+<p>You cannot change the size of an array, but you can modify the elements.</p>
+<h5 id="reading-array-from-input" style="text-align: center;">Reading array from input</h5>
+<p>You don't need to figure out all the snippets right now, just use them as a template in your projects!</p>
+<p>To read an array of a certain size from the console, we first need to create an array of some type with a known size. Inside the parentheses, we should place <code class="language-kotlin">readln()</code>, with the help of which we can read input from the console. The <code class="language-kotlin">readln()</code>  function returns a string, so don’t forget to convert the input string into the type of the created array.</p>
+<pre><code class="language-kotlin">val numbers = IntArray(5) { readln().toInt() } // on each line single numbers from 1 to 5
+println(numbers.joinToString()) // 1, 2, 3, 4, 5
+</code></pre>
+<p>This code allows you to read 5 numbers, each number on a separate line.</p>
+<p>If you want to read an array in a single line, use the following approach. You can read the array with the readln() function. You’ll get a string, which you should split.</p>
+<pre><code class="language-kotlin">// here we have an input string "1 2 3 4 5"
 
 val numbers = readln().split(" ").map { it.toInt() }.toTypedArray()
-println(numbers.joinToString()) // 1, 2, 3, 4, 5</code></pre> 
-  <p>Let’s have a look at this code snippet. We read a string from input and then use <code class="language-kotlin">split()</code>. We divide our string into smaller ones by space, then every element with map function we convert to <code class="language-kotlin">Int</code> and we return an integer array. <a target="_blank" href="https://kotlinlang.org/docs/collection-transformations.html#map" rel="noopener noreferrer nofollow">Here</a> you can read more about mapping transformation.</p> 
-  <p>There is also a way that allows you to ignore line breaks and extra spaces in the input string. You can do this with the help of regular expressions, which are often used in text searching and editing.</p> 
-  <pre><code class="language-kotlin">val regex = "\\s+".toRegex()
+println(numbers.joinToString()) // 1, 2, 3, 4, 5</code></pre>
+<p>Let’s have a look at this code snippet. We read a string from input and then use <code class="language-kotlin">split()</code>. We divide our string into smaller ones by space, then every element with map function we convert to <code class="language-kotlin">Int</code> and we return an integer array. <a href="https://kotlinlang.org/docs/collection-transformations.html#map" rel="noopener noreferrer nofollow" target="_blank">Here</a> you can read more about mapping transformation.</p>
+<p>There is also a way that allows you to ignore line breaks and extra spaces in the input string. You can do this with the help of regular expressions, which are often used in text searching and editing.</p>
+<pre><code class="language-kotlin">val regex = "\\s+".toRegex()
 val str = "1 2\t\t3  4\t5  6"
 val nums = str.split(regex).map { it.toInt() }.toTypedArray()
-println(nums.joinToString()) // 1, 2, 3, 4, 5, 6</code></pre> 
-  <p>With this regular expression, you can ignore spaces and tabs in the input string. You can learn more about regular expressions in our <a target="_blank" href="https://hyperskill.org/knowledge-map/1505" rel="noopener noreferrer nofollow">topics</a>.</p> 
-  <h5 id="array-size" style="text-align: center;">Array size</h5> 
-  <p>An array always has a size, that is, the number of elements. To obtain it, we need to take the value of the <code class="language-kotlin">size</code> property. It is a number of the <code class="language-kotlin">Int</code> type.</p> 
-  <pre><code class="language-kotlin">val numbers = intArrayOf(1, 2, 3, 4, 5)
-println(numbers.size) // 5</code></pre> 
-  <p><span style="background-color: transparent; color: #000000; font-size: 11pt; font-variant: normal;"></span></p>
-  <div class="alert alert-warning">
-   You cannot change the size of an array after it has been created.
-   <span style="background-color: transparent; color: #000000; font-size: 11pt; font-variant: normal;"></span>
-  </div>
-  <p></p> 
-  <h5 id="accessing-elements" style="text-align: center;">Accessing elements</h5> 
-  <p>You can change the values of array elements. Use the index to set a value in the array.</p> 
-  <p>Setting the value by the index:</p> 
-  <pre><code class="language-kotlin">array[index] = elem</code></pre> 
-  <p>Getting the value by the index:</p> 
-  <pre><code class="language-kotlin">val elem = array[index]</code></pre> 
-  <p>Array indexes are numbers from <code class="language-kotlin">0</code> (the first element) to <code class="language-kotlin">array.size-1</code> (the last element).</p> 
-  <p>Here is an example of a three-element array of integers:</p> 
-  <pre><code class="language-kotlin">val numbers = IntArray(3) // numbers: 0, 0, 0
+println(nums.joinToString()) // 1, 2, 3, 4, 5, 6</code></pre>
+<p>With this regular expression, you can ignore spaces and tabs in the input string. You can learn more about regular expressions in our <a href="https://hyperskill.org/knowledge-map/1505" rel="noopener noreferrer nofollow" target="_blank">topics</a>.</p>
+<h5 id="array-size" style="text-align: center;">Array size</h5>
+<p>An array always has a size, that is, the number of elements. To obtain it, we need to take the value of the <code class="language-kotlin">size</code> property. It is a number of the <code class="language-kotlin">Int</code> type.</p>
+<pre><code class="language-kotlin">val numbers = intArrayOf(1, 2, 3, 4, 5)
+println(numbers.size) // 5 </code></pre>
+<p><span style="background-color: transparent; color: #000000; font-size: 11pt; font-variant: normal;"></span></p><div class="alert alert-warning">You cannot change the size of an array after it has been created.<span style="background-color: transparent; color: #000000; font-size: 11pt; font-variant: normal;"></span></div><p></p>
+<h5 id="accessing-elements" style="text-align: center;">Accessing elements</h5>
+<p>You can change the values of array elements. Use the index to set a value in the array.</p>
+<p>Setting the value by the index:</p>
+<pre><code class="language-kotlin">array[index] = elem</code></pre>
+<p>Getting the value by the index:</p>
+<pre><code class="language-kotlin">val elem = array[index]</code></pre>
+<p>Array indexes are numbers from <code class="language-kotlin">0</code> (the first element) to <code class="language-kotlin">array.size-1</code> (the last element).</p>
+<p>Here is an example of a three-element array of integers:</p>
+<pre><code class="language-kotlin">val numbers = IntArray(3) // numbers: 0, 0, 0
 
 numbers[0] = 1 // numbers: 1, 0, 0
 numbers[1] = 2 // numbers: 1, 2, 0
 numbers[2] = numbers[0] + numbers[1] // numbers: 1, 2, 3
 
 println(numbers[0]) // 1, the first element
-println(numbers[2]) // 3, the last element</code></pre> 
-  <p>Let's take a closer look at the code above. First, we have an array with three elements. By default, all elements are equal to <code class="language-kotlin">0</code>. Then, the value <code class="language-kotlin">1</code> is assigned to the first element of the array by the index of <code class="language-kotlin">0</code>. Then, the value <code class="language-kotlin">2</code> is assigned to the second element of the array by the index of <code class="language-kotlin">1</code>. After that, the value <code class="language-kotlin">3</code> (the sum of <code class="language-kotlin">1</code> and <code class="language-kotlin">2</code>) is assigned to the last element of the array by the index of <code class="language-kotlin">2</code>. Then, we print the first and the last element of the three-element array.</p> 
-  <p>If we try to access a non-existing element by the index, the program will throw an exception. Let's try to get the fourth element with index of <code class="language-kotlin">3</code> of the considered <code class="language-kotlin">numbers</code> array:</p> 
-  <pre><code class="language-java">val elem = numbers[3]</code></pre> 
-  <p>The program will throw <code class="language-kotlin">ArrayIndexOutOfBoundsException</code>.</p> 
-  <p>As you may already know, the last element has an index equal to <code class="language-kotlin">array.size - 1</code>. Let's access the last element and the one before last:</p> 
-  <pre><code class="language-kotlin">val alphabet = charArrayOf('a', 'b', 'c', 'd')
+println(numbers[2]) // 3, the last element</code></pre>
+<p>Let's take a closer look at the code above. First, we have an array with three elements. By default, all elements are equal to <code class="language-kotlin">0</code>. Then, the value <code class="language-kotlin">1</code> is assigned to the first element of the array by the index of <code class="language-kotlin">0</code>. Then, the value <code class="language-kotlin">2</code> is assigned to the second element of the array by the index of <code class="language-kotlin">1</code>. After that, the value <code class="language-kotlin">3</code> (the sum of <code class="language-kotlin">1</code> and <code class="language-kotlin">2</code>) is assigned to the last element of the array by the index of <code class="language-kotlin">2</code>. Then, we print the first and the last element of the three-element array.</p>
+<p>If we try to access a non-existing element by the index, the program will throw an exception. Let's try to get the fourth element with index of <code class="language-kotlin">3</code> of the considered <code class="language-kotlin">numbers</code> array:</p>
+<pre><code class="language-java">val elem = numbers[3]</code></pre>
+<p>The program will throw <code class="language-kotlin">ArrayIndexOutOfBoundsException</code>.</p>
+<p>As you may already know, the last element has an index equal to <code class="language-kotlin">array.size - 1</code>. Let's access the last element and the one before last:</p>
+<pre><code class="language-kotlin">val alphabet = charArrayOf('a', 'b', 'c', 'd')
 
 val last = alphabet[alphabet.size - 1]    // 'd'
-val prelast = alphabet[alphabet.size - 2] // 'c'</code></pre> 
-  <p>Kotlin provides several convenient ways to access the first and the last elements of an array as well as to access the last index:</p> 
-  <pre><code class="language-kotlin">println(alphabet.first())   // 'a'
+val prelast = alphabet[alphabet.size - 2] // 'c'</code></pre>
+<p>Kotlin provides several convenient ways to access the first and the last elements of an array as well as to access the last index:</p>
+<pre><code class="language-kotlin">println(alphabet.first())   // 'a'
 println(alphabet.last())    // 'd'
-println(alphabet.lastIndex) // 3</code></pre> 
-  <p>Use this approach to make your code more readable and prevent accessing the non-existent indexes.</p> 
-  <h5 id="comparing-arrays" style="text-align: center;">Comparing arrays</h5> 
-  <p>To compare two arrays, invoke the <code class="language-kotlin">contentEquals()</code> function of an array and pass another array as the argument. This function returns <code class="language-kotlin">true</code> when two arrays contain the same elements in the same order. Otherwise, it returns <code class="language-kotlin">false</code>:</p> 
-  <pre><code class="language-kotlin">val numbers1 = intArrayOf(1, 2, 3, 4)
+println(alphabet.lastIndex) // 3</code></pre>
+<p>Use this approach to make your code more readable and prevent accessing the non-existent indexes.</p>
+<h5 id="comparing-arrays" style="text-align: center;">Comparing arrays</h5>
+<p>To compare two arrays, invoke the <code class="language-kotlin">contentEquals()</code> function of an array and pass another array as the argument. This function returns <code class="language-kotlin">true</code> when two arrays contain the same elements in the same order. Otherwise, it returns <code class="language-kotlin">false</code>:</p>
+<pre><code class="language-kotlin">val numbers1 = intArrayOf(1, 2, 3, 4)
 val numbers2 = intArrayOf(1, 2, 3, 4)
 val numbers3 = intArrayOf(1, 2, 3)
 
 println(numbers1.contentEquals(numbers2)) // true
-println(numbers1.contentEquals(numbers3)) // false</code></pre> 
-  <p>Beware, the operators <code class="language-kotlin">==</code> and <code class="language-kotlin">!=</code> do not compare the contents of arrays, they compare only the variables that point to the same object:</p> 
-  <pre><code class="language-kotlin">val simpleArray = intArrayOf(1, 2, 3, 4)
+println(numbers1.contentEquals(numbers3)) // false</code></pre>
+<p>Beware, the operators <code class="language-kotlin">==</code> and <code class="language-kotlin">!=</code> do not compare the contents of arrays, they compare only the variables that point to the same object:</p>
+<pre><code class="language-kotlin">val simpleArray = intArrayOf(1, 2, 3, 4)
 val similarArray = intArrayOf(1, 2, 3, 4)
 
 println(simpleArray == simpleArray)  // true, simpleArray points to the same object
-println(simpleArray == similarArray) // false, similarArray points to another object</code></pre> 
-  <h5 id="conclusion" style="text-align: center;">Conclusion</h5> 
-  <p>In this topic, we have discussed what an array is and the basic operations it provides. Please, remember that:</p> 
-  <ul> 
-   <li>An array is a collection of elements that can be accessed by indexes;</li> 
-   <li>The first element of an array has the index of <code class="language-kotlin">0</code>;</li> 
-   <li>An array always has a size;</li> 
-   <li>It is possible to modify an element of an array by the element index;</li> 
-   <li>Kotlin can handle arrays of different types: <code class="language-kotlin">IntArray</code>, <code class="language-kotlin">CharArray</code>, <code class="language-kotlin">DoubleArray</code>, and so on.</li> 
-  </ul>
- </body>
-</html>
+println(simpleArray == similarArray) // false, similarArray points to another object</code></pre>
+<h5 id="conclusion" style="text-align: center;">Conclusion</h5>
+<p>In this topic, we have discussed what an array is and the basic operations it provides. Please, remember that:</p>
+<ul>
+<li>An array is a collection of elements that can be accessed by indexes;</li>
+<li>The first element of an array has the index of <code class="language-kotlin">0</code>;</li>
+<li>An array always has a size;</li>
+<li>It is possible to modify an element of an array by the element index;</li>
+<li>Kotlin can handle arrays of different types: <code class="language-kotlin">IntArray</code>, <code class="language-kotlin">CharArray</code>, <code class="language-kotlin">DoubleArray</code>, and so on.</li>
+</ul></body></html>

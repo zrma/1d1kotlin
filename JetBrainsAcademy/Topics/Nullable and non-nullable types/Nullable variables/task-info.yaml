@@ -1,13 +1,12 @@
 type: choice
 is_multiple_choice: true
 options:
+- text: Your program needs a value and can't work without one
+- text: Your program doesn't need a value
 - text: "Your program can obtain a value in the future, but there is no reasonable\
     \ value now"
-- text: "Your program doesn't need a value: if the value isn't present, there is a\
-    \ way around"
 - text: "Your program needs three possible values for a variable, maybe use nullable\
     \ Boolean?"
-- text: Your program needs a value and can't work without one
 files:
 - name: src/Main.kt
   visible: true

@@ -1,10 +1,10 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: 1
-- text: 2
-- text: 3
-- text: 4
+- text: println("22" + 0 + 2)
+- text: 'println("2" + 2 + 2) '
+- text: println("2" + 2 + 1 + 1)
+- text: println("222")
 files:
 - name: src/Main.kt
   visible: true

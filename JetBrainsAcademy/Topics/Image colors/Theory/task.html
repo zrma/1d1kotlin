@@ -1,37 +1,33 @@
 <h2>Image colors</h2>
-<html>
- <head></head>
- <body>
-  <p></p>
-  <p>In this topic, we'll learn about bitmap images that use the RGB or the ARGB color mode. A bitmap image consists of a 2-dimensional (2-D) matrix of dots, called pixels, each of which can be assigned a different color. These dots can be used to describe any kind of rectangular image. Common color translation schemes are the 24-bit RGB and 32-bit RGBA color models.</p> 
-  <h5 id="rgb-color-alpha-channel">RGB Color, Alpha channel</h5> 
-  <p>In most cases, the RGB color model is used with 24-bit data for each pixel. Hence, each pixel can have 16,777,216 different colors. This color scheme is called True Color.</p> 
-  <p>An extension to the RGB is the ARGB color mode, which is similar to RGB colors but also contains opacity information. ‘A’ stands for Alpha or Alpha channel and denotes the transparency of each pixel. An Alpha value of 0 indicates that the pixel is clear, while the maximum value indicates that the pixel is opaque.</p> 
-  <p>Most commonly, ARGB is used with 32-bit data for each pixel. Each color and alpha channel is 8-bit long.</p> 
-  <p>The following image illustrates the 32-bit ARGB color scheme for a pixel. Each small rectangle denotes a single bit.</p> 
-  <p style="text-align: center;"><img alt="" height="237" name="32bitcolor.png" src="https://ucarecdn.com/2a0bdcf2-c181-4eba-b6d6-f1c40cfb9caa/" width="716"></p> 
-  <p>The following picture is an example for the use of the alpha channel. It shows two images created with a variable alpha channel (different opacity for each pixel). These images are put over a text background (like, e.g., on a web page), so the variable transparency is evident.</p> 
-  <p style="text-align: center;"><img alt="" height="290" src="https://ucarecdn.com/a9ddf881-f336-4516-a5c0-40fa3f19e421/" width="464"></p> 
-  <p>Note that the actual use of the alpha channel data depends on the program. The data may be ignored, used for transparency or in some other manner in order to create some complex image blending.</p> 
-  <h5 id="image-coordinate-system">Image coordinate system</h5> 
-  <p>Java and consequently Kotlin use the <code class="language-kotlin">BufferedImage</code>class in order to handle images. It belongs to the <code class="language-kotlin">java.awt</code> package and is a subclass of the <code class="language-kotlin">Image</code> class. Therefore, it has to be imported into a program:</p> 
-  <pre><code class="language-kotlin">import java.awt.image.BufferedImage</code></pre> 
-  <p>A <code class="language-kotlin">BufferedImage</code> instance coordinate system is quite simple. A pixel position is defined by a pair of natural numbers that correspond to the pixel column and row respectively, with columns running from left to right and rows running from top to bottom. The starting row and column position number is zero. In the BufferedImage instance positioning system, the first coordinate is the column number, and the second is the row number. For example, a pixel with the position (4, 7) is located in the 5th column (from left to right) and in the 8th row (from top to bottom).</p> 
-  <p style="text-align: center;"><img alt="" height="552" name="coordinates.png" src="https://ucarecdn.com/5ab9ad5f-4ef3-41a2-b5e9-dabd802e789e/" width="685"></p> 
-  <h5 id="read-and-set-pixel-color">Read and Set pixel color</h5> 
-  <p>A pixel’s color can be read as an integer using the <code class="language-kotlin">getRGB(x, y)</code> function, where <code class="language-kotlin">x</code> and <code class="language-kotlin">y</code> are the column and row pixel positions respectively. A Kotlin integer has a size of 32 bits, so it can hold the color values for both the 24-bit RGB and 32-bit ARGB color schemes.</p> 
-  <p>A pixel’s color can be set using the <code class="language-kotlin">setRGB(x, y, rgb)</code> function, where <code class="language-kotlin">x</code> and <code class="language-kotlin">y</code> are the column and row pixel positions respectively, and <code class="language-kotlin">rgb</code> is the pixel color as an integer.</p> 
-  <p>In order to easily work with the acquired color value and avoid bitwise operations, the <code class="language-kotlin">Color</code> class should be used. Color belongs to the Java <code class="language-kotlin">java.awt</code> package and has to be imported:</p> 
-  <pre><code class="language-kotlin">import java.awt.Color</code></pre> 
-  <p>A Color instance can be initiated in many ways:</p> 
-  <ul> 
-   <li><code class="language-kotlin">Color(rgb)</code>, where <code class="language-kotlin">rgb</code> is the integer value of 24-bit color read by the <code class="language-kotlin">getRGB()</code> function (without alpha channel);</li> 
-   <li><code class="language-kotlin">Color(argb, true)</code>, where <code class="language-kotlin">argb</code> is the integer value of 32-bit color (with alpha channel);</li> 
-   <li><code class="language-kotlin">Color(r, g, b)</code>, where <code class="language-kotlin">r</code>, <code class="language-kotlin">g</code>, and <code class="language-kotlin">b</code> are the values for each basic color;</li> 
-   <li><code class="language-kotlin">Color(r, g, b, a)</code> where <code class="language-kotlin">r</code>, <code class="language-kotlin">g</code>, and <code class="language-kotlin">b</code> are the values for each basic color, and a is the value of the alpha channel.</li> 
-  </ul> 
-  <p>In the following code example, an image file is read. Then, for each pixel in the created <code class="language-kotlin">BufferedImage</code> instance, the red color is set to 255, while the green and the blue colors remain unchanged. The <code class="language-kotlin">BufferedImage</code> instance is then saved as a new file. Note that a new Color instance has to be created.</p> 
-  <pre><code class="language-kotlin">import java.io.File                   // Import the File class for file handling
+<p></p><p>In this topic, we'll learn about bitmap images that use the RGB or the ARGB color mode. A bitmap image consists of a 2-dimensional (2-D) matrix of dots, called pixels, each of which can be assigned a different color. These dots can be used to describe any kind of rectangular image. Common color translation schemes are the 24-bit RGB and 32-bit RGBA color models.</p>
+<h5 id="rgb-color-alpha-channel">RGB Color, Alpha channel</h5>
+<p>In most cases, the RGB color model is used with 24-bit data for each pixel. Hence, each pixel can have 16,777,216 different colors. This color scheme is called True Color.</p>
+<p>An extension to the RGB is the ARGB color mode, which is similar to RGB colors but also contains opacity information. ‘A’ stands for Alpha or Alpha channel and denotes the transparency of each pixel. An Alpha value of 0 indicates that the pixel is clear, while the maximum value indicates that the pixel is opaque.</p>
+<p>Most commonly, ARGB is used with 32-bit data for each pixel. Each color and alpha channel is 8-bit long.</p>
+<p>The following image illustrates the 32-bit ARGB color scheme for a pixel. Each small rectangle denotes a single bit.</p>
+<p style="text-align: center;"><img alt="" height="237" name="32bitcolor.png" src="https://ucarecdn.com/2a0bdcf2-c181-4eba-b6d6-f1c40cfb9caa/" width="716"/></p>
+<p>The following picture is an example for the use of the alpha channel. It shows two images created with a variable alpha channel (different opacity for each pixel). These images are put over a text background (like, e.g., on a web page), so the variable transparency is evident.</p>
+<p style="text-align: center;"><img alt="" height="290" src="https://ucarecdn.com/a9ddf881-f336-4516-a5c0-40fa3f19e421/" width="464"/></p>
+<p>Note that the actual use of the alpha channel data depends on the program. The data may be ignored, used for transparency or in some other manner in order to create some complex image blending.</p>
+<h5 id="image-coordinate-system">Image coordinate system</h5>
+<p>Java and consequently Kotlin use the <code class="language-kotlin">BufferedImage </code>class in order to handle images. It belongs to the <code class="language-kotlin">java.awt</code> package and is a subclass of the <code class="language-kotlin">Image</code> class. Therefore, it has to be imported into a program:</p>
+<pre><code class="language-kotlin">import java.awt.image.BufferedImage</code></pre>
+<p>A <code class="language-kotlin">BufferedImage</code> instance coordinate system is quite simple. A pixel position is defined by a pair of natural numbers that correspond to the pixel column and row respectively, with columns running from left to right and rows running from top to bottom. The starting row and column position number is zero. In the BufferedImage instance positioning system, the first coordinate is the column number, and the second is the row number. For example, a pixel with the position (4, 7) is located in the 5th column (from left to right) and in the 8th row (from top to bottom).</p>
+<p style="text-align: center;"><img alt="" height="552" name="coordinates.png" src="https://ucarecdn.com/5ab9ad5f-4ef3-41a2-b5e9-dabd802e789e/" width="685"/></p>
+<h5 id="read-and-set-pixel-color">Read and Set pixel color</h5>
+<p>A pixel’s color can be read as an integer using the <code class="language-kotlin">getRGB(x, y)</code> function, where <code class="language-kotlin">x</code> and <code class="language-kotlin">y</code> are the column and row pixel positions respectively. A Kotlin integer has a size of 32 bits, so it can hold the color values for both the 24-bit RGB and 32-bit ARGB color schemes.</p>
+<p>A pixel’s color can be set using the <code class="language-kotlin">setRGB(x, y, rgb)</code> function, where <code class="language-kotlin">x</code> and <code class="language-kotlin">y</code> are the column and row pixel positions respectively, and <code class="language-kotlin">rgb</code> is the pixel color as an integer.</p>
+<p>In order to easily work with the acquired color value and avoid bitwise operations, the <code class="language-kotlin">Color</code> class should be used. Color belongs to the Java <code class="language-kotlin">java.awt</code> package and has to be imported:</p>
+<pre><code class="language-kotlin">import java.awt.Color</code></pre>
+<p>A Color instance can be initiated in many ways:</p>
+<ul>
+<li><code class="language-kotlin">Color(rgb)</code>, where <code class="language-kotlin">rgb</code> is the integer value of 24-bit color read by the <code class="language-kotlin">getRGB()</code> function (without alpha channel);</li>
+<li><code class="language-kotlin">Color(argb, true)</code>, where <code class="language-kotlin">argb</code> is the integer value of 32-bit color (with alpha channel);</li>
+<li><code class="language-kotlin">Color(r, g, b)</code>, where <code class="language-kotlin">r</code>, <code class="language-kotlin">g</code>, and <code class="language-kotlin">b</code> are the values for each basic color;</li>
+<li><code class="language-kotlin">Color(r, g, b, a)</code> where <code class="language-kotlin">r</code>, <code class="language-kotlin">g</code>, and <code class="language-kotlin">b</code> are the values for each basic color, and a is the value of the alpha channel.</li>
+</ul>
+<p>In the following code example, an image file is read. Then, for each pixel in the created <code class="language-kotlin">BufferedImage</code> instance, the red color is set to 255, while the green and the blue colors remain unchanged. The <code class="language-kotlin">BufferedImage</code> instance is then saved as a new file. Note that a new Color instance has to be created.</p>
+<pre><code class="language-kotlin">import java.io.File                   // Import the File class for file handling
 import javax.imageio.ImageIO          // Import the ImageIO class for reading and writing images
 import java.awt.image.BufferedImage   // BufferedImage Class
 import java.awt.Color                 // Color class
@@ -58,12 +54,12 @@ fun main() {
    }
    val outputFileJpg = File("newImageFile.jpg")  // Output the file
    ImageIO.write(myImage, "jpg", outputFileJpg)  // Create an image using the BufferedImage instance data
-}</code></pre> 
-  <p>The picture below illustrates the above code applied to the left image in order to produce the image on the right.</p> 
-  <p style="text-align: center;"><img alt="" height="276" src="https://ucarecdn.com/0b968b9a-68b6-4b40-b346-a89fc3ebf121/" width="368"></p> 
-  <h5 id="set-the-alpha-channel">Set the Alpha channel</h5> 
-  <p>In the following code example, a 32-bit image file with alpha channel is created. Alpha channel varies from 0 at the top of the image (total transparent) to 255 at the bottom (total opaque).</p> 
-  <pre><code class="language-kotlin">import java.io.File
+}</code></pre>
+<p>The picture below illustrates the above code applied to the left image in order to produce the image on the right.</p>
+<p style="text-align: center;"><img alt="" height="276" src="https://ucarecdn.com/0b968b9a-68b6-4b40-b346-a89fc3ebf121/" width="368"/></p>
+<h5 id="set-the-alpha-channel">Set the Alpha channel</h5>
+<p>In the following code example, a 32-bit image file with alpha channel is created. Alpha channel varies from 0 at the top of the image (total transparent) to 255 at the bottom (total opaque).</p>
+<pre><code class="language-kotlin">import java.io.File
 import javax.imageio.ImageIO
 import java.awt.image.BufferedImage
 import java.awt.Color
@@ -82,21 +78,19 @@ fun main() {
     }
     val outputFile = File("alpha.png")         // Output the image
     ImageIO.write(myImage, "png", outputFile)  // Create an image using the BufferedImage
-}</code></pre> 
-  <p>The result of this code is the following image:</p> 
-  <p style="text-align: center;"><img alt="" src="https://ucarecdn.com/4ce16aee-dff5-4870-a1a0-d83a212204f1/"></p> 
-  <p>And finally, here are some useful code snippets.</p> 
-  <pre><code class="language-kotlin">// Get alpha value from Color instance
+}</code></pre>
+<p>The result of this code is the following image:</p>
+<p style="text-align: center;"><img alt="" src="https://ucarecdn.com/4ce16aee-dff5-4870-a1a0-d83a212204f1/"/></p>
+<p>And finally, here are some useful code snippets.</p>
+<pre><code class="language-kotlin">// Get alpha value from Color instance
 val c = Color(255, 0, 0, 127)  // Create a color instance, with alpha equal to 127
-val alpha = c.alpha            // Get alpha channel value</code></pre> 
-  <p>Here we create a new <code class="language-kotlin">Color</code> instance with alpha channel. The alpha channel value is available through the alpha property.</p> 
-  <pre><code class="language-kotlin">// Create Color instance for pixel at (x, y) position, alpha channel is also set
-val color = Color(bI.getRGB(x, y), true)  // where bI is a BufferedImage instance</code></pre> 
-  <p>The above code creates a new <code class="language-kotlin">Color</code> instance from the color of the bI BufferedImage instance at the position <code class="language-kotlin">(x, y)</code>. If we didn't use this particular initiation with the second parameter set to true, then the alpha channel value at the position <code class="language-kotlin">(x, y)</code> would be ignored and set to value 255. This happens in the following code snippet. No matter what the alpha value was, it is disregarded and set to 255.</p> 
-  <pre><code class="language-kotlin">// Create Color instance for pixel at (x, y) position, only RGB color (alpha set to 255)
-val color = Color(bI.getRGB(x, y))  // where bI is a BufferedImage instance</code></pre> 
-  <h5 id="conclusion"> Conclusion</h5> 
-  <p>The subject of bitmap RGB images is vast. Here we presented the basic knowledge needed for working with images in Kotlin. We've learned how to read and write image files and how to handle the RGB and the ARGB color schemes in order to read or set the color for an image.</p> 
-  <p></p>
- </body>
-</html>
+val alpha = c.alpha            // Get alpha channel value</code></pre>
+<p>Here we create a new <code class="language-kotlin">Color</code> instance with alpha channel. The alpha channel value is available through the alpha property.</p>
+<pre><code class="language-kotlin">// Create Color instance for pixel at (x, y) position, alpha channel is also set
+val color = Color(bI.getRGB(x, y), true)  // where bI is a BufferedImage instance</code></pre>
+<p>The above code creates a new <code class="language-kotlin">Color</code> instance from the color of the bI BufferedImage instance at the position <code class="language-kotlin">(x, y)</code>. If we didn't use this particular initiation with the second parameter set to true, then the alpha channel value at the position <code class="language-kotlin">(x, y)</code> would be ignored and set to value 255. This happens in the following code snippet. No matter what the alpha value was, it is disregarded and set to 255.</p>
+<pre><code class="language-kotlin">// Create Color instance for pixel at (x, y) position, only RGB color (alpha set to 255)
+val color = Color(bI.getRGB(x, y))  // where bI is a BufferedImage instance</code></pre>
+<h5 id="conclusion"> Conclusion</h5>
+<p>The subject of bitmap RGB images is vast. Here we presented the basic knowledge needed for working with images in Kotlin. We've learned how to read and write image files and how to handle the RGB and the ARGB color schemes in order to read or set the color for an image.</p>
+<p></p>

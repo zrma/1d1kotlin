@@ -1,12 +1,9 @@
 <h2>Random</h2>
-<html>
- <head></head>
- <body>
-  <p>A random number is a number that is almost impossible to predict, like the result of throwing a dice. A random number generator can provide you with such a number when you need it, and you will probably need it quite often. For example, it comes in handy when you're trying to create a password nobody can guess, make the next unpredictable move in a game, or generate a lot of random data.</p> 
-  <p>Random generators are widely used in cryptography, machine learning, games, and more. In this topic, we'll cover some ways to generate random numbers in Kotlin.</p> 
-  <h5 id="types-of-random-numbers">Types of random numbers</h5> 
-  <p>You can set some restrictions for your random number by choosing a specific type. Everything you need for this purpose is located in the <code class="language-kotlin">kotlin.random</code> package. Take a look at the code snippet below:</p> 
-  <pre><code class="language-kotlin">import kotlin.random.Random
+<html><body><p>A random number is a number that is almost impossible to predict, like the result of throwing a dice. A random number generator can provide you with such a number when you need it, and you will probably need it quite often. For example, it comes in handy when you're trying to create a password nobody can guess, make the next unpredictable move in a game, or generate a lot of random data.</p>
+<p>Random generators are widely used in cryptography, machine learning, games, and more. In this topic, we'll cover some ways to generate random numbers in Kotlin.</p>
+<h5 id="types-of-random-numbers">Types of random numbers</h5>
+<p>You can set some restrictions for your random number by choosing a specific type. Everything you need for this purpose is located in the <code class="language-kotlin">kotlin.random</code> package. Take a look at the code snippet below:</p>
+<pre><code class="language-kotlin">import kotlin.random.Random
 
 fun main() {
     // generates an integer value between Int.MIN_VALUE and Int.MAX_VALUE (inclusive)
@@ -19,17 +16,19 @@ fun main() {
     println( Random.nextDouble() )
     // same thing one more time
     println( Random.nextDouble() )
-}</code></pre> 
-  <p>The code generates a bunch of random numbers of the given types:</p> 
-  <pre><code class="language-kotlin">-1272462740
+}
+</code></pre>
+<p>The code generates a bunch of random numbers of the given types:</p>
+<pre><code class="language-kotlin">-1272462740
 8641728355635965765
 0.036410034
 0.9411751338804492
-0.2533641025032649</code></pre> 
-  <p>Notice that if you run it again, the number will be different, as you can see with the last two numbers. Even though we called the same <code class="language-kotlin">nextDouble()</code> function, the numbers are not the same. That is because the generator gives us a new number every time: they could repeat sometimes but the probability of that is very low.</p> 
-  <h5 id="custom-ranges">Custom ranges</h5> 
-  <p>As you can see, some numbers ended up pretty big, others small, and one is even negative. The default ranges for integers and floating-point numbers are different and chosen to cover the most common cases. But what if we needed only the integers between 0 and 100 or floats between 0.0 and 5.0? Then, we can specify them explicitly:</p> 
-  <pre><code class="language-kotlin">// generates a non-negative integer value less than 100 
+0.2533641025032649
+</code></pre>
+<p>Notice that if you run it again, the number will be different, as you can see with the last two numbers. Even though we called the same <code class="language-kotlin">nextDouble()</code> function, the numbers are not the same. That is because the generator gives us a new number every time: they could repeat sometimes but the probability of that is very low.</p>
+<h5 id="custom-ranges">Custom ranges</h5>
+<p>As you can see, some numbers ended up pretty big, others small, and one is even negative. The default ranges for integers and floating-point numbers are different and chosen to cover the most common cases. But what if we needed only the integers between 0 and 100 or floats between 0.0 and 5.0? Then, we can specify them explicitly:</p>
+<pre><code class="language-kotlin">// generates a non-negative integer value less than 100 
 Random.nextInt(100) 
 // generates an integer value between 1 (inclusive) and 100 (exclusive)
 Random.nextInt(1, 100) 
@@ -42,30 +41,31 @@ Random.nextLong(1, 100)
 // generates a non-negative double value less than 5.0 
 Random.nextDouble(5.0) 
 // generates a double value between 0.0 (inclusive) and 5.0 (exclusive)
-Random.nextDouble(0.0, 5.0)</code></pre> 
-  <p>Now we can be sure there will be no negative numbers, all integers will be less than 100, and some floats are greater than 1.0:</p> 
-  <pre><code class="language-kotlin">36
+Random.nextDouble(0.0, 5.0) 
+</code></pre>
+<p>Now we can be sure there will be no negative numbers, all integers will be less than 100, and some floats are greater than 1.0:</p>
+<pre><code class="language-kotlin"> 36
  41
  12
  53
  0.00709856968715783
- 2.8675389664207414</code></pre> 
-  <p>Notice that <code class="language-kotlin">nextFloat</code> is the only function that doesn't allow specifying the custom range: <code class="language-kotlin">nextDouble</code> provides better precision, so we use that instead.</p> 
-  <h5 id="pseudorandom-numbers-and-seeding">Pseudorandom numbers and seeding</h5> 
-  <p>So why are these functions called <code class="language-kotlin">next[......]</code> and not <code class="language-kotlin">get[.....]</code>? Every time the function is called, it gives us the next number in a predefined sequence. These numbers are called <strong>pseudorandom</strong>, and they are not completely unpredictable! We can calculate them all if we know the initial value and the algorithm of the sequence. That initial value is called a <strong>seed</strong>. The seed itself is never returned by a <code class="language-kotlin">next[......]</code> function but it defines all the subsequent numbers.</p> 
-  <p>It is guaranteed that the same seed produces the same sequence if the same Kotlin runtime version is used because the algorithm is the same. This can be useful to reliably test code that uses random generators.</p> 
-  <p>Let's generate five pseudorandom numbers from the sequence with the seed 42:</p> 
-  <pre><code class="language-kotlin">val randomGenerator42 = Random(42) // the generator takes the seed
+ 2.8675389664207414
+</code></pre>
+<p>Notice that <code class="language-kotlin">nextFloat</code> is the only function that doesn't allow specifying the custom range: <code class="language-kotlin">nextDouble</code> provides better precision, so we use that instead.</p>
+<h5 id="pseudorandom-numbers-and-seeding">Pseudorandom numbers and seeding</h5>
+<p>So why are these functions called <code class="language-kotlin">next[......]</code> and not <code class="language-kotlin">get[.....]</code>? Every time the function is called, it gives us the next number in a predefined sequence. These numbers are called <strong>pseudorandom</strong>, and they are not completely unpredictable! We can calculate them all if we know the initial value and the algorithm of the sequence. That initial value is called a <strong>seed</strong>. The seed itself is never returned by a <code class="language-kotlin">next[......]</code> function but it defines all the subsequent numbers.</p>
+<p>It is guaranteed that the same seed produces the same sequence if the same Kotlin runtime version is used because the algorithm is the same. This can be useful to reliably test code that uses random generators.</p>
+<p>Let's generate five pseudorandom numbers from the sequence with the seed 42:</p>
+<pre><code class="language-kotlin">val randomGenerator42 = Random(42) // the generator takes the seed
 for (i in 0..5) {
     randomGenerator42.nextInt(100)
-}</code></pre> 
-  <p>In Kotlin 1.4, this code will always generate the same six numbers — <code class="language-kotlin">33, 40, 41, 2, 41, 32</code> — even on different machines. In contrast, the default generator will give us a new sequence every time.</p> 
-  <pre><code class="language-kotlin">// the same generator we use when we call Random.nextInt(), Random.nextFloat() etc.
+}
+</code></pre>
+<p>In Kotlin 1.4, this code will always generate the same six numbers — <code class="language-kotlin">33, 40, 41, 2, 41, 32</code> — even on different machines. In contrast, the default generator will give us a new sequence every time.</p>
+<pre><code class="language-kotlin">// the same generator we use when we call Random.nextInt(), Random.nextFloat() etc.
 val defaultGenerator = Random.Default 
 for (i in 0..5) {                      
     defaultGenerator.nextInt(100)
-}</code></pre> 
-  <h5 id="conclusion">Conclusion</h5> 
-  <p>To work with pseudorandom data, we need to decide whether we need a predictable result or not. In the first case, we can use a known seed, and in the second case, we can generate a seed based on the system time or simply use the default implementation. Remember that random sequences are only guaranteed to be the same if they are generated with the same version of Kotlin runtime, but they can be different in different Kotlin versions or different programming languages even for the same seed.</p>
- </body>
-</html>
+}</code></pre>
+<h5 id="conclusion">Conclusion</h5>
+<p>To work with pseudorandom data, we need to decide whether we need a predictable result or not. In the first case, we can use a known seed, and in the second case, we can generate a seed based on the system time or simply use the default implementation. Remember that random sequences are only guaranteed to be the same if they are generated with the same version of Kotlin runtime, but they can be different in different Kotlin versions or different programming languages even for the same seed.</p></body></html>

@@ -1,43 +1,39 @@
 <h2>Hierarchy of exceptions</h2>
-<html>
- <head></head>
- <body>
-  <p>For different unexpected situations, there are different specialized types of exceptions. They are all related, making up a hierarchy of types. Here we’ll consider the key points of this hierarchy, review the most popular types of Kotlin exceptions that you may encounter, and see how they connect to each other. </p> 
-  <h5 id="subtype-and-supertype" style="text-align: center;">Subtype and supertype</h5> 
-  <p>First of all, let's figure out the terminology. Types in Kotlin are organized into a hierarchy of subtype-supertype relationships. What are subtypes and supertypes? Let's look at an example.</p> 
-  <p>Do you like coffee or tea? Well, both are drinks. We can state the fact that coffee and tea are both related to a specific type: drink. In Kotlin terms, coffee and tea are <strong>subtypes</strong> of drink, while the drink is a <strong>supertype</strong> for these two types:</p> 
-  <p style="text-align: center;"><img alt="" height="274" name="Объяснение (2).svg" src="https://ucarecdn.com/531e1446-070f-4b4a-a376-a566687fbbc3/" width="343"></p> 
-  <p>The <strong>subtype</strong><em> </em>is a datatype that is related to another datatype (<em>supertype</em>) and inherits common characteristics and rules of behavior from it. Note that the rules of behavior of different <em>subtypes </em>may vary. In this example, all kinds of drinks have some sort of color, but coffee and tea have different colors.</p> 
-  <p>Logically, a <strong>supertype</strong> is a type whose properties and methods specify the characteristics and rules of behavior that its subtypes will follow.</p> 
-  <h5 id="overview-of-the-exception-hierarchy" style="text-align: center;">Overview of the exception hierarchy</h5> 
-  <p>The following picture illustrates a simplified hierarchy of exceptions:</p> 
-  <p style="text-align: center;"><img alt="" height="372" src="https://ucarecdn.com/f7ffede8-355a-4d41-b140-61e470f02a33/" width="468"></p> 
-  <p><br> As you can see, the foundation of this hierarchy is the type <code class="language-kotlin">Throwable</code>. It is the root of the hierarchy, and all exceptions somehow belong to this type. It provides a set of useful methods for handling exceptions. And, since all exceptions in Kotlin are<em> </em>descendants of <code class="language-kotlin">Throwable</code>, all of these methods are available for each exception; in the following topics we’ll look into it further.</p> 
-  <p>The type <code class="language-kotlin">Throwable</code> has two direct subtypes: <code class="language-kotlin">Error</code> and <code class="language-kotlin">Exception</code>. An <code class="language-kotlin">Error</code> indicates serious problems that a reasonable application should not try to process. We shouldn't think about handling errors in the program code. Here we’ll focus on the <code class="language-kotlin">Exception</code>; when you develop an application, you normally will catch and process exactly exceptions. Keep in mind that subtype and supertype are relative terms, so a given type doesn't have to be one or the other. In this case, <code class="language-kotlin">Exception</code> is a subtype of <code class="language-kotlin">Throwable</code> and also the supertype of <code class="language-kotlin">RuntimeException</code>.</p> 
-  <p>Subtypes of the <code class="language-kotlin">Exception</code> type, such as <code class="language-kotlin">RuntimeException</code> and <code class="language-kotlin">IOException</code>, deal with exceptional events inside applications. Today we will focus in more detail just on the varieties of <code class="language-kotlin">RuntimeException</code>.</p> 
-  <h5 id="runtimeexception" style="text-align: center;">RuntimeException</h5> 
-  <p>The <code class="language-kotlin">RuntimeException</code> type is a rather special subtype of <code class="language-kotlin">Exception</code>. Subtypes of <code class="language-kotlin">RuntimeException</code>, such as <code class="language-kotlin">ArithmeticException</code> and <code class="language-kotlin">NumberFormatException</code>, can be thrown during the normal program execution. These exceptions are usually caused by insufficient checks in the program code, and can be prevented programmatically.</p> 
-  <p>The next picture demonstrates a hierarchy of subtypes descended from <code class="language-kotlin">RuntimeException</code>:</p> 
-  <p style="text-align: center;"><img alt="" height="312" name="Иерархия.svg" src="https://ucarecdn.com/cdfdf267-5906-4ee8-9b65-e3e7bd6fd594/" width="622"></p> 
-  <p>Now, let's move on to practice! Consider the most common types of exceptions; all of those that are discussed below belong to the type <code class="language-kotlin">RuntimeException</code>.</p> 
-  <h5 id="arithmeticexception" style="text-align: center;">ArithmeticException</h5> 
-  <p><strong><code class="language-kotlin">ArithmeticException</code> </strong>is the runtime exception that is thrown when the code attempts an illegal arithmetic operation. Consider an extremely common example:</p> 
-  <pre><code class="language-kotlin">val example = 2 / 0 // throws ArithmeticException</code></pre> 
-  <p>Since division by zero is not allowed, this line will throw an <code class="language-kotlin">ArithmeticException</code>, and the program execution will be interrupted.</p> 
-  <h5 id="numberformatexception" style="text-align: center;">NumberFormatException</h5> 
-  <p>During calculations you can get another type of exception: <strong><code class="language-kotlin">NumberFormatException</code></strong>. It is thrown when a method expects to receive a number, but the actual input is something else. Take an example:</p> 
-  <pre><code class="language-kotlin">val string = "It's not a number"
-val number = string.toInt() // throws NumberFormatException</code></pre> 
-  <p>Here we tried converting the string <code class="language-kotlin">"It's not a number"</code> to an <code class="language-kotlin">Int</code> number, and since this is obviously not possible, so a <code class="language-kotlin">NumberFormatException</code> was thrown. </p> 
-  <h5 id="indexoutofboundsexception" style="text-align: center;">IndexOutOfBoundsException</h5> 
-  <p><strong><code class="language-kotlin">IndexOutOfBoundsException</code> </strong>occurs when you access some non-existent index. For example, if you are trying to access the tenth element of a collection that has only 5 elements, your index will be out of bounds.</p> 
-  <p>This type of exception has further subtypes. This example throws a <code class="language-kotlin">StringIndexOutOfBoundsException</code>, a special type of <code class="language-kotlin">IndexOutOfBoundsException</code> used for (you guessed it) strings:</p> 
-  <pre><code class="language-kotlin">val sequence = "string"
-println(sequence[10])   // throws StringIndexOutOfBoundsException</code></pre> 
-  <p>As you may remember, a string can be represented as a set of characters, each of which is assigned an index. If the string does not contain the character with the specified index, a <code class="language-kotlin">StringIndexOutOfBoundsException</code> will be thrown.</p> 
-  <h5 id="conclusion" style="text-align: center;">Conclusion</h5> 
-  <p>All exceptions in Kotlin are contained in a single hierarchy. All of them belong to the type <code class="language-kotlin">Exception</code>, which in turn is a subtype of <code class="language-kotlin">Throwable</code>. </p> 
-  <p>One important heir of <code class="language-kotlin">Exception</code> is <code class="language-kotlin">RuntimeException</code>: this type includes exceptions that can be thrown while the program is being executed. Its subtypes include <code class="language-kotlin">ArithmeticException</code>, <code class="language-kotlin">NumberFormatException</code>, and <code class="language-kotlin">IndexOutOfBoundsException</code>.</p> 
-  <p>What if none of these exceptions provide exactly what you want? In the following topics, you will learn how to create custom types of exceptions, which will also be embedded in the existing hierarchy.</p>
- </body>
-</html>
+<html><body><p>For different unexpected situations, there are different specialized types of exceptions. They are all related, making up a hierarchy of types. Here we’ll consider the key points of this hierarchy, review the most popular types of Kotlin exceptions that you may encounter, and see how they connect to each other. </p>
+<h5 id="subtype-and-supertype" style="text-align: center;">Subtype and supertype</h5>
+<p>First of all, let's figure out the terminology. Types in Kotlin are organized into a hierarchy of subtype-supertype relationships. What are subtypes and supertypes? Let's look at an example.</p>
+<p>Do you like coffee or tea? Well, both are drinks. We can state the fact that coffee and tea are both related to a specific type: drink. In Kotlin terms, coffee and tea are <strong>subtypes</strong> of drink, while the drink is a <strong>supertype</strong> for these two types:</p>
+<p style="text-align: center;"><img alt="" height="274" name="Объяснение (2).svg" src="https://ucarecdn.com/531e1446-070f-4b4a-a376-a566687fbbc3/" width="343"/></p>
+<p>The <strong>subtype</strong><em> </em>is a datatype that is related to another datatype (<em>supertype</em>) and inherits common characteristics and rules of behavior from it. Note that the rules of behavior of different <em>subtypes </em>may vary. In this example, all kinds of drinks have some sort of color, but coffee and tea have different colors.</p>
+<p>Logically, a <strong>supertype</strong> is a type whose properties and methods specify the characteristics and rules of behavior that its subtypes will follow.</p>
+<h5 id="overview-of-the-exception-hierarchy" style="text-align: center;">Overview of the exception hierarchy</h5>
+<p>The following picture illustrates a simplified hierarchy of exceptions:</p>
+<p style="text-align: center;"><img alt="" height="372" src="https://ucarecdn.com/f7ffede8-355a-4d41-b140-61e470f02a33/" width="468"/></p>
+<p><br/>
+As you can see, the foundation of this hierarchy is the type <code class="language-kotlin">Throwable</code>. It is the root of the hierarchy, and all exceptions somehow belong to this type. It provides a set of useful methods for handling exceptions. And, since all exceptions in Kotlin are<em> </em>descendants of <code class="language-kotlin">Throwable</code>, all of these methods are available for each exception; in the following topics we’ll look into it further.</p>
+<p>The type <code class="language-kotlin">Throwable</code> has two direct subtypes: <code class="language-kotlin">Error</code> and <code class="language-kotlin">Exception</code>. An <code class="language-kotlin">Error</code> indicates serious problems that a reasonable application should not try to process. We shouldn't think about handling errors in the program code. Here we’ll focus on the <code class="language-kotlin">Exception</code>; when you develop an application, you normally will catch and process exactly exceptions. Keep in mind that subtype and supertype are relative terms, so a given type doesn't have to be one or the other. In this case, <code class="language-kotlin">Exception</code> is a subtype of <code class="language-kotlin">Throwable</code> and also the supertype of <code class="language-kotlin">RuntimeException</code>.</p>
+<p>Subtypes of the <code class="language-kotlin">Exception</code> type, such as <code class="language-kotlin">RuntimeException</code> and <code class="language-kotlin">IOException</code>, deal with exceptional events inside applications. Today we will focus in more detail just on the varieties of <code class="language-kotlin">RuntimeException</code>.</p>
+<h5 id="runtimeexception" style="text-align: center;">RuntimeException</h5>
+<p>The <code class="language-kotlin">RuntimeException</code> type is a rather special subtype of <code class="language-kotlin">Exception</code>. Subtypes of <code class="language-kotlin">RuntimeException</code>, such as <code class="language-kotlin">ArithmeticException</code> and <code class="language-kotlin">NumberFormatException</code>, can be thrown during the normal program execution. These exceptions are usually caused by insufficient checks in the program code, and can be prevented programmatically.</p>
+<p>The next picture demonstrates a hierarchy of subtypes descended from <code class="language-kotlin">RuntimeException</code>:</p>
+<p style="text-align: center;"><img alt="" height="312" name="Иерархия.svg" src="https://ucarecdn.com/cdfdf267-5906-4ee8-9b65-e3e7bd6fd594/" width="622"/></p>
+<p>Now, let's move on to practice! Consider the most common types of exceptions; all of those that are discussed below belong to the type <code class="language-kotlin">RuntimeException</code>.</p>
+<h5 id="arithmeticexception" style="text-align: center;">ArithmeticException</h5>
+<p><strong><code class="language-kotlin">ArithmeticException</code> </strong>is the runtime exception that is thrown when the code attempts an illegal arithmetic operation. Consider an extremely common example:</p>
+<pre><code class="language-kotlin">val example = 2 / 0 // throws ArithmeticException</code></pre>
+<p>Since division by zero is not allowed, this line will throw an <code class="language-kotlin">ArithmeticException</code>, and the program execution will be interrupted.</p>
+<h5 id="numberformatexception" style="text-align: center;">NumberFormatException</h5>
+<p>During calculations you can get another type of exception: <strong><code class="language-kotlin">NumberFormatException</code></strong>.  It is thrown when a method expects to receive a number, but the actual input is something else. Take an example:</p>
+<pre><code class="language-kotlin">val string = "It's not a number"
+val number = string.toInt() // throws NumberFormatException</code></pre>
+<p>Here we tried converting the string <code class="language-kotlin">"It's not a number"</code> to an <code class="language-kotlin">Int</code> number, and since this is obviously not possible, so a <code class="language-kotlin">NumberFormatException</code> was thrown. </p>
+<h5 id="indexoutofboundsexception" style="text-align: center;">IndexOutOfBoundsException</h5>
+<p><strong><code class="language-kotlin">IndexOutOfBoundsException</code> </strong>occurs when you access some non-existent index. For example, if you are trying to access the tenth element of a collection that has only 5 elements, your index will be out of bounds.</p>
+<p>This type of exception has further subtypes. This example throws a <code class="language-kotlin">StringIndexOutOfBoundsException</code>, a special type of <code class="language-kotlin">IndexOutOfBoundsException</code> used for (you guessed it) strings:</p>
+<pre><code class="language-kotlin">val sequence = "string"
+println(sequence[10])   // throws StringIndexOutOfBoundsException</code></pre>
+<p>As you may remember, a string can be represented as a set of characters, each of which is assigned an index. If the string does not contain the character with the specified index, a <code class="language-kotlin">StringIndexOutOfBoundsException</code> will be thrown.</p>
+<h5 id="conclusion" style="text-align: center;">Conclusion</h5>
+<p>All exceptions in Kotlin are contained in a single hierarchy. All of them belong to the type <code class="language-kotlin">Exception</code>, which in turn is a subtype of <code class="language-kotlin">Throwable</code>. </p>
+<p>One important heir of <code class="language-kotlin">Exception</code> is <code class="language-kotlin">RuntimeException</code>: this type includes exceptions that can be thrown while the program is being executed. Its subtypes include <code class="language-kotlin">ArithmeticException</code>, <code class="language-kotlin">NumberFormatException</code>, and <code class="language-kotlin">IndexOutOfBoundsException</code>.</p>
+<p>What if none of these exceptions provide exactly what you want? In the following topics, you will learn how to create custom types of exceptions, which will also be embedded in the existing hierarchy.</p></body></html>

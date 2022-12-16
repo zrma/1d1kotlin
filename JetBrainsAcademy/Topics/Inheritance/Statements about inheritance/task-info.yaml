@@ -1,11 +1,11 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: An inherited class can be only an open one
+- text: A child class can be only an open one
+- text: "If we create a function for a parent class, we can't use this function for\
+    \ both parent and child classes "
+- text: An <code>open</code> modifier allows to inherit from a class
 - text: Kotlin supports multi-inheritance
-- text: An inherited class has access to the constructor's parameters of the parent
-    class
-- text: An open modifier allows to inherit from an object
 files:
 - name: src/Main.kt
   visible: true
