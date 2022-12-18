@@ -1,32 +1,33 @@
 hyperskill_project:
-  id: 87
-  ide_files: https://stepik.org/media/attachments/lesson/271195/additional_files.json
+  id: 110
+  ide_files: https://stepik.org/media/attachments/lesson/366236/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: "Sun, 18 Dec 2022 06:33:25 UTC"
+update_date: "Thu, 01 Jan 1970 00:00:00 UTC"
 stages:
-- id: 480
-  step: 7786
-  is_completed: true
-- id: 481
-  step: 7787
-  is_completed: true
-- id: 482
-  step: 7788
-  is_completed: true
-- id: 483
-  step: 7789
-  is_completed: true
-- id: 484
-  step: 7790
-  is_completed: true
-- id: 485
-  step: 7791
-  is_completed: true
+- id: 595
+  step: 9837
+  is_completed: false
+- id: 596
+  step: 9838
+  is_completed: false
+- id: 597
+  step: 9839
+  is_completed: false
+- id: 598
+  step: 9840
+  is_completed: false
+- id: 599
+  step: 9841
+  is_completed: false
+- id: 600
+  step: 9842
+  is_completed: false
+- id: 601
+  step: 9843
+  is_completed: false
 topics:
   0:
-  - title: Cartesian coordinates
-    theory_id: 13114
   - title: Binary numbers
     theory_id: 5544
   - title: Hexadecimal numbers
@@ -35,28 +36,18 @@ topics:
     theory_id: 6865
   - title: IDE
     theory_id: 10996
-  - title: Computer algorithms
-    theory_id: 16547
-  - title: The big O notation
-    theory_id: 16699
-  - title: "Best, average and worst cases"
-    theory_id: 20084
-  - title: Data structures
-    theory_id: 16927
-  - title: "Vectors, matrices, scalars"
-    theory_id: 16969
-  - title: The concept of patterns
-    theory_id: 3611
-  - title: Introduction to matrices
-    theory_id: 7112
-  - title: Types of matrices
-    theory_id: 17812
-  - title: Operations with matrices
-    theory_id: 7296
-  - title: Computer programming
-    theory_id: 8739
-  - title: Paradigms
-    theory_id: 15860
+  - title: Introduction to Operating systems
+    theory_id: 9704
+  - title: World Wide Web
+    theory_id: 6633
+  - title: Files
+    theory_id: 13025
+  - title: Starting with GitHub
+    theory_id: 4802
+  - title: Fork and pull request
+    theory_id: 4803
+  - title: Local work
+    theory_id: 4856
   - title: Introduction to Kotlin
     theory_id: 4350
   - title: Basic literals
@@ -113,20 +104,76 @@ topics:
     theory_id: 4643
   - title: While loops
     theory_id: 4659
-  - title: Introduction to OOP
-    theory_id: 3614
   - title: Objects
     theory_id: 11233
-  - title: Declaring classes
-    theory_id: 6200
   - title: Equality
     theory_id: 11236
+  - title: Functions as objects
+    theory_id: 5991
+  - title: Lambda expressions
+    theory_id: 6154
   - title: Unicode
     theory_id: 7899
   - title: Characters
     theory_id: 4680
   - title: Ranges
     theory_id: 4633
+  - title: Introduction to MutableList
+    theory_id: 14879
+  - title: For loop and ranges
+    theory_id: 4652
+  - title: Work with MutableLists
+    theory_id: 14902
+  - title: For loop and lists
+    theory_id: 15022
+  - title: Introduction to collections
+    theory_id: 10390
+  - title: List
+    theory_id: 10730
+  - title: Mutable List
+    theory_id: 11032
+  - title: Command line overview
+    theory_id: 8977
+  - title: Parameters and Options
+    theory_id: 9746
+  - title: External resources
+    theory_id: 6216
+  - title: Reading files
+    theory_id: 6351
+  - title: IntelliJ IDEA
+    theory_id: 3801
+  - title: IDEA Basics
+    theory_id: 5819
+  - title: Introduction to Linux
+    theory_id: 9526
+  - title: Starting with Git
+    theory_id: 10894
+  - title: Local repository
+    theory_id: 10901
+  - title: Working with remote repository
+    theory_id: 12299
+  - title: What is an exception
+    theory_id: 7243
+  1:
+  - title: Working with strings
+    theory_id: 12561
+  - title: Getting substrings
+    theory_id: 8535
+  2:
+  - title: "Write, compile, and run"
+    theory_id: 3739
+  - title: "JVM, JRE, and JDK"
+    theory_id: 3499
+  - title: Date and time standards
+    theory_id: 19467
+  - title: Computer programming
+    theory_id: 8739
+  - title: Paradigms
+    theory_id: 15860
+  - title: Introduction to OOP
+    theory_id: 3614
+  - title: Declaring classes
+    theory_id: 6200
   - title: When expression
     theory_id: 4631
   - title: Functional decomposition
@@ -139,154 +186,59 @@ topics:
     theory_id: 10740
   - title: Member functions
     theory_id: 6364
-  - title: Introduction to MutableList
-    theory_id: 14879
-  - title: For loop and ranges
-    theory_id: 4652
-  - title: Work with MutableLists
-    theory_id: 14902
-  - title: For loop and lists
-    theory_id: 15022
-  - title: Working with strings
-    theory_id: 12561
+  - title: Build tools
+    theory_id: 4284
+  - title: Java Archive
+    theory_id: 4311
+  - title: Gradle basics
+    theory_id: 5075
+  - title: Basic project with Gradle
+    theory_id: 5077
+  - title: Building apps using Gradle
+    theory_id: 7917
+  - title: Dependency management
+    theory_id: 5076
+  - title: Processing strings
+    theory_id: 9027
+  - title: Git internal structure
+    theory_id: 11461
+  - title: Editing the commit
+    theory_id: 10910
+  - title: Kotlinx datetime library
+    theory_id: 19456
+  - title: Hierarchy of exceptions
+    theory_id: 13264
+  - title: Taming exceptions
+    theory_id: 7601
+  - title: The try-catch statement
+    theory_id: 10622
+  - title: The try-catch-finally statement
+    theory_id: 11809
+  4:
+  - title: Git branches
+    theory_id: 11189
+  5:
+  - title: Computer algorithms
+    theory_id: 16547
+  - title: The big O notation
+    theory_id: 16699
+  - title: "Best, average and worst cases"
+    theory_id: 20084
+  - title: Data structures
+    theory_id: 16927
   - title: Pseudocode
     theory_id: 15090
   - title: Pseudocode basics
     theory_id: 19510
   - title: Complex constructions in pseudocode
     theory_id: 20922
-  - title: Getting substrings
-    theory_id: 8535
-  - title: Processing strings
-    theory_id: 9027
   - title: Stack
     theory_id: 5252
   - title: Call stack
     theory_id: 11550
   - title: Scopes
     theory_id: 17116
-  - title: Nested and inner classes
-    theory_id: 14723
-  - title: Multi-dimensional list
-    theory_id: 15127
-  - title: What is a bug
-    theory_id: 5504
-  - title: Documentation
-    theory_id: 12069
-  - title: IntelliJ IDEA
-    theory_id: 3801
-  - title: IDEA Basics
-    theory_id: 5819
-  - title: Navigation through code
-    theory_id: 5824
-  - title: Writing code with pleasure
-    theory_id: 5829
-  - title: Fixing code
-    theory_id: 5834
-  - title: Introduction to software architecture
-    theory_id: 15368
-  - title: Introduction to logging
-    theory_id: 5538
-  - title: Debugging techniques
-    theory_id: 13739
-  - title: Debugging overview
-    theory_id: 14368
-  - title: Debugging simple constructs
-    theory_id: 15503
-  - title: Design principles
-    theory_id: 8956
-  - title: Single Responsibility Principle
-    theory_id: 8963
-  - title: Object declarations
-    theory_id: 10698
-  - title: Advanced debugger features
-    theory_id: 16028
-  - title: Self-documenting code
-    theory_id: 12063
-  - title: What is an exception
-    theory_id: 7243
-  - title: Introduction to creational patterns
-    theory_id: 16251
-  - title: Singleton
-    theory_id: 16469
-  1:
-  - title: "Write, compile, and run"
-    theory_id: 3739
-  - title: JVM components
-    theory_id: 3509
-  - title: Heap
-    theory_id: 19212
-  - title: Garbage Collector
-    theory_id: 15163
-  - title: Garbage collection approaches
-    theory_id: 17271
-  - title: Introduction to Operating systems
-    theory_id: 9704
-  - title: Computer Memory
-    theory_id: 18003
-  - title: Components of computer memory
-    theory_id: 18049
-  - title: Stack and heap memory
-    theory_id: 21577
-  2:
-  - title: Basics of sets
-    theory_id: 8220
-  - title: Basics of functions
-    theory_id: 8857
-  - title: Vector operations
-    theory_id: 16763
-  - title: Vector space
-    theory_id: 17805
-  - title: Norm of a vector
-    theory_id: 14832
-  - title: Vector dot product
-    theory_id: 16977
-  - title: Matrix multiplication
-    theory_id: 7372
-  - title: Floating-point types
-    theory_id: 4502
-  - title: EduTools
-    theory_id: 5839
-  3:
-  - title: Nullable and non-nullable types
-    theory_id: 7613
-  - title: Type system
-    theory_id: 9689
-  - title: Functions as objects
-    theory_id: 5991
-  - title: Inheritance
-    theory_id: 9844
-  - title: Inheritance
-    theory_id: 7770
-  - title: Polymorphism
-    theory_id: 10027
-  - title: Overriding functions
-    theory_id: 7884
-  - title: toString()
-    theory_id: 10193
-  - title: Data class
-    theory_id: 8526
-  - title: Encapsulation
-    theory_id: 8519
-  - title: Property accessors
-    theory_id: 10511
-  - title: Hierarchy of exceptions
-    theory_id: 13264
-  - title: Taming exceptions
-    theory_id: 7601
-  - title: Null safety
-    theory_id: 7619
-  - title: The try-catch statement
-    theory_id: 10622
-  - title: The try-catch-finally statement
-    theory_id: 11809
-  4:
-  - title: Linear combinations and linear independence
-    theory_id: 16989
-  - title: Matrix determinant
-    theory_id: 9184
   - title: Recursion basics
     theory_id: 5984
-  5:
-  - title: The Math library
-    theory_id: 12532
+  - title: Recursion
+    theory_id: 13601

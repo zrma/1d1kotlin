@@ -1,0 +1,405 @@
+type: edu
+files:
+- name: src/gitinternals/Main.kt
+  visible: true
+  text: |
+    package gitinternals
+
+    fun main() {
+        // write your code here
+    }
+  learner_created: false
+- name: test/gitone/objects/0e/ee6a98471a350b2c2316313114185ecaf82f0e
+  visible: false
+  text: eAFdjk1qAzEMRrv2KbQvFMmW/yCEQo7QE2hkTScLd4LjQHP7pqGrrt63ebxP997PEzyllznMIFdGam1B84qrIWevhUKO3BpLKTksKUlhd5FhXxPIC2fKVniJxsRrDaqVVCJKalGShpiCoJPb3PYBH4/aBoc+3q6/673LHOfvI1AskStFRHjFgOj0eWzagNP9sj1w0Cf/GzX6P8N92oS26xXWsXdYTeZtGLkfjEVDfg==
+  learner_created: false
+- name: test/gitone/objects/10/9e8050b41bd10b81be0a51a5e67327f5609551
+  visible: false
+  text: eAErKUpNVTA0NGQwNDAwMzFRyE3MzNPLLmHQVjsYw2IeO0HBvPm3j5brf5athcugSopSE1NyU/VKKkoYvpVsvbzk2LmvjdF+Re/1Fu5+kl2RbWIABArF+bmpumn5OSmpRQwlkj0tc3efDbyQcHRS8JLSurc79woBACxgMHU=
+  learner_created: false
+- name: test/gitone/objects/12/a4717e84b5e414f93cc91ca50a6d5a6c3563a0
+  visible: false
+  text: eAGVzk0KAjEMQGHXPUX2gvRnpmlBxBN4hzZNcdROhxrB4yvewP374FFvbRGwBncymCFhDsHmXG3Jc4naBuSYaiVkX112hJPOzqLa0uBVAJ2zkw/ftORiaikpYHU0k6+IBSOZjD6SVekl1z7gwh2ObRzSWng8+3puScbyPoGZwzxFY9DCXjutFf3OhP8x6ilpCNy7PJYVttFvTKI+4SZFww==
+  learner_created: false
+- name: test/gitone/objects/2b/26c15c04375d90203783fb4c2a45ff04b571a6
+  visible: false
+  text: eAFLyslPUjA1Z0grzVPITczM09BUqOZSAIKCosy8kpw8DSWP1JycfAWPyoLUouLszJwcheKS0pTUvBJFJU2uWgUuAJ8aFIA=
+  learner_created: false
+- name: test/gitone/objects/30/0b1c67b5539bfdcb30f2863d6ac3b3377ad00b
+  visible: false
+  text: eAGVjkEOwiAQRV33FLN3AzOFlsQYL+AhKAxpYwCDQ/T4VuMF3Pz8zXt5oea8CSDpgzRm4KicIoxBB4zaGpVmJCYinCc7zhSRnUWThrtvXARGsgl5GtUHMaNDjGmhZIwmq8yyGCZ26MLgu6y1wbW2+8r9Aaf8e5fspW2vM2gz74J9HRwVKTWEb5vwf9SOFdlKZ3jWdoNaINbQ8x7rZatleAPOcEoy
+  learner_created: false
+- name: test/gitone/objects/31/d679c1c2b8fc787ae014c501d4fa6545faa138
+  visible: false
+  text: eAGNz0FqAzEMQNGsfQrvsshGsqyxB0rpBdo7yLKUZDEzxTjQ4zcUus/+8eHrsW33GROn0xxm0RtkYl40MWrLDAKd2bJaQ3diwwRpVQrfMmyfMSMU9YzqzJq9U7W1S3XqUDuamCslzvLvCaChLqUx09q8ayPwVBfqiyg1olKkP02Qx7wdI37ZEd92Oz42meP+8x6RK+cVC9R4gWct6N/BtFds+LRxtdiG7HqLZzeZj2F4Dr+yv00R
+  learner_created: false
+- name: test/gitone/objects/41/07cf41cf55c4fd38e9da8f3d08d1eaefc3254a
+  visible: false
+  text: eAGVzlEKwjAMAFC/d4r+C9KkydaCiCfwDlkacchaqR16fMUbeIAHT+u6Lt0h+F1vZs4iZMrR5xQSgmK0FDkh65gJZ5oJc5w46vCQZqU7QKEJJos0sxHQNQXVBCrsZcwsowYeg/hBtn6rzV2suuPaDlKytWct51V6W94nBxyZEiCS2/vg/aC/Wbd/zBeVvpTN3Ku2+/AB40NBbg==
+  learner_created: false
+- name: test/gitone/objects/43/6f2e7402dc154922dfb3f5513605bb5e3e929c
+  visible: false
+  text: eAGVjkEOwiAQAD3zir2bGApdCokx/sEXLLuQckAM0qTPt/oDb3OZzHCrtQwwkzmNnhJEZzyJYJY5JhtFDEtcFieZtEVmFwI6j0G9qKfnAO+cz8kbyRajXYI20U2ByRzkM2HgOTi0RtE21tbhcdRWuNZ+eX/pXmn0st9gQo9zmFBrOGurteLf2Eh/KCqXHaTxVo8zGqU91Qc0okM+
+  learner_created: false
+- name: test/gitone/objects/49/0f96725348e92770d3c6bab9ec532564b7ebe0
+  visible: false
+  text: eAFLyslPUrAwZUgrzVPITczM09BUqOZSAILyjMycVI2SotJUmAhItKAoM68kJ09DySM1JydfwaOyILWoODszJ0ehuKQ0JTWvRFFJE6y9lqtWgQsADocbVw==
+  learner_created: false
+- name: test/gitone/objects/4a/8abe7b618ddf9c55adbea359ce891775794a61
+  visible: false
+  text: eAFLyslPUjA2ZUjLLCouUcjJzEvlKk5Nzs9LgbBLMjKLIEwFLgBApg59
+  learner_created: false
+- name: test/gitone/objects/4e/33b9879a28ce8462b599fda71625f717ec8b8b
+  visible: false
+  text: eAErKUpNVTA3ZjA0MDAzMVHITczM08suYfjXaitvmLUl/XLoz3seEpoRFdymW6FKilITU3JT9UoqShhWVHnxzT8f1cUpEzJhdrrXoQWBX18AAF41Hho=
+  learner_created: false
+- name: test/gitone/objects/61/8383db6d7ee3bd2e97b871205f113b6a3ba854
+  visible: false
+  text: eAFLyslPUjA0YfBIzcnJVyjPL8pJUVTgAgBQEgas
+  learner_created: false
+- name: test/gitone/objects/6d/537a47eddc11f866bcc2013703bf31bfcf9ed8
+  visible: false
+  text: eAGNj7FqQzEMRTv7K7xl6GLJli1DKIXO/QhZlvsyvCQYB9q/7yPQvdNdzuFw9bbvl+Uxp5c1zbxCRq6NUkgNMDOMIdUYTELBFFEISDp3d5dp1+Uj9FyqgmLjoYWLWICkFKCnIZkSDRGI/MfXYjmyHkKBSMRB4xg1HlUrWCCxQZMeyMljbbfpP37um01/1ue+77Lm5fvNAzGligfvX0MMwenzxzrQ/xru0+aX+Tblqps/DZP1mIYn9wu8UVCB
+  learner_created: false
+- name: test/gitone/objects/73/324685d9dbd1fdda87f3c5c6f77d79c1b769c2
+  visible: false
+  text: eAGVzV0KAiEQAOCePcW8BzGuujkQsSfoDuMfCangTtDxg/YEHeDji6O1KqBXc5KZM3Ay7LVP0V8DkUUyLiyWHTOZwhGxoF9DIcVveY4Jjzzg1uaFe8pzH31rLLN+7qCdd5Y0ugXOaBBV/E2S/zGq9iqVX3Bg9QUazTUA
+  learner_created: false
+- name: test/gitone/objects/74/198c849dbbcd51d060c59253a4757eedb9bd12
+  visible: false
+  text: eAErKUpNVTA2YTA0MDAzMVEoLNQrqShhaD4jyTnZfZLvoo4JzV1Xn8241cqyGAAhHRBB
+  learner_created: false
+- name: test/gitone/objects/75/1543c76e07eeb88c1ef5ed5a0a0b15a2f9f875
+  visible: false
+  text: eAFLyslPUrAwY0jLLCouUcjJzEvlsoEABQ9XRxeu4tTk/LwUiERJRmYRhKnAZQsByPIKXHYQoJCWmlhSWpRqxAUAVPIcgA==
+  learner_created: false
+- name: test/gitone/objects/79/401ddb0e2c0fe0472c813754dd4a8873b66a84
+  visible: false
+  text: eAErKUpNVTA3ZjA0MDAzMVHITczM08suYVijbvhOxXqjoOxNS7HdRtPe1dcpv4cqKUpNTMlN1SupKGFYUeXFN/98VBenTMiE2elehxYEfn0BAE4WHhA=
+  learner_created: false
+- name: test/gitone/objects/86/68fe82df35b37902b619ca29028fa59c496532
+  visible: false
+  text: eAGVjkEOwiAQRV1zCvYmBpjSgcQY7+AJpsyQdkExSBOPL3oDd3/x//sv1VK2rp11p95EtFh0CCRgF/TAxDaLFzGSQXzAQM4uDDmqJzXZu0YAN83Bc+RldJkpYIbk05wRGWManDkmp+joa236Md5WfS3t8vqme6HetvdNWx/8FO3koz4bMEaln1iXPyaKmDXXdJRhRn2ru/oAdkZD7w==
+  learner_created: false
+- name: test/gitone/objects/97/e638cc1c7135580c3ff93162e727148e1bad05
+  visible: false
+  text: eAGNjksKwjAQQF3nFLN3k8l3AiKCJ5nECS1SIzFFvb2lJ3D1Nu/BK21Z5gEG8TC6CDixNieKiQ0VIRdM9inVG0cMxteIUQplyurJXR4DtIgETuQisvU6m2IsBosW0SF5KVzJVC2K1zG1Dtfvc5IOp7LzsvDo8+cM6Mm7ZLT3cNRWa1X2r7Gp/xYqd+E7tLXDq9Xx3v7UD1rSQkA=
+  learner_created: false
+- name: test/gitone/objects/a7/b882bbf2db5d90287e9affc7e6f3b3c740b327
+  visible: false
+  text: eAErKUpNVTA2ZTA0MDAzMVHITczM08suYVijbvhOxXqjoOxNS7HdRtPe1dcpvwcAHYQPEg==
+  learner_created: false
+- name: test/gitone/objects/a8/7a4a0e9fcf5a8a091c54909b674ac2a051f5e8
+  visible: false
+  text: eAFLyslPUjAyYUjLLCouUcjJzEvlKk5Nzs9LAbMVuACv/gqO
+  learner_created: false
+- name: test/gitone/objects/ac/2731ee243bb1111dd93916bb3296ee7f7e23ef
+  visible: false
+  text: eAFLyslPUjAxZkgrzVPITczM09BUqOZSAIKCosy8kpw8DSWP1JycfIXy/KKcFCVNrloFLgCPtA80
+  learner_created: false
+- name: test/gitone/objects/ad/3a818dc87b9940935b24a5aa93fac00f086bf9
+  visible: false
+  text: eAErKUpNVTA2ZTA0MDAzMVHITczM08suYTh0o+NNPdt26bgThdosKRdPVXHN/wMANu0Qgw==
+  learner_created: false
+- name: test/gitone/objects/b6/28add5fd4be3bdd2cdb776dfa035cc69956859
+  visible: false
+  text: eAErKUpNVTA3ZjA0MDAzMVHITczM08suYTh0o+NNPdt26bgThdosKRdPVXHN/wNVUpSamJKbqldSUcKwosqLb/75qC5OmZAJs9O9Di0I/PoCAJ5FH4E=
+  learner_created: false
+- name: test/gitone/objects/c1/6289b5404b12681ffa9e81ea072432a515ad8d
+  visible: false
+  text: eAErKUpNVTA3ZjA0MDAzMVHITczM08suYfDkn1YU7PFSveDysV073wSrpmx//QCqpCg1MSU3Va+kooThW8nWy0uOnfvaGO1X9F5v4e4n2RXZANYxIr4=
+  learner_created: false
+- name: test/gitone/objects/c2/d888ec7f06b71b5ec8712b0464d1ca7a0a9ffc
+  visible: false
+  text: eAFLyslPUjAyYCjPSCxRyCxWSM/PzEtXyM9TtFfgAgCCPQiN
+  learner_created: false
+- name: test/gitone/objects/da/5c94c98ad34735a539a0f90d0e9c6bba779792
+  visible: false
+  text: eAE9zMEKwjAMxnHPeYq403bUg15UEBT6GhtNbbvYjaZFRPburhb8XXLJ9x94GnB3OG5MDvjsXWg7/MCpQnW/3gBXc3QhcWgbRcwTqvdMUUbHjJKyppC2TQfn6jd4WcfUppip9Eqi+Ges9qNYLUZb1FKuPIz1Wqw3a6n8LnCp0FCfcqQ9LAhf+z40ew==
+  learner_created: false
+- name: test/gitone/objects/e1/7273ae31b753dad1fe5ee0ef3e5878a21bd3f9
+  visible: false
+  text: eAErKUpNVTA3ZjA0MDAzMVHITczM08suYTh0o+NNPdt26bgThdosKRdPVXHN/wNVUpSamJKbqldSUcKQ2Nx8O7fu8V696TsKFeIFrbOsV4QAAKy+Hvc=
+  learner_created: false
+- name: test/gitone/objects/e8/1d4d80d93921c28e985925c6d42b4b42d8758c
+  visible: false
+  text: eAErKUpNVTA2ZTA0MDAzMVHITczM08suYdBWOxjDYh47QcG8+bePlut/lq2FywARVA4v
+  learner_created: false
+- name: test/gitone/objects/ed/09032dc1c2d1650f823e3332876483d2e9625f
+  visible: false
+  text: eAErKUpNVTA3ZjA0MDAzMVHITczM08suYTh0o+NNPdt26bgThdosKRdPVXHN/wNVUpSamJKbqldSUcLg1bWvOrH3/pzQtfsWR57rFC+t9EoEALNhIAk=
+  learner_created: false
+- name: test/gitone/objects/f6/74b5d3a4c6cef5815b4e72ef2ea1bbe46b786b
+  visible: false
+  text: eAFLyslPUjAxZ0jLLCouUcjJzEvlKk5Nzs9LgbBLMjKLIEwFFHEADW8Szg==
+  learner_created: false
+- name: test/gitone/objects/fb/043556c251cb450a0d55e4ceb1ff35e12029c3
+  visible: false
+  text: eAErKUpNVTA3ZjA0MDAzMVHITczM08suYdBWOxjDYh47QcG8+bePlut/lq2Fy6BKilITU3JT9UoqShi8uvZVJ/benxO6dt/iyHOd4qWVXokANVAdtQ==
+  learner_created: false
+- name: test/gitone/objects/fd/362f3f305819d17b4359444aa83e17e7d6924a
+  visible: false
+  text: eAGNzsENwjAMAEDemcJ/Pk5cN7GEEBOwg5O4ohJtUEglxkdiAv73uNK2bR3gZTqNbgYexRIy5snn6jEnnw2VvbLNkUJceEZh9u6l3fYBJIpEkSnUGANqKYKTRJzIglaTUCjNQuL0GI/W4W4NLru126ajr58reE4sSWJIcEZCdOU3GvaPdVorvI+8tGe17r4UezoW
+  learner_created: false
+- name: test/gitone/objects/fe/853d1f316ab467d355f9de48182958780b35b5
+  visible: false
+  text: eAE1jDEOgCAMAJ15RcMEP/A7klILIhoKcTD8XTHxlktuOJcOB/M8UcuwLyEbC7eCl4tD8qaW5v8y6llCrikbzRg3YRRCBpRhWYkjCkfS9jt01UE9esAdFQ==
+  learner_created: false
+- name: test/gitone/refs/heads/feature1
+  visible: false
+  text: |
+    300b1c67b5539bfdcb30f2863d6ac3b3377ad00b
+  learner_created: false
+- name: test/gitone/refs/heads/feature2
+  visible: false
+  text: |
+    97e638cc1c7135580c3ff93162e727148e1bad05
+  learner_created: false
+- name: test/gitone/refs/heads/master
+  visible: false
+  text: |
+    fd362f3f305819d17b4359444aa83e17e7d6924a
+  learner_created: false
+- name: test/gitone/HEAD
+  visible: false
+  text: |
+    ref: refs/heads/master
+  learner_created: false
+- name: test/gittwo/objects/1d/857ef13958afdae2e00b202b5fe2c3a83de149
+  visible: false
+  text: eAFLyslPUjC0YMhIzcnJV8ioLEgtKs7OzMlR5AIAdkQIzw==
+  learner_created: false
+- name: test/gittwo/objects/31/cddcbd00e715688cd127ad20c2846f9ed98223
+  visible: false
+  text: eAGVjVEOwiAUBP3mFO8CNvRhoSTG9N9TvNJtSgpiKr2/eAT/NpPMbCg5x0q9dZd6ACQi3gYsvHjpwwjHYbAzD0Y0eIUbjTcrZqfkrFs56Ckpvnah+290+21Clpi6UPKjRY1nx9ZbumqjtWq0nVX8qalPzO8E2pBSUV8OrDWc
+  learner_created: false
+- name: test/gittwo/objects/3c/0e6c4910ad597132266abb89c74277be7731ea
+  visible: false
+  text: eAFLyslPUjA0Z8hIzcnJV8ioLEgtKs7OzMnhAgBtSwit
+  learner_created: false
+- name: test/gittwo/objects/5a/d3239e54ba7c533d9f215a13ac82d14197cd8f
+  visible: false
+  text: eAGVjkEKwyAQAHv2FX6gQVdjXCil975CdzckRGMJ9tDfN31Cb8PAwFCrde0arL/0Q0TnzE4QA0acyWYrPmc0BtjTyA5mRCCU7NQrHbJ37SwxU2ZjZLJjiJHYwpQYDEH0YUZhjABOpXdf2qGfqaz7lvTtB8PmH1LTWgZq9a5tcAiTG2PUV+OMUac957r8mamaPln0IqU09QWINkJn
+  learner_created: false
+- name: test/gittwo/objects/60/09101760644963fee389fc730acc4c437edc8f
+  visible: false
+  text: eAErKUpNVTA2ZzA0MDAzMVHISM3JydcrqShhWOBkMW26mUu5yPS9B+x2zg1qTIwOBABFxRAA
+  learner_created: false
+- name: test/gittwo/objects/83/02242a39971d4daa63e2db5b2b46d6f7fca44d
+  visible: false
+  text: eAErKUpNVTA2ZzA0MDAzMVHISM3JydcrqShhsOHL8RRYG1lopJa1u/O4U/m+csNXADPzD4g=
+  learner_created: false
+- name: test/gittwo/objects/91/01792ba81555220fc075044a06ed98de225895
+  visible: false
+  text: eAFLyslPUjBnyEjNycm35wIAIlYEVA==
+  learner_created: false
+- name: test/gittwo/objects/a0/423896973644771497bdc03eb99d5281615b51
+  visible: false
+  text: eAFLyslPUjA0ZshIzcnJVyjPL8pJUeQCAErhBqs=
+  learner_created: false
+- name: test/gittwo/objects/aa/a96ced2d9a1c8e72c56b253a0e2fe78393feb7
+  visible: false
+  text: eAErKUpNVTA2ZzA0MDAzMVHISM3JydcrqShhOMdopsrMveL2SrbvYdPq581ZPMXNCwA+iQ/5
+  learner_created: false
+- name: test/gittwo/objects/b9/e517fc3149863d47c382680ecdace0b6dbdeef
+  visible: false
+  text: eAFLyslPUjA3ZLCBAAUPV0cXrozUnJx8ey5bCIBwFTIqC1KLirMzc3K47CBAAawuPLMkwy01saS0KNWICwCJ5hgp
+  learner_created: false
+- name: test/gittwo/objects/bb/d3e996989fc1b1e4bb9002d4c5d32f992c9eb3
+  visible: false
+  text: eAErKUpNVTA2ZzA0MDAzMVHISM3JydcrqShhmMhYqb1CNFSJ/0Apixfb2xn3lCKmAgAwxA6g
+  learner_created: false
+- name: test/gittwo/objects/c5/e4a1239e11e51e95b051e2f25c3325b5004676
+  visible: false
+  text: eAGVjksKAjEQBV3nFLmA0unEfEDEa7iMnQ4TyEeGzMLbG4/gquBBUY9Ga2VKRDjNnVlagKBAOQvWmGB1ZtY+ZHIaIpEhox0n8lm84859Sq0oJXolAHbqar2npNDFhEDojc2BU/CIWsRjbmOXz6OWKG+fHx40amqx1AuNdpfK6oCrA1aeYUGsdX2b/J8lSl9Kj1RGj1VuXOsQX9fTRZI=
+  learner_created: false
+- name: test/gittwo/objects/ce/013625030ba8dba906f756967f9e9ca394464a
+  visible: false
+  text: eAFLyslPUjBjyEjNycnnAgAdxQQU
+  learner_created: false
+- name: test/gittwo/objects/d1/28f76a96c56ac4373717d3fbba4fa5875ca68f
+  visible: false
+  text: eAErKUpNVTA2ZzA0MDAzMVHISM3JydcrqShhkG2t+2gZsf7WowfcCtrxjw6vsH3oCQBUqBGC
+  learner_created: false
+- name: test/gittwo/objects/d2/c5bedbb2c46945fd84f2ad209a7d4ee047f7f9
+  visible: false
+  text: eAGVzktqAzEMANCsfQpdoMGWHH+glG6z6xU8kiYeyIyC6+T8hd4gB3jw2PZ9m4AYTnOoQiGPGLFRrTlIlNYSKcpyWXCJSdKaV24xinu0occECizCi3ivOVxSKSwBcxP0jCWmtarUgkiuPWe3AddXO+DzR+ew18b9ezc7zjZuXxASVcwUKcKHJ+8d/9emvoVc1/vdwFaYXYF72x+bHb/uD2ktRfo=
+  learner_created: false
+- name: test/gittwo/objects/dc/ec4e51e2ce4a46a6206d0d4ab33fa99d8b1ab5
+  visible: false
+  text: eAGVj0tqBDEMRLP2KXyBDLYk/yCE2ecUsiUzzbTHoeMh109nlXV2RfEKXrU5xrYsRHxZh6oVD7mnyCW2ELkRJkw+CfZamTqHnELjmLv55EMfywYWBCwaqHJqAVFKBx/YI7cM4smX1OSPF2ihqtQKjWKh0CVTBxZwhZOQqqPUUy+Gn+s2D/vB+/a4s337DZc7XXXwtl/aHO/WRyxw+hHYV4fOmbM9zyz958zw99ccam+679P8AIPwURs=
+  learner_created: false
+- name: test/gittwo/refs/heads/helloWithFeature1
+  visible: false
+  text: |
+    c5e4a1239e11e51e95b051e2f25c3325b5004676
+  learner_created: false
+- name: test/gittwo/refs/heads/helloWithFeature2
+  visible: false
+  text: |
+    d2c5bedbb2c46945fd84f2ad209a7d4ee047f7f9
+  learner_created: false
+- name: test/gittwo/refs/heads/main
+  visible: false
+  text: |
+    dcec4e51e2ce4a46a6206d0d4ab33fa99d8b1ab5
+  learner_created: false
+- name: test/gittwo/HEAD
+  visible: false
+  text: |
+    ref: refs/heads/main
+  learner_created: false
+- name: test/GitInternalsTest.java
+  visible: false
+  text: |
+    import org.hyperskill.hstest.stage.StageTest;
+    import org.hyperskill.hstest.testcase.CheckResult;
+    import org.hyperskill.hstest.testcase.TestCase;
+
+    import java.util.Arrays;
+    import java.util.List;
+
+    // version 1.2
+    public class GitInternalsTest extends StageTest<List<String>> {
+
+        private final String gitOnePath = "test/gitone\n";
+        private final String gitTwoPath = "test/gittwo\n";
+
+        @Override
+        public List<TestCase<List<String>>> generate() {
+
+            return Arrays.asList(
+                    new TestCase<List<String>>()
+                            .setInput(
+                                    gitOnePath +
+                                            "cat-file\n" +
+                                            "0eee6a98471a350b2c2316313114185ecaf82f0e\n")
+                            .setAttach(Arrays.asList(
+                                    "Enter .git directory location:",
+                                    "Enter command:",
+                                    "Enter git object hash:",
+                                    "*COMMIT*",
+                                    "tree: 79401ddb0e2c0fe0472c813754dd4a8873b66a84",
+                                    "parents: 12a4717e84b5e414f93cc91ca50a6d5a6c3563a0",
+                                    "author: Smith mr.smith@matrix original timestamp: 2020-03-29 17:18:20 +03:00",
+                                    "committer: Cypher cypher@matrix commit timestamp: 2020-03-29 17:25:52 +03:00",
+                                    "commit message:",
+                                    "get docs from feature1")),
+                    new TestCase<List<String>>()
+                            .setInput(
+                                    gitOnePath +
+                                            "cat-file\n" +
+                                            "490f96725348e92770d3c6bab9ec532564b7ebe0\n")
+                            .setAttach(Arrays.asList(
+                                    "Enter .git directory location:",
+                                    "Enter command:",
+                                    "Enter git object hash:",
+                                    "*BLOB*",
+                                    "fun main() {",
+                                    "    while(true) {",
+                                    "        println(\"Hello Hyperskill student!\")",
+                                    "    }",
+                                    "} ")),
+                    new TestCase<List<String>>()
+                            .setInput(
+                                    gitOnePath +
+                                            "cat-file\n" +
+                                            "fb043556c251cb450a0d55e4ceb1ff35e12029c3\n")
+                            .setAttach(Arrays.asList(
+                                    "Enter .git directory location:",
+                                    "Enter command:",
+                                    "Enter git object hash:",
+                                    "*TREE*",
+                                    "100644 2b26c15c04375d90203783fb4c2a45ff04b571a6 main.kt",     //fixed
+                                    "100644 4a8abe7b618ddf9c55adbea359ce891775794a61 readme.txt")),
+                    new TestCase<List<String>>()
+                            .setInput(
+                                    gitOnePath +
+                                            "list-branches\n")
+                            .setAttach(Arrays.asList(
+                                    "Enter .git directory location:",
+                                    "Enter command:",
+                                    "  feature1",
+                                    "  feature2",
+                                    "* master")),
+                    new TestCase<List<String>>()  // added
+                            .setInput(
+                                    gitTwoPath +
+                                            "cat-file\n" +
+                                            "31cddcbd00e715688cd127ad20c2846f9ed98223\n")
+                            .setAttach(Arrays.asList(
+                                    "Enter .git directory location:",
+                                    "Enter command:",
+                                    "Enter git object hash:",
+                                    "*COMMIT*",
+                                    "tree: aaa96ced2d9a1c8e72c56b253a0e2fe78393feb7",
+                                    "author: Kalinka Kali.k4@email.com original timestamp: 2021-12-11 22:31:36 -03:00",
+                                    "committer: Kalinka Kali.k4@email.com commit timestamp: 2021-12-11 22:31:36 -03:00",
+                                    "commit message:",
+                                    "simple hello")),
+                    new TestCase<List<String>>()  // added
+                            .setInput(
+                                    gitTwoPath +
+                                            "cat-file\n" +
+                                            "dcec4e51e2ce4a46a6206d0d4ab33fa99d8b1ab5\n")
+                            .setAttach(Arrays.asList(
+                                    "Enter .git directory location:",
+                                    "Enter command:",
+                                    "Enter git object hash:",
+                                    "*COMMIT*",
+                                    "tree: d128f76a96c56ac4373717d3fbba4fa5875ca68f",
+                                    "parents: 5ad3239e54ba7c533d9f215a13ac82d14197cd8f | d2c5bedbb2c46945fd84f2ad209a7d4ee047f7f9",
+                                    "author: Kalinka Kali.k4@email.com original timestamp: 2021-12-11 22:49:02 -03:00",
+                                    "committer: Kalinka Kali.k4@email.com commit timestamp: 2021-12-11 22:49:02 -03:00",
+                                    "commit message:",
+                                    "awsome hello")),
+                    new TestCase<List<String>>()  // added
+                            .setInput(
+                                    gitTwoPath +
+                                            "cat-file\n" +
+                                            "aaa96ced2d9a1c8e72c56b253a0e2fe78393feb7\n")
+                            .setAttach(Arrays.asList(
+                                    "Enter .git directory location:",
+                                    "Enter command:",
+                                    "Enter git object hash:",
+                                    "*TREE*",
+                                    "100644 ce013625030ba8dba906f756967f9e9ca394464a hello.txt")),
+                    new TestCase<List<String>>()  // added
+                            .setInput(
+                                    gitTwoPath +
+                                            "list-branches\n")
+                            .setAttach(Arrays.asList(
+                                    "Enter .git directory location:",
+                                    "Enter command:",
+                                    "  helloWithFeature1",
+                                    "  helloWithFeature2",
+                                    "* main"))
+            );
+        }
+
+        @Override
+        public CheckResult check(String reply, List<String> expectedOutput) {
+            List<String> lines = Arrays.asList(reply.split("(\\r\\n|\\r|\\n)"));
+
+            if (lines.size() != expectedOutput.size()) {
+                return CheckResult.wrong(String.format(
+                        "Number of lines in your output (%d) does not match expected value(%d)",
+                        lines.size(), expectedOutput.size()));
+            }
+
+            for (int i = 0; i < lines.size(); i++) {
+                if (!lines.get(i).equals(expectedOutput.get(i))) {
+                    return CheckResult.wrong(String.format(
+                            "Output text at line (%d) (%s) does not match expected (%s)",
+                            i, lines.get(i), expectedOutput.get(i)));
+                }
+            }
+
+
+            return CheckResult.correct();
+        }
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/projects/110/stages/599/implement#comment
+status: Unchecked
+record: -1
