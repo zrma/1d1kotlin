@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/271195/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: "Fri, 16 Dec 2022 12:55:55 UTC"
+update_date: "Sun, 18 Dec 2022 06:33:25 UTC"
 stages:
 - id: 480
   step: 7786
@@ -22,7 +22,7 @@ stages:
   is_completed: true
 - id: 485
   step: 7791
-  is_completed: false
+  is_completed: true
 topics:
   0:
   - title: Cartesian coordinates

@@ -1,5 +1,8 @@
 package processor
 
+const val INVALID_OPERATION = "The operation cannot be performed."
+const val NOT_INVERTIBLE = "This matrix is not invertible."
+
 fun main() {
     while (true) {
         println("1. Add matrices")
@@ -7,7 +10,7 @@ fun main() {
         println("3. Multiply matrices")
         println("4. Transpose matrix")
         println("5. Calculate a determinant")
-//        println("6. Inverse matrix")
+        println("6. Inverse matrix")
         println("0. Exit")
         print("Your choice: ")
         when (readln().toInt()) {
@@ -16,7 +19,7 @@ fun main() {
             3 -> multiplyMatrices()
             4 -> transposeMatrix()
             5 -> calculateDeterminant()
-//            6 -> inverseMatrix()
+            6 -> inverseMatrix()
             0 -> return
         }
     }
@@ -83,6 +86,16 @@ fun calculateDeterminant() {
     println(det)
 }
 
+fun inverseMatrix() {
+    val mat0 = newMatrix()
+    try {
+        val mat1 = mat0.inverse()
+        mat1.print()
+    } catch (e: Exception) {
+        println(e.message)
+    }
+}
+
 fun newMatrix(seq: String = ""): Matrix {
     if (seq.isNotEmpty()) {
         print("Enter size of $seq matrix: ")
@@ -126,7 +139,7 @@ class Matrix(private val rows: Int, private val columns: Int) {
 
     operator fun plus(other: Matrix): Matrix {
         if (rows != other.rows || columns != other.columns) {
-            throw IllegalArgumentException("The operation cannot be performed.")
+            throw IllegalArgumentException(INVALID_OPERATION)
         }
         val result = Matrix(rows, columns)
         for (i in 0 until rows) {
@@ -139,7 +152,7 @@ class Matrix(private val rows: Int, private val columns: Int) {
 
     operator fun times(other: Matrix): Matrix {
         if (columns != other.rows) {
-            throw IllegalArgumentException("The operation cannot be performed.")
+            throw IllegalArgumentException(INVALID_OPERATION)
         }
         val result = Matrix(rows, other.columns)
         for (i in 0 until rows) {
@@ -204,7 +217,7 @@ class Matrix(private val rows: Int, private val columns: Int) {
 
     fun determinant(): Double {
         if (rows != columns) {
-            throw IllegalArgumentException("The operation cannot be performed.")
+            throw IllegalArgumentException(INVALID_OPERATION)
         }
         if (rows == 1) {
             return get(0, 0)
@@ -234,5 +247,19 @@ class Matrix(private val rows: Int, private val columns: Int) {
             r++
         }
         return minor.determinant() * if ((row + col) % 2 == 0) 1 else -1
+    }
+
+    fun inverse(): Matrix {
+        val det = determinant()
+        if (det == 0.0) {
+            throw IllegalArgumentException(NOT_INVERTIBLE)
+        }
+        val result = Matrix(rows, columns)
+        for (i in 0 until rows) {
+            for (j in 0 until columns) {
+                result.set(j, i, cofactor(i, j) / det)
+            }
+        }
+        return result
     }
 }
