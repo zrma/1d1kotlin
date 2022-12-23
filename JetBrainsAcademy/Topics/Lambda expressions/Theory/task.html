@@ -27,17 +27,17 @@ println(mul1(2, 3))  // prints "6"
 println(mul2(2, 3))  // prints "6" too</code></pre>
 <p>Also, you can pass such a function as an argument or return such a function from another function.</p>
 <p>Finally, you can place parentheses with desired arguments right after the function definition to invoke it in place. However, that doesn't make much sense. So, mostly the three first described options are used.</p>
-<p>The process of creating these two functions is quite similar, but lambdas have a more concise and convenient syntax. Therefore, lambdas are almost always used to create a function at runtime in real life. Moreover, there are programmers that don't listen to Kotlin's official naming rules, so they can say "an anonymous function" instead of "a lambda". Despite the fact that everybody understands them, we suggest you call them as they are.</p>
+<p>The process of creating these two functions is quite similar, but lambdas have a more concise and convenient syntax. Therefore, almost always lambdas are used to create a function at runtime in real life. Moreover, there are programmers that don't listen to Kotlin official naming rules, so they can say "an anonymous function" instead of "a lambda". Despite the fact that everybody understands them, we suggest you to call them as they are.</p>
 <p>For the same reason of convenience, now we will talk only about lambdas.</p>
 <h5 id="lambdas-and-syntactic-sugar">Lambdas and syntactic sugar</h5>
-<p>There are ways to make the code more readable for human beings without changing the code logic. If there is such a way in a programming language and it relates to syntax, its name is <strong>syntactic sugar</strong>. Kotlin promotes Functional Programming, so there is syntactic sugar for it.</p>
+<p>There are ways to make the code more readable for human beings without changing the code logic. If there is such a way in a programming language and it relates to syntax, its name is <strong>syntactic sugar</strong>. Kotlin promotes Functional Programming so there is syntactic sugar for it.</p>
 <p>Let's recall this example of passing the function as an argument:</p>
 <pre><code class="language-kotlin">fun isNotDot(c: Char): Boolean = c != '.'
 val originalText = "I don't know... what to say..."
 val textWithoutDots = originalText.filter(::isNotDot)</code></pre>
 <p>Rewrite it to pass a lambda:</p>
 <pre><code class="language-kotlin">val originalText = "I don't know... what to say..."
-val textWithoutDots = originalText.filter( c: Char -&gt; c != '.' )</code></pre>
+val textWithoutDots = originalText.filter({ c: Char -&gt; c != '.' })</code></pre>
 <p>It works! First of all, Kotlin infers types of many objects, and here specifying the <code class="language-kotlin">c</code> type isn't necessary:</p>
 <pre><code class="language-kotlin">originalText.filter({ c -&gt; c != '.' })</code></pre>
 <p>Second, there are situations when the lambda is passed as the last argument. This is the case. Kotlin provides a way to eliminate these bracket sequences ({ }), allowing to write the lambda outside the parentheses:</p>
@@ -80,7 +80,7 @@ changeAndPrint()  // 1
 count += 10
 changeAndPrint()  // 12
 println(count)    // 12</code></pre>
-<p>Here we declare a lambda and assign it to the <code class="language-kotlin">changeAndPrint</code> variable. The lambda takes the <code class="language-kotlin">count</code> variable, <strong>increments</strong> it (increases it by 1), and prints the new value. Take a look at the printed numbers: they may seem okay, but it's vital to understand that the <code class="language-kotlin">count</code> the variable is available for changes from inside and outside the lambda, and it changes everywhere.</p>
+<p>Here we declare a lambda and assign it to the <code class="language-kotlin">changeAndPrint</code> variable. The lambda takes the <code class="language-kotlin">count</code> variable, <strong>increments</strong> it (increases it by 1), and prints the new value. Take a look at the printed numbers: they may seem okay but it's vital to understand that the <code class="language-kotlin">count</code> variable is available for changes from inside and outside the lambda and it changes everywhere.</p>
 <p>Here is another example.</p>
 <pre><code class="language-kotlin">fun placeArgument(value: Int, f: (Int, Int) -&gt; Int): (Int) -&gt; Int {
     return { i -&gt; f(value, i) }
