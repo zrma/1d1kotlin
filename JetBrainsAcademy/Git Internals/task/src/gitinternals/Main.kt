@@ -4,12 +4,19 @@ import java.io.File
 import java.util.zip.InflaterInputStream
 
 fun main() {
-  println("Enter git object location:")
-  val location = readln()
-  val gitObject = readGitObject(location)
-  val parsed = parseGitObject(gitObject)
+  println("Enter .git directory location:")
+  val gitDir = readln()
 
-  parsed.forEach { println(it) }
+  println("Enter git object hash:")
+  val hash = readln()
+
+  val gitObjPath = "$gitDir/objects/${hash.substring(0, 2)}/${hash.substring(2)}"
+
+  val gitObj = readGitObject(gitObjPath)
+  val parsed = parseGitObject(gitObj)
+
+  val header = parsed.first()
+  header.split(" ").let { println("type:${it[0]} length:${it[1]}") }
 }
 
 fun parseGitObject(gitObject: String): List<String> {

@@ -8,35 +8,60 @@ import java.util.List;
 // version 1.2
 public class GitInternalsTest extends StageTest<List<String>> {
 
-    private final String gitOnePath = "test/gitone/";
+    private final String gitOnePath = "test/gitone\n";
 
     @Override
     public List<TestCase<List<String>>> generate() {
+
         return Arrays.asList(
                 new TestCase<List<String>>()
                         .setInput(
-                                gitOnePath + "objects/61/8383db6d7ee3bd2e97b871205f113b6a3ba854\n")
+                                gitOnePath +
+                                        "0eee6a98471a350b2c2316313114185ecaf82f0e\n")
                         .setAttach(Arrays.asList(
-                                "Enter git object location:",
-                                "blob 14",
-                                "Hello world! ")),
+                                "Enter .git directory location:",
+                                "Enter git object hash:",
+                                "type:commit length:216")),
                 new TestCase<List<String>>()
                         .setInput(
-                                gitOnePath + "objects/a8/7a4a0e9fcf5a8a091c54909b674ac2a051f5e8\n")
+                                gitOnePath +
+                                        "490f96725348e92770d3c6bab9ec532564b7ebe0\n")
                         .setAttach(Arrays.asList(
-                                "Enter git object location:",
-                                "blob 24",
-                                "first line",
-                                "second line ")),
+                                "Enter .git directory location:",
+                                "Enter git object hash:",
+                                "type:blob length:85")),
                 new TestCase<List<String>>()
                         .setInput(
-                                gitOnePath + "objects/4a/8abe7b618ddf9c55adbea359ce891775794a61\n")
+                                gitOnePath +
+                                        "618383db6d7ee3bd2e97b871205f113b6a3ba854\n")
                         .setAttach(Arrays.asList(
-                                "Enter git object location:",
-                                "blob 35",
-                                "first line",
-                                "second line",
-                                "third line "))
+                                "Enter .git directory location:",
+                                "Enter git object hash:",
+                                "type:blob length:14")),
+                new TestCase<List<String>>()
+                        .setInput(
+                                gitOnePath +
+                                        "a7b882bbf2db5d90287e9affc7e6f3b3c740b327\n")
+                        .setAttach(Arrays.asList(
+                                "Enter .git directory location:",
+                                "Enter git object hash:",
+                                "type:tree length:35")),
+                new TestCase<List<String>>()
+                        .setInput(
+                                gitOnePath +
+                                        "fb043556c251cb450a0d55e4ceb1ff35e12029c3\n")
+                        .setAttach(Arrays.asList(
+                                "Enter .git directory location:",
+                                "Enter git object hash:",
+                                "type:tree length:73")),
+                new TestCase<List<String>>()
+                        .setInput(
+                                gitOnePath +
+                                        "ad3a818dc87b9940935b24a5aa93fac00f086bf9\n")
+                        .setAttach(Arrays.asList(
+                                "Enter .git directory location:",
+                                "Enter git object hash:",
+                                "type:tree length:35"))
         );
     }
 
