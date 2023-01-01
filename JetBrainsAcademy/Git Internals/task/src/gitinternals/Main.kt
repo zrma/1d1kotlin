@@ -15,24 +15,31 @@ fun main() {
 
   val gitObjPath = "$gitDir/objects/${hash.substring(0, 2)}/${hash.substring(2)}"
 
-  val gitObj = readGitObject(gitObjPath)
+  val (gitObj, origData) = readGitObject(gitObjPath)
   val parsed = parseGitObject(gitObj)
 
-  printParsedGitObj(parsed)
+  printParsedGitObj(parsed, origData)
 }
 
 fun parseGitObject(gitObject: String): List<String> {
-  return gitObject.split("\u0000", "\n").filter { it.isNotEmpty() }
+  // split first NULL char of gitObject
+  val split = gitObject.split("\u0000", limit = 2)
+  val header = split[0]
+  val body = split[1].split("\n").filter { it.isNotEmpty() }
+
+  return listOf(header) + body
 }
 
-fun readGitObject(location: String): String {
+fun readGitObject(location: String): Pair<String, ByteArray> {
   val file = File(location)
   val bytes = file.readBytes()
-  val inflater = InflaterInputStream(bytes.inputStream())
-  return inflater.bufferedReader().readText()
+  return Pair(
+      InflaterInputStream(bytes.inputStream()).bufferedReader().readText(),
+      InflaterInputStream(bytes.inputStream()).readAllBytes(),
+  )
 }
 
-fun printParsedGitObj(parsed: List<String>) {
+fun printParsedGitObj(parsed: List<String>, origData: ByteArray) {
   val header = parsed.first()
   val contentType = header.split(" ").first().uppercase()
   println("*$contentType*")
@@ -66,7 +73,31 @@ fun printParsedGitObj(parsed: List<String>) {
     "BLOB" -> {
       body.forEach { println(it) }
     }
+    "TREE" -> {
+      var tree = origData.dropWhile { it != 0.toByte() }.drop(1).toByteArray()
+      while (tree.isNotEmpty()) {
+        val (treeVal, tree1) = parseTree(tree)
+        tree = tree1
+        val (mode, hash, name) = treeVal
+        println("$mode $hash $name")
+      }
+    }
   }
+}
+
+fun parseTree(tree: ByteArray): Pair<Triple<String, String, String>, ByteArray> {
+  val mode =
+      tree.takeWhile { it.toInt().toChar() != ' ' }.map { it.toInt().toChar() }.joinToString("")
+  val name =
+      tree
+          .drop(mode.length + 1)
+          .takeWhile { it != 0.toByte() }
+          .map { it.toInt().toChar() }
+          .joinToString("")
+  val hash =
+      tree.drop(mode.length + name.length + 2).take(20).joinToString("") { "%02x".format(it) }
+
+  return Pair(Triple(mode, hash, name), tree.drop(mode.length + name.length + 22).toByteArray())
 }
 
 fun parseAuthor(line: String): Triple<String, String, String> {
