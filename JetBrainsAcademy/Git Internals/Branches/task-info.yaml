@@ -145,26 +145,6 @@ files:
   visible: false
   text: eAE1jDEOgCAMAJ15RcMEP/A7klILIhoKcTD8XTHxlktuOJcOB/M8UcuwLyEbC7eCl4tD8qaW5v8y6llCrikbzRg3YRRCBpRhWYkjCkfS9jt01UE9esAdFQ==
   learner_created: false
-- name: test/gitone/refs/heads/feature1
-  visible: false
-  text: |
-    300b1c67b5539bfdcb30f2863d6ac3b3377ad00b
-  learner_created: false
-- name: test/gitone/refs/heads/feature2
-  visible: false
-  text: |
-    97e638cc1c7135580c3ff93162e727148e1bad05
-  learner_created: false
-- name: test/gitone/refs/heads/master
-  visible: false
-  text: |
-    fd362f3f305819d17b4359444aa83e17e7d6924a
-  learner_created: false
-- name: test/gitone/HEAD
-  visible: false
-  text: |
-    ref: refs/heads/master
-  learner_created: false
 - name: test/gittwo/objects/1d/857ef13958afdae2e00b202b5fe2c3a83de149
   visible: false
   text: eAFLyslPUjC0YMhIzcnJV8ioLEgtKs7OzMlR5AIAdkQIzw==
@@ -228,26 +208,6 @@ files:
 - name: test/gittwo/objects/dc/ec4e51e2ce4a46a6206d0d4ab33fa99d8b1ab5
   visible: false
   text: eAGVj0tqBDEMRLP2KXyBDLYk/yCE2ecUsiUzzbTHoeMh109nlXV2RfEKXrU5xrYsRHxZh6oVD7mnyCW2ELkRJkw+CfZamTqHnELjmLv55EMfywYWBCwaqHJqAVFKBx/YI7cM4smX1OSPF2ihqtQKjWKh0CVTBxZwhZOQqqPUUy+Gn+s2D/vB+/a4s337DZc7XXXwtl/aHO/WRyxw+hHYV4fOmbM9zyz958zw99ccam+679P8AIPwURs=
-  learner_created: false
-- name: test/gittwo/refs/heads/helloWithFeature1
-  visible: false
-  text: |
-    c5e4a1239e11e51e95b051e2f25c3325b5004676
-  learner_created: false
-- name: test/gittwo/refs/heads/helloWithFeature2
-  visible: false
-  text: |
-    d2c5bedbb2c46945fd84f2ad209a7d4ee047f7f9
-  learner_created: false
-- name: test/gittwo/refs/heads/main
-  visible: false
-  text: |
-    dcec4e51e2ce4a46a6206d0d4ab33fa99d8b1ab5
-  learner_created: false
-- name: test/gittwo/HEAD
-  visible: false
-  text: |
-    ref: refs/heads/main
   learner_created: false
 - name: test/GitInternalsTest.java
   visible: false
@@ -400,6 +360,49 @@ files:
         }
     }
   learner_created: false
+- name: test/gittwo/HEAD
+  visible: false
+  text: |
+    ref: refs/heads/main
+  learner_created: false
+- name: test/gittwo/refs/heads/main
+  visible: false
+  text: |
+    dcec4e51e2ce4a46a6206d0d4ab33fa99d8b1ab5
+  learner_created: false
+- name: test/gitone/refs/heads/feature1
+  visible: false
+  text: |
+    300b1c67b5539bfdcb30f2863d6ac3b3377ad00b
+  learner_created: false
+- name: test/gitone/refs/heads/feature2
+  visible: false
+  text: |
+    97e638cc1c7135580c3ff93162e727148e1bad05
+  learner_created: false
+- name: test/gitone/HEAD
+  visible: false
+  text: |
+    ref: refs/heads/master
+  learner_created: false
+- name: test/gitone/refs/heads/master
+  visible: false
+  text: |
+    fd362f3f305819d17b4359444aa83e17e7d6924a
+  learner_created: false
+- name: test/gittwo/refs/heads/helloWithFeature2
+  visible: false
+  text: |
+    d2c5bedbb2c46945fd84f2ad209a7d4ee047f7f9
+  learner_created: false
+- name: test/gittwo/refs/heads/helloWithFeature1
+  visible: false
+  text: |
+    c5e4a1239e11e51e95b051e2f25c3325b5004676
+  learner_created: false
 feedback_link: https://hyperskill.org/learn/step/9841#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Tue, 03 Jan 2023 12:05:10 UTC"
 record: -1

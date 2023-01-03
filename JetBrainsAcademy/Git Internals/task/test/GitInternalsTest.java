@@ -18,9 +18,11 @@ public class GitInternalsTest extends StageTest<List<String>> {
                 new TestCase<List<String>>()
                         .setInput(
                                 gitOnePath +
+                                        "cat-file\n" +
                                         "0eee6a98471a350b2c2316313114185ecaf82f0e\n")
                         .setAttach(Arrays.asList(
                                 "Enter .git directory location:",
+                                "Enter command:",
                                 "Enter git object hash:",
                                 "*COMMIT*",
                                 "tree: 79401ddb0e2c0fe0472c813754dd4a8873b66a84",
@@ -32,9 +34,11 @@ public class GitInternalsTest extends StageTest<List<String>> {
                 new TestCase<List<String>>()
                         .setInput(
                                 gitOnePath +
+                                        "cat-file\n" +
                                         "490f96725348e92770d3c6bab9ec532564b7ebe0\n")
                         .setAttach(Arrays.asList(
                                 "Enter .git directory location:",
+                                "Enter command:",
                                 "Enter git object hash:",
                                 "*BLOB*",
                                 "fun main() {",
@@ -45,58 +49,33 @@ public class GitInternalsTest extends StageTest<List<String>> {
                 new TestCase<List<String>>()
                         .setInput(
                                 gitOnePath +
+                                        "cat-file\n" +
                                         "fb043556c251cb450a0d55e4ceb1ff35e12029c3\n")
                         .setAttach(Arrays.asList(
                                 "Enter .git directory location:",
+                                "Enter command:",
                                 "Enter git object hash:",
                                 "*TREE*",
-                                "100644 2b26c15c04375d90203783fb4c2a45ff04b571a6 main.kt",  //fixed
+                                "100644 2b26c15c04375d90203783fb4c2a45ff04b571a6 main.kt",     //fixed
                                 "100644 4a8abe7b618ddf9c55adbea359ce891775794a61 readme.txt")),
                 new TestCase<List<String>>()
                         .setInput(
                                 gitOnePath +
-                                        "ad3a818dc87b9940935b24a5aa93fac00f086bf9\n")
+                                        "list-branches\n")
                         .setAttach(Arrays.asList(
                                 "Enter .git directory location:",
-                                "Enter git object hash:",
-                                "*TREE*",
-                                "100644 c2d888ec7f06b71b5ec8712b0464d1ca7a0a9ffc main.kt")),  //fixed
-                new TestCase<List<String>>()
-                        .setInput(
-                                gitOnePath +
-                                        "109e8050b41bd10b81be0a51a5e67327f5609551\n")
-                        .setAttach(Arrays.asList(
-                                "Enter .git directory location:",
-                                "Enter git object hash:",
-                                "*TREE*",
-                                "100644 2b26c15c04375d90203783fb4c2a45ff04b571a6 main.kt",  //fixed
-                                "100644 f674b5d3a4c6cef5815b4e72ef2ea1bbe46b786b readme.txt",
-                                "40000 74198c849dbbcd51d060c59253a4757eedb9bd12 some-folder")),
-                new TestCase<List<String>>()
-                        .setInput(
-                                gitOnePath +
-                                        "74198c849dbbcd51d060c59253a4757eedb9bd12\n")
-                        .setAttach(Arrays.asList(
-                                "Enter .git directory location:",
-                                "Enter git object hash:",
-                                "*TREE*",
-                                "100644 83cc19099347924da28890838ad5e698da8504a3 qq.txt")),  //fixed
-
-                new TestCase<List<String>>()
-                        .setInput(
-                                gitOnePath +
-                                        "74198c849dbbcd51d060c59253a4757eedb9bd12\n")
-                        .setAttach(Arrays.asList(
-                                "Enter .git directory location:",
-                                "Enter git object hash:",
-                                "*TREE*",
-                                "100644 83cc19099347924da28890838ad5e698da8504a3 qq.txt")),  //fixed
+                                "Enter command:",
+                                "  feature1",
+                                "  feature2",
+                                "* master")),
                 new TestCase<List<String>>()  // added
                         .setInput(
                                 gitTwoPath +
+                                        "cat-file\n" +
                                         "31cddcbd00e715688cd127ad20c2846f9ed98223\n")
                         .setAttach(Arrays.asList(
                                 "Enter .git directory location:",
+                                "Enter command:",
                                 "Enter git object hash:",
                                 "*COMMIT*",
                                 "tree: aaa96ced2d9a1c8e72c56b253a0e2fe78393feb7",
@@ -107,9 +86,11 @@ public class GitInternalsTest extends StageTest<List<String>> {
                 new TestCase<List<String>>()  // added
                         .setInput(
                                 gitTwoPath +
+                                        "cat-file\n" +
                                         "dcec4e51e2ce4a46a6206d0d4ab33fa99d8b1ab5\n")
                         .setAttach(Arrays.asList(
                                 "Enter .git directory location:",
+                                "Enter command:",
                                 "Enter git object hash:",
                                 "*COMMIT*",
                                 "tree: d128f76a96c56ac4373717d3fbba4fa5875ca68f",
@@ -121,12 +102,24 @@ public class GitInternalsTest extends StageTest<List<String>> {
                 new TestCase<List<String>>()  // added
                         .setInput(
                                 gitTwoPath +
+                                        "cat-file\n" +
                                         "aaa96ced2d9a1c8e72c56b253a0e2fe78393feb7\n")
                         .setAttach(Arrays.asList(
                                 "Enter .git directory location:",
+                                "Enter command:",
                                 "Enter git object hash:",
                                 "*TREE*",
-                                "100644 ce013625030ba8dba906f756967f9e9ca394464a hello.txt"))
+                                "100644 ce013625030ba8dba906f756967f9e9ca394464a hello.txt")),
+                new TestCase<List<String>>()  // added
+                        .setInput(
+                                gitTwoPath +
+                                        "list-branches\n")
+                        .setAttach(Arrays.asList(
+                                "Enter .git directory location:",
+                                "Enter command:",
+                                "  helloWithFeature1",
+                                "  helloWithFeature2",
+                                "* main"))
         );
     }
 

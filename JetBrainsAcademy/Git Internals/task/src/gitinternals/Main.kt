@@ -10,6 +10,22 @@ fun main() {
   println("Enter .git directory location:")
   val gitDir = readln()
 
+  println("Enter command:")
+  when (readln()) {
+    "list-branches" -> listBranches(gitDir)
+    "cat-file" -> catFile(gitDir)
+    else -> println("Unknown command")
+  }
+}
+
+fun listBranches(gitDir: String) {
+  val head = File("$gitDir/refs/heads")
+  val branches = head.listFiles()?.map { it.name }
+  val curBranch = File("$gitDir/HEAD").readText().split("/").last().trimEnd()
+  branches?.forEach { println(if (it == curBranch) "* $it" else "  $it") }
+}
+
+fun catFile(gitDir: String) {
   println("Enter git object hash:")
   val hash = readln()
 
