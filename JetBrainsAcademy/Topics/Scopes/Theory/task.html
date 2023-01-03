@@ -1,5 +1,5 @@
 <h2>Scopes</h2>
-<html><body><p>It's hard to imagine a program where you don't need to use variables. But what parts of the code do you think have access to your variables? Of course, they are not seen by another program or another computer. In fact, your code may not see them either! How come? Let's find out.</p>
+<p>It's hard to imagine a program where you don't need to use variables. But what parts of the code do you think have access to your variables? Of course, they are not seen by another program or another computer. In fact, your code may not see them either! How come? Let's find out.</p>
 <h5 id="scope" style="text-align: center;">Scope</h5>
 <p>Actually, each variable has a special <strong>scope</strong> in which it can be used. The scope of a variable is the syntactically-delimited area of code in which this variable or identifier, once declared, can be used in one way or another. That is, it is visible. For example, the scope can be an entire program, or a function, or a file.</p>
 <p>In the simplest cases, the scope is determined by where the identifier is declared. Out of this scope, the same identifier can be associated with another variable or not be associated with any of the variables at all. Let's look at this in more detail below. </p>
@@ -109,4 +109,4 @@ fun main() {
 <li>if a variable is declared inside a loop, then its scope is this loop;</li>
 <li>if a variable is declared inside a function, then its scope is this function.</li>
 </ul>
-<p>Some scopes are included in others, and all this forms a hierarchy. If we refer to some identifier, an entity with that name is first searched in the current scope and then in scopes up the hierarchy.</p></body></html>
+<p>Some scopes are included in others, and all this forms a hierarchy. If we refer to some identifier, an entity with that name is first searched in the current scope and then in scopes up the hierarchy.</p>

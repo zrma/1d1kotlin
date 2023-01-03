@@ -1,5 +1,5 @@
 <h2>Object declarations</h2>
-<html><body><p>In Kotlin, a class describes a general structure that can be instantiated multiple times and in multiple ways. Sometimes we need only a single instance, no more, no less. It can help you organize your codebase and gather similar methods together. In this topic, you will learn how this can be achieved in Kotlin using object declaration.</p>
+<p>In Kotlin, a class describes a general structure that can be instantiated multiple times and in multiple ways. Sometimes we need only a single instance, no more, no less. It can help you organize your codebase and gather similar methods together. In this topic, you will learn how this can be achieved in Kotlin using object declaration.</p>
 <h5 id="singleton">Singleton</h5>
 <p><strong>Singleton </strong>is a design pattern that ensures that a class has only one instance with global access to it. This means we can get an instance of a singleton class anywhere in the code. Consider a simple analogy: when playing a board game, all players act within the field of the game. This is a specific single field where the global state of the game is stored.</p>
 <p>Before we move forward, let's quickly remind ourselves of the main singleton features:</p>
@@ -164,4 +164,4 @@ println(Player.Factory.create(13).id)</code></pre>
     val name = "Name"
 }</code></pre>
 <h5 id="summary">Summary</h5>
-<p>Object declaration is a useful feature. Mainly, we can use <code class="language-kotlin">object</code> keyword to create singletons. Another use of object declaration is nested objects. It is an easy way to create a structure that is associated with the entire class rather than a single instance. If you use it wisely and correctly, you can improve your programming experience and make your code more readable.</p></body></html>
+<p>Object declaration is a useful feature. Mainly, we can use <code class="language-kotlin">object</code> keyword to create singletons. Another use of object declaration is nested objects. It is an easy way to create a structure that is associated with the entire class rather than a single instance. If you use it wisely and correctly, you can improve your programming experience and make your code more readable.</p>
