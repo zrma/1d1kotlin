@@ -1,0 +1,125 @@
+<h2>Recursion</h2>
+<html><body><h5 id="introduction">Introduction</h5>
+<p>So far we've mostly used functions to make them do something for us: sometimes print a certain number and sometimes perform calculations and return the result to us. Sometimes we might pass the return value of one function to another one, and sometimes functions might use other functions to achieve the result.</p>
+<p>However, there is one more significant use case when it comes to functions. </p>
+<h5 id="recursion">Recursion</h5>
+<p>Apart from doing all the above, we could make a function call itself, and sometimes such a move makes the solution easier. When a function calls itself, the process is known as <strong>recursion</strong>.<br/>
+Here’s a code snippet that demonstrates a function that prints the number of stars equal to the given number <code class="language-kotlin">n</code>:</p>
+<pre><code class="language-kotlin">fun printStars(n: Int) {
+    if (n &lt; 1) return
+    print("*")
+    printStars(n - 1)
+}</code></pre>
+<p>Basically, the workflow of this function can be described as follows: “if there are still some stars left (<code class="language-kotlin">n &gt; 0</code>), print a star and then call myself with the number of remaining stars to be printed (<code class="language-kotlin">n-1</code>).”</p>
+<p>Let's look at a more complex example of the factorial function. You already know what the factorial is – apparently, this mathematical concept might be considered a classical use case for recursion.</p>
+<p>To get the factorial <code class="language-kotlin">f(n)</code>, we need to multiply all positive numbers less than or equal to <code class="language-kotlin">n</code>, i.e., <code class="language-kotlin">1 * 2 * 3 * 4 * ... * n</code> . This process can be viewed as taking <code class="language-kotlin">4</code>, multiplying it by <code class="language-kotlin">3</code>, taking the result (<code class="language-kotlin">12</code>), multiplying it by <code class="language-kotlin">2</code>, and so on. So for a given <code class="language-kotlin">n</code>, we need to multiply <code class="language-kotlin">n</code> by the factorial of <code class="language-kotlin">n-1</code>. Therefore, if we know how to get <code class="language-kotlin">f(n-1)</code>, we can easily get <code class="language-kotlin">f(n)</code>. Let’s use this idea to make a recursive factorial function:</p>
+<pre><code class="language-kotlin">fun factorialRecursive(n: Int): Int {
+    if (n == 0 || n == 1) return 1
+    return n * factorialRecursive(n - 1)
+}</code></pre>
+<h5 id="terminal-condition">Terminal condition</h5>
+<p>Consider the following example:</p>
+<pre><code class="language-kotlin">fun printStars(n: Int) {
+    print("*")
+    printStars(n - 1)
+}</code></pre>
+<p>At the first glance, it might seem the same as the function we saw earlier (the one that prints stars), but it has one significant difference. It never stops. It just keeps calling itself with changing parameters until the machine executing this code runs out of memory (or some other unpleasant thing happens).</p>
+<p>Recursion should always be used very carefully. If there are no conditions to stop a recursive function from another recursive call, it gets stuck in a never-ending loop of invoking itself, which would break the program eventually. Therefore, to use recursion properly and not make our PC run out of RAM, we need to limit it and always make sure we have a terminal condition – with the factorial, it’s when the function gets <code class="language-kotlin">n</code> equal or less than <code class="language-kotlin">0</code>.</p>
+<h5 id="recursion-tracing">Recursion Tracing</h5>
+<p>Recursion is quite a difficult topic to grasp at first, so we need some way to be able to <strong>trace it</strong> and see what final result the function is giving us.</p>
+<p>Sure you can copy-paste a code snippet and run it in the IDE, but what happens when you get a <em>StackOverflow</em> error or a result that you are not expecting? You don't really know what went wrong.</p>
+<p>This is where we can apply <strong>manual tracing</strong> (tracing by hand) and see what exactly is going on at each step of the recursive function. </p>
+<p>Consider the next code snippet:</p>
+<pre><code class="language-kotlin">fun m(x: Int, y: Int): Int {
+  return if (x &lt; y) {
+    x
+  } else {
+    m(x - y, y)
+  }
+}</code></pre>
+<p>Imagine you were asked what output the <code class="language-kotlin">m(50, 7)</code> function invocation would return. You would probably start doing the tracing in your head, and after 4-5 calls, you would lose track of the calls. So here is an example of how you can trace such a function easily:</p>
+<pre><code class="language-kotlin">m(50, 7) -&gt; m(43, 7)
+  m(43, 7) -&gt; m(36, 7)
+    m(36, 7) -&gt; m(29, 7)
+      m(29, 7) -&gt; m(22, 7)
+        m(22, 7) -&gt; m(15, 7)
+          m(15, 7) -&gt; m(8, 7)
+            m(8, 7) -&gt; m(1, 7)
+              m(1, 7) -&gt; 1 // we hit the base case, time to go back
+          m(8, 7) -&gt; 1
+        m(22, 7) -&gt; 1
+      m(29, 7) -&gt; 1
+    m(36, 7) -&gt; 1
+  m(43, 7) -&gt; 1
+m(50, 7) -&gt; 1 // 1 is the answer</code></pre>
+<p>This way, we can visualize the function operation with ease and tell what is happening at each step. Trying a different invocation e,.g., <code class="language-kotlin">m(37, 10)</code>, we will see a pattern and will be able to conclude that this recursive function is calculating <code class="language-kotlin">x % y</code>.</p>
+<p>This small technique can help you solve more complex recursion problems and, most importantly, visualize a recursive function.</p>
+<h5 id="replacing-recursion-by-a-loop">Replacing recursion by a loop</h5>
+<p>Each recursive function can be represented with a corresponding loop. In the recursive factorial function, the call of <code class="language-kotlin">f(n)</code> is always followed by the call of <code class="language-kotlin">f(n-1)</code>, so in any consecutive pair of calls, <code class="language-kotlin">n</code> differs exactly by 1. So, if functions are always called with "<code class="language-kotlin">n</code>, <code class="language-kotlin">n-1</code>, <code class="language-kotlin">n-2</code>,<code class="language-kotlin"> n-3.</code>..", why don't we just make a loop to make everything easier? Let’s use this idea to implement a non-recursive solution:</p>
+<pre><code class="language-kotlin">fun factorial(n: Int): Int {
+    var f = 1
+    for (i in 1..n)
+        f *= i
+    return f
+}</code></pre>
+<h5 id="types-of-recursion">Types of recursion</h5>
+<p>There are several types of recursion:</p>
+<p><strong>1. Direct recursion</strong></p>
+<p>It’s the case when a function simply calls itself only once. Our recursive factorial makes a good example:</p>
+<pre><code class="language-kotlin">fun factorialRecursive(n: Int): Int = if (n == 0 || n == 1) 1 else n * factorialRecursive(n - 1)</code></pre>
+<p><strong>2. Indirect recursion </strong></p>
+<p>This is the case when a function uses some other function, which, in turn, calls the former function. There’s no necessity to do it like that, but a modified version of the factorial function can be an example:</p>
+<pre><code class="language-kotlin">fun weirdFactorialRecursive(n: Int): Int = if (n == 0 || n == 1) 1 else factorialCompute(n)
+
+fun factorialCompute(n: Int): Int = n * weirdFactorialRecursive(n - 1)</code></pre>
+<p><strong>3. Tail recursion </strong></p>
+<p>A function utilizes tail recursion if a recursive call is the last thing the function does.</p>
+<p>See, for example, a factorial function with the final call being recursive. This version is a bit different, since usually, we do multiplication last, while here we do it before passing the result to the recursive call.</p>
+<pre><code class="language-kotlin">fun tailFactorialRecursive(n: Int, cur: Int = 1): Int {
+    if (n == 0) return cur
+    return tailFactorialRecursive(n - 1, cur * n)
+}</code></pre>
+<p>Why does tail recursion stand out as a separate type? Because modern compilers can more efficiently work with it. To compute another call of a recursion function, the compiler usually pushes the stack frame onto the stack of operations to be performed, therefore, creating a new set of local variables, which costs time and space. In the case of tail recursion, the compiler can just return to the beginning of the function to continue working with the same variables it already has in the current stack frame. </p>
+<p><strong>4. Multiple recursion</strong></p>
+<p>This is the case when a function makes several calls to itself. As an example, there is a well-known sequence of numbers called the Fibonacci numbers. In this sequence, each next number is the sum of the two preceding ones, starting at <span class="math-tex">\(F_0 = 0\)</span>, <span class="math-tex">\(F_1 = 1\)</span>. Then, each new Fibonacci number is calculated as follows: <span class="math-tex">\(F_n = F_{n-1} + F_{n-2}\)</span>.</p>
+<p>A program for calculating this sequence utilizes multiple recursion: in order to compute the current Fibonacci number, we need to compute the two preceding ones, therefore making 2 recursive calls:</p>
+<pre><code class="language-kotlin">fun fibonacci(n: Int): Int {
+    if (n &lt;= 0) return 0
+    if (n == 1) return 1
+    return fibonacci(n - 1) + fibonacci(n - 2)
+}
+</code></pre>
+<p>However, this solution is extremely inefficient, as recursion branches each time we need another number; therefore, the number of calls and calculations grows exponentially.</p>
+<p><img alt="" src="https://ucarecdn.com/7ec8b97b-d9d8-48bc-b9df-3f3887b17632/"/></p>
+<h5 id="optimizations">Optimizations</h5>
+<p>As we've already noted, multiple recursion in the case of the Fibonacci sequence is extremely inefficient due to computing numerous values for a great number of recursion branches. Apart from turning recursion into a loop, there is yet another method of optimizing it, which is called <strong>memoization</strong>.</p>
+<p>Calling <code class="language-kotlin">f(6)</code>, for example, would call <code class="language-kotlin">f(5)</code> and <code class="language-kotlin">f(4)</code>, and <code class="language-kotlin">f(5)</code>, in its turn, would also call <code class="language-kotlin">f(4)</code>. The basic version would compute <code class="language-kotlin">f(4)</code> two times, and it gets worse for the numbers which are used more often.</p>
+<p><img alt="" src="https://ucarecdn.com/b9bece30-8fc1-4983-a36f-68140fbd961d/"/><br/>
+How could we make our function compute the required number only once? Let’s save it to an array once we compute it and make all other recursion branches first check if the value has already been computed. If not, they will do it, but if the value is already there, it can be used right away. Here’s a version of the same algorithm with memoization:</p>
+<pre><code class="language-kotlin">val fibList = MutableList(1000){0}
+
+fun coolerFibonacci(n: Int): Int {
+    if (n &lt;= 0) return 0
+    if (n == 1) return 1
+    return if (fibList[n] != 0) fibList[n]
+    else {
+        fibList[n] = coolerFibonacci(n - 1) + coolerFibonacci(n - 2)
+        fibList[n]
+    }
+}</code></pre>
+<p>One more possible optimization method involves replacing recursion with a loop, which may be used, for example, in the case of calculating the Fibonacci sequence. Why calculate a needed number if we can basically iterate through all required numbers:</p>
+<pre><code class="language-kotlin">fun fibonacciLoop(n: Int): Int {
+    var n0 = 0
+    var n1 = 1
+    for (i in 1 until n) {
+        val cur = n0 + n1
+        n0 = n1
+        n1 = cur
+    }
+    return n1
+}</code></pre>
+<p><img alt="" src="https://ucarecdn.com/bcafe22e-c806-45a1-bebe-fae94b3935b5/"/></p>
+<p>Memoization is very helpful if you often need to calculate a value of a recursion function. However, if you need to calculate the result only once, you may try optimizing the function with a loop. You don't need to optimize every single recursion function – just try not to calculate the same numbers twice or more.</p>
+<h5 id="conclusion">Conclusion</h5>
+<p>Despite the fact that recursion should be used very carefully, it is a very convenient tool when it comes to certain types of problems. To solve a problem via recursion, we only need to define the base case (such as returning <code class="language-kotlin">1</code> if asked for the factorial of <code class="language-kotlin">0</code> or <code class="language-kotlin">1</code>) and the recursive case (such as the factorial of <code class="language-kotlin">n</code> being dependent on the factorial of <code class="language-kotlin">n-1</code>), and then recursion does the rest. So the main point of using recursion is the simplicity of implementation for some complex ideas, as you can see in various graph algorithms.</p>
+<p>Therefore, recursion is most useful when we can divide a certain problem into sub-problems, each of which being a smaller version of the original one. But that’s a topic for another… <a href="https://hyperskill.org/learn/step/3544" rel="noopener noreferrer nofollow" target="_blank">topic</a>.</p></body></html>

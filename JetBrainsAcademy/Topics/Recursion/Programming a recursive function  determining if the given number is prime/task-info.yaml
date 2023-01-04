@@ -1,0 +1,23 @@
+type: code
+custom_name: "Programming a recursive function: determining if the given number is\
+  \ prime."
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun isPrime(n: Int, i: Int = 2): Boolean {
+        // a few base cases here
+        // recursive case here
+    }
+
+    fun main() {
+        val n = readLine()!!.toInt()
+        print(isPrime(n))
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/13610#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Wed, 04 Jan 2023 12:25:14 UTC"
+record: -1

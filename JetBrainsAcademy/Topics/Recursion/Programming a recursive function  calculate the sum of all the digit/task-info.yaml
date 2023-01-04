@@ -1,0 +1,12 @@
+type: code
+custom_name: "Programming a recursive function: calculate the sum of all the digit"
+files:
+- name: src/Main.kt
+  visible: true
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/19681#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Wed, 04 Jan 2023 12:13:43 UTC"
+record: -1

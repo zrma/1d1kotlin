@@ -1,0 +1,11 @@
+<h2>Calculating something recursive to feel why we need computers after all.</h2>
+<html><body><p>Given function F, what's the sum of all numbers it prints if called as <code class="java">f(2)</code>?</p>
+<pre><code class="java">fun f(n : Int)
+{
+    println(n)
+    if(n &lt; 5)
+    {
+        f(n+1)
+        f(n+3)
+    }
+}</code></pre></body></html>
