@@ -33,10 +33,6 @@ files:
   visible: false
   text: eAGNz0FqAzEMQNGsfQrvsshGsqyxB0rpBdo7yLKUZDEzxTjQ4zcUus/+8eHrsW33GROn0xxm0RtkYl40MWrLDAKd2bJaQ3diwwRpVQrfMmyfMSMU9YzqzJq9U7W1S3XqUDuamCslzvLvCaChLqUx09q8ayPwVBfqiyg1olKkP02Qx7wdI37ZEd92Oz42meP+8x6RK+cVC9R4gWct6N/BtFds+LRxtdiG7HqLZzeZj2F4Dr+yv00R
   learner_created: false
-- name: test/gitone/objects/39/a0337532d7720acc90497043e2ade92c386939
-  visible: false
-  text: eAGNzktuxCAQhOGsOUXvswFj7EaKRjlB7tBAESP5JcCZHD+jZDerbEv1SX88tq10Gnh+6RUg7zm4LJ6zzgK2mGIYRmE2LrAfrEDSDGh1SsXeaUrOzjLOSCkak3maQoyDNnbWNmRrQo7ZI7GSqy9HpQ8c9LbjeN+k1/J9I+PYebZusvSqrdYq/hZ1/Oer+lIa/Qna0Jp8gu5lXWmRL9B2rb2cK2gtO5q6g3YgPc3PPD8qO1qn86rn0R7OqlE59QNT715t
-  learner_created: false
 - name: test/gitone/objects/41/07cf41cf55c4fd38e9da8f3d08d1eaefc3254a
   visible: false
   text: eAGVzlEKwjAMAFC/d4r+C9KkydaCiCfwDlkacchaqR16fMUbeIAHT+u6Lt0h+F1vZs4iZMrR5xQSgmK0FDkh65gJZ5oJc5w46vCQZqU7QKEJJos0sxHQNQXVBCrsZcwsowYeg/hBtn6rzV2suuPaDlKytWct51V6W94nBxyZEiCS2/vg/aC/Wbd/zBeVvpTN3Ku2+/AB40NBbg==
@@ -81,10 +77,6 @@ files:
   visible: false
   text: eAErKUpNVTA3ZjA0MDAzMVHITczM08suYVijbvhOxXqjoOxNS7HdRtPe1dcpv4cqKUpNTMlN1SupKGFYUeXFN/98VBenTMiE2elehxYEfn0BAE4WHhA=
   learner_created: false
-- name: test/gitone/objects/83/cc19099347924da28890838ad5e698da8504a3
-  visible: false
-  text: eAFLyslPUjBhKCxU4AIAFOkDAA==
-  learner_created: false
 - name: test/gitone/objects/86/68fe82df35b37902b619ca29028fa59c496532
   visible: false
   text: eAGVjkEOwiAQRV1zCvYmBpjSgcQY7+AJpsyQdkExSBOPL3oDd3/x//sv1VK2rp11p95EtFh0CCRgF/TAxDaLFzGSQXzAQM4uDDmqJzXZu0YAN83Bc+RldJkpYIbk05wRGWManDkmp+joa236Md5WfS3t8vqme6HetvdNWx/8FO3koz4bMEaln1iXPyaKmDXXdJRhRn2ru/oAdkZD7w==
@@ -92,10 +84,6 @@ files:
 - name: test/gitone/objects/97/e638cc1c7135580c3ff93162e727148e1bad05
   visible: false
   text: eAGNjksKwjAQQF3nFLN3k8l3AiKCJ5nECS1SIzFFvb2lJ3D1Nu/BK21Z5gEG8TC6CDixNieKiQ0VIRdM9inVG0cMxteIUQplyurJXR4DtIgETuQisvU6m2IsBosW0SF5KVzJVC2K1zG1Dtfvc5IOp7LzsvDo8+cM6Mm7ZLT3cNRWa1X2r7Gp/xYqd+E7tLXDq9Xx3v7UD1rSQkA=
-  learner_created: false
-- name: test/gitone/objects/99/8b5fa98f0fae83e6cb24a8815b8923aead7ee0
-  visible: false
-  text: eAErKUpNVTA3ZjA0MDAzMVHITczM08suYdBWOxjDYh47QcG8+bePlut/lq2Fy6BKilITU3JT9UoqShi+lWy9vOTYua+N0X5F7/UW7n6SXZENAE/vH+I=
   learner_created: false
 - name: test/gitone/objects/a7/b882bbf2db5d90287e9affc7e6f3b3c740b327
   visible: false
@@ -522,6 +510,21 @@ files:
         }
     }
   learner_created: false
+- name: test/gitone/objects/99/8b5fa98f0fae83e6cb24a8815b8923aead7ee0
+  visible: false
+  text: eAErKUpNVTA3ZjA0MDAzMVHITczM08suYdBWOxjDYh47QcG8+bePlut/lq2Fy6BKilITU3JT9UoqShi+lWy9vOTYua+N0X5F7/UW7n6SXZENAE/vH+I=
+  learner_created: false
+- name: test/gitone/objects/39/a0337532d7720acc90497043e2ade92c386939
+  visible: false
+  text: eAGNzktuxCAQhOGsOUXvswFj7EaKRjlB7tBAESP5JcCZHD+jZDerbEv1SX88tq10Gnh+6RUg7zm4LJ6zzgK2mGIYRmE2LrAfrEDSDGh1SsXeaUrOzjLOSCkak3maQoyDNnbWNmRrQo7ZI7GSqy9HpQ8c9LbjeN+k1/J9I+PYebZusvSqrdYq/hZ1/Oer+lIa/Qna0Jp8gu5lXWmRL9B2rb2cK2gtO5q6g3YgPc3PPD8qO1qn86rn0R7OqlE59QNT715t
+  learner_created: false
+- name: test/gitone/objects/83/cc19099347924da28890838ad5e698da8504a3
+  visible: false
+  text: eAFLyslPUjBhKCxU4AIAFOkDAA==
+  learner_created: false
 feedback_link: https://hyperskill.org/learn/step/9842#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sat, 07 Jan 2023 08:14:07 UTC"
 record: -1

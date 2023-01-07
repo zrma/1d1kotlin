@@ -9,11 +9,14 @@ import java.util.zip.InflaterInputStream
 fun main() {
   println("Enter .git directory location:")
   val gitDir = readln()
+  // val gitDir = "D:\\code\\src\\1d1kotlin\\JetBrainsAcademy\\Git Internals\\task\\test\\gitone\\"
+  // val gitDir = "D:\\code\\src\\1d1kotlin\\JetBrainsAcademy\\Git Internals\\task\\test\\gittwo\\"
 
   println("Enter command:")
   when (readln()) {
     "list-branches" -> listBranches(gitDir)
     "cat-file" -> catFile(gitDir)
+    "log" -> log(gitDir)
     else -> println("Unknown command")
   }
 }
@@ -37,6 +40,18 @@ fun catFile(gitDir: String) {
   printParsedGitObj(parsed, origData)
 }
 
+fun log(gitDir: String) {
+  println("Enter branch name:")
+  val branch = readln()
+
+  val hashes = mutableListOf<Pair<String, Boolean>>()
+  hashes.add(Pair(File("$gitDir/refs/heads/$branch").readText().trimEnd(), false))
+
+  while (hashes.isNotEmpty()) {
+    printCommit(hashes, gitDir)
+  }
+}
+
 fun parseGitObject(gitObject: String): List<String> {
   // split first NULL char of gitObject
   val split = gitObject.split("\u0000", limit = 2)
@@ -53,6 +68,53 @@ fun readGitObject(location: String): Pair<String, ByteArray> {
       InflaterInputStream(bytes.inputStream()).bufferedReader().readText(),
       InflaterInputStream(bytes.inputStream()).readAllBytes(),
   )
+}
+
+fun printCommit(hashes: MutableList<Pair<String, Boolean>>, gitDir: String) {
+  val (hash, isMerged) = hashes.removeAt(0)
+  val gitObjPath = "$gitDir/objects/${hash.substring(0, 2)}/${hash.substring(2)}"
+  val (gitObj, _) = readGitObject(gitObjPath)
+  val parsed = parseGitObject(gitObj)
+
+  if (isMerged) {
+    println("Commit: $hash (merged)")
+  } else {
+    println("Commit: $hash")
+  }
+
+  // drop type
+  var body = parsed.drop(1)
+  // drop tree
+  body = body.drop(1)
+
+  val parents = body.filter { it.startsWith("parent") }
+  body = body.filter { !it.startsWith("parent") }
+
+  if (!isMerged) {
+    when (parents.size) {
+      1 -> {
+        val parent = parents[0].split(" ").last()
+        hashes.add(Pair(parent, false))
+      }
+      2 -> {
+        val base = parents[0].split(" ").last()
+        val merged = parents[1].split(" ").last()
+        hashes.add(Pair(merged, true))
+        hashes.add(Pair(base, false))
+      }
+    }
+  }
+
+  // drop author
+  body = body.drop(1)
+
+  val (committerName, committerEmail, committerDate) = parseAuthor(body.first())
+  body = body.drop(1)
+  println("$committerName $committerEmail commit timestamp: $committerDate")
+
+  body.forEach { println(it) }
+
+  println()
 }
 
 fun printParsedGitObj(parsed: List<String>, origData: ByteArray) {
