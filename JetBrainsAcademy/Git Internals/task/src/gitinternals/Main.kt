@@ -9,15 +9,53 @@ import java.util.zip.InflaterInputStream
 fun main() {
   println("Enter .git directory location:")
   val gitDir = readln()
-  // val gitDir = "D:\\code\\src\\1d1kotlin\\JetBrainsAcademy\\Git Internals\\task\\test\\gitone\\"
-  // val gitDir = "D:\\code\\src\\1d1kotlin\\JetBrainsAcademy\\Git Internals\\task\\test\\gittwo\\"
 
   println("Enter command:")
   when (readln()) {
     "list-branches" -> listBranches(gitDir)
     "cat-file" -> catFile(gitDir)
-    "log" -> log(gitDir)
+    "log" -> readLog(gitDir)
+    "commit-tree" -> readCommitTree(gitDir)
     else -> println("Unknown command")
+  }
+}
+
+fun readCommitTree(gitDir: String) {
+  println("Enter commit-hash:")
+  val hash = readln()
+
+  printTree(gitDir, hash)
+}
+
+fun printTree(gitDir: String, hash: String, prefix: String = "") {
+  val gitObjPath = "$gitDir/objects/${hash.substring(0, 2)}/${hash.substring(2)}"
+
+  var (gitObj, origData) = readGitObject(gitObjPath)
+  val parsed = parseGitObject(gitObj)
+
+  val header = parsed.first()
+  val contentType = header.split(" ").first().uppercase()
+
+  if (contentType == "COMMIT") {
+    // drop content-type
+    val body = parsed.drop(1)
+    val tree = body.first().split(" ")[1]
+    val treePath = "$gitDir/objects/${tree.substring(0, 2)}/${tree.substring(2)}"
+    val (_, origData1) = readGitObject(treePath)
+    origData = origData1
+  }
+
+  var treeData = origData.dropWhile { it != 0.toByte() }.drop(1).toByteArray()
+
+  while (treeData.isNotEmpty()) {
+    val (treeVal, tree1) = parseTree(treeData)
+    treeData = tree1
+    val (mode, hash1, name) = treeVal
+    if (mode == "40000") {
+      printTree(gitDir, hash1, "$prefix$name/")
+    } else {
+      println("$prefix$name")
+    }
   }
 }
 
@@ -40,7 +78,7 @@ fun catFile(gitDir: String) {
   printParsedGitObj(parsed, origData)
 }
 
-fun log(gitDir: String) {
+fun readLog(gitDir: String) {
   println("Enter branch name:")
   val branch = readln()
 
